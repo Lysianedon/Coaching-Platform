@@ -2,18 +2,12 @@
 const express = require("express");
 const router = express.Router();
 
-//------------- AUTHENTIFICATION -------//
-const dotenv = require("dotenv");
-// const bcrypt = require("bcrypt");
-// const jwt = require("jsonwebtoken");
-// const cookieParser = require("cookie-parser");
-//------------ DOTENV ----------------//
-dotenv.config({ path: "../config.env" });
+//----------- MIDDLEWARE ------------//
 
-//------------ SECRET ----------------//
-// const secret = process.env.SECRET;
-//----------- MIDDLEWARES ------------//
+// const auth = require("../utils/middlewares/authentification")
 
-//--------------- ROUTES -------------//
+//------------- ROUTE ---------------//
+// router.post("/", check mail et pass, checkCookie, checkRequest, async (req, res) => {
+// }
 
 module.exports = router;
