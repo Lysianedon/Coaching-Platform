@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 //css
 //Pages
-import Home from './views/home/home'
+import Home from './views/home/home';
+import Dashboard from './views/dashboard/dashboard';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/dashboard" component={Dashboard} />
         </Switch>
       </BrowserRouter>
     </>

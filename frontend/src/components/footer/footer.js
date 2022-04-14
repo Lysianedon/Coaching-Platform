@@ -11,18 +11,16 @@ function Footer() {
       <div class="row">
         <div class="col text-center m-1 p-2">
           <h5> PRENDRE CONTACT </h5>
-            <p>
-                <Link to="/" className="text-link">
-                    Formulaire de contact
-                </Link>
-            </p> 
-            <p>
-                <Link to="/" className="text-link">
-                    Questionaire
-                </Link>
-            </p>
-            
-          
+          <p>
+            <Link to="/" className="text-link">
+              Formulaire de contact
+            </Link>
+          </p>
+          <p>
+            <Link to="/" className="text-link">
+              Questionaire
+            </Link>
+          </p>
         </div>
 
         <div class="col text-center m-1 p-2">
@@ -35,23 +33,21 @@ function Footer() {
 
         <div class="col text-center">
           <h5> LIENS UTILES </h5>
-            <p>
-                <Link to="/" className="text-link">
-                    Mentions légales
-                </Link>
-            </p>
-            <p>
-                <Link to="/" className="text-link">
-                    CGU / CGV
-                </Link>
-            </p>
-            
-
+          <p>
+            <Link to="/" className="text-link">
+              Mentions légales
+            </Link>
+          </p>
+          <p>
+            <Link to="/" className="text-link">
+              CGU / CGV
+            </Link>
+          </p>
         </div>
-      </div>
 
-      <div class="copyright text-center m-3">
-        &copy; Créé par Jessica, Anita, Lysiane et Chi
+        <div class="copyright text-center m-3">
+          &copy; Créé par Jessica, Anita, Lysiane et Chi
+        </div>
       </div>
     </div>
   );

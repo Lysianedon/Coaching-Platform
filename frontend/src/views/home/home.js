@@ -7,6 +7,7 @@ function Home() {
     <>
       <Nav/>
       <h3> Home </h3>
+
       <Footer/>
     </>
   )
