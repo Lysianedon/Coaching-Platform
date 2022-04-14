@@ -19,11 +19,11 @@ mongoose
 app.use(express.json());
 
 //--------------- ROUTERS ------------------//
-const contactRouter = require("/routers/contactRouter")
-const questionnaireRouter = require("/routers/questionnaireRouter")
-const dashboarRouter = require("/routers/dashboardRouter")
-const loginRouter = require("/routers/loginRouter")
-const logoutRouter = require("/routers/logoutRouter")
+const questionnaireRouter = require("/routers/questionnaireRouter");
+const contactRouter = require("/routers/contactRouter");
+const dashboardRouter = require("/routers/dashboardRouter");
+const loginRouter = require("/routers/loginRouter");
+const logoutRouter = require("/routers/logoutRouter");
 
 //--------------- ROUTES -------------------//
 app.use("/login", loginRouter);
