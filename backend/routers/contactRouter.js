@@ -1,17 +1,17 @@
 //-------------- EXPRESS ---------------//
-const express = require ("express");
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
 //------------- AUTHENTIFICATION -------//
 const dotenv = require("dotenv");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const cookieParser = require("cookie-parser")
+// const bcrypt = require("bcrypt");
+// const jwt = require("jsonwebtoken");
+// const cookieParser = require("cookie-parser");
 //------------ DOTENV ----------------//
-dotenv.config({path: "../config.env"})
+dotenv.config({ path: "../config.env" });
 
 //------------ SECRET ----------------//
-const secret = process.env.SECRET
+// const secret = process.env.SECRET;
 //----------- MIDDLEWARES ------------//
 
 //--------------- ROUTES -------------//
