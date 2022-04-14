@@ -19,7 +19,18 @@ mongoose
 app.use(express.json());
 
 //--------------- ROUTERS ------------------//
+const contactRouter = require("/routers/contactRouter")
+const questionnaireRouter = require("/routers/questionnaireRouter")
+const dashboarRouter = require("/routers/dashboardRouter")
+const loginRouter = require("/routers/loginRouter")
+const logoutRouter = require("/routers/logoutRouter")
 
+//--------------- ROUTES -------------------//
+app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
+app.use("/contact", contactRouter);
+app.use("/questionnaire", questionnaireRouter);
+app.use('/dashboard', dashboardRouter);
 //---------------- ROUTES -----------------//
 app.get("*", (_req, res) => {
   res.status(404).send("Error 404 - Not found");
@@ -28,3 +39,6 @@ app.get("*", (_req, res) => {
 app.listen(port, () => {
   console.log(`Server listening at : http://localhost:${port}`);
 });
+
+
+
