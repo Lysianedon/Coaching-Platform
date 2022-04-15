@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //Pages
 import Home from './views/home/home';
 import Dashboard from './views/dashboard/dashboard';
+import DashboardUser from './views/dashboard-user/dashboardUser';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/dashboard/user" component={DashboardUser} />
         </Switch>
       </BrowserRouter>
     </>

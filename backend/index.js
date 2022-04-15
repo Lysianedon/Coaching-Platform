@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 //-------------- DOTENV ----------------------//
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
+//-------------- COOKIE PARSER ---------------//
+const cookieParser = require("cookie-parser");
 
 //------------ CONNECT TO MONGODB -------------//
 mongoose
@@ -16,7 +18,7 @@ mongoose
 
 //--------------- MIDDLEWARE ----------------//
 app.use(express.json());
-
+app.use(cookieParser());
 //--------------- ROUTERS ------------------//
 const contactRouter = require("./routers/contactRouter");
 const questionnaireRouter = require("./routers/questionnaireRouter");

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Logo from "../../../assets/images/Logo.png";
 // css
-import "./sidebar.css";
+import "./sidebarUser.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import styled from 'styled-components';
@@ -12,11 +12,10 @@ function SideBar() {
       <div className="imageDiv">
           <img src={Logo} alt="" />
       </div>
-      <div className="pauline">
-          <p>Pauline Gane</p>
-          <p>- Admin -</p>
-      </div>
           <Ul>
+          <Link to="#profile" className="text-link">
+            Profile
+          </Link>
           <Link to="#agenda" className="text-link">
             Agenda
           </Link>
@@ -25,9 +24,6 @@ function SideBar() {
           </Link>
           <Link to="#ressources" className="text-link">
             Mes ressources
-          </Link>
-          <Link to="/" className="text-link">
-            Gérer mes coachés
           </Link>
           <div className="logout">
             <Link to="/" className="text-link">
