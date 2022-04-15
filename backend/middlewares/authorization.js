@@ -1,5 +1,3 @@
-const express = require("express");
-const app = express();
 //---------------------- JWT ----------------//
 const jwt = require("jsonwebtoken");
 //----------------- SECRET ------------------//

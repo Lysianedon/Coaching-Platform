@@ -4,13 +4,9 @@ const router = express.Router();
 //--------------- AUTH ----------------//
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-// const cookieParser = require("cookie-parser");
 
 //------------- SECRET --------------//
 const secret = process.env.SECRET;
-
-//--------------- MIDDLEWARE ------------//
-// router.use(cookieParser());
 
 //------------ MODEL -----------------//
 const User = require("../models/userModel");

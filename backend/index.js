@@ -9,6 +9,10 @@ dotenv.config({ path: "./config.env" });
 //-------------- COOKIE PARSER ---------------//
 const cookieParser = require("cookie-parser");
 
+//--------------- MIDDLEWARES ----------------//
+app.use(cookieParser());
+app.use(express.json());
+
 //------------ CONNECT TO MONGODB -------------//
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -16,9 +20,6 @@ mongoose
   })
   .then(() => console.log("Connected to MongoDB"));
 
-//--------------- MIDDLEWARE ----------------//
-app.use(express.json());
-app.use(cookieParser());
 //--------------- ROUTERS ------------------//
 const contactRouter = require("./routers/contactRouter");
 const questionnaireRouter = require("./routers/questionnaireRouter");
