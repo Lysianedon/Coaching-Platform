@@ -1,6 +1,9 @@
+// css
+import "./ressources.css";
+
 function Ressources() {
     return (
-        <div>
+        <div className="ressources-form">
             <h3>Ressources</h3>
         </div>
     )
