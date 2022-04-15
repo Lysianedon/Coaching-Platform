@@ -119,38 +119,6 @@ router.get('/user/list', async (req,res) => {
     return res.json({usersList})
 })
 
-// router.put("/admin/list", async (req, res) => {
-//   let taskToModify = req.body,
-//     modifiedTask;
-
-//   try {
-//     modifiedTask = await Task.findOneAndUpdate(
-//       { content: taskToModify.initialContent },
-//       { content: taskToModify.updatedContent },
-//       { new: true }
-//     );
-//   } catch (error) {
-//     console.log(error);
-//     return res.status(400).json({ message: "A problem happened." });
-//   }
-//   return res.status(201).json({ modifiedTask });
-// });
-
-
-//GET THE USER'S TO DO LIST:
-router.get("/user/list", async (req, res) => {
-  // const userID = req.verifiedUserInfos.id;
-  let usersList;
-
-  try {
-    usersList = await User.findById('62587d8a2451d60a3bc4a53b');
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ message: "A problem happened." });
-  }
-  return res.json({ usersList });
-});
-
 // --------------------------------- TEST GOOGLE CALENDAR ---------------------------------------------
 
 // const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
