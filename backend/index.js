@@ -35,6 +35,7 @@ app.use("/dashboard", dashboardRouter);
 app.get("*", (_req, res) => {
   res.status(404).send("Error 404 - Not found");
 });
+
 //------------- START SERVER -------------//
 app.listen(port, () => {
   console.log(`Server listening at : http://localhost:${port}`);
