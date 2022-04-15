@@ -111,7 +111,6 @@ router.put("/admin/list", async (req, res) => {
 router.get("/user/list",authorization, async (req, res) => {
   const userID = req.verifiedUserInfos.id;
   let usersList;
-
   try {
     usersList = await User.findById(userID);
   } catch (error) {
