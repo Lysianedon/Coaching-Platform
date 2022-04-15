@@ -13,7 +13,7 @@ dotenv.config({ path: "../config.env" });
 //------------ SECRET ----------------//
 // const secret = process.env.SECRET;
 //----------- MIDDLEWARES ------------//
-
+const authorization = require("../middlewares/authorization");
 //  GOOGLE
 // const { google } = require('googleapis');
 // const {GOOGLE_CALENDAR} = process.env.GOOGLE_CALENDAR;
@@ -26,7 +26,6 @@ const Task = require("../models/taskModel");
 
 //GET THE USER'S INFOS (TO DISPLAY THEM IN THE DASHBOARD):
 router.get("/user", async (req, res) => {
-
   //Find user :
   let user;
 
@@ -48,75 +47,79 @@ router.get("/admin/list", async (req, res) => {
 
   //Get list of tasks with admin's ID :
   try {
-    adminList = await Task.find({userId :adminID});
-
+    adminList = await Task.find({ userId: adminID });
   } catch (err) {
     console.log(err);
-    return res.status(401).json({ message: "A problem happened."});
+    return res.status(401).json({ message: "A problem happened." });
   }
   return res.json({ adminList });
 });
 
 //DELETE A TASK IN ADMIN'S TO DO LIST:
-router.delete('/admin/list', async (req,res)=> {
-    //The content must be unique, otherwise an error msg is displayed : "Task already exists"
-    let deletedTask = req.body;
+router.delete("/admin/list", async (req, res) => {
+  //The content must be unique, otherwise an error msg is displayed : "Task already exists"
+  let deletedTask = req.body;
 
-    try {
-        deletedTask = await Task.findOneAndDelete({content : deletedTask.content});
-      
-    } catch (error) {
-        console.log(error);
-        return res.status(400).json({message : "A problem happened."})
-    }
-    return res.json({deletedTask})
-})
+  try {
+    deletedTask = await Task.findOneAndDelete({ content: deletedTask.content });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: "A problem happened." });
+  }
+  return res.json({ deletedTask });
+});
 
 //ADD A NEW TASK INTO ADMIN'S TO DO LIST:
-router.post('/admin/list', async (req,res)=> {
+router.post("/admin/list", async (req, res) => {
+  let newTask = req.body,
+    addedTask;
+  const adminID = "62587d8a2451d60a3bc4a53b";
 
-    let newTask = req.body, addedTask;
-    const adminID = "62587d8a2451d60a3bc4a53b";
-
-    try {
-        newTask = await Task.create(newTask);
-        addedTask = await Task.findOneAndUpdate({content : newTask.content}, {userId : adminID }, {new : true});
-
-    } catch (error) {
-        console.log(error);
-        return res.status(400).json({message : "A problem happened."})
-    }
-    return res.status(201).json({addedTask});
-})
+  try {
+    newTask = await Task.create(newTask);
+    addedTask = await Task.findOneAndUpdate(
+      { content: newTask.content },
+      { userId: adminID },
+      { new: true }
+    );
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: "A problem happened." });
+  }
+  return res.status(201).json({ addedTask });
+});
 
 //MODIFY A TASK IN ADMIN'S TO DO LIST :
-router.put('/admin/list', async (req,res) => {
+router.put("/admin/list", async (req, res) => {
+  let taskToModify = req.body,
+    modifiedTask;
 
-    let taskToModify = req.body, modifiedTask;
+  try {
+    modifiedTask = await Task.findOneAndUpdate(
+      { content: taskToModify.initialContent },
+      { content: taskToModify.updatedContent },
+      { new: true }
+    );
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: "A problem happened." });
+  }
+  return res.status(201).json({ modifiedTask });
+});
 
-    try {
-        modifiedTask = await Task.findOneAndUpdate({content : taskToModify.initialContent}, {content : taskToModify.updatedContent }, {new : true});
-    } catch (error) {
-        console.log(error);
-        return res.status(400).json({message : "A problem happened."})
-    }
-    return res.status(201).json({modifiedTask});
-})
+//GET THE USER'S TO DO LIST:
+router.get("/user/list", async (req, res) => {
+  const userID = req.verifiedUserInfos.id;
+  let usersList;
 
-//GET THE USER'S TO DO LIST: 
-router.get('/:user/list', (req,res) => {
-
-    const userID = req.verifiedUserInfos.id;
-    let usersList;
-
-    try {
-        usersList = await User.findById(userID)
-    } catch (error) {
-        console.log(error);
-        return res.status(400).json({message : "A problem happened."})
-    }
-
-})
+  try {
+    usersList = await User.findById(userID);
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: "A problem happened." });
+  }
+  return res.json({ usersList });
+});
 
 // --------------------------------- TEST GOOGLE CALENDAR ---------------------------------------------
 
@@ -160,7 +163,6 @@ router.get('/:user/list', (req,res) => {
 // });
 
 // --------------------------------- FIN TEST GOOGLE CALENDAR -----------------------------------------
-
 
 //Exporting the module
 
