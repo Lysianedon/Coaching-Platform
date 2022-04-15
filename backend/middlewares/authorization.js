@@ -1,9 +1,21 @@
+<<<<<<< HEAD:backend/routers/middlewares/authorization.js
+const express = require("express");
+const app = express();
+=======
 //---------------------- JWT ----------------//
+>>>>>>> 62a9da4ad08ea4cacc4b95c992e9d6bcb3462415:backend/middlewares/authorization.js
 const jwt = require("jsonwebtoken");
 //----------------- SECRET ------------------//
 const secret = process.env.SECRET;
 
+<<<<<<< HEAD:backend/routers/middlewares/authorization.js
+//---------------- MIDDLEWARES -----------------//
+//* COOKIE PARSER
+app.use(cookieParser());
+app.use(express.json());
+=======
 //---------------- MIDDLEWARE ----------------//
+>>>>>>> 62a9da4ad08ea4cacc4b95c992e9d6bcb3462415:backend/middlewares/authorization.js
 
 //* AUTHORIZATION - FOR ALL AUTHENTICATED USERS
 // *! We check if incoming request has our cookie (called "jwt") ; if invalid cookie, access to controller prohibited
