@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const cookieParser = require("cookie-parser");
+//---------------------- JWT ----------------//
 const jwt = require("jsonwebtoken");
 //----------------- SECRET ------------------//
 const secret = process.env.SECRET;
@@ -9,6 +9,7 @@ const secret = process.env.SECRET;
 //* COOKIE PARSER
 app.use(cookieParser());
 app.use(express.json());
+//---------------- MIDDLEWARE ----------------//
 
 //* AUTHORIZATION - FOR ALL AUTHENTICATED USERS
 // *! We check if incoming request has our cookie (called "jwt") ; if invalid cookie, access to controller prohibited

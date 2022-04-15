@@ -42,7 +42,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     maxlength: 100,
   },
-  isAdmin: false,
+  isAdmin: { type: Boolean, default: false },
   ressources: [{ type: mongoose.Types.ObjectId, ref: "Ressources" }],
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
 });
