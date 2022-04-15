@@ -13,7 +13,7 @@ dotenv.config({ path: "../config.env" });
 //------------ SECRET ----------------//
 // const secret = process.env.SECRET;
 //----------- MIDDLEWARES ------------//
-const authorization = require("../middlewares/authorization");
+// const authorization = require("../middlewares/authorization");
 //  GOOGLE
 // const { google } = require('googleapis');
 // const {GOOGLE_CALENDAR} = process.env.GOOGLE_CALENDAR;
