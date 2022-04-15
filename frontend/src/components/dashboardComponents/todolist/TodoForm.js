@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from "react";
 
 const TodoForm = (props) => {
   const ref = useRef();
-  const [input, setInput] = useState(props.edit ? props.edit.value : '');
+  const [input, setInput] = useState(props.edit ? props.edit.value : "");
 
   useEffect(() => {
     // to implete the function that focus input when init the website
@@ -21,7 +21,7 @@ const TodoForm = (props) => {
       text: input,
     });
 
-    setInput('');
+    setInput("");
   };
 
   const editsubmitHandler = (e) => {
@@ -32,7 +32,7 @@ const TodoForm = (props) => {
       text: input,
     });
 
-    setInput('');
+    setInput("");
   };
 
   return (
@@ -50,7 +50,6 @@ const TodoForm = (props) => {
             className="todo-input edit"
             value={input}
             onChange={changeHandler}
-            maxLength="15"
           />
           <button className="todo-button edit">Update</button>
         </React.Fragment>
@@ -64,7 +63,6 @@ const TodoForm = (props) => {
             className="todo-input"
             value={input}
             onChange={changeHandler}
-            maxLength="15"
           />
           <button className="todo-button">Add todo</button>
         </React.Fragment>

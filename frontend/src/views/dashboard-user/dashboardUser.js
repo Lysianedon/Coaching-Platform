@@ -1,5 +1,5 @@
 // components
-import SideBar from "../../components/dashboardComponents/sidebar-user/sidebarUser";
+import SideBarUser from "../../components/dashboardComponents/sidebar-user/sidebarUser";
 import Profile from "../../components/dashboardComponents/profile-user/profile";
 import Agenda from "../../components/dashboardComponents/agenda/agenda";
 import ToDoList from "../../components/dashboardComponents/todolist/todolist";
@@ -8,11 +8,13 @@ import Ressources from "../../components/dashboardComponents/ressources/ressourc
 function DashboardUser() {
   return (
     <>
-     <SideBar/>
+     <SideBarUser/>
+     
      <Profile/>
      <Agenda/>
-     <ToDoList/>
+     <ToDoList/> 
      <Ressources/>
+     
     </>
   )
 }
