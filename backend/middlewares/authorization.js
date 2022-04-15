@@ -1,14 +1,8 @@
-const express = require("express");
-const app = express();
 //---------------------- JWT ----------------//
 const jwt = require("jsonwebtoken");
 //----------------- SECRET ------------------//
 const secret = process.env.SECRET;
 
-//---------------- MIDDLEWARES -----------------//
-//* COOKIE PARSER
-app.use(cookieParser());
-app.use(express.json());
 //---------------- MIDDLEWARE ----------------//
 
 //* AUTHORIZATION - FOR ALL AUTHENTICATED USERS

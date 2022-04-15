@@ -2,22 +2,14 @@
 const express = require("express");
 const router = express.Router();
 
-//------------- AUTHENTIFICATION -------//
-const dotenv = require("dotenv");
-// const bcrypt = require("bcrypt");
-// const jwt = require("jsonwebtoken");
-// const cookieParser = require("cookie-parser");
-//------------ DOTENV ----------------//
-dotenv.config({ path: "../config.env" });
-
-//------------ SECRET ----------------//
-// const secret = process.env.SECRET;
 //----------- MIDDLEWARES ------------//
 const authorization = require("../middlewares/authorization");
+
 //  GOOGLE
 // const { google } = require('googleapis');
 // const {GOOGLE_CALENDAR} = process.env.GOOGLE_CALENDAR;
 // const parsedCredentialsGoogleCalendar = JSON.parse(GOOGLE_CALENDAR);
+
 //----------- MODELS -----------------//
 const User = require("../models/userModel");
 const Task = require("../models/taskModel");
@@ -108,12 +100,12 @@ router.put("/admin/list", async (req, res) => {
 });
 
 //GET THE USER'S TO DO LIST:
-router.get("/user/list",authorization, async (req, res) => {
+router.get("/user/list", authorization, async (req, res) => {
   const userID = req.verifiedUserInfos.id;
   let usersList;
 
   try {
-    usersList = await User.findById(userID);
+    usersList = await User.findById(userID).select("ressources");
   } catch (error) {
     console.log(error);
     return res.status(400).json({ message: "A problem happened." });

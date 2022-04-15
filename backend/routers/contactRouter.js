@@ -7,8 +7,6 @@ const router = express.Router();
 // const bcrypt = require("bcrypt");
 // const jwt = require("jsonwebtoken");
 // const cookieParser = require("cookie-parser");
-//------------ DOTENV ----------------//
-// dotenv.config({ path: "../config.env" });
 
 //------------ SECRET ----------------//
 // const secret = process.env.SECRET;
