@@ -13,7 +13,7 @@ dotenv.config({ path: "../config.env" });
 //------------ SECRET ----------------//
 // const secret = process.env.SECRET;
 //----------- MIDDLEWARES ------------//
-
+const authorization = require('../routers/middlewares/authorization');
 //  GOOGLE
 // const { google } = require('googleapis');
 // const {GOOGLE_CALENDAR} = process.env.GOOGLE_CALENDAR;
@@ -104,18 +104,19 @@ router.put('/admin/list', async (req,res) => {
 })
 
 //GET THE USER'S TO DO LIST: 
-router.get('/:user/list', (req,res) => {
+router.get('/user/list', async (req,res) => {
 
-    const userID = req.verifiedUserInfos.id;
+    // const userID = req.verifiedUserInfos.id;
     let usersList;
 
     try {
-        usersList = await User.findById(userID)
+        usersList = await User.findById("625885b784f5f2f761c8ac96");
     } catch (error) {
         console.log(error);
         return res.status(400).json({message : "A problem happened."})
     }
 
+    return res.json({usersList})
 })
 
 // --------------------------------- TEST GOOGLE CALENDAR ---------------------------------------------
