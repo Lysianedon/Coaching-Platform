@@ -108,17 +108,16 @@ router.put("/admin/list", async (req, res) => {
 });
 
 //GET THE USER'S TO DO LIST:
-router.get("/user/list", async (req, res) => {
-  // const userID = req.verifiedUserInfos.id;
+router.get("/user/list",authorization, async (req, res) => {
+  const userID = req.verifiedUserInfos.id;
   let usersList;
 
   try {
-    usersList = await User.findById("625885b784f5f2f761c8ac96");
+    usersList = await User.findById(userID);
   } catch (error) {
     console.log(error);
     return res.status(400).json({ message: "A problem happened." });
   }
-
   return res.json({ usersList });
 });
 
