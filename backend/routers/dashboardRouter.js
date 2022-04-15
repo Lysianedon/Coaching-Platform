@@ -103,6 +103,21 @@ router.put('/admin/list', async (req,res) => {
     return res.status(201).json({modifiedTask});
 })
 
+//GET THE USER'S TO DO LIST: 
+router.get('/:user/list', (req,res) => {
+
+    const userID = req.verifiedUserInfos.id;
+    let usersList;
+
+    try {
+        usersList = await User.findById(userID)
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({message : "A problem happened."})
+    }
+
+})
+
 // --------------------------------- TEST GOOGLE CALENDAR ---------------------------------------------
 
 // const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
