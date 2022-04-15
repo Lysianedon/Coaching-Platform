@@ -1,8 +1,17 @@
 //-------------- EXPRESS ---------------//
 const express = require("express");
 const router = express.Router();
+//--------------- AUTH ----------------//
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
+//-------------- DOTENV ----------------//
+const dotenv = require("dotenv");
+dotenv.config({ path: "../config.env" });
+//------------- SECRET --------------//
+const secret = process.env.SECRET;
 
-//----------- MIDDLEWARE ------------//
+//--------------- MIDDLEWARE ------------//
 router.use(cookieParser());
 
 //------------ MODEL -----------------//
@@ -10,21 +19,22 @@ const User = require("../models/userModel");
 
 //------------- ROUTE ---------------//
 router.post("/", async (req, res) => {
-  const [email, password] = req.body;
+  const { email, password } = req.body;
 
-  //* 1- Check email
+  //* 1- Check user's email
   const user = await User.findOne({ email });
   if (!user) {
     return res.status(401).json({
-      message: "ERROR 401 - Incorrect email",
+      message: "ERROR 401 - Incorrect email. Unauthorized access",
     });
   }
-  //* 2 - Compare user's password to hash in database
+  //* 2 - Check user's password and compare it to hash in database
+
   const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
     return res.status(401).json({
-      message: "ERROR 401 - Incorrect password",
+      message: "ERROR 401 - Incorrect password.Unauthorized access",
     });
   }
 

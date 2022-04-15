@@ -1,19 +1,21 @@
-//-------------- EXPRESS ---------------//
+//---------------- EXPRESS ------------------//
 const express = require("express");
 const router = express.Router();
+//----------------- COOKIES -----------------//
+const cookieParser = require("cookie-parser");
 
-//------------- AUTHENTIFICATION -------//
-const dotenv = require("dotenv");
-// const bcrypt = require("bcrypt");
-// const jwt = require("jsonwebtoken");
-// const cookieParser = require("cookie-parser");
-//------------ DOTENV ----------------//
-dotenv.config({ path: "../config.env" });
+//-------------- MIDDLEWARES -----------------//
+router.use(cookieParser());
 
-//------------ SECRET ----------------//
-// const secret = process.env.SECRET;
-//----------- MIDDLEWARES ------------//
-
-//--------------- ROUTES -------------//
+//---------------- ROUTE ---------------------//
+router.get("/", (_req, res) => {
+  return res
+    .clearCookie("jwt")
+    .status(200)
+    .json({
+      message: "You have successfully logged out!",
+    })
+    .redirect("/");
+});
 
 module.exports = router;
