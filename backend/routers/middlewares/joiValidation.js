@@ -58,8 +58,6 @@ function validateAppointmentJoi(req, res, next) {
   next();
 }
 
-// module.exports = validateUser;
-
 module.exports = {
   validateUserJoi,
   validateRessourcesJoi,
