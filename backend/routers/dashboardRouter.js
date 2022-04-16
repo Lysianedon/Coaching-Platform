@@ -57,8 +57,10 @@ router.get("/user", auth, async (req, res) => {
   return res.json({user});
 });
 
+//**************** ADMIN *******************//
+
 //GET THE ADMIN'S INFOS (TO DISPLAY THEM IN THE DASHBOARD):
-router.get("/admin",isAdmin, async (req, res) => {
+router.get("/admin", isAdmin, async (req, res) => {
   //Find user :
   let user;
 
