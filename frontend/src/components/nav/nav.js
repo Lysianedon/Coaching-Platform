@@ -16,7 +16,7 @@ function Nav() {
                     <Link to="/" className='text-link'>Home</Link>
                     <Link to="/" className='text-link'>Qui suis-je ?</Link>
                     <Link to="/" className='text-link'>Coaching</Link>
-                    <Link to="/" className='text-link'>Login</Link>
+                    <Link to="/login" className='text-link'>Login</Link>
                     <Link to="/contact" className='text-link'>Contact</Link>
                     <QuestionnaireBtn className='text-link'>Questionnaire</QuestionnaireBtn>
                     

@@ -94,16 +94,6 @@
     margin-bottom: 0;
   }
   
-  ol.forms li.buttons button {
-    background-color: #06477c;
-    color: white;
-    border: 1px solid #8e9ba9;
-    padding: 1%;
-    margin: 5%;
-    width: 100px;
-    height: auto;
-  }
-  
   ol.forms li.buttons button:hover {
     background: #480170;
     color: white;

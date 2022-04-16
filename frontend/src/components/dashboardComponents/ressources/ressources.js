@@ -8,11 +8,11 @@ function Ressources() {
 	const [fileList, setFileList] = useState([]);
 	
 	useEffect(() => {
-		fetch("/file")
+		fetch("/user/file")
 			.then((res) => res.json())
 			.then((data) => {
 				setFileList(data);
-
+				
 			});
 	}, []);
 
@@ -21,7 +21,7 @@ function Ressources() {
 		formData.append("file", file);
 		formData.append("fileName", fileName);
         console.log("fileName" , fileName)
-		fetch("/file", {
+		fetch("/user/file", {
 			method: "POST",
 			body: formData,
 		})

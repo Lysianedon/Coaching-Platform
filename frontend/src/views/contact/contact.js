@@ -167,7 +167,7 @@ function Contact() {
 
 								{/* Button submit */}
 								<li class="buttons">
-									<button type="submit" onClick={(e) => submit(e)}>
+									<button type="submit" className="btn btn-dark" onClick={(e) => submit(e)}>
 										Send
 									</button>
 
