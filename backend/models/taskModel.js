@@ -9,7 +9,7 @@ const TaskSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  accomplished: false,
+  accomplished: { type: Boolean, default: false },
 });
 
 const Task = mongoose.model("Task", TaskSchema);

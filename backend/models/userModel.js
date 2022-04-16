@@ -45,6 +45,7 @@ const userSchema = new mongoose.Schema({
   isAdmin: { type: Boolean, default: false },
   ressources: [{ type: mongoose.Types.ObjectId, ref: "Ressources" }],
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
+  tasks : [{ type: mongoose.Types.ObjectId, ref: "Task" }],
 });
 
 const User = mongoose.model("User", userSchema);

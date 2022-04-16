@@ -2,7 +2,18 @@
 const express = require("express");
 const app = express();
 const port = 8000;
+const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
+
+//--------- SET UP EJS -------------//
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+// Set EJS as templating engine
+app.set("view engine", "ejs");
+const fs = require('fs');
+const path = require('path');
+app.use(express.static('/backend/routers'));
+
 //-------------- DOTENV ----------------------//
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
@@ -17,6 +28,7 @@ app.use(express.json());
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
+    useUnifiedTopology: true
   })
   .then(() => console.log("Connected to MongoDB"));
 
