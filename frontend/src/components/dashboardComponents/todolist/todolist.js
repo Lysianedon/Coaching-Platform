@@ -56,7 +56,7 @@ const TodoList = (props) => {
   return (
     <React.Fragment>
         <div className="todolist">
-            <h6>What's the plan for today?</h6>
+            <h6>Programme</h6>
             <TodoForm onSubmit={addTodo} />
             <Todo
                 todos={todos}

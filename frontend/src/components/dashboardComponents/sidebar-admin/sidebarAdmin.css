@@ -5,7 +5,7 @@
     position: fixed;
 }
 
-.text-link {
+.link {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 15px;
@@ -23,11 +23,6 @@
     margin-left: 35%;
     margin-bottom: 120px;
     margin-top: 30px;
-}
-img{
-    width: 80px;
-    background-color: white;
-    border-radius: 10%;
 }
 
 .logout{

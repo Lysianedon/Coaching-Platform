@@ -8,7 +8,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function Footer() {
   return (
     <div>
-      <div class="row">
+      <div class="footer row">
         <div class="col text-center m-1 p-2">
           <h5> PRENDRE CONTACT </h5>
           <p>

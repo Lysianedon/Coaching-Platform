@@ -13,20 +13,20 @@ function SideBar() {
           <img src={Logo} alt="" />
       </div>
           <Ul>
-          <Link to="#profile" className="text-link">
+          <Link to="#profile" className="link">
             Profile
           </Link>
-          <Link to="#agenda" className="text-link">
+          <Link to="#agenda" className="link">
             Agenda
           </Link>
-          <Link to="#todolist" className="text-link">
+          <Link to="#todolist" className="link">
             To do list
           </Link>
-          <Link to="#ressources" className="text-link">
+          <Link to="#ressources" className="link">
             Mes ressources
           </Link>
           <div className="logout">
-            <Link to="/" className="text-link">
+            <Link to="/" className="link">
               Se déconnecter
             </Link>
           </div>

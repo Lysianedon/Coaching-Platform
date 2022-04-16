@@ -38,14 +38,19 @@ router.post("/", async (req, res) => {
   // *! 3.1 - Generate a token with jsonwebtoken
   const token = jwt.sign({ id: user._id }, secret, { expiresIn: "30m" }); // test 3 min
   // *! 3.2 - Store token in a cookie called "jwt" and send it to client in response with a message of successful login
-  return res
-    .cookie("jwt", token, { httpOnly: true, secure: false })
-    .status(200)
-    .json({ message: "You logged in successfully" });
+    return res.cookie("jwt", token, { httpOnly: true, secure: false }).status(200).json({ message: "You logged in successfully" })
 });
+  
+
 
 module.exports = router;
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 91549c520930e0191553d580895ddca2ed23959c
 // //-------------- EXPRESS ---------------//
 // const express = require("express");
 // const router = express.Router();

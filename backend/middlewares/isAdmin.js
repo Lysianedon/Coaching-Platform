@@ -24,9 +24,11 @@ async function isAdmin(req, res, next) {
   }
 
   if (user.isAdmin === false) {
-    return res.status(401).json({
-      error: "Access denied. You must be an admin to access this page.",
-    });
+    return res
+      .status(401)
+      .json({
+        error: "Access denied. You must be an admin to access this page.",
+      });
   }
 
   next();
