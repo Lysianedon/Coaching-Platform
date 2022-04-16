@@ -1,13 +1,15 @@
 // components
-import SideBar from "../../components/dashboardComponents/sidebar/sidebar";
+import SideBarAdmin from "../../components/dashboardComponents/sidebar-admin/sidebarAdmin";
+import Bonjour from "../../components/dashboardComponents/Bonjour";
 import ApiCalendar from "../../components/dashboardComponents/agenda/agenda";
 import ToDoList from "../../components/dashboardComponents/todolist/todolist";
 import Ressources from "../../components/dashboardComponents/ressources/ressources";
 
-function Dashboard() {
+function DashboardAdmin() {
   return (
     <>
-     <SideBar/>
+     <SideBarAdmin/>
+     <Bonjour/>
      <ApiCalendar/>
      <ToDoList/>
      <Ressources/>
@@ -16,4 +18,4 @@ function Dashboard() {
     </>
   )
 }
-export default Dashboard;
+export default DashboardAdmin;
