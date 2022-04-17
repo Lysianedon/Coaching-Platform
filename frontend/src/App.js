@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Switch, Link, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Link, Route} from 'react-router-dom';
 
 //css
 //Pages
@@ -17,27 +17,26 @@ import DashboarSignup from './views/dashboard/dashboardSignup';
 import DashboarModify from './views/dashboard/dashboardModify';
 
 import Nav from './components/nav/nav';
-import Footer
- from './components/footer/footer';
+import Footer from './components/footer/footer';
 function App() {
 
   return (
     <div>
       <BrowserRouter>
       <Nav/>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/presentation" component={Presentation} />
-          <Route exact path="/coaching" component={Coaching} />
-          <Route exact path="/contact" component={Contact} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/questionaire/starter" component={QuestionaireStarter} />
+        <Routes>
+          <Route exact path="/" element={<Home/>} />
+          <Route exact path="/presentation" element={<Presentation/>} />
+          <Route exact path="/coaching" element={<Coaching/>} />
+          <Route exact path="/contact" element={<Contact/>} />
+          <Route exact path="/login" element={<Login/>} />
+          <Route exact path="/questionaire/starter" element={<QuestionaireStarter/>} />
 
-          <Route exact path="/dashboard/admin" component={DashboardAdmin} />
-          <Route exact path="/dashboard/user" component={DashboardUser} />
-          <Route exact path="/dashboard/admin/users" component={DashboarSignup} />
-          <Route exact path="/dashboard/admin/users/modify" component={DashboarModify} />
-        </Switch>
+          <Route exact path="/dashboard/admin" element={<DashboardAdmin/>} />
+          <Route exact path="/dashboard/user" element={<DashboardUser/>} />
+          <Route exact path="/dashboard/admin/users" element={<DashboarSignup/>} />
+          <Route exact path="/dashboard/admin/users/modify" element={<DashboarModify/>} />
+        </Routes>
         <Footer/>
       </BrowserRouter>
     </div>

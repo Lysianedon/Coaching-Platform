@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios';
 
@@ -11,10 +12,9 @@ import "../assets/css/formInput.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-import  { Redirect } from 'react-router-dom'
 
 function Login() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [posts, setPosts] = useState([]);
@@ -32,27 +32,22 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const emailValue = document.getElementById("email").value;
     const passwordValue = document.getElementById("password").value;
+
     setEmail(emailValue);
     setPassword(passwordValue);
-
-    const formData = new FormData();
-		formData.append("email", email);
-		formData.append("password", password);
-
-      console.log("email" , email, password);
-      let body = {"email" : email, "password" : password};
 
     await axios.post('http://localhost:8000/login', {
       email, password
     })
     .then(res => {
+      console.log("redirect ?");
       console.log(res.data);
-      if (res.data.success && email === 'pauline.gane@gmail.com') {
-        // navigate('/dashboard/user');
-        // history.push("/dashboard/user");
-        return <Redirect to='/dashboard/user' />
+      if (res.data.success) {
+        navigate('/dashboard/user');
+        return;
       }
     })
   }
@@ -95,8 +90,8 @@ function Login() {
                 </form>
               
               </div>
-              <div class="quotes col-6">
-                <h3 className="text-center">Quotes</h3>
+              <div class="quotes col-6 quotes-block">
+                <h2 className="text-center quote-title">Quotes</h2>
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                   <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -145,6 +140,7 @@ h2 {
 }
 .login-form{
     background-color: white;
+    border-radius:5px;
     display: grid;
     border: 2px solid #4c2a4e;;
     /* box-shadow: #4c2a4e; */
@@ -186,15 +182,31 @@ input {
   border: 1px solid black !important;
 }
 
-.quotes{
+.quotes-block{
   background-color: #4c2a4e;
-    border: 1px solid #000;
-    height: auto;
-    color: white;
-    overflow: auto;
+  border-radius:5px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  height: auto;
 }
+
+.quote-title{
+  margin: 0 auto 10vh auto;
+}
+
+/* .quotes{
+    border: 1px solid #000;
+    overflow: auto;
+} */
 
 .carousel-inner {
     padding: 0% 20% 10% 20%;
+    border: solid white 1px;
+    /* margin: auto; */
+    
 }
 `;

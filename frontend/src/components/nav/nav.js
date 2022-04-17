@@ -43,22 +43,30 @@ gap: 12px;
 `;
 
 const Navbar = styled.nav`
-  /* background-color:r; */
   padding: 10px;
   margin: 0px;
   text-align: right;
   display:inline-block;
   vertical-align:top;
   width: 100%;
+  
+  a {
+    color: #4c2a4e;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 3%;
+  }
   `;
 
 const QuestionnaireBtn = styled.button`
 border-radius:5px;
+font-size: 1.1em;
 border:none;
-background-color:black;
+background-color:#4c2a4e;
 color:white;
+height: 5vh;
 @media (max-width: 2500px) {
-  width:150px;
-  height:40px;
+  /* width:150px;
+  height:40px; */
 }
   `;
