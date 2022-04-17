@@ -11,9 +11,11 @@ function validateUserJoi(req, res, next) {
     isAdmin: Joi.boolean(),
   });
 
-  if (validateUser.error) {
+  const validateUserSchema = validateUser.validate(req.body);
+
+  if (validateUserSchema.error) {
     return res.status(400).json({
-      message: validateUser.error.details[0].message,
+      message: validateUserSchema.error.details[0].message,
     });
   }
   next();
@@ -24,9 +26,11 @@ function validateRessourcesJoi(req, res, next) {
     name: Joi.string().min(1).max(100).required(),
   });
 
-  if (validateRessources.error) {
+  const validateRessourcesSchema = validateRessources.validate(req.body);
+
+  if (validateRessourcesSchema.error) {
     return res.status(400).json({
-      message: validateRessources.error.details[0].message,
+      message: validateRessourcesSchema.error.details[0].message,
     });
   }
   next();
@@ -39,20 +43,23 @@ function validateTaskJoi(req, res, next) {
     accomplished: Joi.boolean().required(),
   });
 
-  if (validateTask.error) {
+  const validateTaskSchema = validateTask.validate(req.body);
+  if (validateTaskSchema.error) {
     return res.status(400).json({
-      message: validateTask.error.details[0].message,
+      message: validateTaskSchema.error.details[0].message,
     });
   }
-
   next();
 }
 
 function validateAppointmentJoi(req, res, next) {
   const validateAppointment = Joi.date().required();
-  if (validateAppointment.error) {
+
+  const validateAptSchema = validateAppointment.validate(req.body);
+
+  if (validateAptSchema.error) {
     return res.status(400).json({
-      message: validateAppointment.error.details[0].message,
+      message: validateAptSchema.error.details[0].message,
     });
   }
   next();

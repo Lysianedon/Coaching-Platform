@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const TaskSchema = new mongoose.Schema({
-  userId: { type: mongoose.Types.ObjectId, ref: "User"},
+  userId: { type: mongoose.Types.ObjectId, ref: "User" },
   content: {
     type: String,
   },
@@ -9,7 +9,7 @@ const TaskSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  accomplished: false,
+  accomplished: { type: Boolean, default: false },
 });
 
 const Task = mongoose.model("Task", TaskSchema);
