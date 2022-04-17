@@ -5,9 +5,9 @@ import Footer from "../../components/footer/footer";
 function Presentation() {
     return(
         <div>
-            <Nav/>
+            {/* <Nav/> */}
             <h3>Qui suis-je?</h3>
-            <Footer/>
+            {/* <Footer/> */}
         </div>
     )
 }

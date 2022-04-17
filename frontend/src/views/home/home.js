@@ -5,10 +5,10 @@ import  Footer  from '../../components/footer/footer';
 function Home() {
   return (
     <>
-      <Nav/>
+      {/* <Nav/> */}
       <h3> Home </h3>
 
-      <Footer/>
+      {/* <Footer/> */}
     </>
   )
 }

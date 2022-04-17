@@ -14,28 +14,11 @@ import styled from "styled-components";
 
 function DashboardUser() {
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-
-  const fetchProfileInfos = () => {
-    console.log("before fetch");
-    axios.get('http://localhost:8000/dashboard/user')
-    .then(res => 
-      {res.json();
-      console.log(res.data);
-    });
-  }
-
- useEffect(() => {
-  console.log("before fetch");
-  fetchProfileInfos();
-
- }, [])
 
   return (
     <Dadhboard>
      <SideBarUser/>
-     <Profile className="profile"/>
+     <Profile className="profile"/> 
      <Agenda/>
      <ToDoList/> 
      <Ressources/>

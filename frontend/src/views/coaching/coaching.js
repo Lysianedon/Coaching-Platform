@@ -5,9 +5,9 @@ import Footer from "../../components/footer/footer";
 function Coaching() {
     return(
         <div>
-            <Nav/>
+            {/* <Nav/> */}
             <h3>Coaching</h3>
-            <Footer/>
+            {/* <Footer/> */}
         </div>
     )
 }
