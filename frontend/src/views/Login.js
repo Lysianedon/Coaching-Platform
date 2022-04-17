@@ -18,6 +18,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [posts, setPosts] = useState([]);
+
   const fetchPost = async () => {
   const response = await fetch(
       "https://api.chucknorris.io/jokes/random"
@@ -39,15 +40,21 @@ function Login() {
     setEmail(emailValue);
     setPassword(passwordValue);
 
+    console.log(email, password);
+
     await axios.post('http://localhost:8000/login', {
       email, password
     })
     .then(res => {
-      console.log("redirect ?");
       console.log(res.data);
-      if (res.data.success) {
-        navigate('/dashboard/user');
+
+      //If the user is the admin (Pauline), then she will be redirected to the admin's dashboard,
+      // otherwise, the user is redirected to the user's dashboard:
+      if (res.data.success && email === 'pauline.gane@gmail.com') {
+        navigate('/dashboard/admin');
         return;
+      } else {
+        navigate('/dashboard/user');
       }
     })
   }

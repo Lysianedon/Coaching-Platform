@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { React, useState, useEffect } from "react";
+
 // components
 import SideBarUser from "../../components/dashboardComponents/sidebar-user/sidebarUser";
 import Profile from "../../components/dashboardComponents/profile-user/profile";
@@ -10,11 +13,29 @@ import styled from "styled-components";
 
 
 function DashboardUser() {
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+
+  const fetchProfileInfos = () => {
+    console.log("before fetch");
+    axios.get('http://localhost:8000/dashboard/user')
+    .then(res => 
+      {res.json();
+      console.log(res.data);
+    });
+  }
+
+ useEffect(() => {
+  console.log("before fetch");
+  fetchProfileInfos();
+
+ }, [])
+
   return (
     <Dadhboard>
      <SideBarUser/>
-     
-     <Profile/>
+     <Profile className="profile"/>
      <Agenda/>
      <ToDoList/> 
      <Ressources/>
@@ -25,12 +46,18 @@ function DashboardUser() {
 export default DashboardUser;
 
 
-// STYLED COMPONENTS
+// --------------- STYLED COMPONENTS ---------------------
 
 const Dadhboard = styled.div`
 
-height: 92vh;
+/* height: 130vh !important; */
 overflow-y: scroll;
+overflow: scroll;
+display: flex;
+flex-direction: column;
 
+.profile {
+  margin-top: 25%;
 
+}
 `

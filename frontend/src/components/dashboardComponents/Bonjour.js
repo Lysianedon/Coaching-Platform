@@ -6,14 +6,14 @@ import styled from 'styled-components';
 function Bonjour() {
     const [userSchema, setUserSchema] = useState({});
 
-    useEffect(() => {
-		fetch("http://localhost:8000/dashboard/user")
-			.then((res) => res.json())
-			.then((data) => {
-				setUserSchema(data);
-				console.log(data);
-			});
-	}, []);
+    // useEffect(() => {
+	// 	fetch("http://localhost:8000/dashboard/user")
+	// 		.then((res) => res.json())
+	// 		.then((data) => {
+	// 			setUserSchema(data);
+	// 			console.log(data);
+	// 		});
+	// }, []);
 
     return (
         <BonjourForm>
