@@ -1,6 +1,8 @@
 //-------------- EXPRESS ---------------//
 const express = require("express");
 const router = express.Router();
+//----------------- CORS ---------------//
+const cors = require("cors");
 //--------------- AUTH ----------------//
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -16,12 +18,14 @@ const User = require("../models/userModel");
 //------------- ROUTE ---------------//
 router.post("/", async (req, res) => {
   const { email, password } = req.body;
-
+  console.log(email, password);
+  console.log("ful body:",req.body);
   //* 1- Check user's email
   const user = await User.findOne({ email });
   if (!user) {
     return res.status(401).json({
       message: "Incorrect email or password",
+      error : true
     });
   }
   //* 2 - Check user's password and compare it to hash in database
@@ -31,6 +35,7 @@ router.post("/", async (req, res) => {
   if (!isPasswordValid) {
     return res.status(401).json({
       message: "Incorrect email or password",
+      error : true
     });
   }
 
@@ -38,19 +43,13 @@ router.post("/", async (req, res) => {
   // *! 3.1 - Generate a token with jsonwebtoken
   const token = jwt.sign({ id: user._id }, secret, { expiresIn: "30m" }); // test 3 min
   // *! 3.2 - Store token in a cookie called "jwt" and send it to client in response with a message of successful login
-    return res.cookie("jwt", token, { httpOnly: true, secure: false }).status(200).json({ message: "You logged in successfully" })
+    return res.cookie("jwt", token, { httpOnly: true, secure: false }).status(200).json({ success: "You logged in successfully" })
 });
   
 
 
 module.exports = router;
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 91549c520930e0191553d580895ddca2ed23959c
 // //-------------- EXPRESS ---------------//
 // const express = require("express");
 // const router = express.Router();
