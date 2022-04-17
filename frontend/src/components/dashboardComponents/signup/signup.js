@@ -1,7 +1,10 @@
 import {React, useState} from "react";
 
-// css (actual css is from contact.css because it has same className)
-import "./signup.css";
+
+// css (contact, signup, login, modify have same css from formInput.css in assets/css)
+import "../../../assets/css/formInput.css";
+import styled from "styled-components";
+
 
 function Signup() {
     const [firstName, setFirstName] = useState("");
@@ -40,7 +43,7 @@ function Signup() {
 	};
 
     return(
-        <section className="signup-form">
+        <SignUpStyled className="signup-form">
             <div className=" w-40">
                 <h2>Créer un utilisateur</h2>
             </div>
@@ -155,7 +158,15 @@ function Signup() {
                         
                 </div>
             </div>
-        </section>
+        </SignUpStyled>
     )
 }
 export default Signup;
+
+const SignUpStyled = styled.div`
+.signup-form{
+    margin-top: 10%;
+    margin-left: 30%;
+    position: absolute;
+}
+`;

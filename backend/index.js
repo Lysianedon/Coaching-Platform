@@ -28,6 +28,7 @@ const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 app.use(express.json());
 
+
 //------------ CONNECT TO MONGODB -------------//
 mongoose
   .connect(process.env.MONGO_URI, {

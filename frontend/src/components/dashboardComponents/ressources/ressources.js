@@ -42,7 +42,7 @@ function Ressources() {
 					<form className="col-12 col-md-6 mx-auto" onSubmit={onSubmit}>
 						<div className="mb-3">
 							<label htmlFor="fileName" className="form-label">
-								Name of file
+								Nom de fichier
 							</label>
 							<input
 								type="text"
@@ -66,8 +66,8 @@ function Ressources() {
 								onChange={(e) => setFile(e.target.files[0])}
 							/>
 						</div>
-						<button type="submit" className="btn btn-primary">
-							Add
+						<button type="submit" className="btn btn-dark">
+							Ajouter
 						</button>
 					</form>
 				</div>
