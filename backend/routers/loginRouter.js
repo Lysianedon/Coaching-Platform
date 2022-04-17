@@ -19,7 +19,6 @@ const User = require("../models/userModel");
 router.post("/", async (req, res) => {
   const { email, password } = req.body;
   console.log(email, password);
-  console.log("ful body:",req.body);
   //* 1- Check user's email
   const user = await User.findOne({ email });
   if (!user) {
