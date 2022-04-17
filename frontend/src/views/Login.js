@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from 'axios';
 
 // components
 import Nav from "../components/nav/nav";
@@ -10,8 +11,10 @@ import "../assets/css/formInput.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+import  { Redirect } from 'react-router-dom'
 
 function Login() {
+  // const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [posts, setPosts] = useState([]);
@@ -27,48 +30,35 @@ function Login() {
     fetchPost();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    setEmail(email);
-    setPassword(password);
+    const emailValue = document.getElementById("email").value;
+    const passwordValue = document.getElementById("password").value;
+    setEmail(emailValue);
+    setPassword(passwordValue);
 
     const formData = new FormData();
 		formData.append("email", email);
 		formData.append("password", password);
-      console.log("email" , email);
 
-    fetch("http://localhost:8000/login", {
-			method: "POST",
-			body: formData,
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				setEmail(data);
-        console.log(data);
-			});
+      console.log("email" , email, password);
+      let body = {"email" : email, "password" : password};
+
+    await axios.post('http://localhost:8000/login', {
+      email, password
+    })
+    .then(res => {
+      console.log(res.data);
+      if (res.data.success && email === 'pauline.gane@gmail.com') {
+        // navigate('/dashboard/user');
+        // history.push("/dashboard/user");
+        return <Redirect to='/dashboard/user' />
+      }
+    })
   }
-
-  // const onSubmit = () => {
-	// 	const formData = new FormData();
-	// 	formData.append("file", file);
-	// 	formData.append("fileName", fileName);
-  //       console.log("fileName" , fileName)
-	// 	fetch("/user/file", {
-	// 		method: "POST",
-	// 		body: formData,
-	// 	})
-	// 		.then((res) => res.json())
-	// 		.then((data) => {
-	// 			setFileList(data);
-	// 		});
-	// };
 
   return (
     <LoginFormStyled> 
-      <Nav/>
-        <p>Login</p>
        
           {/*  LOGIN FORM */}
         <div className="login-column">
@@ -76,7 +66,8 @@ function Login() {
             <div class="row justify-content-center">
               <div class="col-6">
             
-                <form className="login-form" action="http://localhost:8000/login" method="POST">
+                <form className="login-form" action="http://localhost:8000/login" method="POST" onSubmit={handleSubmit}>
+                    <h2>Login</h2>
                      <ol className="forms">
                        {/* Email */}
                        <li>
@@ -97,14 +88,10 @@ function Login() {
                         {/* Button Submit */}
                         <li>
                           <div className="button">
-                            <button type="submit" onClick={handleSubmit} className="btn btn-dark">Submit</button>
+                            <button type="submit" onClick={handleSubmit} className="btn btn-dark submit">Submit</button>
                           </div>
-                        </li>
-                        
-                      </ol> 
-                      
-                    
-
+                        </li>                      
+                      </ol>     
                 </form>
               
               </div>
@@ -143,25 +130,64 @@ function Login() {
           </div>
         </div>
 
-        
-        
-        
-      <Footer/>
     </LoginFormStyled>
   )
 }
 export default Login;
 
 const LoginFormStyled = styled.div`
-.login-form{
-    background-color: rgb(233, 245, 200);
-    display: grid;
-    border: 1px solid #000;
-    color: rgb(13, 13, 13);
-    overflow: auto;
+height: 73vh;
+
+h2 {
+  /* margin-top: 4vh; */
+  font-size: 3em;
+  margin: 0 auto 8vh auto;
 }
+.login-form{
+    background-color: white;
+    display: grid;
+    border: 2px solid #4c2a4e;;
+    /* box-shadow: #4c2a4e; */
+    color: #4c2a4e;
+    overflow: auto;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.forms {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid red;
+  width: 90%;
+  height: fit-content;
+  /* margin: auto; */
+}
+
+label {
+  display: block;
+  font-size: 1.8em !important;
+}
+
+.submit {
+  background-color: #4c2a4e;
+  color: white;
+  /* height: 4vh; */
+  padding: 2%;
+  width: 30%;
+  margin: 5% 25%;
+  font-size: 1.5em !important;
+}
+
+input {
+  border: 1px solid black !important;
+}
+
 .quotes{
-    background-color: rgb(2, 2, 2);
+  background-color: #4c2a4e;
     border: 1px solid #000;
     height: auto;
     color: white;

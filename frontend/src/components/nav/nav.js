@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Router } from 'react-router-dom';
 
 //css
 import styled from 'styled-components';
@@ -11,19 +11,23 @@ function Nav() {
     return (
       <div>
           <Navbar> 
-            <nav>
             <img src={Logo} alt='' />
                 <Ul>
-                    <Link to="/" className='text-link'>Home</Link>
+                    {/* <Link to="/" className='text-link'>Home</Link>
                     <Link to="/presentation" className='text-link'>Qui suis-je ?</Link>
                     <Link to="/coaching" className='text-link'>Coaching</Link>
                     <Link to="/login" className='text-link'>Login</Link>
                     <Link to="/contact" className='text-link'>Contact</Link>
                     <Link to="/questionaire/starter"><QuestionnaireBtn className='text-link btn btn-dark'>Questionnaire</QuestionnaireBtn>
-                    </Link>
-                    
+                    </Link> */}
+                    <a href="/" className='text-link'>Home</a>
+                    <a href="/presentation" className='text-link'>Qui suis-je ?</a>
+                    <a href="/coaching" className='text-link'>Coaching</a>
+                    <a href="/login" className='text-link'>Login</a>
+                    <a href="/contact" className='text-link'>Contact</a>
+                    <a href="/questionaire/starter"><QuestionnaireBtn className='text-link btn btn-dark'>Questionnaire </QuestionnaireBtn></a>
                 </Ul>
-            </nav>
+      
           </Navbar>
       </div>
     )
@@ -38,8 +42,8 @@ display: inline;
 gap: 12px;
 `;
 
-const Navbar = styled.div`
-  background-color:r;
+const Navbar = styled.nav`
+  /* background-color:r; */
   padding: 10px;
   margin: 0px;
   text-align: right;

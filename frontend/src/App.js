@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {BrowserRouter, Switch, Link, Route} from 'react-router-dom';
 
 //css
 //Pages
@@ -16,12 +16,15 @@ import DashboardUser from './views/dashboard/dashboardUser';
 import DashboarSignup from './views/dashboard/dashboardSignup';
 import DashboarModify from './views/dashboard/dashboardModify';
 
-
+import Nav from './components/nav/nav';
+import Footer
+ from './components/footer/footer';
 function App() {
 
   return (
-    <>
+    <div>
       <BrowserRouter>
+      <Nav/>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/presentation" component={Presentation} />
@@ -34,11 +37,10 @@ function App() {
           <Route exact path="/dashboard/user" component={DashboardUser} />
           <Route exact path="/dashboard/admin/users" component={DashboarSignup} />
           <Route exact path="/dashboard/admin/users/modify" component={DashboarModify} />
-          
-
         </Switch>
+        <Footer/>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
