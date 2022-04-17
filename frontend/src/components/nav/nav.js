@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 //css
 import styled from 'styled-components';
 import './nav.css'
-import Logo from "./Logo.png"
+import Logo from "../../assets/images/Logo.png"
+
 
 function Nav() {
     return (
@@ -14,11 +15,12 @@ function Nav() {
             <img src={Logo} alt='' />
                 <Ul>
                     <Link to="/" className='text-link'>Home</Link>
-                    <Link to="/" className='text-link'>Qui suis-je ?</Link>
-                    <Link to="/" className='text-link'>Coaching</Link>
+                    <Link to="/presentation" className='text-link'>Qui suis-je ?</Link>
+                    <Link to="/coaching" className='text-link'>Coaching</Link>
                     <Link to="/login" className='text-link'>Login</Link>
                     <Link to="/contact" className='text-link'>Contact</Link>
-                    <QuestionnaireBtn className='text-link'>Questionnaire</QuestionnaireBtn>
+                    <Link to="/questionaire/starter"><QuestionnaireBtn className='text-link btn btn-dark'>Questionnaire</QuestionnaireBtn>
+                    </Link>
                     
                 </Ul>
             </nav>
