@@ -5,6 +5,10 @@ const port = 8000;
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
+//----------------- CORS --------------------//
+const cors = require("cors");
+app.use(cors());
+
 //--------- SET UP EJS -------------//
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
