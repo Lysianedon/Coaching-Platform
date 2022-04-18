@@ -62,8 +62,8 @@ function Home() {
         <section className="action-block">
           <hr />
           <div className="titre-btn">
-            <h2 className='action-title'>Prêt.e à passer à l’action ?</h2>
-            <button className='button-action' onClick= {goToQuestionnaire}>Je passe à l'action</button>
+            <h2 className='action-title1'>Prêt.e à passer à l’action ?</h2>
+            <button className='button-action1' onClick= {goToQuestionnaire}>Je passe à l'action</button>
           </div>
           <hr />
         </section>
@@ -192,7 +192,7 @@ font-family: 'poppins';
   h1 {
     color: black;
     line-height: 180%;
-    font-size: 4.2em;
+    font-size: 3.2em;
     text-align: center;
   }
   //PURPLE SPANS
@@ -240,30 +240,29 @@ font-family: 'poppins';
     /* PROMISE TEXT */
     .text{
       width: 50%;
-      font-size: 2em;
+      font-size: 1.8em;
       margin: auto;
       color: white;
     }
 }
 
-/* ACTION */
+/* ACTION ------------- */
 .action-block{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 20vh;
 
   hr {
     width: 30%;
     border: 4px solid;
     color:  #FFC267 !important;
   }
-  .action-title {
-    font-size: 3.3em;
+  .action-title1 {
+    font-size: 4em;
     color: #4c2a4e;
     margin-bottom: 10%;
   }
-  .button-action {
+  .button-action1 {
     width: 50%;
     padding: 2%;
     font-size: 1.8em;
@@ -271,7 +270,7 @@ font-family: 'poppins';
     color: white;
     font-weight: bold;
     border-radius: 5px;
-    margin: 1% 0 3% 2%;
+    margin: 1% 0 6% 2%;
   }
 }
 
@@ -323,7 +322,7 @@ font-family: 'poppins';
       li{
         font-size: 1.8em;
         width: 85%;
-        line-height: 170%;
+        line-height: 150%;
         text-align: justify;
       }
 
@@ -373,7 +372,7 @@ font-family: 'poppins';
   width: 60%;
   margin: auto;
   padding: 2%;
-  margin-bottom: 5%;
+  margin-bottom: 10%;
 
   h2{
     text-align: center;
@@ -409,7 +408,7 @@ font-family: 'poppins';
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1% auto 5%;
+  margin: 1% auto 10%;
 
   h2{
     text-align: center;
@@ -457,16 +456,17 @@ font-family: 'poppins';
   .image-text{
     display: flex;
     justify-content: space-around;
-    width: 90%;
+    width: 95%;
     margin: auto;
 
     img{
-      width: 18%;
+      width: 28%;
+      margin-right: 2%;
     }
 
     p{
       /* width: 50%; */
-      font-size: 1.6em;
+      font-size: 1.5em;
       margin: auto;
       color: white;
       text-align: justify;
