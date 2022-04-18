@@ -1,44 +1,4 @@
-.video-thank {
-    background-color: antiquewhite;
-    width: 100%;
-    height: auto;
-}
-
-/********* Tilte *********/
-.header {
-    background-color: #06477c;
-    width: 40vw;
-    height: auto;
-    color: white;
-    padding: 1% 1% 1% 2%;
-    margin: 2%;
-    border-radius: 5px;
-  }
-  .title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    padding: 0% 0% 0% 7%;
-  }
-
-  /********* Form Contact ********/
-#contact-form {
-    display: flex;
-    flex-direction: column;
-    padding: 2%;
-    margin: 5% 25% 5%; 
-    border: 1px solid rgb(221, 239, 252);
-    box-shadow: 5px 10px 10px 5px rgb(218 233 243);
-    border-radius: 10px;
-    width: 50vw;
-    height: auto;
-  }
-/*RESPONSIVE */
-@media screen and (max-width: 600px) {
-    #contactForm {
-      width: 90%;
-    }
-  }
-  ol.forms {
+ol.forms {
     float: center;
     list-style: none;
     margin: 10;

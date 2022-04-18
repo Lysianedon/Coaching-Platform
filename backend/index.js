@@ -3,7 +3,29 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const mongoose = require("mongoose");
-//----------------- DOTENV ------------------//
+
+//----------------- CORS --------------------//
+const cors = require("cors");
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    "Access-Control-Allow-Credentials": true
+    // origin: "*",
+  })
+);
+
+//--------- SET UP EJS -------------//
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// Set EJS as templating engine
+app.set("view engine", "ejs");
+const fs = require("fs");
+const path = require("path");
+app.use(express.static("/backend/routers"));
+
+//-------------- DOTENV ----------------------//
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 //------ BODY PARSER AND COOKIE PARSER ------//
@@ -22,6 +44,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.static("/backend/routers"));
+
 
 //------------ CONNECT TO MONGODB -------------//
 mongoose
