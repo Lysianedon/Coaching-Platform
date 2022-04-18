@@ -6,8 +6,8 @@ import styled from "styled-components";
 import "../assets/css/formInput.css";
 
 // components
-import Nav from "../components/nav/nav";
-import Footer from "../components/footer/footer";
+import Nav from "../components/nav";
+import Footer from "../components/footer";
 
 function Contact() {
 	const [name, setName] = useState("");

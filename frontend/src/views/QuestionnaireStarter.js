@@ -1,9 +1,8 @@
 import React from 'react';
-// import {Link} from 'react-router-dom';
 
 // components
-import Nav from "../components/nav/nav";
-import Footer from "../components/footer/footer";
+import Nav from "../components/nav";
+import Footer from "../components/footer";
 import QuestionnaireImage from "../assets/images/questionnaire.jpg"
 
 // css
@@ -23,9 +22,6 @@ function QuestionnaireStarter() {
                     <h4 id="description-questionnaire">Commençons par faire connaissance : ce questionnaire a pour but de ... 
                     </h4>
                     <p>Cela prendra X minutes...</p>
-
-                    {/* <Link to={{ pathname: "https://www.typeform.com/" }} target="_blank" >  
-                    <button href="/question" className="btn btn-dark">Commencer</button> </Link>*/}
 
                     <a href="https://www.typeform.com/"><button href="/question" className="btn btn-dark">Start</button></a>
                     

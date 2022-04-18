@@ -3,8 +3,7 @@ import React from 'react';
 
 //css
 import styled from 'styled-components';
-import './nav.css'
-import Logo from "../../assets/images/logo-couleurs.png"
+import Logo from "../assets/images/logo-couleurs.png"
 
 
 function Nav() {
@@ -57,7 +56,24 @@ const Navbar = styled.nav`
     font-weight: bold;
     margin-top: 3%;
   }
-  `;
+  .text-link {
+    color: inherit;
+    text-decoration: inherit;
+    color:black;
+    vertical-align: top;
+    margin-right: 20px;
+    height: 40px;
+    line-height: 30px; 
+  }
+
+  img{
+      vertical-align: top;
+      width: 20%;
+      height: auto;
+      float: left;
+
+  }
+`;
 
 const QuestionnaireBtn = styled.button`
 border-radius:5px;

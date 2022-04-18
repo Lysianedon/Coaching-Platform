@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
+import styled
+ from "styled-components";
 
 //css
-import "./footer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+
 function Footer() {
   return (
-    <div>
+    <FooterStyled>
       <div class="footer row">
         <div class="col text-center m-1 p-2">
           <h5> PRENDRE CONTACT </h5>
@@ -49,8 +51,25 @@ function Footer() {
           &copy; Créé par Jessica, Anita, Lysiane et Chi
         </div>
       </div>
-    </div>
+    </FooterStyled>
   );
 }
 
 export default Footer;
+
+const FooterStyled = styled.div`
+.footer {
+    background-color: #4c2a4e;
+    color: white;
+    margin-top: 5%;
+    /* margin-top: 9vh !important; */
+}
+.text-link {
+    color: white;
+    text-decoration: inherit;
+    vertical-align: top;
+    margin-right: 20px;
+    height: 40px;
+    line-height: 30px;
+}
+`;
