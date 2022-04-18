@@ -3,7 +3,8 @@ import {React, useState} from "react";
 
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
 import "../../../assets/css/formInput.css";
-import styled from "styled-components";
+import "./signup.css";
+// import styled from "styled-components";
 
 
 function Signup() {
@@ -43,130 +44,116 @@ function Signup() {
 	};
 
     return(
-        <SignUpStyled className="signup-form">
-            <div className=" w-40">
-                <h2>Créer un utilisateur</h2>
-            </div>
+        <section className="signup-form">
             <div>
-                
-                
-                <div>
-                    <form id="contact-me">
-                        <ol className="forms">
-                            {/* firstName */}
-                            <li>
-                                <div>
-                                    <label htmlFor="firstName">
-                                        *Nom:
-                                    </label><br/>
-                                    <input
-                                        id="firstName"
-                                        type="text"
-                                        placeholder="Votre nom"
-                                        required
-                                        value={firstName}
-                                        onChange={(e) => setFirstName(e.target.value)}
-                                    />
-                                    
-                                </div>
-                            </li>
-
-                            {/* lastName */}
-                            <li>
-                                <div>
-                                    <label htmlFor="lastName">
-                                        *Prénom:
-                                    </label><br/>
-                                    <input
-                                        id="lastName"
-                                        type="text"
-                                        placeholder="Votre prénom"
-                                        required
-                                        value={lastName}
-                                        onChange={(e) => setLastName(e.target.value)}
-                                    />
-                                    
-                                </div>
-                            </li>
-                            
-
-                            {/* Email */}
-                            <li>
-                                <div>
-                                    <label htmlFor="email">
-                                        Email:
-                                    </label><br/>
-                                    <input
-                                        id="email"
-                                        type="text"
-                                        placeholder="Votre email"
-                                        required
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                    />
-                                    
-                                </div>
-                            </li>
-
-                            
-
-                            {/* Password */}
-                            <li>
-                                <div>
-                                    <label htmlFor="password">
-                                        *Mot de passe
-                                    </label> <br/>
-                                    <input
-                                        id="password"
-                                        type="password"
-                                        placeholder="Votre mot de passe"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                    ></input>
-                                </div>
-                            </li>
-
-                            {/* Phone */}
-                            <li>
-                                <div>
-                                    <label htmlFor="phone">
-                                        *Numéro de téléphone:
-                                    </label><br/>
-                                    <input
-                                        id="phone"
-                                        type="text"
-                                        placeholder="Votre numéro de téléphone"
-                                        required
-                                        value={phone}
-                                        onChange={(e) => setPhone(e.target.value)}
-                                    />
-                                    
-                                </div>
-                            </li>
-
-                            {/* Button submit */}
-                            <li class="buttons">
-                                <button type="submit" className="btn btn-dark" onClick={(e) => submit(e)}>
-                                    Submit
-                                </button>
-
-                            </li>
-                        
-                        </ol>
-                    </form>
-                        
-                        
-                </div>
+                <h2 id="tilte-create"> Créer un utilisateur </h2>
             </div>
-        </SignUpStyled>
+
+            <form>
+                <ol className="forms">
+                    {/* firstName */}
+                    <li>
+                        <div>
+                            <label htmlFor="firstName">
+                                *Nom:
+                            </label><br/>
+                            <input
+                                id="firstName"
+                                type="text"
+                                placeholder="Votre nom"
+                                required
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                            />
+                            
+                        </div>
+                    </li>
+
+                    {/* lastName */}
+                    <li>
+                        <div>
+                            <label htmlFor="lastName">
+                                *Prénom:
+                            </label><br/>
+                            <input
+                                id="lastName"
+                                type="text"
+                                placeholder="Votre prénom"
+                                required
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                            />
+                            
+                        </div>
+                    </li>
+                    
+
+                    {/* Email */}
+                    <li>
+                        <div>
+                            <label htmlFor="email">
+                                *Email:
+                            </label><br/>
+                            <input
+                                id="email"
+                                type="text"
+                                placeholder="Votre email"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            
+                        </div>
+                    </li>
+
+                    
+
+                    {/* Password */}
+                    <li>
+                        <div>
+                            <label htmlFor="password">
+                                *Mot de passe
+                            </label> <br/>
+                            <input
+                                id="password"
+                                type="password"
+                                placeholder="Votre mot de passe"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            ></input>
+                        </div>
+                    </li>
+
+                    {/* Phone */}
+                    <li>
+                        <div>
+                            <label htmlFor="phone">
+                                *Numéro de téléphone:
+                            </label><br/>
+                            <input
+                                id="phone"
+                                type="text"
+                                placeholder="Votre numéro de téléphone"
+                                required
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                            />
+                            
+                        </div>
+                    </li>
+
+                    {/* Button submit */}
+                    <li class="buttons">
+                        <button type="submit" className="btn btn-dark" onClick={(e) => submit(e)}>
+                            Submit
+                        </button>
+
+                    </li>
+                </ol>
+            </form>
+
+        </section>
     )
 }
 export default Signup;
 
-const SignUpStyled = styled.div`
-.signup-form{
-    margin-top: 10%;
-    margin-left: 30%;
-    position: absolute;
-}
-`;
