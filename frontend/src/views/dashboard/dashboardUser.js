@@ -7,7 +7,7 @@ import Profile from "../../components/dashboardComponents/profile-user/profile";
 import Agenda from "../../components/dashboardComponents/agenda/agenda";
 import ToDoList from "../../components/dashboardComponents/todolist/todolist";
 import Ressources from "../../components/dashboardComponents/ressources/ressources";
-import Footer from "../../components/footer/footer";
+
 //Styled-components
 import styled from "styled-components";
 

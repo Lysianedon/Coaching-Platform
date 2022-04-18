@@ -29,11 +29,11 @@ function DashboardAdmin() {
   return (
     <>
      <SideBarAdmin/> 
-      <Bonjour/>
+     <Bonjour/>
      <ApiCalendar/>
      <ToDoList/>
-     <Ressources/>
-  
+     <Ressources/> 
+
 
     </>
   )

@@ -65,7 +65,7 @@ function Contact() {
 
 	return (
 		<ContactPage>
-			{/* <Nav/> */}
+			<Nav/>
 			<div className="video-thank text-center m-2 p-2" dangerouslySetInnerHTML={{ __html: "<iframe width='560' height='315' title='Thanks' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen src='https://www.youtube.com/embed/l1whgIrlLio' style={{  />"}} />
 		
 
@@ -76,7 +76,7 @@ function Contact() {
 					</div>
 					
 					<div>
-						<form id="contact-me">
+						<form action="http://localhost:8000/contact" method="POST" id="contact-me">
 							<ol className="forms">
 								{/* Name */}
 								<li>
@@ -182,7 +182,7 @@ function Contact() {
 				</div>
 			</div>
 
-			{/* <Footer/> */}
+			<Footer/>
 		</ContactPage>
 		
 	);
