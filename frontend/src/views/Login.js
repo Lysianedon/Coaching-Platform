@@ -61,7 +61,7 @@ function Login() {
 
   return (
     <LoginFormStyled> 
-       
+       <Nav/>
           {/*  LOGIN FORM */}
         <div className="login-column">
           <div class="container">
@@ -131,8 +131,9 @@ function Login() {
             </div>
           </div>
         </div>
-
+        <Footer/>
     </LoginFormStyled>
+    
   )
 }
 export default Login;

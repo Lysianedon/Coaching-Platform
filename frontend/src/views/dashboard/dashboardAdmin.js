@@ -28,11 +28,11 @@ function DashboardAdmin() {
  }, [])
   return (
     <>
-     {/* <SideBarAdmin/> */}
-     {/* <Bonjour/>
+     <SideBarAdmin/> 
+     <Bonjour/>
      <ApiCalendar/>
      <ToDoList/>
-     <Ressources/> */}
+     <Ressources/> 
 
 
     </>

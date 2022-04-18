@@ -12,7 +12,7 @@ import "./questionaireStarter.css";
 function QuestionaireStarter() {
     return(
         <div>
-            {/* <Nav/> */}
+            <Nav/>
             <div className="questionaire-form">
                 <div>
 
@@ -32,7 +32,7 @@ function QuestionaireStarter() {
                 
             </div>
             
-            {/* <Footer/> */}
+            <Footer/>
         </div>
     )
 }
