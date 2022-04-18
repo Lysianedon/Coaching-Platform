@@ -21,7 +21,6 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-   
         <Routes>
           <Route exact path="/" element={<Home/>} />
           <Route exact path="/presentation" element={<Presentation/>} />
@@ -35,7 +34,6 @@ function App() {
           <Route exact path="/dashboard/admin/users" element={<DashboarSignup/>} />
           <Route exact path="/dashboard/admin/users/modify" element={<DashboarModify/>} />
         </Routes>
-       
       </BrowserRouter>
     </div>
   );

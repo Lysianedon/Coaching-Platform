@@ -21,50 +21,32 @@ ol.forms {
   ol.forms input,
   ol.forms textarea {
     background: none repeat scroll 0 0 #ffffff;
-    border: 1px solid rgb(203, 220, 252);
+    border: 1px solid #6b0070;
     border-radius: 4px;
     padding: 5px;
-    width: 400px;
+    width: 43vw;
+  }
+
+  ol.forms textarea{
+    height: 30vh;
   }
   
   ol.forms input:hover,
   ol.forms textarea:hover {
-    background: none repeat scroll 0 0 #f1f5fa;
+    background: none repeat scroll 0 0 #f4eef5;
     border: 1px solid rgb(116, 128, 150);
     padding: 5px;
-    width: 400px;
+    width: 43vw;
   }
-  
-  ol.forms textarea {
-    background: none repeat scroll 0 0 #ffffff;
-    border: 1px solid rgb(116, 128, 150);
-    padding: 5px;
-    width: 400px;
-    height: 200px;
-  }
-  
-  ol.forms textarea:hover {
-    background: none repeat scroll 0 0 #f1f5fa;
-    border: 1px solid #8e9ba9;
-    padding: 5px;
-    width: 400px;
-  }
-  
-  ol.forms li.screenReader {
-    margin-bottom: 0;
-  }
-  
-  ol.forms li.buttons button:hover {
-    background: #480170;
-    color: white;
-  }
-  
-  ol.forms li.inline input {
-    width: auto;
+
+  ol.forms textarea:hover{
+    height: 30vh;
   }
   
   ol.forms li.inline label {
+    color: #4c2a4e;
     display: inline;
     float: none;
     width: auto;
+    margin-bottom: 2%;
   }

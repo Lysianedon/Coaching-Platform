@@ -1,5 +1,16 @@
-.modifyUser-form{
-    margin-top: 10%;
+.modifyUser-form {
+    margin-top: 8%;
     margin-left: 30%;
     position: absolute;
+}
+.title-modify{
+    padding: 5px;
+    margin-bottom: 5%;
+    text-align: center;
+    color:#4c2a4e;
+}
+.dash {
+    margin: 10px;
+    margin-left: 30%;
+    color:#4c2a4e;
 }

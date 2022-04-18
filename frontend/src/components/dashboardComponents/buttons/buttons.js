@@ -1,13 +1,18 @@
 // css
+import styled from "styled-components";
 import "./buttons.css";
 
 function Buttons() {
     return(
-        <div className="buttons">
+        <ButtonsStyled className="buttons-form">
             <button type="button" className="btn btn-dark m-1"> Créer un utilisateur </button>
             <button type="button" className="btn btn-dark m-1"> Modifier/Supprimer un utilisateur  </button>
             <button type="button" className="btn btn-dark m-1"> Voir la liste des utilisateurs</button>
-        </div>
+        </ButtonsStyled>
     )
 }
 export default Buttons;
+
+const ButtonsStyled = styled.div`
+
+`;
