@@ -13,8 +13,8 @@ import styled from 'styled-components';
 
 function DashboardAdmin() {
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  // const [firstName, setFirstName] = useState('');
+  // const [lastName, setLastName] = useState('');
 
   const fetchProfileInfos = () => {
     console.log("before fetch");

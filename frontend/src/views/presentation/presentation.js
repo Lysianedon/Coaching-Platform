@@ -1,6 +1,6 @@
 // components
-import Nav from "../../components/nav/nav";
-import Footer from "../../components/footer/footer";
+import Nav from "../../components/nav";
+import Footer from "../../components/footer";
 
 function Presentation() {
     return(

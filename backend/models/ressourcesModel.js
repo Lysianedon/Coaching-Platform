@@ -8,5 +8,4 @@ const ressourcesSchema = new mongoose.Schema({
 
 const Ressources = mongoose.model("Ressources", ressourcesSchema);
 
-//Exporting the model:
 module.exports = Ressources;

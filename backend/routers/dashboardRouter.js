@@ -1,14 +1,15 @@
 //-------------- EXPRESS ---------------//
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypt");
-
 //------------ LIBRARIES ------------ //
+const bcrypt = require("bcrypt");
 const fs = require("fs");
 const path = require("path");
+const multer = require("multer");
 
-//test 2
-const gridfs = require("gridfs-stream");
+// Test 2
+// const gridfs = require("gridfs-stream");
+
 //----------- MIDDLEWARES ------------//
 const auth = require("../middlewares/auth");
 const isAdmin = require("../middlewares/isAdmin");
@@ -17,15 +18,14 @@ const {
   validateUserJoi,
 } = require("../middlewares/joiValidation");
 
-//----------- MODELS -----------------//
+//---------------- MODELS -----------------//
 const User = require("../models/userModel");
 const Task = require("../models/taskModel");
-const Ressources = require("../models/ressourcesModel");
-const { findOneAndDelete, findOneAndUpdate } = require("../models/userModel");
-const imgModel = require("../models/imageModel");
-//------------- MULTER -------------//
-const multer = require("multer");
-// -------SET UP MULTER --------------//
+// const Ressources = require("../models/ressourcesModel");
+const Image = require("../models/imageModel");
+const { nextTick } = require("process");
+
+// ------------ SET UP MULTER --------------//
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     // cb(null, 'uploads')
@@ -43,9 +43,9 @@ const upload = multer({ storage });
 
 //*************** USER ******************//
 
-//GET THE USER'S INFOS (TO DISPLAY THEM IN THE DASHBOARD):
+// GET USER'S INFO (TO DISPLAY THEM IN THE DASHBOARD):
 router.get("/user", auth, async (req, res) => {
-  //Find user :
+  // Find user :
   let user;
 
   try {
@@ -55,141 +55,56 @@ router.get("/user", auth, async (req, res) => {
     );
   } catch (error) {
     console.log(error);
-    return res.status(400).json({ error: "A problem happened." });
+    return res.status(400).json({ message: "An error occurred." });
   }
   return res.json({ user });
 });
 
-//**************** ADMIN *******************//
-
-//GET THE ADMIN'S INFOS (TO DISPLAY THEM IN THE DASHBOARD):
-router.get("/admin", isAdmin, async (req, res) => {
-  //Find user :
-  let user;
-
-  try {
-    user = await User.findById(req.userId).populate(
-      // "ressources",
-      "tasks"
-    );
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ error: "A problem happened." });
-  }
-  return res.json({ user });
-});
-
-//GET ADMIN'S TO DO LIST:
-router.get("/admin/list", isAdmin, async (req, res) => {
-  let adminList,
-    adminID = "62587d8a2451d60a3bc4a53b";
-
-  //Get list of tasks with admin's ID :
-  try {
-    adminList = await Task.find({ userId: adminID });
-  } catch (err) {
-    console.log(err);
-    return res.status(401).json({ message: "A problem happened." });
-  }
-  return res.json({ adminList });
-});
-
-//DELETE A TASK IN ADMIN'S TO DO LIST:
-router.delete("/admin/list", isAdmin, async (req, res) => {
-  //The content must be unique, otherwise an error msg is displayed : "Task already exists"
-  let deletedTask = req.body;
-
-  try {
-    deletedTask = await Task.findOneAndDelete({ content: deletedTask.content });
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ message: "A problem happened." });
-  }
-  return res.json({ deletedTask });
-});
-
-//ADD A NEW TASK INTO ADMIN'S TO DO LIST:
-router.post("/admin/list", isAdmin, async (req, res) => {
-  let newTask = req.body,
-    addedTask;
-  const adminID = "62587d8a2451d60a3bc4a53b";
-
-  try {
-    newTask = await Task.create(newTask);
-    addedTask = await Task.findOneAndUpdate(
-      { content: newTask.content },
-      { userId: adminID },
-      { new: true }
-    );
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ message: "A problem happened." });
-  }
-  return res.status(201).json({ addedTask });
-});
-
-//MODIFY A TASK IN ADMIN'S TO DO LIST :
-router.put("/admin/list", isAdmin, async (req, res) => {
-  let taskToModify = req.body,
-    modifiedTask;
-
-  try {
-    modifiedTask = await Task.findOneAndUpdate(
-      { content: taskToModify.initialContent },
-      { content: taskToModify.updatedContent },
-      { new: true }
-    );
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ message: "A problem happened." });
-  }
-  return res.status(201).json({ modifiedTask });
-});
-
-//GET THE USER'S TO DO LIST:
+// GET USER'S TO DO LIST:
 router.get("/user/list", auth, async (req, res) => {
   const userId = req.userId;
   // const userId = "62587d8a2451d60a3bc4a53b";
   let usersList;
+
   try {
     usersList = await Task.find({ userId });
   } catch (error) {
-    console.log(error);
-    return res.status(400).json({ message: "A problem happened." });
+    // console.log(error);
+    return res.status(400).json({ message: "An error occurred." });
   }
   return res.json({ usersList });
 });
 
-//DELETE A TASK FROM A USER'S TO DO LIST:
+// DELETE A TASK FROM USER'S TO DO LIST:
 router.delete("/user/list", auth, async (req, res) => {
   const userId = req.userId;
   const taskToDelete = req.body.content;
   let deletedTask;
+
   try {
     deletedTask = await Task.findOneAndDelete(
       { content: taskToDelete },
       { userId }
     );
   } catch (error) {
-    console.log(error);
-    return res.status(400).json({ message: "A problem happened." });
+    // console.log(error);
+    return res.status(400).json({ message: "An error occurred." });
   }
   return res.json({ deletedTask });
 });
 
+// CREATE A TASK IN USER'S TO DO LIST AND UPDATE USER
 router.post("/user/list", auth, validateTaskJoi, async (req, res) => {
-  //Joi validation
-
   let newTask = req.body,
     addedTask,
     updatedUser;
   const userId = req.userId;
   const { content, deadline, accomplished } = req.body;
   newTask = {
+    userId,
     content,
     deadline,
     accomplished,
-    userId,
   };
 
   try {
@@ -202,12 +117,12 @@ router.post("/user/list", auth, validateTaskJoi, async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    return res.status(400).json({ message: "A problem happened." });
+    return res.status(400).json({ error: "An error occurred." });
   }
   return res.json({ addedTask });
 });
 
-//MODIFY A USER'S TASK IN THE TO DO LIST :
+// MODIFY A TASK IN USER'S TO DO LIST :
 router.put("/user/list", auth, async (req, res) => {
   let taskToModify = req.body,
     modifiedTask;
@@ -225,14 +140,161 @@ router.put("/user/list", auth, async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    return res.status(400).json({ message: "A problem happened." });
+    return res.status(400).json({ message: "An error occurred." });
   }
   return res.status(201).json({ modifiedTask });
 });
 
+//**************** ADMIN *******************//
+
+//* GET ADMIN'S INFO (TO DISPLAY THEM IN THE DASHBOARD):
+router.get("/admin", isAdmin, async (req, res) => {
+  // Find user
+  let user;
+
+  try {
+    user = await User.findById(req.userId).populate(
+      // "ressources",
+      "tasks"
+    );
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: "An error occurred." });
+  }
+  return res.json({ user });
+});
+
+// GET ADMIN'S TO DO LIST:
+router.get("/admin/list", isAdmin, async (_req, res) => {
+  let adminList,
+    adminID = "62587d8a2451d60a3bc4a53b";
+
+  // Get list of tasks with admin's ID :
+  try {
+    adminList = await Task.find({ userId: adminID });
+  } catch (err) {
+    console.log(err);
+    return res.status(401).json({ message: "An error occurred." });
+  }
+  return res.json({ adminList });
+});
+
+// DELETE A TASK IN ADMIN'S TO DO LIST:
+router.delete("/admin/list", isAdmin, async (req, res) => {
+  // The content must be unique, otherwise an error msg is displayed : "Task already exists"
+  let deletedTask = req.body;
+
+  try {
+    deletedTask = await Task.findOneAndDelete({ content: deletedTask.content });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: "An error occurred." });
+  }
+  return res.json({ deletedTask });
+});
+
+// ADD A NEW TASK INTO ADMIN'S TO DO LIST:
+router.post("/admin/list", isAdmin, async (req, res) => {
+  let newTask = req.body,
+    addedTask;
+  const adminID = "62587d8a2451d60a3bc4a53b";
+
+  try {
+    newTask = await Task.create(newTask);
+    addedTask = await Task.findOneAndUpdate(
+      { content: newTask.content },
+      { userId: adminID },
+      { new: true }
+    );
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: "An error occurred." });
+  }
+  return res.status(201).json({ addedTask });
+});
+
+// MODIFY A TASK IN ADMIN'S TO DO LIST :
+router.put("/admin/list", isAdmin, async (req, res) => {
+  let taskToModify = req.body,
+    modifiedTask;
+
+  try {
+    modifiedTask = await Task.findOneAndUpdate(
+      { content: taskToModify.initialContent },
+      { content: taskToModify.updatedContent },
+      { new: true }
+    );
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: "An error occurred." });
+  }
+  return res.status(201).json({ modifiedTask });
+});
+
+//* CREATE A NEW USER
+router.post(
+  "/admin/users",
+  auth,
+  isAdmin,
+  validateUserJoi,
+  async (req, res) => {
+    let user;
+    const { password } = req.body;
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 12);
+    console.log("hashed password: ", hashedPassword);
+
+    try {
+      user = await User.create({
+        password: hashedPassword,
+        ...req.body,
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({
+        message: "Invalid email or password",
+      });
+    }
+    res.status(201).json({
+      message: "New user created",
+      description: user,
+    });
+  }
+);
+
+//* GET LIST OF ALL USERS
+router.get("/admin/users", isAdmin, async (req, res) => {
+  let users;
+
+  try {
+    users = await User.find();
+  } catch (error) {
+    return res.status(400).json({ message: "An error occurred." });
+  }
+  return res.json({ users });
+});
+
+// UPDATE A USER
+router.put("/admin/users", isAdmin, validateUserJoi, async (req, res) => {
+  let user, updatedUser;
+  try {
+    user = await User.findOne({ email });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: "An error occured." });
+  }
+  return res
+    .status(201)
+    .json({ message: "Account successfully created!", user });
+});
+
+// DELETE A USER
+router.delete("/admin/users", (req, res) => {});
+
 //DOWNLOAD FILES/RESSOURCES FROM DASHBOARD (USER AND ADMIN) :
 router.get("/user/files", (req, res) => {
-  imgModel.find({}, (err, items) => {
+  Image.find({}, (err, items) => {
     if (err) {
       console.log(err);
       res.status(500).send("An error occurred", err);
@@ -253,7 +315,7 @@ router.post("/user/files", upload.single("image"), async (req, res) => {
     },
     userId: "62587d8a2451d60a3bc4a53b",
   };
-  const uploadedFile = await imgModel.create(obj, (err, item) => {
+  const uploadedFile = await Image.create(obj, (err, item) => {
     if (err) {
       console.log(err);
     } else {
@@ -280,7 +342,5 @@ router.get("/test", (req, res) => {
     readstream.pipe(res);
   });
 });
-
-//Exporting the module
 
 module.exports = router;

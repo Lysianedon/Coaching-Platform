@@ -6,8 +6,6 @@ const cors = require("cors");
 //--------------- AUTH ----------------//
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-//----------- MIDDLEWARE --------------//
-const auth = require("../middlewares/auth");
 
 //------------- SECRET --------------//
 const secret = process.env.SECRET;
@@ -40,12 +38,10 @@ router.post("/", async (req, res) => {
 
   //* 3 - Authentification
   // *! 3.1 - Generate a token with jsonwebtoken
-  const token = jwt.sign({ id: user._id }, secret, { expiresIn: "30m" }); // test 3 min
+  const token = jwt.sign({ id: user._id }, secret, { expiresIn: "30m" }); // test 30 min
   // *! 3.2 - Store token in a cookie called "jwt" and send it to client in response with a message of successful login
     return res.cookie("jwt", token, { httpOnly: false, secure: false }).status(200).json({ success: "You logged in successfully" })
 });
-  
-
 
 module.exports = router;
 

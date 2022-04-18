@@ -1,0 +1,22 @@
+.signup-form{
+    margin-top: 8%;
+    margin-left: 30%;
+    position: absolute;
+}
+#title-create{
+    padding: 5px;
+    margin-bottom: 5%;
+    /* margin-left: 40%; */
+    text-align: center;
+    color:#4c2a4e;
+}
+/*RESPONSIVE */
+@media screen and (max-width: 600px) {
+    .signup-form{
+        margin-top: 15%;
+        margin-left: 20%;
+    }
+    #title-create {
+        margin-bottom: 5%;
+    }
+  }
