@@ -4,7 +4,7 @@ import { Link, Router } from 'react-router-dom';
 //css
 import styled from 'styled-components';
 import './nav.css'
-import Logo from "../../assets/images/Logo.png"
+import Logo from "../../assets/images/logo-couleurs.png"
 
 
 function Nav() {
