@@ -1,29 +1,17 @@
 
 .todolist {
-  width: 70vw;
-  float: right;
-  margin: 2%;
-  padding: 2%;
-  border: 1px solid #161a2b;
-  position: absolute;
-  top: 55%;
-  left: 60%;
-  transform: translate(-50%, -50%);
-  font-size: 16px;
+  padding: 30px 40px;
+  border-radius: 12px;
+  border: 1px solid black;
+  background-color: white;
+  padding: 5% 4% ;
+  border-radius: 16px;
+  width:70vw;
+  height: 60vh;
+  overflow: scroll;
+  color: black;
+  
 }
-.todo-app {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 33rem;
-  min-height: 37rem;
-  background: #161a2b;
-  text-align: center;
-  margin: 10rem auto;
-  border-radius: 10px;
-  padding-bottom: 2rem;
-}
-
 h1 {
   margin: 2rem 0;
   color: #fff;
@@ -35,19 +23,24 @@ h1 {
   opacity: 0.4;
 }
 
-.todo-form {
-  width: 50vw;
-  margin: 1rem auto;
-}
+
+.addInput {
+
+  width: 500px;
+  height: 20px;
+
+  }
 
 .todo-input {
-  padding: 14px 32px 14px 16px;
+
   border-radius: 4px 0 0 4px;
-  border: 2px solid #5d0cff;
+  border: 2px solid #a7a4a4;
   outline: none;
-  width: 20rem;
-  background: transparent;
+  background: white;
   color: rgb(16, 16, 16);
+  width: 75%;
+  padding: 5px;
+  font-size: 16px;
 }
 
 .todo-input::placeholder {
@@ -55,20 +48,26 @@ h1 {
 }
 
 .todo-button {
-  padding: 1rem;
+  margin-left: 10px;
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius:4px;
+  width: 90px;
+  height: 45px;
   cursor: pointer;
   outline: none;
   background: linear-gradient(
     90deg,
-    rgba(93, 12, 255, 1) 0%,
-    rgba(155, 0, 250, 1) 100%
+    rgb(255, 227, 12) 0%,
+    rgb(250, 129, 0) 100%
   );
   color: #fff;
   text-transform: capitalize;
 }
+.addBtn{
+  margin-top: 40px;
+  margin-left: 38%;
 
+}
 .todo-input.edit {
   border: 2px solid #149fff;
 }
@@ -79,24 +78,24 @@ h1 {
     rgba(20, 159, 255, 1) 0%,
     rgba(17, 122, 255, 1) 100%
   );
-  padding: 1rem 1.4rem;
+  padding: 12px 12px;
 }
 
 .todo-row {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 4px auto;
+  margin: 2vh ;
+  top: 50px;
   color: #fff;
   background: linear-gradient(
     90deg,
     rgba(255, 118, 20, 1) 0%,
     rgba(255, 84, 17, 1) 100%
   );
-
-  padding: 1rem;
+  position: relative;
   border-radius: 5px;
-  width: 90%;
+  width: 70%;
+  flex-direction: column ;
+  margin-top: 10px;
 }
 
 .todo-row:nth-child(4n + 1) {
@@ -105,6 +104,12 @@ h1 {
     rgba(93, 12, 255, 1) 0%,
     rgba(155, 0, 250, 1) 100%
   );
+  position: relative;
+  margin-top: 12px;
+  border-radius: 5px;
+  width: 70%;
+  flex-direction: column ;
+  margin-top: 10px;
 }
 
 .todo-row:nth-child(4n + 2) {
@@ -113,14 +118,48 @@ h1 {
     rgba(255, 12, 241, 1) 0%,
     rgba(250, 0, 135, 1) 100%
   );
+  position: relative;
+  border-radius: 5px;
+  width: 70%;
+  flex-direction: column ;
+  margin-top: 10px;
 }
 
 .todo-row:nth-child(4n + 3) {
   background: linear-gradient(
     90deg,
-    rgba(20, 159, 255, 1) 0%,
-    rgba(17, 122, 255, 1) 100%
+    rgb(252, 235, 0) 0%,
+    rgb(223, 173, 9) 100%
   );
+  position: relative;
+  border-radius: 5px;
+  width: 70%;
+  flex-direction: column ;
+  margin-top: 10px;
+}
+.todo-row:nth-child(4n + 4) {
+  background: linear-gradient(
+    90deg,
+    rgb(38, 223, 152) 0%,
+    rgb(37, 241, 228) 100%
+  );
+  position: relative;
+  border-radius: 5px;
+  width: 70%;
+  flex-direction: column ;
+  margin-top: 10px;
+}
+.todo-row:nth-child(4n + 5) {
+  background: linear-gradient(
+    90deg,
+    rgb(38, 223, 152) 0%,
+    rgb(37, 241, 228) 100%
+  );
+  position: relative;
+  border-radius: 5px;
+  width: 70%;
+  flex-direction: column ;
+  margin-top: 10px;
 }
 
 .text {
@@ -143,17 +182,4 @@ h1 {
   color: #fff;
 }
 
-@media screen and (max-width: 600px) {
-  .todo-app {
-    width: 95vw;
-  }
 
-  .todo-input {
-    width: 12rem;
-  }
-
-  .h1 {
-    font-size: 1rem;
-    margin: 1rem 0;
-  }
-}

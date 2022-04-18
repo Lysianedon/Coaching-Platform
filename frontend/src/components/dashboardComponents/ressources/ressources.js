@@ -33,20 +33,17 @@ function Ressources() {
 
 
     return (
-        <div >
-            
-			<RessourcesForm>
+			<Files>
 			<h3>Files</h3>
 				{/* Upload form */}
-				<div className="row">
-					<form className="col-12 col-md-6 mx-auto" onSubmit={onSubmit}>
-						<div className="mb-3">
-							<label htmlFor="fileName" className="form-label">
+				<div >
+					<form  onSubmit={onSubmit}>
+						<div >
+							<label htmlFor="fileName" >
 								Nom de fichier
 							</label>
 							<input
 								type="text"
-								className="form-control"
 								id="fileName"
 								name="fileName"
 								value={fileName}
@@ -54,33 +51,32 @@ function Ressources() {
 							/>
 						</div>
 
-						<div className="mb-3">
-							<label htmlFor="file" className="form-label">
+						<div >
+							<label htmlFor="file">
 								File
 							</label>
 							<input
 								type="file"
-								className="form-control"
 								id="file"
 								name="file"
 								onChange={(e) => setFile(e.target.files[0])}
 							/>
 						</div>
-						<button type="submit" className="btn btn-dark">
+						<button type="submit" >
 							Ajouter
 						</button>
 					</form>
 				</div>
 
 				{/* Upload Result */}
-				<div className="row mt-4">
-					<div className="col col-md-6 mx-auto">
-						<ul className="list-group">
+				<div  className="">
+					<div className="">
+						<ul className="">
 							{fileList &&
 								fileList.map((user, index) => {
 									return (
-										<li key={index} className="list-group-item">
-											<div className="card mx-auto" style={{ width: "18rem" }}>
+										<li key={index} className="">
+											<div className="" style={{ width: "18rem" }}>
 												<img
 													className="card-img-top"
 													src={`uploads/${user.file}`}
@@ -96,23 +92,22 @@ function Ressources() {
 						</ul>
 					</div>
 				</div>
-			</RessourcesForm>
-            
-		</div>
+			</Files>
         
     )
  }
 export default Ressources;
 
-const RessourcesForm = styled.div`
-	 width: 70vw;
-    float: right;
-    margin: 2%;
-    padding: 2%;
-    border: 1px solid #161a2b;
-    position: absolute;
-    top: 100%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-    font-size: 16px;
-`;
+
+const Files = styled.li`
+	padding: 30px 40px;
+	width:70vw;
+	border-radius: 12px;
+	border: 1px solid black;
+	background-color: white;
+	padding: 5% 4% ;
+	border-radius: 16px;
+	height: 60vh;
+	overflow: scroll;
+	color: black;
+	`;
