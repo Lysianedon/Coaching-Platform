@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Router } from 'react-router-dom';
+// import { Link, Router } from 'react-router-dom';
 
 //css
 import styled from 'styled-components';
@@ -20,6 +20,7 @@ function Nav() {
                     <Link to="/contact" className='text-link'>Contact</Link>
                     <Link to="/questionaire/starter"><QuestionnaireBtn className='text-link btn btn-dark'>Questionnaire</QuestionnaireBtn>
                     </Link> */}
+
                     <a href="/" className='text-link'>Home</a>
                     <a href="/presentation" className='text-link'>Qui suis-je ?</a>
                     <a href="/coaching" className='text-link'>Coaching</a>

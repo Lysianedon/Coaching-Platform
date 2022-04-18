@@ -8,7 +8,7 @@ import Presentation from './views/presentation/presentation';
 import Coaching from './views/coaching/coaching';
 import Contact from './views/Contact';
 import Login from './views/Login';
-import QuestionaireStarter from './views/questionaireStarter/questionaireStarter';
+import QuestionnaireStarter from './views/QuestionnaireStarter';
 
 // Dashboard
 import DashboardAdmin from './views/dashboard/dashboardAdmin';
@@ -28,7 +28,7 @@ function App() {
           <Route exact path="/coaching" element={<Coaching/>} />
           <Route exact path="/contact" element={<Contact/>} />
           <Route exact path="/login" element={<Login/>} />
-          <Route exact path="/questionaire/starter" element={<QuestionaireStarter/>} />
+          <Route exact path="/questionnaire/starter" element={<QuestionnaireStarter/>} />
 
           <Route exact path="/dashboard/admin" element={<DashboardAdmin/>} />
           <Route exact path="/dashboard/user" element={<DashboardUser/>} />
