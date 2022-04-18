@@ -76,7 +76,7 @@ function Contact() {
 					</div>
 					
 					<div>
-						<form id="contact-me">
+						<form action="http://localhost:8000/contact" method="POST" id="contact-me">
 							<ol className="forms">
 								{/* Name */}
 								<li>

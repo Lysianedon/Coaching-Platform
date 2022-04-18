@@ -40,7 +40,7 @@ function Home() {
   }
   return (
     <DivWrapper>
-      {/* <Nav/> */}
+      <Nav/>
  
         <section className="banner">
           <h1>
@@ -155,7 +155,7 @@ function Home() {
               <img src={linkedin} alt="icon-linkedin" srcset="" />
             </div>
           </section>
-      {/* <Footer/> */}
+      <Footer/>
     </DivWrapper>
   )
 }
