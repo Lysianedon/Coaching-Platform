@@ -1,28 +1,27 @@
-//--------- EXPRESS AND MONGOOSE -------------//
+//--------- EXPRESS AND MONGOOSE ------------//
 const express = require("express");
 const app = express();
 const port = 8000;
-const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
-//--------- SET UP EJS -------------//
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-// Set EJS as templating engine
-app.set("view engine", "ejs");
-const fs = require("fs");
-const path = require("path");
-app.use(express.static("/backend/routers"));
-
-//-------------- DOTENV ----------------------//
+//----------------- DOTENV ------------------//
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
-//-------------- COOKIE PARSER ---------------//
+//------ BODY PARSER AND COOKIE PARSER ------//
+const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+//-------------- OTHER LIBRARIES -----------//
+const fs = require("fs");
+const path = require("path");
+//--------------- SET UP EJS ------------------//
+app.set("view engine", "ejs");
 
 //--------------- MIDDLEWARES ----------------//
+// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.static("/backend/routers"));
 
 //------------ CONNECT TO MONGODB -------------//
 mongoose
@@ -39,12 +38,12 @@ const dashboardRouter = require("./routers/dashboardRouter");
 const loginRouter = require("./routers/loginRouter");
 const logoutRouter = require("./routers/logoutRouter");
 
-//--------------- ROUTES -------------------//
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
 app.use("/contact", contactRouter);
 app.use("/questionnaire", questionnaireRouter);
 app.use("/dashboard", dashboardRouter);
+
 //---------------- ROUTES -----------------//
 app.get("*", (_req, res) => {
   res.status(404).send("Error 404 - Not found");
