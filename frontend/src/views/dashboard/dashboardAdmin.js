@@ -13,8 +13,8 @@ import styled from 'styled-components';
 
 function DashboardAdmin() {
 
-  // const [firstName, setFirstName] = useState('');
-  // const [lastName, setLastName] = useState('');
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
 
   const fetchProfileInfos = () => {
     console.log("before fetch");
@@ -22,6 +22,8 @@ function DashboardAdmin() {
     .then(res => 
       {
       console.log(res.data);
+      setLastname(res.data.user.firstName);
+      setFirstname(res.data.user.firstName)
     });
   }
 
@@ -31,6 +33,8 @@ function DashboardAdmin() {
  }, [])
   return (
     <>
+    <h2>Bonjour {firstname} ! </h2>
+     <h2>Coucou</h2>
      <SideBarAdmin/> 
      <Container>
      <Bonjour/>
