@@ -22,7 +22,7 @@ function DashboardAdmin() {
     .then(res => 
       {
       console.log(res.data);
-      setLastname(res.data.user.firstName);
+      setLastname(res.data.user.lastName);
       setFirstname(res.data.user.firstName)
     });
   }
