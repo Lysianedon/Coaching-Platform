@@ -31,9 +31,6 @@ app.use(express.static("/backend/routers"));
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 
-//--------------- SET UP EJS ------------------//
-app.set("view engine", "ejs");
-
 //--------------- MIDDLEWARES ----------------//
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: true }));
