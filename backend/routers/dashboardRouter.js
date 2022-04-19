@@ -17,13 +17,14 @@ const {
   validateTaskJoi,
   validateUserJoi,
 } = require("../middlewares/joiValidation");
-
 //---------------- MODELS -----------------//
 const User = require("../models/userModel");
 const Task = require("../models/taskModel");
-// const Ressources = require("../models/ressourcesModel");
+const Ressources = require("../models/ressourcesModel");
+//------------- MULTER ---------------//
+const multer = require("multer");
+// -------SET UP MULTER --------------//
 const Image = require("../models/imageModel");
-const { nextTick } = require("process");
 
 // ------------ SET UP MULTER --------------//
 const storage = multer.diskStorage({
@@ -60,10 +61,10 @@ router.get("/user", auth, async (req, res) => {
   return res.json({ user });
 });
 
+//********************* ADMIN *******************//
 // GET USER'S TO DO LIST:
 router.get("/user/list", auth, async (req, res) => {
   const userId = req.userId;
-  // const userId = "62587d8a2451d60a3bc4a53b";
   let usersList;
 
   try {
