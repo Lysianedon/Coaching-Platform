@@ -31,7 +31,7 @@ function Login() {
     fetchPost();
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const emailValue = document.getElementById("email").value;
@@ -40,11 +40,11 @@ function Login() {
     setEmail(emailValue);
     setPassword(passwordValue);
 
-    console.log(email, password);
+    console.log("email password:::",email, password);
 
-    await axios.post('http://localhost:8000/login', {
+    axios.post('http://localhost:8000/login', {
       email, password
-    })
+    },{ withCredentials: true })
     .then(res => {
       console.log(res.data);
 
@@ -74,13 +74,19 @@ function Login() {
                        {/* Email */}
                         <div className="email">
                             <label htmlFor="email">Email:</label>
-                            <input type="text" id="email" />
+                            <input type="text" id="email" onChange={(e)=>{
+                              setEmail(e.target.value);
+                              console.log(email);
+                            }}/>
                           </div>
                         
                         {/* Password */}
                           <div className="password">
                             <label htmlFor="password">Password:</label> 
-                            <input type="password" id="password" />
+                            <input type="password" id="password" onChange={(e)=> {
+                                  setPassword(e.target.value);
+                                  console.log(password);
+                            }}/>
                           </div>
 
                         {/* Button Submit */}
