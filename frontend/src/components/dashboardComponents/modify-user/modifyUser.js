@@ -2,7 +2,7 @@ import {React, useState} from "react";
 
 // css  (contact, signup, login, modify have same css from formInput.css in assets/css)
 import "./modifyUser.css";
-// import styled from "styled-components";
+import styled from "styled-components";
 
 function ModifyUser() {
     const [firstName, setFirstName] = useState("");
@@ -41,7 +41,7 @@ function ModifyUser() {
 	};
 
     return(
-        <section className="modifyUser-form">
+        <ModifyUserStyled className="modifyUser-form">
             <div>
                 <h2 className="title-modify">Modifier/Supprimer un utilisateur</h2>
             </div>
@@ -158,7 +158,62 @@ function ModifyUser() {
                 
                 </ol>
             </form>
-        </section>
+        </ModifyUserStyled>
     )
 }
 export default ModifyUser;
+
+const ModifyUserStyled = styled.div`
+ol.forms {
+float: center;
+list-style: none;
+margin: 10;
+width: 100%;
+}
+
+ol.forms li {
+clear: both;
+float: center;
+margin-bottom: 18px;
+position: relative;
+width: 100%;
+}
+
+ol.forms label {
+font-weight: 600;
+font-size: 1rem;
+}
+
+ol.forms input,
+ol.forms textarea {
+background: none repeat scroll 0 0 #ffffff;
+border: 1px solid #6b0070;
+border-radius: 4px;
+padding: 5px;
+width: 43vw;
+}
+
+ol.forms textarea{
+height: 30vh;
+}
+
+ol.forms input:hover,
+ol.forms textarea:hover {
+background: none repeat scroll 0 0 #f4eef5;
+border: 1px solid rgb(116, 128, 150);
+padding: 5px;
+width: 43vw;
+}
+
+ol.forms textarea:hover{
+height: 30vh;
+}
+
+ol.forms li.inline label {
+color: #4c2a4e;
+display: inline;
+float: none;
+width: auto;
+margin-bottom: 2%;
+}
+`;

@@ -3,7 +3,6 @@ import { useState } from "react";
 
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
 import styled from "styled-components";
-import "../assets/css/formInput.css";
 
 // components
 import Nav from "../components/nav";
@@ -23,7 +22,7 @@ function Contact() {
 
 	const isValidPhone = (phone) => {
 		const regex =
-        /^\+?[1-9][0-9]{7,14}$/;
+        /^\+?[1-9][0-9]{9,14}$/;
 		return regex.test(Number(phone));
 	};
 	const isValidEmail = (email) => {
@@ -69,7 +68,6 @@ function Contact() {
 		}
 	};
 
-	
 
 	return (
 		<ContactPage>
@@ -178,11 +176,21 @@ function Contact() {
 									</button>
 
 								</li>
-								
-							
 							</ol>
 						</form>
-							
+
+						<div>
+							{ window.location.hash === '#success' &&
+								<div id="success">
+									<p>Votre message a été envoyé !</p>
+								</div>
+							}
+							{ window.location.hash === '#error' &&
+								<div id="error">
+									<p>Une erreur s'est produite lors de la soumission du formulaire.</p>
+								</div>
+							}
+    					</div>
 							
 					</div>
 				</div>
@@ -204,24 +212,24 @@ const ContactPage = styled.div`
 }
 
 /********* Tilte *********/
-  .title {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-left: 40%;
-	margin-top: 2% 10% 2% 25%;
-  }
-  .btn-send{
-	  width: 10vw;
-	  height: auto;
-	  background-color: #4c2a4e;
-	  border: 1px solid #4c2a4e;
-	  border-radius: 4px;
-	  padding: 1px;
-	  color: white;
-  }
-  .btn-send:hover {
-	  background-color: black;
-  }
+.title {
+font-size: 2rem;
+font-weight: 600;
+margin-left: 40%;
+margin-top: 2% 10% 2% 25%;
+}
+.btn-send{
+	width: 10vw;
+	height: auto;
+	background-color: #4c2a4e;
+	border: 1px solid #4c2a4e;
+	border-radius: 4px;
+	padding: 1px;
+	color: white;
+}
+.btn-send:hover {
+	background-color: black;
+}
 
   /********* Form Contact ********/
 #contact-form {
@@ -239,5 +247,58 @@ const ContactPage = styled.div`
       width: 90%;
     }
   }
+
+ol.forms {
+float: center;
+list-style: none;
+margin: 10;
+width: 100%;
+}
+
+ol.forms li {
+clear: both;
+float: center;
+margin-bottom: 18px;
+position: relative;
+width: 100%;
+}
+
+ol.forms label {
+font-weight: 600;
+font-size: 1rem;
+}
+
+ol.forms input,
+ol.forms textarea {
+background: none repeat scroll 0 0 #ffffff;
+border: 1px solid #6b0070;
+border-radius: 4px;
+padding: 5px;
+width: 43vw;
+}
+
+ol.forms textarea{
+height: 30vh;
+}
+
+ol.forms input:hover,
+ol.forms textarea:hover {
+background: none repeat scroll 0 0 #f4eef5;
+border: 1px solid rgb(116, 128, 150);
+padding: 5px;
+width: 43vw;
+}
+
+ol.forms textarea:hover{
+height: 30vh;
+}
+
+ol.forms li.inline label {
+color: #4c2a4e;
+display: inline;
+float: none;
+width: auto;
+margin-bottom: 2%;
+}
 
 `;

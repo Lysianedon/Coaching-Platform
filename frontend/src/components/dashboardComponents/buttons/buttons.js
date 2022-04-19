@@ -12,8 +12,10 @@ function Buttons() {
             <a href="/dashboard/admin/users/modify">
                 <button type="button" className="btn btn-dark m-1"> Modifier/Supprimer un utilisateur </button>
             </a>
-
-            <button type="button" className="btn btn-dark m-1"> Voir la liste des utilisateurs</button>
+            <a href="/dashboard/admin/list">
+                <button type="button" className="btn btn-dark m-1"> Voir la liste des utilisateurs</button>
+            </a>
+            
         </ButtonsStyled>
     )
 }
