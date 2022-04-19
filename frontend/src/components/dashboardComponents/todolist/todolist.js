@@ -54,10 +54,14 @@ const TodoList = (props) => {
   };
 
   return (
+    
     <React.Fragment>
-        <div className="todolist">
+      <div>
+        <div className="addAToDo">
             <h6>Programme</h6>
             <TodoForm onSubmit={addTodo} />
+        </div>
+        <div className="todolist">
             <Todo
                 todos={todos}
                 onComplete={onCompleteHandler}
@@ -65,6 +69,7 @@ const TodoList = (props) => {
                 onEdit={onEditHandler}
             />
         </div>
+       </div>
       
     </React.Fragment>
   );

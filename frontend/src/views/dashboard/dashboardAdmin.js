@@ -37,16 +37,16 @@ function DashboardAdmin() {
      <h2>Coucou</h2>
      <SideBarAdmin/> 
      <Container>
-     <Bonjour/>
-     <AgendaStyle>
-     <ApiCalendar/>
-     </AgendaStyle>
-    <ToDoStyle>
-     <ToDoList/>
-     </ToDoStyle>
-     <RessourcesStyle>
-     <Ressources/> 
-     </RessourcesStyle>
+      <Bonjour/>
+      <AgendaStyle>
+        <ApiCalendar/>
+      </AgendaStyle>
+      <ToDoStyle>
+        <ToDoList/>
+      </ToDoStyle>
+      <RessourcesStyle>
+        <Ressources/> 
+      </RessourcesStyle>
      </Container>
 
 
@@ -88,30 +88,29 @@ const ToDoStyle = styled.div`
 
   height: 400px;
   width: 72vw;
-  margin-top: 600px;
 	padding: 90px;
   border-radius:12px;
   background-color:#4c2a4e;
   margin-top:1100px;
   padding:15px;
+  padding-bottom:80px;
   position:inherit;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow:scroll;
   
-// `;
+ `;
 
 const RessourcesStyle = styled.div`
 
   font-size: 16px;
-  height:400px;
+  height:500px;
   width:72vw;
   position:inherit;
 	padding: 90px;
   border-radius:12px;
   background-color:#4c2a4e;
-  margin-top:2000px;
+  margin-top:2080px;
   padding:15px;
   color:white;
   display: flex;

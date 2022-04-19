@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 // css
 import styled from 'styled-components';
-
+import './ressources.css';
 function Ressources() {
     const [fileName, setFileName] = useState("");
 	const [file, setFile] = useState(null);
@@ -33,25 +33,25 @@ function Ressources() {
 
 
     return (
-			<Files>
-			<h3>Files</h3>
+			<div>
 				{/* Upload form */}
-				<div >
+				<div className="uploadfile" >
 					<form  onSubmit={onSubmit}>
-						<div >
+						<div className="uploadInput" >
 							<label htmlFor="fileName" >
 								Nom de fichier
 							</label>
 							<input
 								type="text"
 								id="fileName"
+								className="inputFileName"
 								name="fileName"
 								value={fileName}
 								onChange={(e) => setFileName(e.target.value)}
 							/>
 						</div>
 
-						<div >
+						<div>
 							<label htmlFor="file">
 								File
 							</label>
@@ -69,7 +69,7 @@ function Ressources() {
 				</div>
 
 				{/* Upload Result */}
-				<div  className="">
+				<div  className="allFiles" >
 					<div className="">
 						<ul className="">
 							{fileList &&
@@ -92,22 +92,8 @@ function Ressources() {
 						</ul>
 					</div>
 				</div>
-			</Files>
+			</div>
         
     )
  }
 export default Ressources;
-
-
-const Files = styled.li`
-	padding: 30px 40px;
-	width:70vw;
-	border-radius: 12px;
-	border: 1px solid black;
-	background-color: white;
-	padding: 5% 4% ;
-	border-radius: 16px;
-	height: 60vh;
-	overflow: scroll;
-	color: black;
-	`;

@@ -25,7 +25,7 @@ function Nav() {
                     <a href="/coaching" className='text-link'>Coaching</a>
                     <a href="/login" className='text-link'>Login</a>
                     <a href="/contact" className='text-link'>Contact</a>
-                    <a href="/questionaire/starter"><QuestionnaireBtn className='text-link btn btn-dark'>Questionnaire </QuestionnaireBtn></a>
+                    <a href="/questionnaire/starter"><QuestionnaireBtn >Questionnaire </QuestionnaireBtn></a>
                 </Ul>
       
           </Navbar>
@@ -68,7 +68,7 @@ const Navbar = styled.nav`
 
   img{
       vertical-align: top;
-      width: 20%;
+      width: 15%;
       height: auto;
       float: left;
 
@@ -78,10 +78,10 @@ const Navbar = styled.nav`
 const QuestionnaireBtn = styled.button`
 border-radius:5px;
 font-size: 1.1em;
-border:none;
-background-color:#4c2a4e;
-color:white;
-height: 5vh;
+border: none;
+background-color: black;
+color: white;
+height: 7vh;
 @media (max-width: 2500px) {
   /* width:150px;
   height:40px; */
