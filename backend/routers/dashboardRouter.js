@@ -21,8 +21,6 @@ const {
 const User = require("../models/userModel");
 const Task = require("../models/taskModel");
 const Ressources = require("../models/ressourcesModel");
-//------------- MULTER ---------------//
-const multer = require("multer");
 // -------SET UP MULTER --------------//
 const Image = require("../models/imageModel");
 

@@ -20,6 +20,7 @@ const isAdmin = async (req, res, next) => {
     req.verifiedUserInfo = data;
   } catch (error) {
     console.log(error);
+    console.log("erreur token !!");
     return res.status(400).json({ message: "An error occurred." });
   }
 
