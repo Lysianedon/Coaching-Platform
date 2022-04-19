@@ -22,7 +22,7 @@ function ModifyUser() {
 		return regex.test(String(email).toLowerCase());
 	};
 
-	const submit = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (isValidEmail(email) & isValidPhone(phone)) {
 			if (firstName && phone && email && userId) {
@@ -43,7 +43,7 @@ function ModifyUser() {
     return(
         <section className="modifyUser-form">
             <div>
-                <h2 className="title-modify">Modifier / Supprimer un utilisateur</h2>
+                <h2 className="title-modify">Modifier/Supprimer un utilisateur</h2>
             </div>
 
             <form>
@@ -61,9 +61,14 @@ function ModifyUser() {
                                 value={userId}
                                 onChange={(e) => setUserId(e.target.value)}
                             ></input> <br />
+                            {/* Search button */}
+                            <button type="search" className="btn-search btn-dark" id="search" name="Search" value="Search">
+                                Chercher
+                            </button> <br />
                             <label className="dash">
                                 ----------------------------------
                             </label> <br/>
+                            
                         </div>
                     </li>
 
@@ -142,8 +147,11 @@ function ModifyUser() {
 
                     {/* Button submit */}
                     <li class="buttons">
-                        <button type="submit" className="btn btn-dark" onClick={(e) => submit(e)}>
-                            Submit
+                        <button type="submit" className="btn-modify btn-dark" onClick={(e) => handleSubmit(e)}>
+                            Sauvegarder
+                        </button>
+                        <button type="delete" className="btn-delete btn-dark" onClick={(e) => handleSubmit(e)}>
+                            Supprimer
                         </button>
 
                     </li>
