@@ -8,7 +8,6 @@ import Nav from "../components/nav";
 import Footer from "../components/footer";
 
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
-import "../assets/css/formInput.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 

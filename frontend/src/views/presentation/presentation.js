@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 // components
-import Nav from "../../components/nav/nav";
-import Footer from "../../components/footer/footer";
+import Nav from "../../components/nav";
+import Footer from "../../components/footer";
 //Styled-components
 import styled from "styled-components";
 //Photos

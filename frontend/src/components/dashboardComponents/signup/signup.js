@@ -3,9 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
-import "../../../assets/css/formInput.css";
 import "./signup.css";
-// import styled from "styled-components";
+import styled from "styled-components";
 
 
 function Signup() {
@@ -31,8 +30,8 @@ function Signup() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (isValidEmail(email) & isValidPhone(phone)) {
-			if (firstName && phone && email && password) {
-                fetch("/dashboard/admin/users", {
+			if (firstName && lastName && phone && email && password) {
+                fetch("http://localhost:8000/dashboard/admin/users", {
                     method: "POST",
                     body: JSON.stringify({
                         firstName,
@@ -40,7 +39,6 @@ function Signup() {
                         email,
                         password,
                         phone
-                        
                     }),
                 })
                     .then((res) => res.json())
@@ -48,6 +46,7 @@ function Signup() {
                         if (data.success) {
                             toast.success(data.message);
                             navigate("/login");
+                            console.log(data.message)
                         }
                     })
                     .catch((err) => toast.error("L'utilisateur n'est pas créé. Veuillez réessayer, merci !"));
@@ -58,11 +57,10 @@ function Signup() {
 };
 
     return(
-        <section className="signup-form">
+        <SignupStyled className="signup-form">
             <div>
                 <h2 className="title-create">Créer un utilisateur</h2>
             </div>
-
 
             <form onSubmit={handleSubmit}>
                 <ol className="forms">
@@ -178,8 +176,63 @@ function Signup() {
                 </ol>
             </form>
 
-        </section>
+        </SignupStyled>
     )
 }
 export default Signup;
+
+const SignupStyled = styled.div`
+ol.forms {
+float: center;
+list-style: none;
+margin: 10;
+width: 100%;
+}
+
+ol.forms li {
+clear: both;
+float: center;
+margin-bottom: 18px;
+position: relative;
+width: 100%;
+}
+
+ol.forms label {
+font-weight: 600;
+font-size: 1rem;
+}
+
+ol.forms input,
+ol.forms textarea {
+background: none repeat scroll 0 0 #ffffff;
+border: 1px solid #6b0070;
+border-radius: 4px;
+padding: 5px;
+width: 43vw;
+}
+
+ol.forms textarea{
+height: 30vh;
+}
+
+ol.forms input:hover,
+ol.forms textarea:hover {
+background: none repeat scroll 0 0 #f4eef5;
+border: 1px solid rgb(116, 128, 150);
+padding: 5px;
+width: 43vw;
+}
+
+ol.forms textarea:hover{
+height: 30vh;
+}
+
+ol.forms li.inline label {
+color: #4c2a4e;
+display: inline;
+float: none;
+width: auto;
+margin-bottom: 2%;
+}
+`;
 

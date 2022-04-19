@@ -33,16 +33,20 @@ function DashboardAdmin() {
     <>
      <SideBarAdmin/> 
      <Container>
-     <Bonjour/>
-     <AgendaStyle>
-     <ApiCalendar/>
-     </AgendaStyle>
-    <ToDoStyle>
-     <ToDoList/>
-     </ToDoStyle>
-     <RessourcesStyle>
-     <Ressources/> 
-     </RessourcesStyle>
+        <Bonjour/>
+
+        <AgendaStyle>
+          <ApiCalendar/>
+        </AgendaStyle>
+
+        <ToDoStyle>
+          <ToDoList/>
+        </ToDoStyle>
+
+        <RessourcesStyle>
+          <Ressources/> 
+        </RessourcesStyle>
+        
      </Container>
 
 
