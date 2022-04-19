@@ -14,3 +14,15 @@
     margin-left: 30%;
     color:#4c2a4e;
 }
+.btn-search,
+.btn-delete,
+.btn-modify {
+    margin: 2% 2% 2% 20%;
+    padding: auto;
+    border-radius: 4px;
+    align-items: center;
+
+}
+.btn-search {
+    margin: 2% 2% 2% 40%;
+}

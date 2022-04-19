@@ -10,20 +10,21 @@ const multer = require("multer");
 // Test 2
 // const gridfs = require("gridfs-stream");
 
-//----------- MIDDLEWARES ------------//
+//--------------- MIDDLEWARES ------------//
 const auth = require("../middlewares/auth");
 const isAdmin = require("../middlewares/isAdmin");
 const {
   validateTaskJoi,
   validateUserJoi,
 } = require("../middlewares/joiValidation");
-
 //---------------- MODELS -----------------//
 const User = require("../models/userModel");
 const Task = require("../models/taskModel");
-// const Ressources = require("../models/ressourcesModel");
+const Ressources = require("../models/ressourcesModel");
+//------------- MULTER ---------------//
+const multer = require("multer");
+// -------SET UP MULTER --------------//
 const Image = require("../models/imageModel");
-const { nextTick } = require("process");
 
 // ------------ SET UP MULTER --------------//
 const storage = multer.diskStorage({
@@ -60,10 +61,10 @@ router.get("/user", auth, async (req, res) => {
   return res.json({ user });
 });
 
+//********************* ADMIN *******************//
 // GET USER'S TO DO LIST:
 router.get("/user/list", auth, async (req, res) => {
   const userId = req.userId;
-  // const userId = "62587d8a2451d60a3bc4a53b";
   let usersList;
 
   try {
@@ -93,7 +94,7 @@ router.delete("/user/list", auth, async (req, res) => {
   return res.json({ deletedTask });
 });
 
-// CREATE A TASK IN USER'S TO DO LIST AND UPDATE USER
+// CREATE A TASK IN USER'S TO DO LIST
 router.post("/user/list", auth, validateTaskJoi, async (req, res) => {
   let newTask = req.body,
     addedTask,
@@ -148,8 +149,7 @@ router.put("/user/list", auth, async (req, res) => {
 //**************** ADMIN *******************//
 
 //* GET ADMIN'S INFO (TO DISPLAY THEM IN THE DASHBOARD):
-router.get("/admin", isAdmin, async (req, res) => {
-  // Find user
+router.get("/admin", auth, isAdmin, async (req, res) => {
   let user;
 
   try {
@@ -165,9 +165,9 @@ router.get("/admin", isAdmin, async (req, res) => {
 });
 
 // GET ADMIN'S TO DO LIST:
-router.get("/admin/list", isAdmin, async (_req, res) => {
+router.get("/admin/list", auth, isAdmin, async (_req, res) => {
   let adminList,
-    adminID = "62587d8a2451d60a3bc4a53b";
+    adminID = process.env.ADMIN_ID;
 
   // Get list of tasks with admin's ID :
   try {
@@ -180,7 +180,7 @@ router.get("/admin/list", isAdmin, async (_req, res) => {
 });
 
 // DELETE A TASK IN ADMIN'S TO DO LIST:
-router.delete("/admin/list", isAdmin, async (req, res) => {
+router.delete("/admin/list", auth, isAdmin, async (req, res) => {
   // The content must be unique, otherwise an error msg is displayed : "Task already exists"
   let deletedTask = req.body;
 
@@ -194,7 +194,7 @@ router.delete("/admin/list", isAdmin, async (req, res) => {
 });
 
 // ADD A NEW TASK INTO ADMIN'S TO DO LIST:
-router.post("/admin/list", isAdmin, async (req, res) => {
+router.post("/admin/list", auth, isAdmin, async (req, res) => {
   let newTask = req.body,
     addedTask;
   const adminID = "62587d8a2451d60a3bc4a53b";
@@ -214,7 +214,7 @@ router.post("/admin/list", isAdmin, async (req, res) => {
 });
 
 // MODIFY A TASK IN ADMIN'S TO DO LIST :
-router.put("/admin/list", isAdmin, async (req, res) => {
+router.put("/admin/list", auth, isAdmin, async (req, res) => {
   let taskToModify = req.body,
     modifiedTask;
 
@@ -231,6 +231,18 @@ router.put("/admin/list", isAdmin, async (req, res) => {
   return res.status(201).json({ modifiedTask });
 });
 
+//* GET LIST OF ALL USERS
+router.get("/admin/users", auth, isAdmin, async (_req, res) => {
+  let users;
+
+  try {
+    users = await User.find();
+  } catch (error) {
+    return res.status(400).json({ message: "An error occurred." });
+  }
+  return res.json({ users });
+});
+
 //* CREATE A NEW USER
 router.post(
   "/admin/users",
@@ -240,7 +252,6 @@ router.post(
   async (req, res) => {
     let user;
     const { password } = req.body;
-
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 12);
     console.log("hashed password: ", hashedPassword);
@@ -253,7 +264,7 @@ router.post(
     } catch (error) {
       console.log(error);
       return res.status(400).json({
-        message: "Invalid email or password",
+        message: "An error occurred",
       });
     }
     res.status(201).json({
@@ -263,34 +274,37 @@ router.post(
   }
 );
 
-//* GET LIST OF ALL USERS
-router.get("/admin/users", isAdmin, async (req, res) => {
-  let users;
-
+//* UPDATE A USER
+router.put("/admin/users", auth, isAdmin, async (req, res) => {
+  let user;
+  const { _id, firstName, lastName, email } = req.body;
   try {
-    users = await User.find();
+    user = await User.findByIdAndUpdate(_id, {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+    });
   } catch (error) {
-    return res.status(400).json({ message: "An error occurred." });
-  }
-  return res.json({ users });
-});
-
-// UPDATE A USER
-router.put("/admin/users", isAdmin, validateUserJoi, async (req, res) => {
-  let user, updatedUser;
-  try {
-    user = await User.findOne({ email });
-  } catch (error) {
-    console.log(error);
     return res.status(400).json({ message: "An error occured." });
   }
   return res
     .status(201)
-    .json({ message: "Account successfully created!", user });
+    .json({ message: "Account successfully updated !", user }); // Updated contact doesn't appear in Postman but effective in MongoDB !
 });
 
-// DELETE A USER
-router.delete("/admin/users", (req, res) => {});
+//* DELETE A USER
+router.delete("/admin/users", auth, isAdmin, async (req, res) => {
+  let user;
+  const id = req.body._id;
+  try {
+    user = await User.findByIdAndDelete(id);
+  } catch (error) {
+    return res.status(400).json({ message: "An error occured." });
+  }
+  return res
+    .status(201)
+    .json({ message: "Account successfully deleted !", user });
+});
 
 //DOWNLOAD FILES/RESSOURCES FROM DASHBOARD (USER AND ADMIN) :
 router.get("/user/files", (req, res) => {

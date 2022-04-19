@@ -3,48 +3,33 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const mongoose = require("mongoose");
-
+//------ BODY PARSER AND COOKIE PARSER ------//
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 //----------------- CORS --------------------//
 const cors = require("cors");
 app.use(
   cors({
     origin: "http://localhost:3000",
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    "Access-Control-Allow-Credentials": true
-    // origin: "*",
-  })
-);
+    methods: ["GET", "POST", "PUT", "DELETE"]}));
 
 //--------- SET UP EJS -------------//
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 // Set EJS as templating engine
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
 const fs = require("fs");
 const path = require("path");
 app.use(express.static("/backend/routers"));
-
 //-------------- DOTENV ----------------------//
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
-//------ BODY PARSER AND COOKIE PARSER ------//
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
-//-------------- OTHER LIBRARIES -----------//
-const fs = require("fs");
-const path = require("path");
-//--------------- SET UP EJS ------------------//
-app.set("view engine", "ejs");
 
 //--------------- MIDDLEWARES ----------------//
-// app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.static("/backend/routers"));
-
 
 //------------ CONNECT TO MONGODB -------------//
 mongoose

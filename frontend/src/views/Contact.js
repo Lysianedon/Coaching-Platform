@@ -1,5 +1,5 @@
 import { useState } from "react";
-import emailjs from "emailjs-com";
+// import emailjs from "emailjs-com";
 
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
 import styled from "styled-components";
@@ -44,15 +44,15 @@ function Contact() {
 					message,
 				};
 
-				emailjs
-					.send(
-						process.env.REACT_APP_SERVICEID,
-						process.env.REACT_APP_TEMPLATEID,
-						templateParams,
-						process.env.REACT_APP_USERID
-					)
-					.then((response) => console.log(response))
-					.then((error) => console.log(error));
+				// emailjs
+				// 	.send(
+				// 		process.env.REACT_APP_SERVICEID,
+				// 		process.env.REACT_APP_TEMPLATEID,
+				// 		templateParams,
+				// 		process.env.REACT_APP_USERID
+				// 	)
+				// 	.then((response) => console.log(response))
+				// 	.then((error) => console.log(error));
 
 				setName("");
 				setPhone("");
@@ -168,6 +168,7 @@ function Contact() {
 											onChange={(e) => setMessage(e.target.value)}
 										></textarea>
 									</div>
+									
 								</li>
 
 								{/* Button submit */}
@@ -177,6 +178,7 @@ function Contact() {
 									</button>
 
 								</li>
+								
 							
 							</ol>
 						</form>

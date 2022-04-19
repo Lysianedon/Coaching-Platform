@@ -1,5 +1,6 @@
 import {React, useState} from "react";
-
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
 import "../../../assets/css/formInput.css";
@@ -8,6 +9,8 @@ import "./signup.css";
 
 
 function Signup() {
+    const navigate = useNavigate();
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -16,7 +19,7 @@ function Signup() {
 
 	const isValidPhone = (phone) => {
 		const regex =
-        /^\+?[1-9][0-9]{7,14}$/;
+        /^\+?[1-9][0-9]{9,14}$/;
 		return regex.test(Number(phone));
 	};
 	const isValidEmail = (email) => {
@@ -25,31 +28,43 @@ function Signup() {
 		return regex.test(String(email).toLowerCase());
 	};
 
-	const submit = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (isValidEmail(email) & isValidPhone(phone)) {
 			if (firstName && phone && email && password) {
-				setFirstName("");
-				setPhone("");
-				setEmail("");
-				setLastName("");
-				setPassword("");
-				alert("Email bien envoyé");
-			} else {
-				alert("Merci de remplir tous les champs");
-			}
-		} else {
-			alert("Merci de renseigner une adresse email correcte");
-		}
-	};
+                fetch("/dashboard/admin/users", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        firstName,
+                        lastName,
+                        email,
+                        password,
+                        phone
+                        
+                    }),
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.success) {
+                            toast.success(data.message);
+                            navigate("/login");
+                        }
+                    })
+                    .catch((err) => toast.error("L'utilisateur n'est pas créé. Veuillez réessayer, merci !"));
+            } else {
+                toast.error("Merci de renseigner une adresse email ou un numéro de téléphone correcte");
+            }
+	}
+};
 
     return(
         <section className="signup-form">
             <div>
-                <h2 id="tilte-create"> Créer un utilisateur </h2>
+                <h2 className="title-create">Créer un utilisateur</h2>
             </div>
 
-            <form>
+
+            <form onSubmit={handleSubmit}>
                 <ol className="forms">
                     {/* firstName */}
                     <li>
@@ -96,31 +111,38 @@ function Signup() {
                             </label><br/>
                             <input
                                 id="email"
-                                type="text"
-                                placeholder="Votre email"
+                                type="email"
+                                aria-describedby="emailHelp"
+                                placeholder="xxxxxx@xxxxx.com"
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                            />
+                            /> <br />
+                            <small id="emailHelp" className="form-text text-muted">
+                            Nous ne partagerons jamais votre e-mail avec quelqu'un d'autre.
+							</small>
                             
                         </div>
                     </li>
-
-                    
 
                     {/* Password */}
                     <li>
                         <div>
                             <label htmlFor="password">
-                                *Mot de passe
+                                *Mot de passe:
                             </label> <br/>
                             <input
                                 id="password"
                                 type="password"
-                                placeholder="Votre mot de passe"
+                                aria-describedby="passwordHelp"
+                                placeholder="********"
+                                minLength={8}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                            ></input>
+                            ></input> <br />
+                            <small id="passwordHelp" className="form-text text-muted">
+                            Le mot de passe doit contenir au moins 8 caractères
+							</small>
                         </div>
                     </li>
 
@@ -133,19 +155,23 @@ function Signup() {
                             <input
                                 id="phone"
                                 type="text"
+                                aria-describedby="phoneHelp"
                                 placeholder="Votre numéro de téléphone"
                                 required
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
-                            />
+                            /><br />
+                            <small id="phoneHelp" className="form-text text-muted">
+                            Le numéro de téléphone doit contenir de 9 à 14 caractères
+							</small>
                             
                         </div>
                     </li>
 
                     {/* Button submit */}
                     <li class="buttons">
-                        <button type="submit" className="btn btn-dark" onClick={(e) => submit(e)}>
-                            Submit
+                        <button type="submit" className="btn-create btn-dark">
+                            Créer un utilisateur
                         </button>
 
                     </li>
