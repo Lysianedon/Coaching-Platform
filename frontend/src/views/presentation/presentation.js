@@ -24,6 +24,8 @@ function Presentation() {
 
     return(
         <DivWrapper>
+            <Nav/>
+
           <section className="banner">
             <h2>RENCONTREZ <span className="yellow-block"> VOTRE COACH </span></h2>
             <img src={presentation} alt="pauline" srcset="" />
@@ -53,7 +55,7 @@ function Presentation() {
             <h2 className='action-title'>Prêt.e à passer à l’action ?</h2>
             <button onClick={goToContactPage}>Travaillons ensemble</button>
           </section>
-           
+          <Footer/>
         </DivWrapper>
     )
 }
@@ -119,12 +121,17 @@ font-family: 'poppins';
     color: black;
 }
 
+/*------ FIRST BLOCK OF PRESENTATION ------ */
 .texte-picture{
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 90%;
     margin: auto 3% auto 0;
+
+    img{
+        width: 25%;
+    }
 
     p{
         width: 40%;
@@ -142,10 +149,6 @@ font-family: 'poppins';
       .capital-letter{
         font-size: 3em;
       }
-    }
-
-    img{
-        width: 25%;
     }
 }
 /* --- VERTICAL LINE 2 ----- */

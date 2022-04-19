@@ -40,7 +40,7 @@ function Home() {
   }
   return (
     <DivWrapper>
-      {/* <Nav/> */}
+      <Nav/>
  
         <section className="banner">
           <h1>
@@ -155,14 +155,16 @@ function Home() {
               <img src={linkedin} alt="icon-linkedin" srcset="" />
             </div>
           </section>
-      {/* <Footer/> */}
+      <Footer/>
     </DivWrapper>
   )
 }
 export default Home;
 
+//< ------------------------------------------------ STYLED COMPONENTS ------------------------------------------------>
+//<-------------------------------------------------------------------------------------------------------------------->
+
 const DivWrapper = styled.div`
-/* height: 90vh; */
 overflow-y: scroll;
 font-family: 'poppins';
 
@@ -170,7 +172,7 @@ font-family: 'poppins';
 .banner {
   display: flex;
   align-items: center;
-  width: 95%;
+  width: 95vw;
   margin: 0 auto;
   height: 92vh;
 
@@ -235,7 +237,7 @@ font-family: 'poppins';
     .promesse-content {
       display: flex;
       align-items: center;
-      width: 90%;
+      width: 88vw;
     }
     /* PROMISE TEXT */
     .text{
@@ -369,7 +371,7 @@ font-family: 'poppins';
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 60%;
+  width: 60vw;
   margin: auto;
   padding: 2%;
   margin-bottom: 10%;
@@ -391,7 +393,7 @@ font-family: 'poppins';
   }
 
   button{
-        width: 30%;
+        width: 18vw;
         padding: 2%;
         font-size: 1.8em;
         background-color: #4c2a4e;
@@ -526,11 +528,11 @@ font-family: 'poppins';
 /* ----- SOCIAL MEDIAS ---------- */
 
 .social-medias{
-  margin: auto auto 3% auto;
+  margin: 5% auto 3% auto;
 
   h2 {
     text-align: center;
-    font-size: 4em;
+    font-size: 3em;
     margin: 0 0 1% 0%;
     color: #4c2a4e;
     font-weight: bold;
@@ -543,7 +545,7 @@ font-family: 'poppins';
   }
 
   img{
-    width: 3.5%;
+    width: 3%;
     margin-right: 1.3%;
   }
 }

@@ -23,7 +23,7 @@ const Task = require("../models/taskModel");
 const Ressources = require("../models/ressourcesModel");
 const { findOneAndDelete, findOneAndUpdate } = require("../models/userModel");
 const imgModel = require("../models/imageModel");
-//------------- MULTER -------------//
+//------------- MULTER ---------------//
 const multer = require("multer");
 // -------SET UP MULTER --------------//
 const storage = multer.diskStorage({
@@ -60,7 +60,7 @@ router.get("/user", auth, async (req, res) => {
   return res.json({ user });
 });
 
-//**************** ADMIN *******************//
+//********************* ADMIN *******************//
 
 //GET THE ADMIN'S INFOS (TO DISPLAY THEM IN THE DASHBOARD):
 router.get("/admin", isAdmin, async (req, res) => {
