@@ -53,7 +53,7 @@ function Home() {
           <h2 className='promesse-title'>Ma promesse</h2>
 
           <div className="promesse-content">
-            <p className='text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore temporibus, animi saepe libero accusamus at alias amet cumque eius maxime possimus quidem quos in quo impedit ipsa consequuntur doloremque hic aspernatur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, iste! Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, iste!</p>
+            <p className='texte'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore temporibus, animi saepe libero accusamus at alias amet cumque eius maxime possimus quidem quos in quo impedit ipsa consequuntur doloremque hic aspernatur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, iste! Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, iste!</p>
 
             <iframe width="650" height="400" src="https://www.youtube.com/embed/7jIhhbGTj8I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay muted; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -172,9 +172,10 @@ font-family: 'poppins';
 .banner {
   display: flex;
   align-items: center;
-  width: 95vw;
+  width: 98vw;
+  max-width: 98vw;
   margin: 0 auto;
-  height: 92vh;
+  height: 90vh;
 
 /* FADE IN EFFECT */
 	animation: fadeInAnimation ease 3s;
@@ -189,7 +190,6 @@ font-family: 'poppins';
 		opacity: 1;
 	}
 }
-
 
   h1 {
     color: black;
@@ -214,8 +214,9 @@ font-family: 'poppins';
     text-align: end;
   }
   img {
-    width: 48%;
-    height: 92vh;
+    width: 48vw;
+
+    /* height: 82vh; */
   }
 }
 /* ----------- PROMISE --------- */
@@ -236,12 +237,12 @@ font-family: 'poppins';
     /* PROMESSE CONTENT (TEXT + VIDEO) */
     .promesse-content {
       display: flex;
+      max-width: 88vw;
       align-items: center;
-      width: 88vw;
     }
     /* PROMISE TEXT */
-    .text{
-      width: 50%;
+    .texte{
+      max-width: 50%;
       font-size: 1.8em;
       margin: auto;
       color: white;
@@ -255,7 +256,8 @@ font-family: 'poppins';
   align-items: center;
 
   hr {
-    width: 30%;
+    max-width: 30vw;
+    width: 30vw;
     border: 4px solid;
     color:  #FFC267 !important;
   }
@@ -265,7 +267,7 @@ font-family: 'poppins';
     margin-bottom: 10%;
   }
   .button-action1 {
-    width: 50%;
+    width: 18vw;
     padding: 2%;
     font-size: 1.8em;
     background-color: #4c2a4e;
@@ -411,6 +413,7 @@ font-family: 'poppins';
   flex-direction: column;
   align-items: center;
   margin: 1% auto 10%;
+  max-width: 95vw;
 
   h2{
     text-align: center;
