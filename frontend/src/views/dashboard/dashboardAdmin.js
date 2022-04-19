@@ -33,11 +33,11 @@ function DashboardAdmin() {
  }, [])
   return (
     <>
-    <h2>Bonjour {firstname} ! </h2>
-     <h2>Coucou</h2>
      <SideBarAdmin/> 
      <Container>
-      <Bonjour/>
+      <BonjourStyle>
+        <Bonjour/>
+      </BonjourStyle>
       <AgendaStyle>
         <ApiCalendar/>
       </AgendaStyle>
@@ -69,7 +69,18 @@ align-items: center;
 justify-content: center;
 overflow-x: hidden;
 `;
+const BonjourStyle = styled.div`
 
+    border-radius:12px;
+    position:inherit;
+    padding:15px;
+    color:white;
+    margin-bottom:330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:black;
+`;
 
 const AgendaStyle = styled.div`
 
@@ -104,13 +115,13 @@ const ToDoStyle = styled.div`
 const RessourcesStyle = styled.div`
 
   font-size: 16px;
-  height:500px;
+  height:600px;
   width:72vw;
   position:inherit;
 	padding: 90px;
   border-radius:12px;
   background-color:#4c2a4e;
-  margin-top:2080px;
+  margin-top:2180px;
   padding:15px;
   color:white;
   display: flex;

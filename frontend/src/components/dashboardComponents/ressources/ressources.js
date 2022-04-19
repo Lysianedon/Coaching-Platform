@@ -36,11 +36,11 @@ function Ressources() {
 			<div>
 				{/* Upload form */}
 				<div className="uploadfile" >
-					<form  onSubmit={onSubmit}>
+					<form  onSubmit={onSubmit} >
 						<div className="uploadInput" >
-							<label htmlFor="fileName" >
-								Nom de fichier
-							</label>
+						<div className="label">
+							<h6>File name:</h6>
+						</div>
 							<input
 								type="text"
 								id="fileName"
@@ -51,18 +51,19 @@ function Ressources() {
 							/>
 						</div>
 
-						<div>
-							<label htmlFor="file">
-								File
-							</label>
+						<div className="uploadInput">
+						<div className="label">
+							<h6>Your file: </h6>
+						</div>
 							<input
 								type="file"
 								id="file"
 								name="file"
 								onChange={(e) => setFile(e.target.files[0])}
+								className="choosefile"
 							/>
 						</div>
-						<button type="submit" >
+						<button type="submit" className="addbtn" >
 							Ajouter
 						</button>
 					</form>

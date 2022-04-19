@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { TiEdit } from 'react-icons/ti';
 import TodoForm from './TodoForm';
@@ -10,9 +9,10 @@ const Todo = (props) => {
     value: '',
   });
 
-  const completehandler = (id) => {
-    props.onComplete(id);
-  };
+
+const completehandler = (id) => {
+  props.onComplete(id);
+};
 
   const deleteHandler = (id) => {
     props.onDelete(id);
@@ -25,8 +25,8 @@ const Todo = (props) => {
     });
   };
 
-  const formEditHandler = (todo) => {
-    props.onEdit(todo);
+  const formEditHandler = (task) => {
+    props.onEdit(task);
     // clean up and change the status to empty
     setEdit({
       id: null,
@@ -41,27 +41,27 @@ const Todo = (props) => {
 
   return (
     <React.Fragment>
-      {props.todos.map((todo, index) => {
+      {props.tasks.map((task, index) => {
         return (
           <div
             key={index}
-            className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
+            className={task.accomplished ? 'todo-row complete' : 'todo-row'}
           >
             <div
-              key={todo.id}
+              key={task.id}
               className="text"
-              onClick={completehandler.bind(null, todo.id)}
+              onClick={completehandler.bind(null, task.id)}
             >
-              {todo.text}
+              {task.content}
             </div>
             <div className="icons">
               <RiCloseCircleLine
                 className="delete-icon"
-                onClick={deleteHandler.bind(null, todo.id)}
+                onClick={deleteHandler.bind(null, task.id)}
               />
               <TiEdit
                 className="edit-icon"
-                onClick={editHandler.bind(null, todo.id, todo.text)}
+                onClick={editHandler.bind(null, task.id, task.content)}
               />
             </div>
           </div>
