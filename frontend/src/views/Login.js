@@ -21,7 +21,7 @@ function Login() {
 
   const fetchPost = async () => {
   const response = await fetch(
-      "https://api.chucknorris.io/jokes/random"
+      "https://api.chucknorris.io/jokes/random" ,  { withCredentials: true }
     );
    const data = await response.json();
     setPosts(data);
@@ -44,7 +44,7 @@ function Login() {
 
     await axios.post('http://localhost:8000/login', {
       email, password
-    })
+    } , { withCredentials: true })
     .then(res => {
       console.log(res.data);
 
