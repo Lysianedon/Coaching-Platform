@@ -6,6 +6,7 @@ const cors = require("cors");
 //--------------- AUTH ----------------//
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const auth = require('../middlewares/auth');
 
 //------------- SECRET --------------//
 const secret = process.env.SECRET;
@@ -16,10 +17,17 @@ const User = require("../models/userModel");
 //------------- ROUTE ---------------//
 router.post("/", async (req, res) => {
   const { email, password } = req.body;
-  console.log(email, password);
+  console.log("email password: ",email, password);
   //* 1- Check user's email
-  const user = await User.findOne({ email });
+  let user;
+  try {
+     user = await User.findOne({ email });
+  } catch (error) {
+    console.log(error);
+    return res.json({message: "A problem happened."})
+  }
   console.log("user::: ", user);
+
   if (!user) {
     return res.status(401).json({
       message: "Incorrect email or password",
