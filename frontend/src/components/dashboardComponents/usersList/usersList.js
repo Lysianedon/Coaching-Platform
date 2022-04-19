@@ -8,12 +8,10 @@ import Buttons from "../buttons/buttons";
 function UsersList() {
     return(
         <UsersListStyled>
-           
-            
+
             <CardUser/>
             {/* <Buttons/> */}
-            
-            
+
         </UsersListStyled>
     )
 }
