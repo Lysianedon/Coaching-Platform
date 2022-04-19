@@ -37,11 +37,11 @@ const TodoForm = (props) => {
 
   return (
     <form
-      className="todo-form"
+    className="addInput"
       onSubmit={props.edit ? editsubmitHandler : submitHandler}
     >
       {props.edit ? (
-        <React.Fragment>
+        <>
           <input
             ref={ref}
             placeholder="Update your todo item"
@@ -52,9 +52,9 @@ const TodoForm = (props) => {
             onChange={changeHandler}
           />
           <button className="todo-button edit">Update</button>
-        </React.Fragment>
+        </>
       ) : (
-        <React.Fragment>
+        <>
           <input
             ref={ref}
             placeholder="Add a todo"
@@ -65,7 +65,7 @@ const TodoForm = (props) => {
             onChange={changeHandler}
           />
           <button className="todo-button">Add todo</button>
-        </React.Fragment>
+        </>
       )}
     </form>
   );

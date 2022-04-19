@@ -6,8 +6,8 @@ import styled from "styled-components";
 import "../assets/css/formInput.css";
 
 // components
-import Nav from "../components/nav/nav";
-import Footer from "../components/footer/footer";
+import Nav from "../components/nav";
+import Footer from "../components/footer";
 
 function Contact() {
 	const [name, setName] = useState("");
@@ -15,6 +15,11 @@ function Contact() {
 	const [email, setEmail] = useState("");
 	const [subject, setSubject] = useState("");
 	const [message, setMessage] = useState("");
+	
+	const [phoneError, setPhoneError] = useState("");
+	const [emailError, setEmailError] = useState("");
+	const [emptyError, setEmptyError] = useState("Merci de remplir tous les champs");
+	const [submittedMessage, setSubmittedMessage] = useState("Email a été bien envoyé !");
 
 	const isValidPhone = (phone) => {
 		const regex =
@@ -27,7 +32,7 @@ function Contact() {
 		return regex.test(String(email).toLowerCase());
 	};
 
-	const submit = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (isValidEmail(email) & isValidPhone(phone)) {
 			if (name && phone && email && message) {
@@ -54,35 +59,34 @@ function Contact() {
 				setEmail("");
 				setSubject("");
 				setMessage("");
-				alert("Email bien envoyé");
+				setSubmittedMessage("")
 			} else {
-				alert("Merci de remplir tous les champs");
+				setEmptyError("");
 			}
 		} else {
-			alert("Merci de renseigner une adresse email correcte");
+			setEmailError("");
+			setPhoneError("");
 		}
 	};
 
+	
+
 	return (
 		<ContactPage>
-			{/* <Nav/> */}
+			<Nav/>
 			<div className="video-thank text-center m-2 p-2" dangerouslySetInnerHTML={{ __html: "<iframe width='560' height='315' title='Thanks' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen src='https://www.youtube.com/embed/l1whgIrlLio' style={{  />"}} />
 		
-
+			<h2 className="title">Contactez-moi</h2>
 			<div id="contact-form">
 				<div>
-					<div className="header">
-						<h2 className="title">Contactez-moi</h2>
-					</div>
-					
 					<div>
-						<form id="contact-me">
+						<form onSubmit={handleSubmit} action="http://localhost:8000/contact" method="POST" id="contact-me">
 							<ol className="forms">
 								{/* Name */}
 								<li>
 									<div>
 										<label htmlFor="name">
-											Votre nom:
+											*Votre nom:
 										</label><br/>
 										<input
 											id="name"
@@ -100,12 +104,12 @@ function Contact() {
 								<li>
 									<div>
 										<label htmlFor="phone">
-											Votre numéro de téléphone:
+											*Votre numéro de téléphone:
 										</label><br/>
 										<input
 											id="phone"
 											type="text"
-											placeholder="Votre prénom"
+											placeholder="Votre numéro de téléphone"
 											required
 											value={phone}
 											onChange={(e) => setPhone(e.target.value)}
@@ -118,11 +122,11 @@ function Contact() {
 								<li>
 									<div>
 										<label htmlFor="email">
-											Votre email:
+											*Votre email:
 										</label><br/>
 										<input
 											id="email"
-											type="text"
+											type="email"
 											placeholder="Votre email"
 											required
 											value={email}
@@ -136,7 +140,7 @@ function Contact() {
 								<li>
 									<div>
 										<label htmlFor="subject">
-											Sujet:
+											*Sujet:
 										</label><br/>
 										<input
 											id="suject"
@@ -154,7 +158,7 @@ function Contact() {
 								<li>
 									<div>
 										<label htmlFor="message">
-											Votre message...
+											*Votre message:
 										</label> <br/>
 										<textarea
 											id="message"
@@ -168,7 +172,7 @@ function Contact() {
 
 								{/* Button submit */}
 								<li class="buttons">
-									<button type="submit" className="btn btn-dark" onClick={(e) => submit(e)}>
+									<button type="submit" className="btn-send" onClick={(e) => handleSubmit(e)}>
 										Send
 									</button>
 
@@ -182,7 +186,7 @@ function Contact() {
 				</div>
 			</div>
 
-			{/* <Footer/> */}
+			<Footer/>
 		</ContactPage>
 		
 	);
@@ -192,25 +196,29 @@ export default Contact;
 
 const ContactPage = styled.div`
 .video-thank {
-    background-color: antiquewhite;
+    background-color: #4c2a4e;
     width: 100%;
     height: auto;
 }
 
 /********* Tilte *********/
-.header {
-    background-color: #06477c;
-    width: 40vw;
-    height: auto;
-    color: white;
-    padding: 1% 1% 1% 2%;
-    margin: 2%;
-    border-radius: 5px;
-  }
   .title {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
-    padding: 0% 0% 0% 7%;
+    margin-left: 40%;
+	margin-top: 2% 10% 2% 25%;
+  }
+  .btn-send{
+	  width: 10vw;
+	  height: auto;
+	  background-color: #4c2a4e;
+	  border: 1px solid #4c2a4e;
+	  border-radius: 4px;
+	  padding: 1px;
+	  color: white;
+  }
+  .btn-send:hover {
+	  background-color: black;
   }
 
   /********* Form Contact ********/
@@ -218,9 +226,7 @@ const ContactPage = styled.div`
     display: flex;
     flex-direction: column;
     padding: 2%;
-    margin: 5% 25% 5%; 
-    border: 1px solid rgb(221, 239, 252);
-    box-shadow: 5px 10px 10px 5px rgb(218 233 243);
+    margin: 0% 5% 5% 25%;
     border-radius: 10px;
     width: 50vw;
     height: auto;

@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link, Router } from 'react-router-dom';
+// import { Link, Router } from 'react-router-dom';
 
 //css
 import styled from 'styled-components';
-import './nav.css'
-import Logo from "../../assets/images/logo-couleurs.png"
+import Logo from "../assets/images/logo-couleurs.png"
 
 
 function Nav() {
@@ -20,6 +19,7 @@ function Nav() {
                     <Link to="/contact" className='text-link'>Contact</Link>
                     <Link to="/questionaire/starter"><QuestionnaireBtn className='text-link btn btn-dark'>Questionnaire</QuestionnaireBtn>
                     </Link> */}
+
                     <a href="/" className='text-link'>Home</a>
                     <a href="/presentation" className='text-link'>Qui suis-je ?</a>
                     <a href="/coaching" className='text-link'>Coaching</a>
@@ -56,7 +56,24 @@ const Navbar = styled.nav`
     font-weight: bold;
     margin-top: 3%;
   }
-  `;
+  .text-link {
+    color: inherit;
+    text-decoration: inherit;
+    color:black;
+    vertical-align: top;
+    margin-right: 20px;
+    height: 40px;
+    line-height: 30px; 
+  }
+
+  img{
+      vertical-align: top;
+      width: 20%;
+      height: auto;
+      float: left;
+
+  }
+`;
 
 const QuestionnaireBtn = styled.button`
 border-radius:5px;

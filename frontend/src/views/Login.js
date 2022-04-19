@@ -4,8 +4,8 @@ import styled from "styled-components";
 import axios from 'axios';
 
 // components
-import Nav from "../components/nav/nav";
-import Footer from "../components/footer/footer";
+import Nav from "../components/nav";
+import Footer from "../components/footer";
 
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
 import "../assets/css/formInput.css";
@@ -61,7 +61,7 @@ function Login() {
 
   return (
     <LoginFormStyled> 
-       
+       <Nav/>
           {/*  LOGIN FORM */}
         <div className="login-column">
           <div class="container">
@@ -69,31 +69,25 @@ function Login() {
               <div class="col-6">
             
                 <form className="login-form" action="http://localhost:8000/login" method="POST" onSubmit={handleSubmit}>
-                    <h2>Login</h2>
-                     <ol className="forms">
+                    <h3>Login</h3>
+                     <div>
                        {/* Email */}
-                       <li>
                         <div className="email">
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email">Email:</label>
                             <input type="text" id="email" />
                           </div>
-                       </li>
                         
                         {/* Password */}
-                        <li>
                           <div className="password">
-                            <label htmlFor="password">Password</label> 
+                            <label htmlFor="password">Password:</label> 
                             <input type="password" id="password" />
                           </div>
-                        </li>
 
                         {/* Button Submit */}
-                        <li>
-                          <div className="button">
-                            <button type="submit" onClick={handleSubmit} className="btn btn-dark submit">Submit</button>
-                          </div>
-                        </li>                      
-                      </ol>     
+                          <div>
+                            <button type="submit" onClick={handleSubmit} className="submit btn-dark ">Submit</button>
+                          </div>                   
+                      </div>     
                 </form>
               
               </div>
@@ -131,8 +125,9 @@ function Login() {
             </div>
           </div>
         </div>
-
+        <Footer/>
     </LoginFormStyled>
+    
   )
 }
 export default Login;
@@ -140,7 +135,7 @@ export default Login;
 const LoginFormStyled = styled.div`
 height: 73vh;
 
-h2 {
+h3 {
   /* margin-top: 4vh; */
   font-size: 3em;
   margin: 0 auto 8vh auto;
@@ -172,7 +167,7 @@ h2 {
 
 label {
   display: block;
-  font-size: 1.8em !important;
+  font-size: 1em !important;
 }
 
 .submit {
@@ -182,11 +177,17 @@ label {
   padding: 2%;
   width: 30%;
   margin: 5% 25%;
-  font-size: 1.5em !important;
+  font-size: 1em !important;
+  border-radius: 4px;
 }
 
 input {
-  border: 1px solid black !important;
+  /* border: 1px solid black !important; */
+  width: 30vw;
+  padding: 2%;
+  margin: 1px;
+  border: 1px solid #6b0070;
+   border-radius: 4px;
 }
 
 .quotes-block{

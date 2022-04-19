@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 // components
-import  Nav from '../../components/nav/nav';
-import  Footer  from '../../components/footer/footer';
+import  Nav from '../../components/nav';
+import  Footer  from '../../components/footer';
 //Images
 import optionun from '../../assets/images/un.png'
 import coachingindividuel from '../../assets/images/individuel.png'
