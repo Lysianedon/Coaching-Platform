@@ -10,11 +10,9 @@ function Agenda() {
 
         axios.get('http://localhost:8000/dashboard/user', {withCredentials : true})
         .then(res =>{ 
-            console.log(res.data);
             let email = (res.data.user.email);
             email = email.replace('@', '%40');
             setEmailUser(email);
-            console.log('email user: ', emailUser);
         })
     }
 
