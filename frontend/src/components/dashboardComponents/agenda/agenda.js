@@ -25,7 +25,6 @@ function Agenda() {
 
     return (
         <>
-        <h2>{emailUser}</h2>
             <iframe src={`https://calendar.google.com/calendar/embed?src=${emailUser}&ctz=Europe%2FParis`}   height={300} className="agenda" ></iframe>
         </>
     )
