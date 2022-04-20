@@ -1,54 +1,60 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // css
 import "./todolist.css";
-
+import axios from "axios";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
 
 const TodoList = (props) => {
-  const key = "todoList";
-  const savedList = JSON.parse(localStorage.getItem(key));
-  const [todos, setTodos] = useState(savedList ? savedList : []);
 
-  const addTodo = (todo) => {
+  const [tasks, setTasks] = useState([]);
+  const fetchToDolist = () =>{
+    axios.get ("http://localhost:8000/dashboard/user/list", { withCredentials: true })
+  .then(res => 
+    {
+    console.log(res.data);
+    setTasks(res.data.usersList)
+  });}
+  
+  useEffect(() => {
+    fetchToDolist();
+  }, []);
+
+  const addTodo = (task) => {
     // to prevent add empty string
-    if (!todo.text) return;
-
-    const newTodos = [todo, ...todos];
-    localStorage.setItem(key, JSON.stringify(newTodos));
-    setTodos(newTodos);
+    if (!tasks.text) return;
+    const newTask = [task, ...tasks];
+    setTasks(newTask);
   };
 
+
   const onCompleteHandler = (id) => {
-    let updatedArr = todos.map((todo) => {
+    let updatedArr = tasks.map((task) => {
       // chnage the status of todo item
-      if (todo.id === id) {
-        todo.isComplete = !todo.isComplete;
+      if (task.id === id) {
+        task.isComplete = !task.isComplete;
       }
-      return todo;
+      return task;
     });
 
-    localStorage.setItem(key, JSON.stringify(updatedArr));
-    setTodos(updatedArr);
+    setTasks(updatedArr);
   };
 
   const onDeleteHandler = (id) => {
-    const removedArr = [...todos].filter((todo) => todo.id !== id);
-    localStorage.setItem(key, JSON.stringify(removedArr));
-    setTodos(removedArr);
+    const removedArr = [...tasks].filter((task) => task.id !== id);
+    setTasks(removedArr);
   };
 
-  const onEditHandler = (newTodo) => {
-    if (!newTodo.text) {
+  const onEditHandler = (newTask) => {
+    if (!newTask.text) {
       return;
     }
 
-    // update the todo list
-    setTodos((prev) => {
-      const updateTodos = prev.map((todo) => {
-        return todo.id === newTodo.id ? newTodo : todo;
+    //update the todo list
+    setTasks((prev) => {
+      const updateTodos = prev.map((task) => {
+        return task.id === newTask.id ? newTask : task;
       });
-      localStorage.setItem(key, JSON.stringify(updateTodos));
       return updateTodos;
     });
   };
@@ -63,7 +69,7 @@ const TodoList = (props) => {
         </div>
         <div className="todolist">
             <Todo
-                todos={todos}
+                tasks={tasks}
                 onComplete={onCompleteHandler}
                 onDelete={onDeleteHandler}
                 onEdit={onEditHandler}

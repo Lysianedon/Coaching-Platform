@@ -16,12 +16,11 @@ function Bonjour() {
 	}, []);
 
     return (
-        <BonjourForm>
             <div> 
-                <h3>Bonjour {userSchema.firstName}</h3>		
+                <h2>Bonjour Pauline! {userSchema.firstName}</h2>		
             </div>
             
-        </BonjourForm>
+            
     )
 
 }

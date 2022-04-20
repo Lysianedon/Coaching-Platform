@@ -9,7 +9,7 @@
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 15px;
-    color: #818181;
+    color: antiquewhite;
     display: block;
     text-align: left;
 }
@@ -31,5 +31,5 @@ img{
 }
 
 .logout{
-    margin-top: 100%;
+    margin-top: 10%;
 }

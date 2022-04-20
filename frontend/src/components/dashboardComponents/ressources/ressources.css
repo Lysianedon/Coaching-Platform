@@ -3,18 +3,25 @@
     width:50vw;
     height: 30vh;
     color: black;
-    justify-content: center;
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-left: 120px;
     margin-bottom: 20px;
-}
+    padding: 10px;
 
+}
+.label{
+    text-align: center;
+    color: antiquewhite;
+    margin-right: 10px;
+}
 .uploadInput{
     position: relative;
-    margin: 40px;
+    margin: 20px;
     border: none;
     border-radius: 12px;
+    display: flex;
     align-items: center;
     justify-content: center;
     color: antiquewhite;
@@ -51,12 +58,32 @@
 }
 
 .inputFileName{
-    border-radius: 4px 0 0 4px;
-    border: 2px solid #a7a4a4;
+    border-radius: 4px;
+    border: none;
     outline: none;
     background: white;
     color: rgb(16, 16, 16);
-    width: 75%;
+    width: 70%;
     padding: 5px;
     font-size: 16px;
+}
+
+.choosefile{
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    background: white;
+    width: 70%;
+}
+
+.addbtn{
+    border-radius: 4px;
+    background: rgb(255, 182, 12);
+    border: none;
+    width: 30%;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-left: 120px;
 }

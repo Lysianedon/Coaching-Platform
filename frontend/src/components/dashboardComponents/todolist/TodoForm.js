@@ -1,38 +1,44 @@
-import React, { useState, useRef, useEffect } from "react";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 const TodoForm = (props) => {
-  const ref = useRef();
-  const [input, setInput] = useState(props.edit ? props.edit.value : "");
 
-  useEffect(() => {
-    // to implete the function that focus input when init the website
-    ref.current.focus();
-  }, []);
+  const [newTask , setNewTask ,] = useState({
+    content:"", 
+    deadline:"", 
+    accomplished:""
+  });
+  const [addedTask, setAddedTask,] = useState([]);
+  const [taskToModify, setTaskToModify] = useState(props.edit ? props.edit.value : "");
 
   const changeHandler = (e) => {
-    setInput(e.target.value);
+    setNewTask({content: e.target.value});
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    props.onSubmit({
-      id: Math.floor(Math.random() * 10000),
-      text: input,
+    axios.post ("http://localhost:8000/dashboard/user/list", { withCredentials: true },{
+      content: newTask.content
+    })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
     });
-
-    setInput("");
   };
+
 
   const editsubmitHandler = (e) => {
     e.preventDefault();
-
-    props.onFormEdit({
-      id: props.edit.id,
-      text: input,
+    axios.put ("http://localhost:8000/dashboard/user/list", { withCredentials: true },{
+      content: taskToModify.content
+    })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
     });
-
-    setInput("");
   };
 
   return (
@@ -43,12 +49,11 @@ const TodoForm = (props) => {
       {props.edit ? (
         <>
           <input
-            ref={ref}
             placeholder="Update your todo item"
             type="text"
             name="text"
             className="todo-input edit"
-            value={input}
+            value={taskToModify}
             onChange={changeHandler}
           />
           <button className="todo-button edit">Update</button>
@@ -56,12 +61,11 @@ const TodoForm = (props) => {
       ) : (
         <>
           <input
-            ref={ref}
             placeholder="Add a todo"
             type="text"
             name="text"
             className="todo-input"
-            value={input}
+            value={addedTask}
             onChange={changeHandler}
           />
           <button className="todo-button">Add todo</button>
