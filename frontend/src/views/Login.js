@@ -49,7 +49,7 @@ function Login() {
 
       //If the user is the admin (Pauline), then she will be redirected to the admin's dashboard,
       // otherwise, the user is redirected to the user's dashboard:
-      if (res.data.success && email === 'pauline.gane@gmail.com') {
+      if (res.data.success && (email === 'pauline.gane@gmail.com'|| email === 'chibienayme@gmail.com' || email === 'anita.mayousse@gmail.com' || email === 'jessica.elessa@gmail.com' || email === 'don.lysiane@gmail.com')) {
         navigate('/dashboard/admin');
         return;
       } else {
