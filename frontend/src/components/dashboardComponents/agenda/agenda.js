@@ -23,9 +23,15 @@ function Agenda() {
 
     return (
         <>
-            <iframe src={`https://calendar.google.com/calendar/embed?src=${emailUser}&ctz=Europe%2FParis`}   height={300} className="agenda" ></iframe>
+            <iframe src={`https://calendar.google.com/calendar/embed?src=${emailUser}&ctz=Europe%2FParis`} height={300} className="agenda" ></iframe>
         </>
     )
  }
 export default Agenda;
+
+const StyledFrame = styled.iframe`
+
+    background-color:"black" !important;
+
+`
 

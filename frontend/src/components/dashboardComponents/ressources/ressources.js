@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 // css
 import styled from 'styled-components';
@@ -8,27 +9,27 @@ function Ressources() {
 	const [fileList, setFileList] = useState([]);
 	
 	useEffect(() => {
-		fetch("/user/file")
-			.then((res) => res.json())
-			.then((data) => {
-				setFileList(data);
-				
-			});
+		axios.get("http://localhost:8000/dashboard/user/", {withCredentials: true})
+			.then(
+				res =>{
+					 console.log(res.data)
+					 setFileList(res.data.user.ressources)}
+			)
 	}, []);
 
 	const onSubmit = () => {
 		const formData = new FormData();
 		formData.append("file", file);
 		formData.append("fileName", fileName);
-        console.log("fileName" , fileName)
-		fetch("/user/file", {
-			method: "POST",
-			body: formData,
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				setFileList(data);
-			});
+        // console.log("fileName" , fileName)
+		// fetch("/user/file", {
+		// 	method: "POST",
+		// 	body: formData,
+		// })
+		// 	.then((res) => res.json())
+		// 	.then((data) => {
+		// 		setFileList(data);
+		// 	});
 	};
 
 

@@ -1,6 +1,7 @@
 //---------------- EXPRESS ------------------//
 const express = require("express");
 const router = express.Router();
+const auth = require('../middlewares/auth');
 //----------------- COOKIES -----------------//
 const cookieParser = require("cookie-parser");
 
@@ -15,7 +16,7 @@ router.get("/", (_req, res) => {
     .json({
       message: "You have successfully logged out!",
     })
-    .redirect("/");
+    // .redirect("/");
 });
 
 module.exports = router;

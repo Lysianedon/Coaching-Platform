@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import Logo from "../../../assets/images/Logo.png";
+import axios from 'axios';
+import { React, useState, useEffect } from "react";
+
 
 // css
 import "./sidebarAdmin.css";
@@ -8,13 +11,27 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import styled from 'styled-components';
 
 function SideBar() {
+
+  const[names, setNames] = useState({});
+
+  useEffect(()=> {
+    axios.get('http://localhost:8000/dashboard/admin', {withCredentials: true})
+    .then(res => {
+      setNames({firstname : res.data.user.firstName, lastname : res.data.user.lastName})
+    })
+  }, [])
+
+  const handleLogout = () => {
+    axios.get('http://localhost:8000/logout', {withCredentials: true})
+  }
+
   return (
     <div className="sidebar">
       <div className="imageDiv">
           <img src={Logo} alt="" />
       </div>
       <div className="pauline">
-          <p>Pauline Gane</p>
+          <p>{names.firstname} {names.lastname}</p>
           <p>- Admin -</p>
       </div>
           <Ul>
@@ -23,7 +40,8 @@ function SideBar() {
             <Link to="#ressources" className="link"> Mes ressources </Link>
             <Link to="/" className="link">Gérer mes coachés </Link>
             <div className="logout">
-              <Link to="/" className="link">Se déconnecter</Link>
+              {/* <Link to="/" className="link">Se déconnecter</Link> */}
+              <a href="/" className="link" onClick={handleLogout}>Se déconnecter</a>
             </div>
           </Ul>
     </div>

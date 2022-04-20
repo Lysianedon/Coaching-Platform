@@ -168,6 +168,11 @@ const DivWrapper = styled.div`
 overflow-y: scroll;
 font-family: 'poppins';
 
+*{
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 /* --------- BANNER ------------- */
 .banner {
   display: flex;
@@ -175,7 +180,7 @@ font-family: 'poppins';
   width: 98vw;
   max-width: 98vw;
   margin: 0 auto;
-  height: 90vh;
+  height: 80vh;
 
 /* FADE IN EFFECT */
 	animation: fadeInAnimation ease 3s;
@@ -215,6 +220,7 @@ font-family: 'poppins';
   }
   img {
     width: 48vw;
+    margin-bottom: 4.2%;
 
     /* height: 82vh; */
   }

@@ -59,7 +59,7 @@ router.get("/user", auth, async (req, res) => {
   return res.json({ user });
 });
 
-//********************* ADMIN *******************//
+//********************* USER *******************//
 // GET USER'S TO DO LIST:
 router.get("/user/list", auth, async (req, res) => {
   const userId = req.userId;

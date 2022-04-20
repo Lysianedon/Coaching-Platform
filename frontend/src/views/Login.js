@@ -43,7 +43,7 @@ function Login() {
 
     axios.post('http://localhost:8000/login', {
       email, password
-    } , { withCredentials: true })
+    } , { withCredentials: true})
     .then(res => {
       console.log(res.data);
 
