@@ -18,7 +18,7 @@ function DashboardAdmin() {
 
   const fetchProfileInfos = () => {
     console.log("before fetch");
-    axios.get('http://localhost:8000/dashboard/admin', { withCredentials: true })
+    axios.get('http://localhost:8000/dashboard/user', { withCredentials: true })
     .then(res => 
       {
       console.log(res.data);

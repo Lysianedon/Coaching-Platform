@@ -41,20 +41,22 @@ function Login() {
 
     console.log("email password:::",email, password);
 
-    axios.post('http://localhost:8000/login', {
-      email, password
-    } , { withCredentials: true})
-    .then(res => {
-      console.log(res.data);
+    axios.post('http://localhost:8000/login',{ email, password} , { withCredentials: true})
+    .then(res =>{
+       console.log(res.data);
 
-      //If the user is the admin (Pauline), then she will be redirected to the admin's dashboard,
-      // otherwise, the user is redirected to the user's dashboard:
-      if (res.data.success && (email === 'pauline.gane@gmail.com'|| email === 'chibienayme@gmail.com' || email === 'anita.mayousse@gmail.com' || email === 'jessica.elessa@gmail.com' || email === 'don.lysiane@gmail.com')) {
-        navigate('/dashboard/admin');
-        return;
-      } else {
-        navigate('/dashboard/user');
-      }
+       if (res.data.success) {
+         axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
+         .then(res => {
+           console.log(res.data);
+           if (res.data.user.isAdmin) {
+             navigate('/dashboard/admin');
+           }else{
+              navigate('/dashboard/user');
+           }
+         })
+       }
+       //Faire code pour identifiants incorrects ici
     })
   }
 

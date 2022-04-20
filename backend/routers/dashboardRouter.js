@@ -38,9 +38,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-//----------------- ROUTES -------------//
+//--------------------------------------- ROUTES -------------------------------------
+//------------------------------------------------------------------------------------
 
-//*************** USER ******************//
+//*************** USER INFOS ******************//
 
 // GET USER'S INFO (TO DISPLAY THEM IN THE DASHBOARD):
 router.get("/user", auth, async (req, res) => {
@@ -59,7 +60,6 @@ router.get("/user", auth, async (req, res) => {
   return res.json({ user });
 });
 
-//********************* USER *******************//
 // GET USER'S TO DO LIST:
 router.get("/user/list", auth, async (req, res) => {
   const userId = req.userId;
@@ -144,90 +144,7 @@ router.put("/user/list", auth, async (req, res) => {
   return res.status(201).json({ modifiedTask });
 });
 
-//**************** ADMIN *******************//
-
-//* GET ADMIN'S INFO (TO DISPLAY THEM IN THE DASHBOARD):
-router.get("/admin", auth, isAdmin, async (req, res) => {
-  let user;
-
-  try {
-    user = await User.findById(req.userId).populate(
-      // "ressources",
-      "tasks"
-    );
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ message: "An error occurred." });
-  }
-  return res.json({ user });
-});
-
-// GET ADMIN'S TO DO LIST:
-router.get("/admin/list", auth, isAdmin, async (_req, res) => {
-  let adminList,
-    adminID = process.env.ADMIN_ID;
-
-  // Get list of tasks with admin's ID :
-  try {
-    adminList = await Task.find({ userId: adminID });
-  } catch (err) {
-    console.log(err);
-    return res.status(401).json({ message: "An error occurred." });
-  }
-  return res.json({ adminList });
-});
-
-// DELETE A TASK IN ADMIN'S TO DO LIST:
-router.delete("/admin/list", auth, isAdmin, async (req, res) => {
-  // The content must be unique, otherwise an error msg is displayed : "Task already exists"
-  let deletedTask = req.body;
-
-  try {
-    deletedTask = await Task.findOneAndDelete({ content: deletedTask.content });
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ message: "An error occurred." });
-  }
-  return res.json({ deletedTask });
-});
-
-// ADD A NEW TASK INTO ADMIN'S TO DO LIST:
-router.post("/admin/list", auth, isAdmin, async (req, res) => {
-  let newTask = req.body,
-    addedTask;
-  const adminID = "62587d8a2451d60a3bc4a53b";
-
-  try {
-    newTask = await Task.create(newTask);
-    addedTask = await Task.findOneAndUpdate(
-      { content: newTask.content },
-      { userId: adminID },
-      { new: true }
-    );
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ message: "An error occurred." });
-  }
-  return res.status(201).json({ addedTask });
-});
-
-// MODIFY A TASK IN ADMIN'S TO DO LIST :
-router.put("/admin/list", auth, isAdmin, async (req, res) => {
-  let taskToModify = req.body,
-    modifiedTask;
-
-  try {
-    modifiedTask = await Task.findOneAndUpdate(
-      { content: taskToModify.initialContent },
-      { content: taskToModify.updatedContent },
-      { new: true }
-    );
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ message: "An error occurred." });
-  }
-  return res.status(201).json({ modifiedTask });
-});
+// ------------ADMIN'S REQUESTS ON COACHEES ---------------------
 
 //* GET LIST OF ALL USERS
 router.get("/admin/users", auth, isAdmin, async (_req, res) => {

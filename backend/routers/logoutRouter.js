@@ -16,7 +16,6 @@ router.get("/", (_req, res) => {
     .json({
       message: "You have successfully logged out!",
     })
-    // .redirect("/");
 });
 
 module.exports = router;
