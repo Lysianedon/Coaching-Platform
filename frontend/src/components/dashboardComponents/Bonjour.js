@@ -1,23 +1,24 @@
 import { useState, useEffect } from "react";
 // css
 import styled from 'styled-components';
+//Axios
+import axios from 'axios';
 
 
 function Bonjour() {
     const [userSchema, setUserSchema] = useState({});
 
     useEffect(() => {
-		fetch("http://localhost:8000/dashboard/user")
-			.then((res) => res.json())
-			.then((data) => {
-				setUserSchema(data);
-				console.log(data);
+		axios.get("http://localhost:8000/dashboard/user", {withCredentials: true})
+			.then(res => {
+				setUserSchema(res.data.user);
+				console.log(userSchema);
 			});
 	}, []);
 
     return (
             <div> 
-                <h2>Bonjour Pauline! {userSchema.firstName}</h2>		
+                <h2>Bonjour {userSchema.firstName} !</h2>		
             </div>
             
             

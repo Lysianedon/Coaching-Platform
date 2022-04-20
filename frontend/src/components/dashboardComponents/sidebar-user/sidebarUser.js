@@ -5,6 +5,7 @@ import "./sidebarUser.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import styled from 'styled-components';
+<<<<<<< HEAD
 import axios from "axios";
 
 function SideBar() {
@@ -19,6 +20,16 @@ function SideBar() {
       console.log(error);
     })
   }
+=======
+//Axios
+import axios from 'axios';
+
+function SideBar() {
+  const handleLogout = () => {
+    axios.get('http://localhost:8000/logout', {withCredentials: true})
+  }
+
+>>>>>>> a128bc96df4ef47f1c930597b1db6e27ebde4d52
   return (
     <div className="sidebar">
       <div className="imageDiv">
@@ -38,9 +49,14 @@ function SideBar() {
             Mes ressources
           </Link>
           <div className="logout">
+<<<<<<< HEAD
             <Link to="/" className="link" onClick={fetchToLogOut}>
+=======
+            {/* <Link to="/" className="link">
+>>>>>>> a128bc96df4ef47f1c930597b1db6e27ebde4d52
               Se déconnecter
-            </Link>
+            </Link> */}
+             <a href="/" className="link" onClick={handleLogout}>Se déconnecter</a>
           </div>
         </Ul>
     </div>

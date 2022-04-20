@@ -8,8 +8,9 @@ const secret = process.env.SECRET;
 // * 1 - First, we check if incoming request has our cookie (called "jwt") ; if no cookie, access to controller prohibited
 const auth = async (req, res, next) => {
   const token = req.cookies.jwt;
+
   if (!token) {
-    res.status(403).json({
+    return res.status(403).json({
       message: "Forbidden access. Login first.",
     });
   }

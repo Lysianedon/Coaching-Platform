@@ -7,18 +7,14 @@ function Profile() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
-//   const fetchProfileInfos = () => {
-    
-//     axios.get('http://localhost:8000/dashboard/user')
-//     // .then(res => res.json())
-//     .then(res => console.log(res.data));
-//   }
+  const fetchProfileInfos = () => {
+    axios.get('http://localhost:8000/dashboard/user')
+    .then(res => console.log(res.data));
+  }
 
-//  useEffect(() => {
-//   console.log("before fetch");
-//   fetchProfileInfos();
-
-//  }, [])
+ useEffect(() => {
+  fetchProfileInfos();
+ }, [])
 
     return (
       <ProfileForm>
