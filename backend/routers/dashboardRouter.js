@@ -256,20 +256,10 @@ router.post("/user/files", upload.single("image"), async (req, res) => {
 
 // DOWNLOAD FROM ICONE ----------------------------------------
 router.get("/test", (req, res) => {
-  // Check file exist on MongoDB
-
-  // var filename = req.query.filename;
-  var filename = "dff";
-
-  gfs.exist({ filename: filename }, (err, file) => {
-    if (err || !file) {
-      res.status(404).send("File Not Found");
-      return;
-    }
-
-    var readstream = gfs.createReadStream({ filename: filename });
-    readstream.pipe(res);
+  return res.download(`${__dirname}/uploads/Unknown_file.txt`, function(error){
+    console.log("Error : ", error)
   });
+  
 });
 
 module.exports = router;
