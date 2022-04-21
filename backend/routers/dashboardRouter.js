@@ -21,9 +21,7 @@ const {
 const User = require("../models/userModel");
 const Task = require("../models/taskModel");
 const Ressources = require("../models/ressourcesModel");
-// -------SET UP MULTER --------------//
 const Image = require("../models/imageModel");
-
 // ------------ SET UP MULTER --------------//
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -41,7 +39,7 @@ const upload = multer({ storage });
 //--------------------------------------- ROUTES -------------------------------------
 //------------------------------------------------------------------------------------
 
-//*************** USER INFOS ******************//
+//************** ALL USERS ********************//
 
 // GET USER'S INFO (TO DISPLAY THEM IN THE DASHBOARD):
 router.get("/user", auth, async (req, res) => {
@@ -144,9 +142,9 @@ router.put("/user/list", auth, async (req, res) => {
   return res.status(201).json({ modifiedTask });
 });
 
-// ------------ADMIN'S REQUESTS ON COACHEES ---------------------
+//************************ ONLY ADMIN ***************************//
 
-//* GET LIST OF ALL USERS
+// GET LIST OF ALL USERS
 router.get("/admin/users", auth, isAdmin, async (_req, res) => {
   let users;
 
@@ -158,7 +156,7 @@ router.get("/admin/users", auth, isAdmin, async (_req, res) => {
   return res.json({ users });
 });
 
-//* CREATE A NEW USER
+// CREATE A NEW USER
 router.post(
   "/admin/users",
   auth,
@@ -166,53 +164,48 @@ router.post(
   validateUserJoi,
   async (req, res) => {
     let user;
-    const { password } = req.body;
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 12);
-    console.log("hashed password: ", hashedPassword);
 
     try {
-      user = await User.create({
-        password: hashedPassword,
-        ...req.body,
-      });
+      user = await User.create(req.body);
+      user.password = await bcrypt.hash(user.password, 12);
+      const hashedPassword = user.password;
+      console.log(hashedPassword);
+      user.save();
     } catch (error) {
-      console.log(error);
       return res.status(400).json({
-        message: "An error occurred",
+        message: "An error happened.",
+        error,
       });
     }
-    res.status(201).json({
-      message: "New user created",
-      description: user,
+    return res.status(201).json({
+      message: "User successfully created",
+      user,
     });
   }
 );
 
-//* UPDATE A USER
+// UPDATE A USER
 router.put("/admin/users", auth, isAdmin, async (req, res) => {
-  let user;
-  const { _id, firstName, lastName, email } = req.body;
+  const { _id } = req.body;
   try {
-    user = await User.findByIdAndUpdate(_id, {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
+    await User.findByIdAndUpdate(_id, {
+      _id: _id,
+      ...req.body,
     });
   } catch (error) {
     return res.status(400).json({ message: "An error occured." });
   }
-  return res
-    .status(201)
-    .json({ message: "Account successfully updated !", user }); // Updated contact doesn't appear in Postman but effective in MongoDB !
+  return res.status(201).json({
+    message: "Account successfully updated !",
+  });
 });
 
 //* DELETE A USER
 router.delete("/admin/users", auth, isAdmin, async (req, res) => {
   let user;
-  const id = req.body._id;
+
   try {
-    user = await User.findByIdAndDelete(id);
+    user = await User.findByIdAndDelete(req.body._id);
   } catch (error) {
     return res.status(400).json({ message: "An error occured." });
   }
@@ -222,7 +215,7 @@ router.delete("/admin/users", auth, isAdmin, async (req, res) => {
 });
 
 //DOWNLOAD FILES/RESSOURCES FROM DASHBOARD (USER AND ADMIN) :
-router.get("/user/files", (req, res) => {
+router.get("/user/files", (_req, res) => {
   Image.find({}, (err, items) => {
     if (err) {
       console.log(err);
@@ -255,7 +248,7 @@ router.post("/user/files", upload.single("image"), async (req, res) => {
 });
 
 // DOWNLOAD FROM ICONE ----------------------------------------
-router.get("/test", (req, res) => {
+router.get("/test", (_req, res) => {
   // Check file exist on MongoDB
 
   // var filename = req.query.filename;
