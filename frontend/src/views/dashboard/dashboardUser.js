@@ -83,7 +83,7 @@ function DashboardUser() {
      {/* <SideBarUser/> */}
      {/* <Profile className="profile"/>  */}
 
-         <h3>Tu as {numberOfTasks} tâches à réaliser: </h3>
+         <h3>Tu as {numberOfTasks} tâche(s) à réaliser: </h3>
 
        <div className="header-todolist">
          <h3>Mes tâches :</h3>
