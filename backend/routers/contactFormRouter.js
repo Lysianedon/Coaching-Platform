@@ -32,17 +32,16 @@ transporter.verify((error) => {
 
 //----------------- ROUTES ------------------//
 router.post("/", (req, res) => {
-  const { name, email, tel, subject, message } = req.body;
+  const { name, email, tel, message } = req.body.data;
+  console.log(req.body);
   mailOptions = {
     from: name,
     to: process.env.USER,
     subject: "Formulaire de contact",
-    // html: `<p>Nom: ${name}</p>
-    //            <p>Email: ${email}</p>
-    //            <p>Téléphone: ${tel}</p>
-    //            <p>Subject: ${subject}</p>
-    //            <p>Message: ${message}</p>`,
-    text: "Hello",
+    html: `<p>Nom: ${name}</p>
+               <p>Email: ${email}</p>
+               <p>Téléphone: ${tel ? tel : "Non renseigné"}</p>
+               <p>Message: ${message}</p>`,
   };
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
