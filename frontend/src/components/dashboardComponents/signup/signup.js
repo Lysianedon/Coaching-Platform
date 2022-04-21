@@ -47,9 +47,13 @@ function Signup() {
     if (isValidEmail(email) & isValidPhone(telephone)) {
       if (firstName && lastName && email && password && telephone) {
         axios.post('http://localhost:8000/dashboard/admin/users',{ firstName, lastName, email, password, telephone} , { withCredentials: true})
-        .then(res =>{
-            console.log(res.data);
-        })}
+            .then(res =>{
+                console.log(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        }
     } 
   }
 
