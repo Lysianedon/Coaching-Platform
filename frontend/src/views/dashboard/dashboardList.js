@@ -12,7 +12,7 @@ function DashboardList() {
     <>
       <SideBarAdmin />
       {/* <Container> */}
-      {/* <Buttons/> */}
+      <Buttons/>
       <UsersList />
       {/* </Container> */}
     </>

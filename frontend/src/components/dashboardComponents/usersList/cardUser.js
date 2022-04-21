@@ -18,7 +18,7 @@ function CardUser() {
     return(
         <CardUserStyled>
             <div className="cardUser-form">
-                <h3 className="tilte-cardUser">Liste d'utilisateurs</h3>
+                
                 {users && users.map((user) =>
                         <div key={user._id}>
                             <div className="card">
@@ -29,14 +29,19 @@ function CardUser() {
                                     <i class="bi bi-pencil-fill"></i> 
                                 </p> 
                                 <p>Nom : <strong>{user.lastName}</strong>
-                                    <i class="bi bi-eye"></i>
+                                    {/* <i class="bi bi-eye"></i> */}
                                 </p> 
                                 <p> Email : <strong> {user.email} </strong>
                                     <a class="mailto" href="mailto:{user.email}">
                                         <i class="bi bi-envelope"></i>
                                     </a> 
                                 </p>
-                                <a href="/">En savoir plus</a>
+                                
+                                <div>
+                                    <a href="/">En savoir plus</a>
+                                    <i class="bi bi-trash"></i>
+                                </div>
+                                
                                 
                             </div>
                         </div>
@@ -54,9 +59,7 @@ const CardUserStyled = styled.div`
 .cardUser-form{
     margin: 0% auto auto 22%;
 }
-.tilte-cardUser{
-    text-align: center;
-}   
+ 
 .card{
     float: left;
     background-color: #f5eff9;

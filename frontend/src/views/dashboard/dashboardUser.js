@@ -9,8 +9,6 @@ import ToDoList from "../../components/dashboardComponents/todolist/todolist";
 import Ressources from "../../components/dashboardComponents/ressources/ressources";
 //Styled-components
 import styled from "styled-components";
-import AddTasks from '../../components/dashboardComponents/AddTasks';
-import ListOfTasks from '../../components/dashboardComponents/ListOfTasks';
 
 function DashboardUser() {
   const [name,setName] = useState('');
@@ -74,19 +72,14 @@ function DashboardUser() {
    const tasksContext = {
     toDoList : toDoList,
     setToDoList : setToDoList,
-    task : task,
-    setTask : setTask
   }
 
   return (
-    <TasksContexts.Provider value={tasksContext}>
+   
       <Dadhboard>
       <h2>Hello {name} ! </h2>
       <h2>Quelle est ton humeur du jour ?</h2>
 
-      {/* TODOLIST COMPONENTS */}
-        <AddTasks/>
-        <ListOfTasks/>
 
 
      {/* <SideBarUser/> */}
@@ -123,7 +116,7 @@ function DashboardUser() {
      <Ressources/> */}
 
     </Dadhboard>
-    </TasksContexts.Provider>
+  
   )
 }
 export default DashboardUser;
