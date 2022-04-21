@@ -4,27 +4,16 @@ import axios from "axios";
 //css
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-function CardUser(props) {
-    const [users, setUsers] = useState([
-        { userId: 1, firstName: 'Chi', lastName: 'Hoang', email: 'chibienayme@gmail.com' },
-        { userId: 2, firstName: 'Lysiane', lastName: 'Don', email: 'don.lysiane@gmail.com'},
-        { userId: 3, firstName: 'Anita', lastName: 'Mayousse', email: 'anita.mayousse@gmail.com'},
-        { userId: 4, firstName: 'Jessica', lastName: 'Elessa', email: 'jessica.elessa@gmail.com'},
-    ]);
+function CardUser() {
+    const [users, setUsers] = useState([]);
 
-
-    // const [users, setUsers] = useState([]);
-    // const fetchUsersList = () =>{
-    //   axios.get ("http://localhost:8000/dashboard/admin/users", { withCredentials: true })
-    // .then(res => 
-    //   {
-    //   console.log(res.data);
-    //   setUsers(res.data.adminList)
-    // });}
-    
-    // useEffect(() => {
-    //     fetchUsersList();
-    // }, []);
+    useEffect(() => {
+        axios.get("http://localhost:8000/dashboard/admin/users",
+        { withCredentials: true },)
+        .then(res => {
+          setUsers(res.data.users);
+        })
+      }, [])
 
     return(
         <CardUserStyled>
@@ -48,20 +37,11 @@ function CardUser(props) {
                                     </a> 
                                 </p>
                                 <a href="/">En savoir plus</a>
-
-                                {/* <div
-                                    key={user.id}
-                                    className="text"
-                                >
-                                {user.firstName}
-                                </div> */}
                                 
                             </div>
                         </div>
                     )}
                 </div> 
-
-                
                 
         </CardUserStyled>
     )
