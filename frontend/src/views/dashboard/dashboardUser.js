@@ -2,11 +2,11 @@
 import axios from 'axios';
 // components
 import { React, useState, useEffect, createContext } from "react";
-import SideBarUser from "../../components/dashboardComponents/sidebar-user/sidebarUser";
-import Profile from "../../components/dashboardComponents/profile-user/profile";
+// import SideBarUser from "../../components/dashboardComponents/sidebar-user/sidebarUser";
+// import Profile from "../../components/dashboardComponents/profile-user/profile";
 import Agenda from "../../components/dashboardComponents/agenda/agenda";
-import ToDoList from "../../components/dashboardComponents/todolist/todolist";
-import Ressources from "../../components/dashboardComponents/ressources/ressources";
+// import ToDoList from "../../components/dashboardComponents/todolist/todolist";
+// import Ressources from "../../components/dashboardComponents/ressources/ressources";
 //Styled-components
 import styled from "styled-components";
 import AddTasks from '../../components/dashboardComponents/AddTasks';
@@ -18,6 +18,7 @@ function DashboardUser() {
   const [name,setName] = useState('');
   const[toDoList, setToDoList] = useState([]);
   const [task, setTask] = useState('');
+  const [numberOfTasks, setNumberOfTasks] = useState(0);
 
 
   const fetchData = () => {
@@ -26,33 +27,25 @@ function DashboardUser() {
       console.log(res.data);
       setName(res.data.user.firstName);
       setToDoList(res.data.user.tasks);
+      setNumberOfTasks(res.data.user.tasks.length)
     })
   }
 
   useEffect(()=> {
     fetchData();
-    // // 1st step : get the user ID:
-    // axios.get("http://localhost:8000/dashboard/user", { withCredentials: true})
-    // .then (res => {
-    //   console.log(res.data); 
-    //   //2nd step : set the userId in the state
-    //   setUserId(res.data.user._id);
-    // })
 
   }, [])
 
   const handleAddTask = (e) =>{
     const parentDiv = e.target.parentElement;
     //Getting the content of the input => the new task : 
-    const content = parentDiv.children[0].value;
-    // console.log(content);
+    let content = parentDiv.children[0].value;
+    console.log(content);
     axios.post("http://localhost:8000/dashboard/user/list",{content}, { withCredentials: true});
+    content = {content}
+    setToDoList([...toDoList, content]);
+    setNumberOfTasks(numberOfTasks + 1);
 
-    //Updating the to do list:
-    axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
-    .then(res => {
-      setToDoList(res.data.user.tasks);
-    })
   }
 
   const handleCheckbox = (e) => {
@@ -65,7 +58,7 @@ function DashboardUser() {
       parentDiv.children[1].style.textDecoration = 'line-through';
       //Deleting the task :
       axios.delete("http://localhost:8000/dashboard/user/list", { withCredentials: true, data : {content}});
-
+      setNumberOfTasks(numberOfTasks - 1);
       setTimeout(() => {
         parentDiv.remove(); 
       }, 1000);
@@ -87,39 +80,36 @@ function DashboardUser() {
       <h2>Hello {name} ! </h2>
       <h2>Quelle est ton humeur du jour ?</h2>
 
-      {/* TODOLIST COMPONENTS */}
-        <AddTasks/>
-        <ListOfTasks/>
-
-
      {/* <SideBarUser/> */}
      {/* <Profile className="profile"/>  */}
 
-       {/* <div className="header-todolist">
+         <h3>Tu as {numberOfTasks} tâches à réaliser: </h3>
+
+       <div className="header-todolist">
          <h3>Mes tâches :</h3>
           <div className="add">
             <input type="text" name="newtask" id="newtask"className="newtask"/>
             <button onClick={handleAddTask}>Ajouter</button>
           </div>
-       </div> */}
-     {/* <section className="checklist">
-       <ul> */}
+       </div>
+     <section className="checklist">
+       <ul>
        {
-        //  toDoList.map(task => {
-        //    return (
-        //      <div className="task">
-        //        <div className="options">
-        //        <input type="checkbox" name="accomplished" id="checkbox" onClick={handleCheckbox}/>
-        //        <li>{task.content}</li>
-        //        {/* <button onClick={handleDelete}>Supprimer</button> */}
-        //        {/* <button>Modifier</button> */}
-        //        </div>
-        //      </div>
-        //    )
-        //  })
+         toDoList.map(task => {
+           return (
+             <div className="task">
+               <div className="options">
+               <input type="checkbox" name="accomplished" id="checkbox" onClick={handleCheckbox}/>
+               <li>{task.content}</li>
+               {/* <button onClick={handleDelete}>Supprimer</button> */}
+               {/* <button>Modifier</button> */}
+               </div>
+             </div>
+           )
+         })
        }
-       {/* </ul>
-     </section>  */}
+       </ul>
+     </section> 
 
      <Agenda/>
      {/* <ToDoList/> 

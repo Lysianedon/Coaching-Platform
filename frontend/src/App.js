@@ -1,6 +1,5 @@
-import React from "react";
+import { React, useState, useEffect, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//css
 //Pages
 import Home from "./views/home/home";
 import Presentation from "./views/presentation/presentation";
@@ -19,10 +18,16 @@ import AddTasks from './components/dashboardComponents/AddTasks';
 import ListOfTasks from './components/dashboardComponents/ListOfTasks';
 // Composant test
 import ContactForm from "./views/test contact/ContactForm";
+//Axios
+import axios from 'axios';
+
+// export const TasksContexts = createContext();
 
 function App() {
+
   return (
     <div>
+          {/* <TasksContexts.Provider value={tasksContext}> */}
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -47,6 +52,7 @@ function App() {
           <Route exact path="/dashboard/list" element={<ListOfTasks/>} />
         </Routes>
       </BrowserRouter>
+          {/* </TasksContexts.Provider> */}
     </div>
   );
 }

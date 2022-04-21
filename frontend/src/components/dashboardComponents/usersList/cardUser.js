@@ -49,6 +49,8 @@ function CardUser() {
 export default CardUser;
 
 const CardUserStyled = styled.div`
+ font-family: 'poppins';
+
 .cardUser-form{
     margin: 0% auto auto 22%;
 }
@@ -57,14 +59,24 @@ const CardUserStyled = styled.div`
 }   
 .card{
     float: left;
-    background-color: aquamarine;
+    background-color: #f5eff9;
     padding: 2%;
-    border: 1px solid #000;
     margin: 1%;
     width: 35vw;
 }
 .bi {
     float: right;
     font-size: 18px;
+    color: black;
 }
+a {
+    color: black;
+}
+/* RESPONSIVE */
+@media screen and (max-width: 480px) {
+    .cardUser-form{
+        display: block;
+    }
+}
+
 `;
