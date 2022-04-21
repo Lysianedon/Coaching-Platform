@@ -1,9 +1,7 @@
-// import axios from 'axios';
-// import { React, useState, useEffect } from "react";
-
-
+//Axios
+import axios from 'axios';
 // components
-import { React, useState, useEffect, useCallback } from "react";
+import { React, useState, useEffect, createContext } from "react";
 import SideBarUser from "../../components/dashboardComponents/sidebar-user/sidebarUser";
 import Profile from "../../components/dashboardComponents/profile-user/profile";
 import Agenda from "../../components/dashboardComponents/agenda/agenda";
@@ -11,13 +9,16 @@ import ToDoList from "../../components/dashboardComponents/todolist/todolist";
 import Ressources from "../../components/dashboardComponents/ressources/ressources";
 //Styled-components
 import styled from "styled-components";
-//Axios
-import axios from 'axios';
+import AddTasks from '../../components/dashboardComponents/AddTasks';
+import ListOfTasks from '../../components/dashboardComponents/ListOfTasks';
+
+export const TasksContexts = createContext();
 
 function DashboardUser() {
   const [name,setName] = useState('');
   const[toDoList, setToDoList] = useState([]);
-  const [userId, setUserId] = useState('');
+  const [task, setTask] = useState('');
+
 
   const fetchData = () => {
     axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
@@ -30,14 +31,13 @@ function DashboardUser() {
 
   useEffect(()=> {
     fetchData();
-    // 1st step : get the user ID:
-    axios.get("http://localhost:8000/dashboard/user" ,{ withCredentials: true } )
-    .then (res => {
-      console.log(res.data);
-      //2nd step : set the userId in the state
-      setUserId(res.data.user._id);
-
-    })
+    // // 1st step : get the user ID:
+    // axios.get("http://localhost:8000/dashboard/user", { withCredentials: true})
+    // .then (res => {
+    //   console.log(res.data); 
+    //   //2nd step : set the userId in the state
+    //   setUserId(res.data.user._id);
+    // })
 
   }, [])
 
@@ -60,8 +60,10 @@ function DashboardUser() {
     const parentDiv = e.target.parentElement;
     const content = parentDiv.children[1].textContent;
 
+    //If the box is checked, the task will be rod in the front and deleted in the db:
     if (checkbox.checked) {
       parentDiv.children[1].style.textDecoration = 'line-through';
+      //Deleting the task :
       axios.delete("http://localhost:8000/dashboard/user/list", { withCredentials: true, data : {content}});
 
       setTimeout(() => {
@@ -71,45 +73,60 @@ function DashboardUser() {
       parentDiv.children[1].style.textDecoration = 'none';
     }
   }
+  //TodoList Context to export in Provider:
+   const tasksContext = {
+    toDoList : toDoList,
+    setToDoList : setToDoList,
+    task : task,
+    setTask : setTask
+  }
 
   return (
-    <Dadhboard>
+    <TasksContexts.Provider value={tasksContext}>
+      <Dadhboard>
       <h2>Hello {name} ! </h2>
       <h2>Quelle est ton humeur du jour ?</h2>
+
+      {/* TODOLIST COMPONENTS */}
+        <AddTasks/>
+        <ListOfTasks/>
+
+
      {/* <SideBarUser/> */}
      {/* <Profile className="profile"/>  */}
 
-       <div className="header-todolist">
+       {/* <div className="header-todolist">
          <h3>Mes tâches :</h3>
           <div className="add">
             <input type="text" name="newtask" id="newtask"className="newtask"/>
             <button onClick={handleAddTask}>Ajouter</button>
           </div>
-       </div>
-     <section className="checklist">
-       <ul>
+       </div> */}
+     {/* <section className="checklist">
+       <ul> */}
        {
-         toDoList.map(task => {
-           return (
-             <div className="task">
-               <div className="options">
-               <input type="checkbox" name="accomplished" id="checkbox" onClick={handleCheckbox}/>
-               <li>{task.content}</li>
-               {/* <button onClick={handleDelete}>Supprimer</button> */}
-               {/* <button>Modifier</button> */}
-               </div>
-             </div>
-           )
-         })
+        //  toDoList.map(task => {
+        //    return (
+        //      <div className="task">
+        //        <div className="options">
+        //        <input type="checkbox" name="accomplished" id="checkbox" onClick={handleCheckbox}/>
+        //        <li>{task.content}</li>
+        //        {/* <button onClick={handleDelete}>Supprimer</button> */}
+        //        {/* <button>Modifier</button> */}
+        //        </div>
+        //      </div>
+        //    )
+        //  })
        }
-       </ul>
-     </section>
+       {/* </ul>
+     </section>  */}
 
      <Agenda/>
      {/* <ToDoList/> 
      <Ressources/> */}
 
     </Dadhboard>
+    </TasksContexts.Provider>
   )
 }
 export default DashboardUser;

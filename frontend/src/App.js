@@ -16,6 +16,8 @@ import DashboardUser from './views/dashboard/dashboardUser';
 import DashboarSignup from './views/dashboard/dashboardSignup';
 import DashboarModify from './views/dashboard/dashboardModify';
 import DashboardList from './views/dashboard/dashboardList';
+import AddTasks from './components/dashboardComponents/AddTasks';
+import ListOfTasks from './components/dashboardComponents/ListOfTasks';
 
 function App() {
 
@@ -35,6 +37,8 @@ function App() {
           <Route exact path="/dashboard/admin/users" element={<DashboarSignup/>} />
           <Route exact path="/dashboard/admin/users/modify" element={<DashboarModify/>} />
           <Route exact path="/dashboard/admin/list" element={<DashboardList/>} />
+          <Route exact path="/dashboard/add" element={<AddTasks/>} />
+          <Route exact path="/dashboard/list" element={<ListOfTasks/>} />
         </Routes>
       </BrowserRouter>
     </div>
