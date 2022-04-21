@@ -1,4 +1,4 @@
-import { React, useState, useEffect, createContext } from "react";
+import { React, useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //Pages
 import Home from "./views/home/home";
@@ -14,20 +14,16 @@ import DashboardUser from './views/dashboard/dashboardUser';
 import DashboarSignup from './views/dashboard/dashboardSignup';
 import DashboarModify from './views/dashboard/dashboardModify';
 import DashboardList from './views/dashboard/dashboardList';
-import AddTasks from './components/dashboardComponents/AddTasks';
-import ListOfTasks from './components/dashboardComponents/ListOfTasks';
+
 // Composant test
 import ContactForm from "./views/test contact/ContactForm";
 //Axios
 import axios from 'axios';
 
-// export const TasksContexts = createContext();
-
 function App() {
 
   return (
     <div>
-          {/* <TasksContexts.Provider value={tasksContext}> */}
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -48,11 +44,8 @@ function App() {
           <Route exact path="/dashboard/admin/users" element={<DashboarSignup/>} />
           <Route exact path="/dashboard/admin/users/modify" element={<DashboarModify/>} />
           <Route exact path="/dashboard/admin/list" element={<DashboardList/>} />
-          <Route exact path="/dashboard/add" element={<AddTasks/>} />
-          <Route exact path="/dashboard/list" element={<ListOfTasks/>} />
         </Routes>
       </BrowserRouter>
-          {/* </TasksContexts.Provider> */}
     </div>
   );
 }

@@ -21,7 +21,7 @@ function DashboardAdmin() {
     axios.get('http://localhost:8000/dashboard/user', { withCredentials: true })
     .then(res => 
       {
-      console.log(res.data);
+      // console.log(res.data);
       setLastname(res.data.user.lastName);
       setFirstname(res.data.user.firstName)
     });

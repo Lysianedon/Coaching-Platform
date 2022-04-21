@@ -17,19 +17,27 @@ function Ressources() {
 			)
 	}, []);
 
-	const onSubmit = () => {
+	const onSubmit = (e) => {
+		e.preventDefault();
+		const filename = document.querySelector('#fileName').value;
+		const selectedFile = document.querySelector('#file').files[0];
+		console.log(selectedFile);
+		setFileName(filename);
+		setFile(selectedFile);
+
 		const formData = new FormData();
-		formData.append("file", file);
-		formData.append("fileName", fileName);
-        // console.log("fileName" , fileName)
-		// axios.post("/user/file", {
-		// 	method: "POST",
-		// 	body: formData,
-		// })
-		// 	.then((res) => res.json())
-		// 	.then((data) => {
-		// 		setFileList(data);
-		// 	});
+		formData.append("selectedFile", selectedFile);
+		formData.append("filename", filename);
+
+        console.log("fileName" , fileName)
+		axios.post('http://localhost:8000/dashboard/user/files/upload',formData, { withCredentials: true})
+		.then(res =>{
+			 console.log(res.data)
+			setFileList(...fileList, selectedFile);
+			});
+			//Test DOWNLOAD : 
+			// axios.get('http://localhost:8000/dashboard/user/files/download',{withCredentials: true}, { params : {filename: "un.png"}} )
+			// .catch(err => console.log(err))
 	};
 
 
@@ -64,7 +72,7 @@ function Ressources() {
 								className="choosefile"
 							/>
 						</div>
-						<button type="submit" className="addbtn" >
+						<button type="submit" className="addbtn" onClick={onSubmit}>
 							Ajouter
 						</button>
 					</form>
