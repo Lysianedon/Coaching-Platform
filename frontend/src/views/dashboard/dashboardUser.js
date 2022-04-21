@@ -9,8 +9,6 @@ import Agenda from "../../components/dashboardComponents/agenda/agenda";
 // import Ressources from "../../components/dashboardComponents/ressources/ressources";
 //Styled-components
 import styled from "styled-components";
-import AddTasks from '../../components/dashboardComponents/AddTasks';
-import ListOfTasks from '../../components/dashboardComponents/ListOfTasks';
 
 function DashboardUser() {
   const [name,setName] = useState('');
@@ -23,7 +21,7 @@ function DashboardUser() {
       console.log(res.data);
       setName(res.data.user.firstName);
       setToDoList(res.data.user.tasks);
-      setNumberOfTasks(res.data.user.tasks.length)
+      // setNumberOfTasks(res.data.user.tasks.length)
     })
   }
 
@@ -40,7 +38,7 @@ function DashboardUser() {
     axios.post("http://localhost:8000/dashboard/user/list",{content}, { withCredentials: true});
     content = {content}
     setToDoList([...toDoList, content]);
-    setNumberOfTasks(numberOfTasks + 1);
+    // setNumberOfTasks(numberOfTasks + 1);
 
   }
 
@@ -53,8 +51,8 @@ function DashboardUser() {
     if (checkbox.checked) {
       parentDiv.children[1].style.textDecoration = 'line-through';
       //Deleting the task :
-      axios.delete("http://localhost:8000/dashboard/user/list", { withCredentials: true, data : {content}});
-      setNumberOfTasks(numberOfTasks - 1);
+      // axios.delete("http://localhost:8000/dashboard/user/list", { withCredentials: true, data : {content}});
+      // setNumberOfTasks(numberOfTasks - 1);
       setTimeout(() => {
         parentDiv.remove(); 
       }, 1000);
@@ -66,12 +64,10 @@ function DashboardUser() {
    const tasksContext = {
     toDoList : toDoList,
     setToDoList : setToDoList,
-    task : task,
-    setTask : setTask
   }
 
   return (
-    <TasksContexts.Provider value={tasksContext}>
+   
       <Dadhboard>
       <h2>Hello {name} ! </h2>
       <h2>Quelle est ton humeur du jour ?</h2>
@@ -79,7 +75,7 @@ function DashboardUser() {
      {/* <SideBarUser/> */}
      {/* <Profile className="profile"/>  */}
 
-         <h3>Tu as {numberOfTasks} tâche(s) à réaliser: </h3>
+         {/* <h3>Tu as {numberOfTasks} tâche(s) à réaliser: </h3> */}
 
        <div className="header-todolist">
          <h3>Mes tâches :</h3>
@@ -112,7 +108,7 @@ function DashboardUser() {
      <Ressources/> */}
 
     </Dadhboard>
-    </TasksContexts.Provider>
+  
   )
 }
 export default DashboardUser;

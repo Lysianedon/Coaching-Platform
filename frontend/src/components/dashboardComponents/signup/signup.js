@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 
 // css
 import "./signup.css";
 import styled from "styled-components";
-import axios from "axios";
+
 
 function Signup() {
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -34,14 +34,13 @@ function Signup() {
     const passwordValue = document.getElementById("password").value;
     const telephoneValue = document.getElementById("telephone").value;
 
-    
     setFirstName(firstNameValue);
     setLastName(lastNameValue);
     setEmail(emailValue);
     setPassword(passwordValue);
     setTelephone(telephoneValue);
 
-    console.log("Infos of an user",firstName, lastName, email, password, telephone);
+    console.log("Infos:",firstName, lastName, email, password, telephone);
     console.log("isValidEmail", isValidEmail(email));
     console.log("isValidPhone", isValidPhone(telephone));
     
@@ -51,8 +50,7 @@ function Signup() {
         .then(res =>{
             console.log(res.data);
         })}
-    }
-    
+    } 
   }
 
   return (
@@ -108,7 +106,7 @@ function Signup() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-              />{" "}
+              />
               <br />
               <small id="emailHelp" className="form-text text-muted">
                 Nous ne partagerons jamais votre e-mail avec quelqu'un d'autre.
@@ -128,7 +126,7 @@ function Signup() {
                 minLength={8}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-              ></input>{" "}
+              ></input> 
               <br />
               <small id="passwordHelp" className="form-text text-muted">
                 Le mot de passe doit contenir au moins 8 caractères
@@ -162,10 +160,11 @@ function Signup() {
             <button
               type="submit"
               className="btn-create btn-dark"
-              onClick={handleSubmit}
+            //   onClick={handleSubmit}
             >
               Créer un utilisateur
             </button>
+          
           </li>
         </ol>
       </form>
