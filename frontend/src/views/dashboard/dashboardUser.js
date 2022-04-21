@@ -12,14 +12,16 @@ import styled from "styled-components";
 import AddTasks from '../../components/dashboardComponents/AddTasks';
 import ListOfTasks from '../../components/dashboardComponents/ListOfTasks';
 
-export const TasksContexts = createContext();
-
 function DashboardUser() {
   const [name,setName] = useState('');
   const[toDoList, setToDoList] = useState([]);
+<<<<<<< HEAD
   const [task, setTask] = useState('');
   const [numberOfTasks, setNumberOfTasks] = useState(0);
 
+=======
+  const [userId, setUserId] = useState('');
+>>>>>>> d1605e2d485ccd09cda7af61c304799aab41e2fc
 
   const fetchData = () => {
     axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
