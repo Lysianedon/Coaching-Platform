@@ -91,117 +91,114 @@ export default function Contact() {
 
       <h2 className="title">Contactez-moi</h2>
       <div id="contact-form">
+        {/* <div>
+          <div> */}
+        <form onSubmit={handleSubmit} id="contact-me">
+          <ol className="forms">
+            {/* Name */}
+            <li>
+              <div>
+                <label htmlFor="name">*Votre nom:</label>
+                <br />
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Votre nom"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+            </li>
+
+            {/* Phone */}
+            <li>
+              <div>
+                <label htmlFor="phone">*Votre numéro de téléphone:</label>
+                <br />
+                <input
+                  id="phone"
+                  type="text"
+                  placeholder="Votre numéro de téléphone"
+                  required
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+              </div>
+            </li>
+
+            {/* Email */}
+            <li>
+              <div>
+                <label htmlFor="email">*Votre email:</label>
+                <br />
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="Votre email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+            </li>
+
+            {/* Subject */}
+            <li>
+              <div>
+                <label htmlFor="subject">*Sujet:</label>
+                <br />
+                <input
+                  id="suject"
+                  type="text"
+                  placeholder="Sujet"
+                  required
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                />
+              </div>
+            </li>
+
+            {/* Message */}
+            <li>
+              <div>
+                <label htmlFor="message">*Votre message:</label> <br />
+                <textarea
+                  id="message"
+                  type="text"
+                  placeholder="Votre message..."
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                ></textarea>
+              </div>
+            </li>
+
+            {/* Button submit */}
+            <li class="buttons">
+              <button
+                type="submit"
+                className="btn-send"
+                onClick={(e) => handleSubmit(e)}
+              >
+                Send
+              </button>
+            </li>
+          </ol>
+        </form>
+
         <div>
-          <div>
-            <form onSubmit={handleSubmit} id="contact-me">
-              <ol className="forms">
-                {/* Name */}
-                <li>
-                  <div>
-                    <label htmlFor="name">*Votre nom:</label>
-                    <br />
-                    <input
-                      id="name"
-                      type="text"
-                      placeholder="Votre nom"
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </div>
-                </li>
-
-                {/* Phone */}
-                <li>
-                  <div>
-                    <label htmlFor="phone">*Votre numéro de téléphone:</label>
-                    <br />
-                    <input
-                      id="phone"
-                      type="text"
-                      placeholder="Votre numéro de téléphone"
-                      required
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                    />
-                  </div>
-                </li>
-
-                {/* Email */}
-                <li>
-                  <div>
-                    <label htmlFor="email">*Votre email:</label>
-                    <br />
-                    <input
-                      id="email"
-                      type="email"
-                      placeholder="Votre email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </div>
-                </li>
-
-                {/* Subject */}
-                <li>
-                  <div>
-                    <label htmlFor="subject">*Sujet:</label>
-                    <br />
-                    <input
-                      id="suject"
-                      type="text"
-                      placeholder="Sujet"
-                      required
-                      value={subject}
-                      onChange={(e) => setSubject(e.target.value)}
-                    />
-                  </div>
-                </li>
-
-                {/* Message */}
-                <li>
-                  <div>
-                    <label htmlFor="message">*Votre message:</label> <br />
-                    <textarea
-                      id="message"
-                      type="text"
-                      placeholder="Votre message..."
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                    ></textarea>
-                  </div>
-                </li>
-
-                {/* Button submit */}
-                <li class="buttons">
-                  <button
-                    type="submit"
-                    className="btn-send"
-                    onClick={(e) => handleSubmit(e)}
-                  >
-                    Send
-                  </button>
-                </li>
-              </ol>
-            </form>
-
-            <div>
-              {window.location.hash === "#success" && (
-                <div id="success">
-                  <p>Votre message a été envoyé !</p>
-                </div>
-              )}
-              {window.location.hash === "#error" && (
-                <div id="error">
-                  <p>
-                    Une erreur s'est produite lors de la soumission du
-                    formulaire.
-                  </p>
-                </div>
-              )}
+          {window.location.hash === "#success" && (
+            <div id="success">
+              <p>Votre message a été envoyé !</p>
             </div>
-          </div>
+          )}
+          {window.location.hash === "#error" && (
+            <div id="error">
+              <p>
+                Une erreur s'est produite lors de la soumission du formulaire.
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -283,12 +280,12 @@ const ContactPage = styled.div`
     width: 43vw;
   }
 
-  ol.forms textarea {
+  ol .forms textarea {
     height: 30vh;
   }
 
-  ol.forms input:hover,
-  ol.forms textarea:hover {
+  ol .forms input:hover,
+  ol .forms textarea:hover {
     background: none repeat scroll 0 0 #f4eef5;
     border: 1px solid rgb(116, 128, 150);
     padding: 5px;
