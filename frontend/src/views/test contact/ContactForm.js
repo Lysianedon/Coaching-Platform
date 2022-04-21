@@ -56,6 +56,7 @@ export default function ContactForm() {
         }
       });
   };
+  
   return (
     <div className="container">
       <form className="main">

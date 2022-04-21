@@ -165,7 +165,7 @@ export default Home;
 //<-------------------------------------------------------------------------------------------------------------------->
 
 const DivWrapper = styled.div`
-overflow-y: scroll;
+/* overflow-y: scroll; */
 font-family: 'poppins';
 
 *{
