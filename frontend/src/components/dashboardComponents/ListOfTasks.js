@@ -3,7 +3,8 @@ import { useState, useEffect, useContext } from "react";
 //Axios
 import axios from 'axios';
 // components
-import { TasksContexts } from '../../views/dashboard/dashboardUser'; 
+import { TasksContexts } from '../../views/dashboard/dashboardUser';
+// import { TasksContexts } from '../../App';
 //Styled-components
 import styled from "styled-components";
 
@@ -31,8 +32,7 @@ export default function ListOfTasks() {
     
   return (
         <DivWrapper className="checklist">
-            <h3>list of tasks:</h3>
-        {/* <ul>
+        <ul>
         {
             toDoListContext.toDoList.map(task => {
             return (
@@ -45,7 +45,7 @@ export default function ListOfTasks() {
             )
             })
         }
-        </ul> */}
+        </ul>
         </DivWrapper>
 
   )
@@ -58,7 +58,6 @@ const DivWrapper = styled.div`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 1px solid;
 }
 
 .checklist{
