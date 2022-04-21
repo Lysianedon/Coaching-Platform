@@ -14,24 +14,24 @@ function DashboardList() {
   return (
     <>
      <SideBarAdmin/> 
-     <Container>
-      <Buttons/>
+     {/* <Container> */}
+      {/* <Buttons/> */}
       <UsersList/>
-     </Container>
+     {/* </Container> */}
 
     </>
   )
 }
 export default DashboardList;
 
-const Container = styled.li`
-width: 72vw;
-padding: 90px;
-position:absolute;
-border-radius: 12px;
-margin: 12% 0 0 20%;
-font-size: 15px;
-color: white;
-height: 100%;
-overflow-x: hidden;
-`;
+// const Container = styled.li`
+// width: 72vw;
+// padding: 90px;
+// position:absolute;
+// border-radius: 12px;
+// margin: 12% 0 0 20%;
+// font-size: 15px;
+// color: white;
+// height: 100%;
+// overflow-x: hidden;
+// `;

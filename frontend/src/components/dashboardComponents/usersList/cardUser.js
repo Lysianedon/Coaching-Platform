@@ -4,63 +4,64 @@ import axios from "axios";
 //css
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-function CardUser() {
+function CardUser(props) {
     const [users, setUsers] = useState([
-        { userId: 1, firstName: 'Frank', lastName: 'Murphy', email: 'frank.murphy@test.com' },
-        { userId: 2, firstName: 'Vic', lastName: 'Reynolds', email: 'vic.reynolds@test.com'},
-        { userId: 2, firstName: 'Vic', lastName: 'Reynolds', email: 'vic.reynolds@test.com'},
-        { userId: 2, firstName: 'Vic', lastName: 'Reynolds', email: 'vic.reynolds@test.com'},
+        { userId: 1, firstName: 'Chi', lastName: 'Hoang', email: 'chibienayme@gmail.com' },
+        { userId: 2, firstName: 'Lysiane', lastName: 'Don', email: 'don.lysiane@gmail.com'},
+        { userId: 3, firstName: 'Anita', lastName: 'Mayousse', email: 'anita.mayousse@gmail.com'},
+        { userId: 4, firstName: 'Jessica', lastName: 'Elessa', email: 'jessica.elessa@gmail.com'},
     ]);
-    const [userId, setUserId] = useState('');
-    const [firstname, setFirstname] = useState('');
-    const [lastname, setLastname] = useState('');
-    const [email, setEmail] = useState('');
 
-    const fetchUsersList = () => {
-        console.log("before fetch");
-        axios.get('http://localhost:8000/dashboard/admin/list',{ withCredentials: true })
-        .then(res => 
-          {res.json();
-            console.log(res.data);
-            setUserId(res.data.user.userId);
-            setLastname(res.data.user.lastName);
-            setFirstname(res.data.user.firstName);
-            setEmail(res.data.user.email);
-        });
-      }
+
+    // const [users, setUsers] = useState([]);
+    // const fetchUsersList = () =>{
+    //   axios.get ("http://localhost:8000/dashboard/admin/users", { withCredentials: true })
+    // .then(res => 
+    //   {
+    //   console.log(res.data);
+    //   setUsers(res.data.adminList)
+    // });}
     
-     useEffect(() => {
-        fetchUsersList();
+    // useEffect(() => {
+    //     fetchUsersList();
+    // }, []);
 
-     }, [])
-      
     return(
         <CardUserStyled>
             <div className="cardUser-form">
                 <h3 className="tilte-cardUser">Liste d'utilisateurs</h3>
-                {users && users.map(user =>
-                        <div key={user.id}>
+                {users && users.map((user) =>
+                        <div key={user._id}>
                             <div className="card">
-                                <p>Numéro Identifiant: {user.userId} 
+                                <p>Numéro Identifiant : <strong>{user._id} </strong> 
                                     <i class="bi bi-person-circle"></i> 
                                 </p>
-                                <p>Prénom d'utilisateur: {user.firstName} 
+                                <p>Prénom : <strong>{user.firstName} </strong>
                                     <i class="bi bi-pencil-fill"></i> 
-                                </p>
-                                <p>Nom d'utilisateur: {user.lastName}
+                                </p> 
+                                <p>Nom : <strong>{user.lastName}</strong>
                                     <i class="bi bi-eye"></i>
+                                </p> 
+                                <p> Email : <strong> {user.email} </strong>
+                                    <a class="mailto" href="mailto:{user.email}">
+                                        <i class="bi bi-envelope"></i>
+                                    </a> 
                                 </p>
-                                <p> Email: {user.email} </p>
-                                <a class="mailto" href="mailto:{user.email}">
-                                    Envoyez un message 
-                                    <i class="bi bi-envelope"></i>
-                                </a> 
+                                <a href="/">En savoir plus</a>
+
+                                {/* <div
+                                    key={user.id}
+                                    className="text"
+                                >
+                                {user.firstName}
+                                </div> */}
                                 
                             </div>
                         </div>
-                        
                     )}
-                </div>
+                </div> 
+
+                
                 
         </CardUserStyled>
     )

@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import emailjs from "emailjs-com";
+import emailjs from "emailjs-com";
 
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
 import styled from "styled-components";
@@ -15,18 +15,11 @@ function Contact() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  const [phoneError, setPhoneError] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [emptyError, setEmptyError] = useState(
-    "Merci de remplir tous les champs"
-  );
-  const [submittedMessage, setSubmittedMessage] = useState(
-    "Email a été bien envoyé !"
-  );
-
   const isValidPhone = (phone) => {
-    const regex = /^\+?[1-9][0-9]{9,14}$/;
-    return regex.test(Number(phone));
+    if (phone !== "") {
+      const regex = /^\+?[1-9][0-9]{9,14}$/;
+      return regex.test(Number(phone));
+    }
   };
   const isValidEmail = (email) => {
     const regex =
@@ -37,7 +30,7 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isValidEmail(email) & isValidPhone(phone)) {
-      if (name && phone && email && message) {
+      if (name && phone && email && subject && message) {
         const templateParams = {
           name,
           phone,
@@ -45,6 +38,16 @@ function Contact() {
           subject,
           message,
         };
+
+        emailjs
+          .send(
+            process.env.REACT_APP_SERVICEID,
+            process.env.REACT_APP_TEMPLATEID,
+            templateParams,
+            process.env.REACT_APP_USERID
+          )
+          .then((response) => console.log(response))
+          .then((error) => console.log(error));
 
         // emailjs
         // 	.send(
