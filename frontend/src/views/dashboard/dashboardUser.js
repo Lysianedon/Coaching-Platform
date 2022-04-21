@@ -3,7 +3,7 @@
 
 
 // components
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useCallback } from "react";
 import SideBarUser from "../../components/dashboardComponents/sidebar-user/sidebarUser";
 import Profile from "../../components/dashboardComponents/profile-user/profile";
 import Agenda from "../../components/dashboardComponents/agenda/agenda";
@@ -14,32 +14,63 @@ import styled from "styled-components";
 //Axios
 import axios from 'axios';
 
-
 function DashboardUser() {
   const [name,setName] = useState('');
   const[toDoList, setToDoList] = useState([]);
-
-  const handleTasks = () => {
-
-    const boxes = Array.from(document.querySelectorAll('#checkbox')) ;
-    console.log(boxes);
-  }
+  const [userId, setUserId] = useState('');
 
   const fetchData = () => {
-
     axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
     .then(res => {
       console.log(res.data);
       setName(res.data.user.firstName);
       setToDoList(res.data.user.tasks);
-      console.log(toDoList);
     })
   }
 
-  useEffect(()=>{
+  useEffect(()=> {
     fetchData();
-  },[])
+    // 1st step : get the user ID:
+    axios.get("http://localhost:8000/dashboard/user" ,{ withCredentials: true } )
+    .then (res => {
+      console.log(res.data);
+      //2nd step : set the userId in the state
+      setUserId(res.data.user._id);
 
+    })
+
+  }, [])
+
+  const handleAddTask = (e) =>{
+    const parentDiv = e.target.parentElement;
+    //Getting the content of the input => the new task : 
+    const content = parentDiv.children[0].value;
+    // console.log(content);
+    axios.post("http://localhost:8000/dashboard/user/list",{content}, { withCredentials: true});
+
+    //Updating the to do list:
+    axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
+    .then(res => {
+      setToDoList(res.data.user.tasks);
+    })
+  }
+
+  const handleCheckbox = (e) => {
+    const checkbox = e.target;
+    const parentDiv = e.target.parentElement;
+    const content = parentDiv.children[1].textContent;
+
+    if (checkbox.checked) {
+      parentDiv.children[1].style.textDecoration = 'line-through';
+      axios.delete("http://localhost:8000/dashboard/user/list", { withCredentials: true, data : {content}});
+
+      setTimeout(() => {
+        parentDiv.remove(); 
+      }, 1000);
+    }else{
+      parentDiv.children[1].style.textDecoration = 'none';
+    }
+  }
 
   return (
     <Dadhboard>
@@ -52,7 +83,7 @@ function DashboardUser() {
          <h3>Mes tâches :</h3>
           <div className="add">
             <input type="text" name="newtask" id="newtask"className="newtask"/>
-            <button>Ajouter</button>
+            <button onClick={handleAddTask}>Ajouter</button>
           </div>
        </div>
      <section className="checklist">
@@ -62,10 +93,11 @@ function DashboardUser() {
            return (
              <div className="task">
                <div className="options">
-               <input type="checkbox" name="accomplished" id="checkbox" onClick={handleTasks}/>
+               <input type="checkbox" name="accomplished" id="checkbox" onClick={handleCheckbox}/>
+               <li>{task.content}</li>
+               {/* <button onClick={handleDelete}>Supprimer</button> */}
+               {/* <button>Modifier</button> */}
                </div>
-               <li onMouseOver={()=> console.log("houra!") }>{task.content}</li>
-
              </div>
            )
          })
@@ -86,6 +118,14 @@ export default DashboardUser;
 // --------------- STYLED COMPONENTS ---------------------
 
 const Dadhboard = styled.div`
+
+#test-input{
+  border:0 !important;
+  outline:0 !important;
+  border-width:0px !important;
+border:none !important;
+}
+#test-input:focus {text-decoration:underline;}
 
 h2{
   text-align: center;
