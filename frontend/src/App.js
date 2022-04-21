@@ -1,6 +1,5 @@
-import React from "react";
+import { React, useState, useEffect, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//css
 //Pages
 import Home from "./views/home/home";
 import Presentation from "./views/presentation/presentation";
@@ -17,10 +16,16 @@ import DashboardList from './views/dashboard/dashboardList';
 
 // Composant test
 import ContactForm from "./views/test contact/ContactForm";
+//Axios
+import axios from 'axios';
+
+// export const TasksContexts = createContext();
 
 function App() {
+
   return (
     <div>
+          {/* <TasksContexts.Provider value={tasksContext}> */}
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -43,6 +48,7 @@ function App() {
          
         </Routes>
       </BrowserRouter>
+          {/* </TasksContexts.Provider> */}
     </div>
   );
 }

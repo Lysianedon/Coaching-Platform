@@ -62,7 +62,7 @@ router.delete("/user/list", auth, async (req, res) => {
   const userId = req.userId;
   const taskToDelete = req.body.content;
   let deletedTask;
-  console.log(taskToDelete);
+  console.log("taskToDelete:  ",taskToDelete);
   if (!taskToDelete) {
     return res.status(404).json({error : "No task found"});
   }

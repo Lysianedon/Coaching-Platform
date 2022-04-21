@@ -70,7 +70,6 @@ justify-content: center;
 overflow-x: hidden;
 `;
 const BonjourStyle = styled.div`
-
     border-radius:12px;
     position:inherit;
     padding:15px;
@@ -83,7 +82,6 @@ const BonjourStyle = styled.div`
 `;
 
 const AgendaStyle = styled.div`
-
     border-radius:12px;
     background-color:#4c2a4e;
     position:inherit;
@@ -113,7 +111,6 @@ const ToDoStyle = styled.div`
  `;
 
 const RessourcesStyle = styled.div`
-
   font-size: 16px;
   height:600px;
   width:72vw;
