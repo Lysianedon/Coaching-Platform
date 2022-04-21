@@ -36,7 +36,7 @@ export default function ContactForm() {
     axios
       .post("http://localhost:8000/contact-form", {
         method: "POST",
-        mode: "no-cors",
+        // mode: "no-cors",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -65,6 +65,7 @@ export default function ContactForm() {
             type="text"
             name="name"
             className="inputField"
+            value={name}
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -77,6 +78,7 @@ export default function ContactForm() {
             type="email"
             name="email"
             className="inputField"
+            value={email}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -89,6 +91,7 @@ export default function ContactForm() {
             type="text"
             name="telephone"
             className="inputField"
+            value={phone}
             onChange={(e) => {
               setPhone(e.target.value);
             }}
@@ -100,6 +103,7 @@ export default function ContactForm() {
             type="text"
             name="subject"
             className="inputField"
+            value={subject}
             onChange={(e) => {
               setSubject(e.target.value);
             }}
@@ -108,16 +112,17 @@ export default function ContactForm() {
         </div>
         <div className="inputGroup">
           <label htmlFor="message">Message</label>
-          <input
+          <textarea
             name="message"
             id="message"
             cols="30"
             rows="10"
+            value={message}
             onChange={(e) => {
               setMessage(e.target.value);
             }}
             required
-          />
+          ></textarea>
         </div>
         <input
           type="submit"
