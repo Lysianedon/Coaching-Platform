@@ -5,62 +5,43 @@ import axios from "axios";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function CardUser() {
-    const [users, setUsers] = useState([
-        { userId: 1, firstName: 'Frank', lastName: 'Murphy', email: 'frank.murphy@test.com' },
-        { userId: 2, firstName: 'Vic', lastName: 'Reynolds', email: 'vic.reynolds@test.com'},
-        { userId: 2, firstName: 'Vic', lastName: 'Reynolds', email: 'vic.reynolds@test.com'},
-        { userId: 2, firstName: 'Vic', lastName: 'Reynolds', email: 'vic.reynolds@test.com'},
-    ]);
-    const [userId, setUserId] = useState('');
-    const [firstname, setFirstname] = useState('');
-    const [lastname, setLastname] = useState('');
-    const [email, setEmail] = useState('');
+    const [users, setUsers] = useState([]);
 
-    const fetchUsersList = () => {
-        console.log("before fetch");
-        axios.get('http://localhost:8000/dashboard/admin/list',{ withCredentials: true })
-        .then(res => 
-          {res.json();
-            console.log(res.data);
-            setUserId(res.data.user.userId);
-            setLastname(res.data.user.lastName);
-            setFirstname(res.data.user.firstName);
-            setEmail(res.data.user.email);
-        });
-      }
-    
-     useEffect(() => {
-        fetchUsersList();
+    useEffect(() => {
+        axios.get("http://localhost:8000/dashboard/admin/users",
+        { withCredentials: true },)
+        .then(res => {
+          setUsers(res.data.users);
+        })
+      }, [])
 
-     }, [])
-      
     return(
         <CardUserStyled>
             <div className="cardUser-form">
                 <h3 className="tilte-cardUser">Liste d'utilisateurs</h3>
-                {users && users.map(user =>
-                        <div key={user.id}>
+                {users && users.map((user) =>
+                        <div key={user._id}>
                             <div className="card">
-                                <p>Numéro Identifiant: {user.userId} 
+                                <p>Numéro Identifiant : <strong>{user._id} </strong> 
                                     <i class="bi bi-person-circle"></i> 
                                 </p>
-                                <p>Prénom d'utilisateur: {user.firstName} 
+                                <p>Prénom : <strong>{user.firstName} </strong>
                                     <i class="bi bi-pencil-fill"></i> 
-                                </p>
-                                <p>Nom d'utilisateur: {user.lastName}
+                                </p> 
+                                <p>Nom : <strong>{user.lastName}</strong>
                                     <i class="bi bi-eye"></i>
+                                </p> 
+                                <p> Email : <strong> {user.email} </strong>
+                                    <a class="mailto" href="mailto:{user.email}">
+                                        <i class="bi bi-envelope"></i>
+                                    </a> 
                                 </p>
-                                <p> Email: {user.email} </p>
-                                <a class="mailto" href="mailto:{user.email}">
-                                    Envoyez un message 
-                                    <i class="bi bi-envelope"></i>
-                                </a> 
+                                <a href="/">En savoir plus</a>
                                 
                             </div>
                         </div>
-                        
                     )}
-                </div>
+                </div> 
                 
         </CardUserStyled>
     )

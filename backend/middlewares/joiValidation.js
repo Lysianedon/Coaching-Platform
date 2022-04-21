@@ -6,6 +6,7 @@ function validateUserJoi(req, res, next) {
     lastName: Joi.string().min(1).max(100).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(1).max(100).required(),
+    telephone: Joi.string().min(10).max(30),
     currentMood: Joi.string().min(1).max(100),
     desiredMood: Joi.string().min(1).max(100),
     isAdmin: Joi.boolean(),

@@ -12,8 +12,9 @@ const cors = require("cors");
 app.use(
   cors({
     origin: "http://localhost:3000",
-    credentials: true
-  }))
+    credentials: true,
+  })
+);
 
 //--------- SET UP EJS -------------//
 // Set EJS as templating engine
@@ -46,11 +47,15 @@ const dashboardRouter = require("./routers/dashboardRouter");
 const loginRouter = require("./routers/loginRouter");
 const logoutRouter = require("./routers/logoutRouter");
 
+const contactFormRouter = require("./routers/contactFormRouter");
+
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
 app.use("/contact", contactRouter);
 app.use("/questionnaire", questionnaireRouter);
 app.use("/dashboard", dashboardRouter);
+//------------ Test -------------------//
+app.use("/contact-form", contactFormRouter);
 
 //---------------- ROUTES -----------------//
 app.get("*", (_req, res) => {
