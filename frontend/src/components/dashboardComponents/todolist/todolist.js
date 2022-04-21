@@ -1,84 +1,243 @@
-import React, { useEffect, useState } from "react";
-// css
-import "./todolist.css";
-import axios from "axios";
-import Todo from "./Todo";
-import TodoForm from "./TodoForm";
+// components
+import { React, useState, useEffect, useCallback } from "react";
 
-const TodoList = (props) => {
+//Styled-components
+import styled from "styled-components";
+//Axios
+import axios from 'axios';
 
-  const [tasks, setTasks] = useState([]);
-  const fetchToDolist = () =>{
-    axios.get ("http://localhost:8000/dashboard/user/list", { withCredentials: true })
-  .then(res => 
-    {
-    console.log(res.data);
-    setTasks(res.data.usersList)
-  });}
-  
-  useEffect(() => {
-    fetchToDolist();
-  }, []);
+function ToDoList() {
+  const [name,setName] = useState('');
+  const[toDoList, setToDoList] = useState([]);
+  const [userId, setUserId] = useState('');
 
-  const addTodo = (task) => {
-    // to prevent add empty string
-    if (!tasks.text) return;
-    const newTask = [task, ...tasks];
-    setTasks(newTask);
-  };
+  const fetchData = () => {
+    axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
+    .then(res => {
+      console.log(res.data);
+      setName(res.data.user.firstName);
+      setToDoList(res.data.user.tasks);
+    })
+  }
 
+  useEffect(()=> {
+    fetchData();
+    // 1st step : get the user ID:
+    axios.get("http://localhost:8000/dashboard/user" ,{ withCredentials: true } )
+    .then (res => {
+      console.log(res.data);
+      //2nd step : set the userId in the state
+      setUserId(res.data.user._id);
 
-  const onCompleteHandler = (id) => {
-    let updatedArr = tasks.map((task) => {
-      // chnage the status of todo item
-      if (task.id === id) {
-        task.isComplete = !task.isComplete;
-      }
-      return task;
-    });
+    })
 
-    setTasks(updatedArr);
-  };
+  }, [])
 
-  const onDeleteHandler = (id) => {
-    const removedArr = [...tasks].filter((task) => task.id !== id);
-    setTasks(removedArr);
-  };
+  const handleAddTask = (e) =>{
+    const parentDiv = e.target.parentElement;
+    //Getting the content of the input => the new task : 
+    const content = parentDiv.children[0].value;
+    // console.log(content);
+    axios.post("http://localhost:8000/dashboard/user/list",{content}, { withCredentials: true});
 
-  const onEditHandler = (newTask) => {
-    if (!newTask.text) {
-      return;
+    //Updating the to do list:
+    axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
+    .then(res => {
+      setToDoList(res.data.user.tasks);
+    })
+  }
+
+  const handleCheckbox = (e) => {
+    const checkbox = e.target;
+    const parentDiv = e.target.parentElement;
+    const content = parentDiv.children[1].textContent;
+
+    if (checkbox.checked) {
+      parentDiv.children[1].style.textDecoration = 'line-through';
+      axios.delete("http://localhost:8000/dashboard/user/list", { withCredentials: true, data : {content}});
+
+      setTimeout(() => {
+        parentDiv.remove(); 
+      }, 1000);
+    }else{
+      parentDiv.children[1].style.textDecoration = 'none';
     }
-
-    //update the todo list
-    setTasks((prev) => {
-      const updateTodos = prev.map((task) => {
-        return task.id === newTask.id ? newTask : task;
-      });
-      return updateTodos;
-    });
-  };
+  }
 
   return (
-    
-    <React.Fragment>
-      <div>
-        <div className="addAToDo">
-            <h6>Programme</h6>
-            <TodoForm onSubmit={addTodo} />
-        </div>
-        <div className="todolist">
-            <Todo
-                tasks={tasks}
-                onComplete={onCompleteHandler}
-                onDelete={onDeleteHandler}
-                onEdit={onEditHandler}
-            />
-        </div>
-       </div>
-      
-    </React.Fragment>
-  );
-};
+    <Dadhboard>
+      <h2>Hello {name} ! </h2>
+      <h2>Quelle est ton humeur du jour ?</h2>
+     {/* <SideBarUser/> */}
+     {/* <Profile className="profile"/>  */}
 
-export default TodoList;
+       <div className="header-todolist">
+         <h3>Mes tâches</h3>
+          <div className="add">
+            <input type="text" name="newtask" id="newtask"className="newtask"/>
+            <button onClick={handleAddTask}>Ajouter</button>
+          </div>
+       </div>
+     <section className="checklist">
+       <ul>
+       {
+         toDoList.map(task => {
+           return (
+             <div className="task">
+               <div className="options">
+               <input type="checkbox" name="accomplished" id="checkbox" onClick={handleCheckbox}/>
+               <li>{task.content}</li>
+               {/* <button onClick={handleDelete}>Supprimer</button> */}
+               {/* <button>Modifier</button> */}
+               </div>
+             </div>
+           )
+         })
+       }
+       </ul>
+     </section>
+
+     </Dadhboard>
+
+  )
+}
+export default ToDoList;
+
+
+// --------------- STYLED COMPONENTS ---------------------
+
+const Dadhboard = styled.div`
+
+#test-input{
+  border:0 !important;
+  outline:0 !important;
+  border-width:0px !important;
+  border:none !important;
+}
+#test-input:focus {text-decoration:underline;}
+
+h2{
+  text-align: center;
+  font-size: 1.5em;
+  margin: 2% auto 3% auto;
+}
+
+/* height: 130vh !important; */
+overflow-y: scroll;
+overflow: scroll;
+display: flex;
+flex-direction: column;
+
+.profile {
+  margin-top: 25%;
+
+}
+
+.header-todolist{
+    display: flex;
+    flex-direction: column;
+    background-color: #4f3149 ;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    font-family: 'helvetica';
+    padding: 1%;
+    width: 65vw;
+    margin: auto;
+    margin-bottom: 0.2%;
+
+    h3{
+      font-size:1.5em;
+      font-weight: bold;
+      margin-bottom: 4%;
+    }
+
+    .newtask{
+      width: 20vw;
+      height: 4vh;
+    }
+
+    button, input{
+      display: block;
+      font-size: 1.4em;
+      width: 12vw;
+      padding: .9%;
+      /* background-color: #7d59bd; */
+    }
+
+    button{
+      border-radius: 7%;
+      margin-left: 5%;
+      font-weight: bold;
+      /* background-color: #FFC267; */
+      background-color: white;
+      color: #4f3149;
+
+    }
+
+    .add{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2%;
+
+    }
+  }
+
+.checklist{
+  height: 90vh;
+  width: 65vw;
+  margin: auto;
+  border: 2px solid #4f3149;
+  overflow-y: scroll;
+  border-radius: 4px;
+  background-color: white;
+  /* box-shadow: 0px 0px 5px rgba(66,66,66,.75); */
+  box-shadow: 0px 8px 15px -5px rgba(0,0,0,0.76);
+
+
+  .task{
+    display: flex;
+    justify-content: left;
+    width: 95%;
+    list-style: none;
+    margin: 2% auto;
+    /* border: 1px solid purple; */
+    /* border-bottom: 1px solid purple ; */
+    padding: 2%;
+    background-color: white;
+
+    input[type="checkbox"]{
+      width: 3vw !important;
+      height: 3vh;
+      accent-color:green;
+    }
+    
+    li{
+      margin-left: 13%;
+      width:100%;
+      font-size: 1.3em;
+
+    }
+
+    /* .task:hover{
+      background-color: #4f3149 !important;
+      width: 100%;
+    } */
+    
+    input[type="checkbox"]:nth-child(even){
+      accent-color: black;
+
+    }
+
+    .options{
+      display: flex;
+    }
+
+
+  }
+
+}
+`

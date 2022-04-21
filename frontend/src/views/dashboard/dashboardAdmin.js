@@ -96,13 +96,13 @@ const AgendaStyle = styled.div`
 `;
 
 const ToDoStyle = styled.div`
-
-  height: 400px;
+  margin:0%;
+  height: 830px;
   width: 72vw;
 	padding: 90px;
   border-radius:12px;
   background-color:#4c2a4e;
-  margin-top:1100px;
+  margin-top:1600px;
   padding:15px;
   padding-bottom:80px;
   position:inherit;
@@ -121,7 +121,7 @@ const RessourcesStyle = styled.div`
 	padding: 90px;
   border-radius:12px;
   background-color:#4c2a4e;
-  margin-top:2180px;
+  margin-top:3180px;
   padding:15px;
   color:white;
   display: flex;
