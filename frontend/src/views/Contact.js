@@ -1,4 +1,4 @@
-import { useState , useRef } from "react";
+import { useRef } from "react";
 import emailjs from "emailjs-com";
 
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
@@ -176,7 +176,6 @@ function Contact() {
     </ContactPage>
   );
 }
-
 export default Contact;
 
 const ContactPage = styled.div`
