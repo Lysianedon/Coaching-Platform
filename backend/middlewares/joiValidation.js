@@ -40,8 +40,8 @@ function validateRessourcesJoi(req, res, next) {
 function validateTaskJoi(req, res, next) {
   const validateTask = Joi.object({
     content: Joi.string().min(1).max(100).required(),
-    deadline: Joi.date().required(),
-    accomplished: Joi.boolean().required(),
+    deadline: Joi.date(),
+    accomplished: Joi.boolean(),
   });
 
   const validateTaskSchema = validateTask.validate(req.body);

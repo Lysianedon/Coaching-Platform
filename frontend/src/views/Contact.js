@@ -1,5 +1,5 @@
-import { useState } from "react";
-// import emailjs from "emailjs-com";
+import { useRef } from "react";
+import emailjs from "emailjs-com";
 
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
 import styled from "styled-components";
@@ -8,74 +8,36 @@ import styled from "styled-components";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
 
-export default function Contact() {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+function Contact() {
+  const form = useRef();
 
-  const isValidPhone = (phone) => {
-    if (phone !== "") {
-      const regex = /^\+?[1-9][0-9]{9,14}$/;
-      return regex.test(Number(phone));
-    }
-  };
-  const isValidEmail = (email) => {
-    const regex =
-      /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    return regex.test(String(email).toLowerCase());
-  };
+  // const [name, setName] = useState("");
+  // const [phone, setPhone] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [subject, setSubject] = useState("");
+  // const [message, setMessage] = useState("");
+
+  // const isValidPhone = (phone) => {
+  //   if (phone !== "") {
+  //     const regex = /^\+?[1-9][0-9]{9,14}$/;
+  //     return regex.test(Number(phone));
+  //   }
+  // };
+  // const isValidEmail = (email) => {
+  //   const regex =
+  //     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  //   return regex.test(String(email).toLowerCase());
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isValidEmail(email) & isValidPhone(phone)) {
-      if (name && phone && email && subject && message) {
-        const templateParams = {
-          name,
-          phone,
-          email,
-          subject,
-          message,
-        };
-      }
-      // emailjs
-      //   .send(
-      //     process.env.REACT_APP_SERVICEID,
-      //     process.env.REACT_APP_TEMPLATEID,
-      //     templateParams,
-      //     process.env.REACT_APP_USERID
-      //   )
-      //   .then((response) => console.log(response))
-      //   .then((error) => console.log(error));
 
-      // emailjs
-      // 	.send(
-      // 		process.env.REACT_APP_SERVICEID,
-      // 		process.env.REACT_APP_TEMPLATEID,
-      // 		templateParams,
-      // 		process.env.REACT_APP_USERID
-      // 	)
-      // 	.then((response) => console.log(response))
-      // 	.then((error) => console.log(error));
-
-      setName("");
-      setPhone("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
-      // setSubmittedMessage("");
-    }
-    // else {
-    //     setEmptyError("");
-    //   }
-
-    // }
-
-    // else {
-    //   setEmailError("");
-    //   setPhoneError("");
-    // }
+    emailjs.sendForm('service_908h2k5', 'template_n4goid7',form.current, 'ZVcNZ0Ta4hCtdInN4')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
   };
 
   return (
@@ -91,87 +53,90 @@ export default function Contact() {
 
       <h2 className="title">Contactez-moi</h2>
       <div id="contact-form">
-        {/* <div>
-          <div> */}
-        <form onSubmit={handleSubmit} id="contact-me">
-          <ol className="forms">
-            {/* Name */}
-            <li>
-              <div>
-                <label htmlFor="name">*Votre nom:</label>
-                <br />
-                <input
-                  id="name"
-                  type="text"
-                  placeholder="Votre nom"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-            </li>
+            <form ref={form}  onSubmit={handleSubmit} id="contact-me">
+              <ol className="forms">
+                {/* Name */}
+                <li>
+                  <div>
+                    <label htmlFor="name">*Votre nom:</label>
+                    <br />
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="Votre nom"
+                      required
+                      // value={name}
+                      // onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                </li>
 
-            {/* Phone */}
-            <li>
-              <div>
-                <label htmlFor="phone">*Votre numéro de téléphone:</label>
-                <br />
-                <input
-                  id="phone"
-                  type="text"
-                  placeholder="Votre numéro de téléphone"
-                  required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-              </div>
-            </li>
+                {/* Phone */}
+                <li>
+                  <div>
+                    <label htmlFor="phone">*Votre numéro de téléphone:</label>
+                    <br />
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="text"
+                      placeholder="Votre numéro de téléphone"
+                      required
+                      // value={phone}
+                      // onChange={(e) => setPhone(e.target.value)}
+                    />
+                  </div>
+                </li>
 
-            {/* Email */}
-            <li>
-              <div>
-                <label htmlFor="email">*Votre email:</label>
-                <br />
-                <input
-                  id="email"
-                  type="email"
-                  placeholder="Votre email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-            </li>
+                {/* Email */}
+                <li>
+                  <div>
+                    <label htmlFor="email">*Votre email:</label>
+                    <br />
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="Votre email"
+                      required
+                      // value={email}
+                      // onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                </li>
 
-            {/* Subject */}
-            <li>
-              <div>
-                <label htmlFor="subject">*Sujet:</label>
-                <br />
-                <input
-                  id="suject"
-                  type="text"
-                  placeholder="Sujet"
-                  required
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
-                />
-              </div>
-            </li>
+                {/* Subject */}
+                <li>
+                  <div>
+                    <label htmlFor="subject">*Sujet:</label>
+                    <br />
+                    <input
+                      id="subject"
+                      name="subject"
+                      type="text"
+                      placeholder="Sujet"
+                      required
+                      // value={subject}
+                      // onChange={(e) => setSubject(e.target.value)}
+                    />
+                  </div>
+                </li>
 
-            {/* Message */}
-            <li>
-              <div>
-                <label htmlFor="message">*Votre message:</label> <br />
-                <textarea
-                  id="message"
-                  type="text"
-                  placeholder="Votre message..."
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                ></textarea>
-              </div>
-            </li>
+                {/* Message */}
+                <li>
+                  <div>
+                    <label htmlFor="message">*Votre message:</label> <br />
+                    <textarea
+                      id="message"
+                      name="message"
+                      type="text"
+                      placeholder="Votre message..."
+                      // value={message}
+                      // onChange={(e) => setMessage(e.target.value)}
+                    ></textarea>
+                  </div>
+                </li>
 
             {/* Button submit */}
             <li class="buttons">
@@ -206,6 +171,7 @@ export default function Contact() {
     </ContactPage>
   );
 }
+export default Contact;
 
 const ContactPage = styled.div`
   .video-thank {

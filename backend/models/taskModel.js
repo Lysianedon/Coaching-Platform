@@ -7,8 +7,8 @@ const TaskSchema = new mongoose.Schema({
   },
   deadline: {
     type: Date,
-    required: true,
   },
+  
   accomplished: { type: Boolean, default: false },
 });
 

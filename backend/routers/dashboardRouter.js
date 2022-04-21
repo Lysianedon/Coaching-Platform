@@ -6,9 +6,7 @@ const bcrypt = require("bcrypt");
 const fs = require("fs");
 const path = require("path");
 const multer = require("multer");
-
-// Test 2
-// const gridfs = require("gridfs-stream");
+upload = multer({ dest: `public/uploads/` });
 
 //--------------- MIDDLEWARES ------------//
 const auth = require("../middlewares/auth");
@@ -22,19 +20,6 @@ const User = require("../models/userModel");
 const Task = require("../models/taskModel");
 const Ressources = require("../models/ressourcesModel");
 const Image = require("../models/imageModel");
-// ------------ SET UP MULTER --------------//
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    // cb(null, 'uploads')
-    cb(null, __dirname);
-  },
-  filename: (req, file, cb) => {
-    // cb(null, file.fieldname + '-' + Date.now())
-    cb(null, new Date().toISOString() + file.fieldname);
-  },
-});
-
-const upload = multer({ storage });
 
 //--------------------------------------- ROUTES -------------------------------------
 //------------------------------------------------------------------------------------
@@ -77,6 +62,10 @@ router.delete("/user/list", auth, async (req, res) => {
   const userId = req.userId;
   const taskToDelete = req.body.content;
   let deletedTask;
+  console.log("taskToDelete:  ",taskToDelete);
+  if (!taskToDelete) {
+    return res.status(404).json({error : "No task found"});
+  }
 
   try {
     deletedTask = await Task.findOneAndDelete(
@@ -96,12 +85,12 @@ router.post("/user/list", auth, validateTaskJoi, async (req, res) => {
     addedTask,
     updatedUser;
   const userId = req.userId;
-  const { content, deadline, accomplished } = req.body;
+  const { content } = req.body;
+  console.log(content);
   newTask = {
     userId,
     content,
-    deadline,
-    accomplished,
+    accomplished : false
   };
 
   try {
@@ -214,55 +203,31 @@ router.delete("/admin/users", auth, isAdmin, async (req, res) => {
     .json({ message: "Account successfully deleted !", user });
 });
 
-//DOWNLOAD FILES/RESSOURCES FROM DASHBOARD (USER AND ADMIN) :
-router.get("/user/files", (_req, res) => {
-  Image.find({}, (err, items) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send("An error occurred", err);
-    } else {
-      res.render("imagesPage", { items: items });
-    }
-  });
+// --------------------- HANDLING FILES -------------------------------------
+// ----------------------- DOWNLOAD A FILE ----------------------------------
+router.get("/user/files/download",auth, async (req, res) => {
+  //Get the user's file by its name and userID
+
+  //If admin, permettre de telecharger tous les fichiers en regardant seulement filename / Si user : regarder userID and filename
+
+  //Côté front : créer une icone pour chaque fichier uploadé, et telechargement au double clic ou en cliquant sur telecharger
+  const filename = req.body.filename;
+  return res.download(path.join(`/Users/lysianedon/Documents/KONEXIO/Coaching-Platform/backend/public/uploads/${filename}`))
 });
 
-// Step 8 - the POST handler for processing the uploaded file
-router.post("/user/files", upload.single("image"), async (req, res) => {
-  const obj = {
-    name: req.body.name,
-    description: req.body.description,
-    img: {
-      data: fs.readFileSync(path.join(__dirname + "/" + req.file.filename)),
-      // contentType: 'application/pdf'
-    },
-    userId: "62587d8a2451d60a3bc4a53b",
-  };
-  const uploadedFile = await Image.create(obj, (err, item) => {
-    if (err) {
-      console.log(err);
-    } else {
-      // item.save();
-      res.redirect("http://localhost:8000/dashboard/user/files");
-    }
-  });
-});
+// ----------------------- UPLOAD A FILE ----------------------------------
+router.post('/user/files/upload', upload.single("image"),auth, async (req,res) => {
 
-// DOWNLOAD FROM ICONE ----------------------------------------
-router.get("/test", (_req, res) => {
-  // Check file exist on MongoDB
-
-  // var filename = req.query.filename;
-  var filename = "dff";
-
-  gfs.exist({ filename: filename }, (err, file) => {
-    if (err || !file) {
-      res.status(404).send("File Not Found");
-      return;
-    }
-
-    var readstream = gfs.createReadStream({ filename: filename });
-    readstream.pipe(res);
-  });
-});
+  //Check size file : si too big, on refuse => creer middleware pour cela ?
+  const {username, filename} = req.body;
+  
+  console.log(req.file.originalname);
+  fs.renameSync(
+      req.file.path,
+      path.join(req.file.destination, req.file.originalname)
+  )
+  //Creer ressource dans MongoDB : userId, filename(=req.file.originalname), size
+  return res.status(201).json({success : "Image received ! "})
+})
 
 module.exports = router;

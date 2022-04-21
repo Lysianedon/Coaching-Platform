@@ -22,7 +22,7 @@ function Ressources() {
 		formData.append("file", file);
 		formData.append("fileName", fileName);
         // console.log("fileName" , fileName)
-		// fetch("/user/file", {
+		// axios.post("/user/file", {
 		// 	method: "POST",
 		// 	body: formData,
 		// })

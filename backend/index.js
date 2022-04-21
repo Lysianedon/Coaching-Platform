@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const mongoose = require("mongoose");
+const multer=require('multer');
 //------ BODY PARSER AND COOKIE PARSER ------//
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");

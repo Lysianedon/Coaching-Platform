@@ -77,7 +77,6 @@ function Login() {
                             <label htmlFor="email">Email:</label>
                             <input type="text" id="email" onChange={(e)=>{
                               setEmail(e.target.value);
-                              console.log(email);
                             }}/>
                           </div>
                         
@@ -85,8 +84,7 @@ function Login() {
                           <div className="password">
                             <label htmlFor="password">Password:</label> 
                             <input type="password" id="password" onChange={(e)=> {
-                                  setPassword(e.target.value);
-                                  console.log(password);
+                                  setPassword(e.target.value);                           
                             }}/>
                           </div>
 

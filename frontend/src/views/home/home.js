@@ -165,12 +165,12 @@ export default Home;
 //<-------------------------------------------------------------------------------------------------------------------->
 
 const DivWrapper = styled.div`
-overflow-y: scroll;
+/* overflow-y: scroll; */
 font-family: 'poppins';
 
 *{
-  max-width: 100%;
-  box-sizing: border-box;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 /* --------- BANNER ------------- */
@@ -199,7 +199,7 @@ font-family: 'poppins';
   h1 {
     color: black;
     line-height: 180%;
-    font-size: 3.2em;
+    font-size: 3.2vw;
     text-align: center;
   }
   //PURPLE SPANS
@@ -243,11 +243,12 @@ font-family: 'poppins';
     /* PROMESSE CONTENT (TEXT + VIDEO) */
     .promesse-content {
       display: flex;
-      max-width: 88vw;
+      width: 88vw;
       align-items: center;
     }
     /* PROMISE TEXT */
     .texte{
+      width: 50%;
       max-width: 50%;
       font-size: 1.8em;
       margin: auto;
@@ -271,6 +272,7 @@ font-family: 'poppins';
     font-size: 4em;
     color: #4c2a4e;
     margin-bottom: 10%;
+    text-align: center;
   }
   .button-action1 {
     width: 18vw;
@@ -300,7 +302,7 @@ font-family: 'poppins';
 
   h2 {
     text-align: center;
-    font-size: 3.3em;
+    font-size: 3.2vw;
     margin-bottom: 3%;
     color: #FFC267;
     font-weight: bold;
@@ -330,7 +332,7 @@ font-family: 'poppins';
       }
 
       li{
-        font-size: 1.8em;
+        font-size: 1.8vw;
         width: 85%;
         line-height: 150%;
         text-align: justify;
@@ -339,7 +341,7 @@ font-family: 'poppins';
       button {
         width: 30%;
         padding: 2%;
-        font-size: 1.8em;
+        font-size: 1.5vw;
         background-color: #4c2a4e;
         color: white;
         font-weight: bold;
@@ -362,7 +364,7 @@ font-family: 'poppins';
 }
 /*----------- QUOTE ---------- */
 .quote{
-  font-size: 4.5em;
+  font-size: 4vw;
   text-align: center;
   margin-bottom: 9%;
 
@@ -403,7 +405,7 @@ font-family: 'poppins';
   button{
         width: 18vw;
         padding: 2%;
-        font-size: 1.8em;
+        font-size: 1.6vw;
         background-color: #4c2a4e;
         color: white;
         font-weight: bold;
@@ -423,7 +425,7 @@ font-family: 'poppins';
 
   h2{
     text-align: center;
-    font-size: 3.3em;
+    font-size: 3.3vw;
     margin-bottom: 3%;
     color: #4c2a4e;
     font-weight: bold;
@@ -458,7 +460,7 @@ font-family: 'poppins';
   margin-bottom: 3%;
 
   h2 {   
-    font-size: 4em;
+    font-size: 5vw;
     margin: 0 0 3% 67%;
     color: #FFC267;
     font-weight: bold;
@@ -477,7 +479,7 @@ font-family: 'poppins';
 
     p{
       /* width: 50%; */
-      font-size: 1.5em;
+      font-size: 1.5vw;
       margin: auto;
       color: white;
       text-align: justify;
@@ -485,7 +487,7 @@ font-family: 'poppins';
       line-height: 160%;
 
       .bigger-yellow{
-        font-size: 1.6em;
+        font-size: 2vw;
         color: #FFC267;
         font-weight: bold;
       }
@@ -499,7 +501,7 @@ font-family: 'poppins';
   button{
         width: 15%;
         padding: 1%;
-        font-size: 1.8em;
+        font-size: 1.8vw;
         background-color: #FFC267;
         color: #4c2a4e;
         font-weight: bold;
@@ -516,7 +518,7 @@ font-family: 'poppins';
   height: 35vh;
   margin-top: 5%;
   .action-title {
-      font-size: 5em;
+      font-size: 5vw;
       color: #FFC267;
       margin-bottom: 2%;
       text-align: center;
@@ -525,7 +527,7 @@ font-family: 'poppins';
     button{
         width: 15%;
         padding: 1%;
-        font-size: 1.8em;
+        font-size: 1.8vw;
         background-color: #4c2a4e;
         color: white;
         font-weight: bold;
@@ -541,7 +543,7 @@ font-family: 'poppins';
 
   h2 {
     text-align: center;
-    font-size: 3em;
+    font-size: 3vw;
     margin: 0 0 1% 0%;
     color: #4c2a4e;
     font-weight: bold;

@@ -1,7 +1,5 @@
-import React from "react";
+import { React, useState, useEffect, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-//css
 //Pages
 import Home from "./views/home/home";
 import Presentation from "./views/presentation/presentation";
@@ -11,17 +9,23 @@ import Login from "./views/Login";
 import QuestionnaireStarter from "./views/QuestionnaireStarter";
 
 // Dashboard
-import DashboardAdmin from "./views/dashboard/dashboardAdmin";
-import DashboardUser from "./views/dashboard/dashboardUser";
-import DashboarSignup from "./views/dashboard/dashboardSignup";
-import DashboarModify from "./views/dashboard/dashboardModify";
-import DashboardList from "./views/dashboard/dashboardList";
+import DashboardAdmin from './views/dashboard/dashboardAdmin';
+import DashboardUser from './views/dashboard/dashboardUser';
+import DashboarSignup from './views/dashboard/dashboardSignup';
+import DashboardList from './views/dashboard/dashboardList';
+
 // Composant test
 import ContactForm from "./views/test contact/ContactForm";
+//Axios
+import axios from 'axios';
+
+// export const TasksContexts = createContext();
 
 function App() {
+
   return (
     <div>
+          {/* <TasksContexts.Provider value={tasksContext}> */}
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -37,25 +41,14 @@ function App() {
           {/* Route test */}
           <Route exact path="/contact-form" element={<ContactForm />} />
 
-          <Route exact path="/dashboard/admin" element={<DashboardAdmin />} />
-          <Route exact path="/dashboard/user" element={<DashboardUser />} />
-          <Route
-            exact
-            path="/dashboard/admin/users"
-            element={<DashboarSignup />}
-          />
-          <Route
-            exact
-            path="/dashboard/admin/users/modify"
-            element={<DashboarModify />}
-          />
-          <Route
-            exact
-            path="/dashboard/admin/list"
-            element={<DashboardList />}
-          />
+          <Route exact path="/dashboard/admin" element={<DashboardAdmin/>} />
+          <Route exact path="/dashboard/user" element={<DashboardUser/>} />
+          <Route exact path="/dashboard/admin/users" element={<DashboarSignup/>} />
+          <Route exact path="/dashboard/admin/list" element={<DashboardList/>} />
+         
         </Routes>
       </BrowserRouter>
+          {/* </TasksContexts.Provider> */}
     </div>
   );
 }
