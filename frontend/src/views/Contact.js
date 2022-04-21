@@ -1,5 +1,5 @@
 import { useState } from "react";
-import emailjs from "emailjs-com";
+// import emailjs from "emailjs-com";
 
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
 import styled from "styled-components";
@@ -8,7 +8,7 @@ import styled from "styled-components";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
 
-function Contact() {
+export default function Contact() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -38,40 +38,44 @@ function Contact() {
           subject,
           message,
         };
-
-        emailjs
-          .send(
-            process.env.REACT_APP_SERVICEID,
-            process.env.REACT_APP_TEMPLATEID,
-            templateParams,
-            process.env.REACT_APP_USERID
-          )
-          .then((response) => console.log(response))
-          .then((error) => console.log(error));
-
-        // emailjs
-        // 	.send(
-        // 		process.env.REACT_APP_SERVICEID,
-        // 		process.env.REACT_APP_TEMPLATEID,
-        // 		templateParams,
-        // 		process.env.REACT_APP_USERID
-        // 	)
-        // 	.then((response) => console.log(response))
-        // 	.then((error) => console.log(error));
-
-        setName("");
-        setPhone("");
-        setEmail("");
-        setSubject("");
-        setMessage("");
-        setSubmittedMessage("");
-      } else {
-        setEmptyError("");
       }
-    } else {
-      setEmailError("");
-      setPhoneError("");
+      // emailjs
+      //   .send(
+      //     process.env.REACT_APP_SERVICEID,
+      //     process.env.REACT_APP_TEMPLATEID,
+      //     templateParams,
+      //     process.env.REACT_APP_USERID
+      //   )
+      //   .then((response) => console.log(response))
+      //   .then((error) => console.log(error));
+
+      // emailjs
+      // 	.send(
+      // 		process.env.REACT_APP_SERVICEID,
+      // 		process.env.REACT_APP_TEMPLATEID,
+      // 		templateParams,
+      // 		process.env.REACT_APP_USERID
+      // 	)
+      // 	.then((response) => console.log(response))
+      // 	.then((error) => console.log(error));
+
+      setName("");
+      setPhone("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+      // setSubmittedMessage("");
     }
+    // else {
+    //     setEmptyError("");
+    //   }
+
+    // }
+
+    // else {
+    //   setEmailError("");
+    //   setPhoneError("");
+    // }
   };
 
   return (
@@ -205,8 +209,6 @@ function Contact() {
     </ContactPage>
   );
 }
-
-export default Contact;
 
 const ContactPage = styled.div`
   .video-thank {

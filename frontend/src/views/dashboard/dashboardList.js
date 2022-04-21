@@ -1,26 +1,22 @@
-import axios from 'axios';
-import { React,  useEffect } from "react";
+import { React, useEffect } from "react";
 
 // components
 import SideBarAdmin from "../../components/dashboardComponents/sidebar-admin/sidebarAdmin";
-import UsersList from '../../components/dashboardComponents/usersList/usersList';
-import Buttons from '../../components/dashboardComponents/buttons/buttons';
+import UsersList from "../../components/dashboardComponents/usersList/usersList";
+import Buttons from "../../components/dashboardComponents/buttons/buttons";
 //css
-import styled from 'styled-components';
+import styled from "styled-components";
 
 function DashboardList() {
-
-  
   return (
     <>
-     <SideBarAdmin/> 
-     {/* <Container> */}
+      <SideBarAdmin />
+      {/* <Container> */}
       {/* <Buttons/> */}
-      <UsersList/>
-     {/* </Container> */}
-
+      <UsersList />
+      {/* </Container> */}
     </>
-  )
+  );
 }
 export default DashboardList;
 
