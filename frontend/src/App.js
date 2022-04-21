@@ -12,7 +12,6 @@ import QuestionnaireStarter from "./views/QuestionnaireStarter";
 import DashboardAdmin from './views/dashboard/dashboardAdmin';
 import DashboardUser from './views/dashboard/dashboardUser';
 import DashboarSignup from './views/dashboard/dashboardSignup';
-import DashboarModify from './views/dashboard/dashboardModify';
 import DashboardList from './views/dashboard/dashboardList';
 
 // Composant test
@@ -42,8 +41,11 @@ function App() {
           <Route exact path="/dashboard/admin" element={<DashboardAdmin/>} />
           <Route exact path="/dashboard/user" element={<DashboardUser/>} />
           <Route exact path="/dashboard/admin/users" element={<DashboarSignup/>} />
-          <Route exact path="/dashboard/admin/users/modify" element={<DashboarModify/>} />
           <Route exact path="/dashboard/admin/list" element={<DashboardList/>} />
+<<<<<<< HEAD
+=======
+         
+>>>>>>> ae5249f4afd9e6a6361b8eb6989c4a5d601ad34d
         </Routes>
       </BrowserRouter>
     </div>

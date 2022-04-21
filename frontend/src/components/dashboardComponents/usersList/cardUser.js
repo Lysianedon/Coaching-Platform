@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
+
 //css
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function CardUser() {
     const [users, setUsers] = useState([]);
 
-    useEffect(() => {
+    useEffect((e) => {
         axios.get("http://localhost:8000/dashboard/admin/users",
         { withCredentials: true },)
         .then(res => {
@@ -15,11 +16,29 @@ function CardUser() {
         })
       }, [])
 
+    const handleRemove = (index) => {
+    const newList = [...users];
+    newList.splice(index, 1);
+    setUsers(newList);
+    
+        axios.delete("http://localhost:8000/dashboard/admin/users",
+        { withCredentials: true },)
+        .then(res => {
+            console.log(res.data);
+            setUsers(users);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+
+
+    }
+
     return(
         <CardUserStyled>
             <div className="cardUser-form">
-                <h3 className="tilte-cardUser">Liste d'utilisateurs</h3>
-                {users && users.map((user) =>
+                
+                {users && users.map((user,index) =>
                         <div key={user._id}>
                             <div className="card">
                                 <p>Numéro Identifiant : <strong>{user._id} </strong> 
@@ -29,14 +48,19 @@ function CardUser() {
                                     <i class="bi bi-pencil-fill"></i> 
                                 </p> 
                                 <p>Nom : <strong>{user.lastName}</strong>
-                                    <i class="bi bi-eye"></i>
+                                    {/* <i class="bi bi-eye"></i> */}
                                 </p> 
                                 <p> Email : <strong> {user.email} </strong>
                                     <a class="mailto" href="mailto:{user.email}">
                                         <i class="bi bi-envelope"></i>
                                     </a> 
                                 </p>
-                                <a href="/">En savoir plus</a>
+                                
+                                <div>
+                                    <a href="/">En savoir plus</a>
+                                    <i class="bi bi-trash" onClick={() => handleRemove(index)}></i>
+                                </div>
+                        
                                 
                             </div>
                         </div>
@@ -54,9 +78,7 @@ const CardUserStyled = styled.div`
 .cardUser-form{
     margin: 0% auto auto 22%;
 }
-.tilte-cardUser{
-    text-align: center;
-}   
+ 
 .card{
     float: left;
     background-color: #f5eff9;

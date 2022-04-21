@@ -16,6 +16,7 @@ function DashboardUser() {
   const [task, setTask] = useState('');
   const [numberOfTasks, setNumberOfTasks] = useState(0);
 
+  const [userId, setUserId] = useState('');
 
   const fetchData = () => {
     axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
@@ -23,7 +24,7 @@ function DashboardUser() {
       console.log(res.data);
       setName(res.data.user.firstName);
       setToDoList(res.data.user.tasks);
-      setNumberOfTasks(res.data.user.tasks.length)
+      // setNumberOfTasks(res.data.user.tasks.length)
     })
   }
 
@@ -71,12 +72,9 @@ function DashboardUser() {
    const tasksContext = {
     toDoList : toDoList,
     setToDoList : setToDoList,
-    task : task,
-    setTask : setTask
   }
 
   return (
-
       <Dadhboard>
       <h2>Hello {name} ! </h2>
 

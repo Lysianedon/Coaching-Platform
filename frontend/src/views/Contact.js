@@ -53,8 +53,6 @@ function Contact() {
 
       <h2 className="title">Contactez-moi</h2>
       <div id="contact-form">
-        <div>
-          <div>
             <form ref={form}  onSubmit={handleSubmit} id="contact-me">
               <ol className="forms">
                 {/* Name */}
@@ -140,35 +138,32 @@ function Contact() {
                   </div>
                 </li>
 
-                {/* Button submit */}
-                <li class="buttons">
-                  <button
-                    type="submit"
-                    className="btn-send"
-                    onClick={(e) => handleSubmit(e)}
-                  >
-                    Send
-                  </button>
-                </li>
-              </ol>
-            </form>
+            {/* Button submit */}
+            <li class="buttons">
+              <button
+                type="submit"
+                className="btn-send"
+                onClick={(e) => handleSubmit(e)}
+              >
+                Send
+              </button>
+            </li>
+          </ol>
+        </form>
 
-            <div>
-              {window.location.hash === "#success" && (
-                <div id="success">
-                  <p>Votre message a été envoyé !</p>
-                </div>
-              )}
-              {window.location.hash === "#error" && (
-                <div id="error">
-                  <p>
-                    Une erreur s'est produite lors de la soumission du
-                    formulaire.
-                  </p>
-                </div>
-              )}
+        <div>
+          {window.location.hash === "#success" && (
+            <div id="success">
+              <p>Votre message a été envoyé !</p>
             </div>
-          </div>
+          )}
+          {window.location.hash === "#error" && (
+            <div id="error">
+              <p>
+                Une erreur s'est produite lors de la soumission du formulaire.
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -251,12 +246,12 @@ const ContactPage = styled.div`
     width: 43vw;
   }
 
-  ol.forms textarea {
+  ol .forms textarea {
     height: 30vh;
   }
 
-  ol.forms input:hover,
-  ol.forms textarea:hover {
+  ol .forms input:hover,
+  ol .forms textarea:hover {
     background: none repeat scroll 0 0 #f4eef5;
     border: 1px solid rgb(116, 128, 150);
     padding: 5px;
