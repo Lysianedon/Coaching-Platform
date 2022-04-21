@@ -8,11 +8,8 @@
     "axios": "^0.26.1",
     "bootstrap": "^5.1.3",
     "bootstrap-icons": "^1.8.1",
-<<<<<<< HEAD
-=======
     "emailjs-com": "^3.2.0",
     "react": "^18.0.0",
->>>>>>> 5c41c0e04783f87353b697d2df53e99e7aebd006
     "react-dom": "^18.0.0",
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.3.0",
