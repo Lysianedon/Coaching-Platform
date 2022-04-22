@@ -1,6 +1,9 @@
 import { React } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// Pages
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+//Pages
 import Home from "./views/home/home";
 import Presentation from "./views/presentation/presentation";
 import Coaching from "./views/coaching/coaching";
@@ -47,6 +50,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
       {/* </TasksContexts.Provider> */}
     </div>
   );

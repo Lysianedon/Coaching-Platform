@@ -1,7 +1,14 @@
 # node_modules & co
 /config.env
 /node_modules
+<<<<<<< HEAD
 /package-lock.json
 /package.json
 /.pnp
+=======
+/package.json
+/package-lock.json
+
+# misc
+>>>>>>> 5571d8a023b81c17d3d3d820191e1f8e881fcfc6
 .DS_Store
