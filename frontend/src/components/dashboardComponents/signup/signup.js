@@ -49,12 +49,15 @@ function Signup() {
         axios.post('http://localhost:8000/dashboard/admin/users',{ firstName, lastName, email, password, telephone} , { withCredentials: true})
             .then(res =>{
                 console.log(res.data);
+                toast.success("Account is created successfully");
             })
             .catch((err) => {
                 console.log(err);
             });
         }
-    } 
+    } else{
+      toast.error("Invalid email or phone")
+    }
   }
 
   return (
@@ -112,7 +115,7 @@ function Signup() {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <br />
-              <small id="emailHelp" className="form-text text-muted">
+              <small id="emailHelp" className="small-text text-muted">
                 Nous ne partagerons jamais votre e-mail avec quelqu'un d'autre.
               </small>
             </div>
@@ -132,7 +135,7 @@ function Signup() {
                 onChange={(e) => setPassword(e.target.value)}
               ></input> 
               <br />
-              <small id="passwordHelp" className="form-text text-muted">
+              <small id="passwordHelp" className="small-text text-muted">
                 Le mot de passe doit contenir au moins 8 caractères
               </small>
             </div>
@@ -153,7 +156,7 @@ function Signup() {
                 onChange={(e) => setTelephone(e.target.value)}
               />
               <br />
-              <small id="telephoneHelp" className="form-text text-muted">
+              <small id="telephoneHelp" className="small-text text-muted">
                 Le numéro de téléphone doit contenir de 10 à 30 caractères
               </small>
             </div>
@@ -164,9 +167,8 @@ function Signup() {
             <button
               type="submit"
               className="btn-create btn-dark"
-            //   onClick={handleSubmit}
             >
-              Créer un utilisateur
+              Créer
             </button>
           
           </li>
@@ -178,10 +180,9 @@ function Signup() {
 export default Signup;
 
 const SignupStyled = styled.div`
+
   ol.forms {
-    float: center;
     list-style: none;
-    margin: 10;
     width: 100%;
   }
 
@@ -198,8 +199,7 @@ const SignupStyled = styled.div`
     font-size: 1rem;
   }
 
-  ol.forms input,
-  ol.forms textarea {
+  ol.forms input{
     background: none repeat scroll 0 0 #ffffff;
     border: 1px solid #6b0070;
     border-radius: 4px;
@@ -207,20 +207,11 @@ const SignupStyled = styled.div`
     width: 43vw;
   }
 
-  ol.forms textarea {
-    height: 30vh;
-  }
-
-  ol.forms input:hover,
-  ol.forms textarea:hover {
+  ol.forms input:hover {
     background: none repeat scroll 0 0 #f4eef5;
     border: 1px solid rgb(116, 128, 150);
     padding: 5px;
     width: 43vw;
-  }
-
-  ol.forms textarea:hover {
-    height: 30vh;
   }
 
   ol.forms li.inline label {
@@ -229,5 +220,31 @@ const SignupStyled = styled.div`
     float: none;
     width: auto;
     margin-bottom: 2%;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 960px) {
+    margin: 12% 0% 2% 10%;
+    label{
+      font-size: 1rem;
+    }
+    .title-create{
+    }
+    ol.forms input {
+      width: 80vw;
+    }
+
+  }
+  @media screen and (max-width: 480px) { 
+    margin: 25% 0% 2% 0%;
+    .title-create{
+      font-size: 1.5rem;
+    }
+    .title-create{
+      margin: 0% 0% 0% 7%;
+      float: left;
+    }
+    ol.forms input,
+    .small-text {
+      width: 80vw;
+    }
   }
 `;

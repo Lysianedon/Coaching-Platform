@@ -5,20 +5,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Logo from "../assets/images/Logo-home-removebg-preview.png"
 
-
 function Nav() {
     return (
       <div>
           <Navbar> 
             <img src={Logo} alt='' />
                 <Ul>
-                    {/* <Link to="/" className='text-link'>Home</Link>
-                    <Link to="/presentation" className='text-link'>Qui suis-je ?</Link>
-                    <Link to="/coaching" className='text-link'>Coaching</Link>
-                    <Link to="/login" className='text-link'>Login</Link>
-                    <Link to="/contact" className='text-link'>Contact</Link>
-                    <Link to="/questionaire/starter"><QuestionnaireBtn className='text-link btn btn-dark'>Questionnaire</QuestionnaireBtn>
-                    </Link> */}
 
                     <a href="/" className='text-link'>Home</a>
                     <a href="/presentation" className='text-link'>Qui suis-je ?</a>
@@ -46,7 +38,7 @@ const Navbar = styled.nav`
   padding: 25px;
   margin: 0px;
   text-align: right;
-  display:inline-block;
+  display: inline-block;
   vertical-align:top;
   width: 100%;
   position:fixed;

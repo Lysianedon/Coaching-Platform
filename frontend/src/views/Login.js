@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import axios from 'axios';
+import { toast } from "react-toastify";
 
 // components
 import Nav from "../components/nav";
@@ -50,27 +51,33 @@ function Login() {
          .then(res => {
            console.log(res.data);
            if (res.data.user.isAdmin) {
+             toast.success("You are logged in as an admin");
              navigate('/dashboard/admin');
+
            }else{
+              toast.success("You are logged in as an user");
               navigate('/dashboard/user');
            }
          })
-       }
-       //Faire code pour identifiants incorrects ici
+        //  .catch(error =>{
+        //   console.log(error);
+        //   toast.error("Invalid email or password !");
+        //  })
+       } 
+    })
+    .catch(error => {
+      console.log(error);
+      toast.error("Please log in first!");
     })
   }
 
   return (
     <LoginFormStyled> 
-       <Nav/>
+       {/* <Nav/> */}
           {/*  LOGIN FORM */}
-        <div className="login-column">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-6">
-            
-                <form className="login-form" action="http://localhost:8000/login" method="POST" onSubmit={handleSubmit}>
-                    <h3>Login</h3>
+          <div className="login-page">
+          <form className="login-form" action="http://localhost:8000/login" method="POST" onSubmit={handleSubmit}>
+                    <h2>Login</h2>
                      <div>
                        {/* Email */}
                         <div className="email">
@@ -90,13 +97,13 @@ function Login() {
 
                         {/* Button Submit */}
                           <div>
-                            <button type="submit" onClick={handleSubmit} className="submit btn-dark ">Submit</button>
+                            <button type="submit" onClick={handleSubmit} className="submit btn-dark"> Submit </button>
                           </div>                   
                       </div>     
                 </form>
               
-              </div>
-              <div class="quotes col-6 quotes-block">
+
+              <div class="quotes quotes-block">
                 <h2 className="text-center quote-title">Quotes</h2>
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                   <ol class="carousel-indicators">
@@ -125,11 +132,9 @@ function Login() {
                     {/* <span class="sr-only">Next</span> */}
                   </button>
                 </div>
-                
               </div>
-            </div>
           </div>
-        </div>
+                
         <Footer/>
     </LoginFormStyled>
     
@@ -138,19 +143,19 @@ function Login() {
 export default Login;
 
 const LoginFormStyled = styled.div`
-height: 73vh;
+font-family: 'poppins';
 
-h3 {
-  /* margin-top: 4vh; */
-  font-size: 3em;
-  margin: 0 auto 8vh auto;
+.login-page{
+  display: flex;
 }
+
 .login-form{
+    width: 40vw ;
+    float: left;
+    margin: 0% 2% 5% 2%;
     background-color: white;
     border-radius:5px;
     display: grid;
-    border: 2px solid #4c2a4e;;
-    /* box-shadow: #4c2a4e; */
     color: #4c2a4e;
     overflow: auto;
     height: 60vh;
@@ -167,7 +172,6 @@ h3 {
   border: 1px solid red;
   width: 90%;
   height: fit-content;
-  /* margin: auto; */
 }
 
 label {
@@ -178,7 +182,6 @@ label {
 .submit {
   background-color: #4c2a4e;
   color: white;
-  /* height: 4vh; */
   padding: 2%;
   width: 30%;
   margin: 5% 25%;
@@ -187,15 +190,19 @@ label {
 }
 
 input {
-  /* border: 1px solid black !important; */
   width: 30vw;
   padding: 2%;
   margin: 1px;
   border: 1px solid #6b0070;
-   border-radius: 4px;
+  border-radius: 4px;
 }
 
 .quotes-block{
+  width: 40vw ;
+  height: 60vh;
+  float: right;
+  margin: 0% 5% 5% 2%;
+  padding: 0% 0% 5% 0%;
   background-color: #4c2a4e;
   border-radius:5px;
   color: white;
@@ -203,23 +210,62 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid white;
-  height: auto;
 }
 
 .quote-title{
-  margin: 0 auto 10vh auto;
+  margin: 0 auto 5% auto;
+  color: white;
 }
-
-/* .quotes{
-    border: 1px solid #000;
-    overflow: auto;
-} */
-
 .carousel-inner {
-    padding: 0% 20% 10% 20%;
-    border: solid white 1px;
-    /* margin: auto; */
+    padding: 0% 20% 0% 20%;
     
 }
+ /* RESPONSIVE */
+ @media only screen and (min-width: 768px) {
+  .login-page{
+    display: flex;
+    align-items: center;
+  }
+  .login-form {
+    width: 50vw;
+    height: auto;
+    float: center;
+  }
+  input{
+    width: 30vw;
+  }
+  .submit{
+    margin: 5% 0% 5% 35%;
+  }
+  .quotes-block {
+    width: 50vw;
+    height: auto;
+    margin: 0% 0% 5% 0%;
+    float: center;
+  }
+ }
+ @media screen and (max-width: 480px) {
+  .login-page{
+    display: inline-block;
+    align-items: center;
+  }
+  .login-form {
+    width: 100vw;
+    height: auto;
+    margin: 0% 0% 0% 0%;
+    float: center;
+  }
+  input{
+    width: 70vw;
+  }
+  .submit{
+    margin: 5% 0% 5% 35%;
+  }
+  .quotes-block {
+    width: 100vw;
+    height: auto;
+    margin: 0% 0% 5% 0%;
+    float: center;
+  }
+ }
 `;

@@ -32,14 +32,22 @@ const ButtonsStyled = styled.div`
     .btn-list {
         margin: 0% 0% 3% 175%;
     }
-@media screen and (max-width: 480px) { 
+@media only screen and (min-width: 768px) and (max-width: 960px)  { 
     width: 60%;
+    .btn-create{
+        margin: 0% 0% 3% -30%;
+    }
+    .btn-list {
+        margin: 0% 0% 3% 55%;
+    }
+}
+@media screen and (max-width: 480px) { 
+    width: 50%;
     display: inline-block;
     .btn-create,
     .btn-list{
-        margin: 0% 0% 3% -5%;
+        margin: 3% 0% 3% -45%;
     }
 }
-
     
 `;

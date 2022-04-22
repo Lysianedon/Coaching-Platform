@@ -28,7 +28,7 @@ function QuestionnaireStarter() {
           </h4>
           <h5><em>Cela prendra 10 minutes...</em> </h5>
 
-          <a href="https://www.typeform.com/">
+          <a href="https://7nsna4vba1q.typeform.com/to/CyGdqVKG">
             <button href="/question" className="btn-start btn-dark">
               Commencer
             </button>
