@@ -1,7 +1,7 @@
 //Axios
 import axios from 'axios';
 // components
-import { React, useState, useEffect, createContext } from "react";
+import { React, useState, useEffect } from "react";
 // import SideBarUser from "../../components/dashboardComponents/sidebar-user/sidebarUser";
 // import Profile from "../../components/dashboardComponents/profile-user/profile";
 import Agenda from "../../components/dashboardComponents/agenda/agenda";
@@ -13,6 +13,9 @@ import styled from "styled-components";
 function DashboardUser() {
   const [name,setName] = useState('');
   const[toDoList, setToDoList] = useState([]);
+  const [task, setTask] = useState('');
+  const [numberOfTasks, setNumberOfTasks] = useState(0);
+
   const [userId, setUserId] = useState('');
 
   const fetchData = () => {
@@ -38,7 +41,10 @@ function DashboardUser() {
     axios.post("http://localhost:8000/dashboard/user/list",{content}, { withCredentials: true});
     content = {content}
     setToDoList([...toDoList, content]);
-    // setNumberOfTasks(numberOfTasks + 1);
+    setNumberOfTasks(numberOfTasks + 1);
+    
+    //Emptying the field:
+    parentDiv.children[0].value="";
 
   }
 
@@ -51,9 +57,11 @@ function DashboardUser() {
     if (checkbox.checked) {
       parentDiv.children[1].style.textDecoration = 'line-through';
       //Deleting the task :
-      // axios.delete("http://localhost:8000/dashboard/user/list", { withCredentials: true, data : {content}});
-      // setNumberOfTasks(numberOfTasks - 1);
+      axios.delete("http://localhost:8000/dashboard/user/list", { withCredentials: true, data : {content}});
+      setNumberOfTasks(numberOfTasks - 1);
+
       setTimeout(() => {
+        parentDiv.style.opacity='0';
         parentDiv.remove(); 
       }, 1000);
     }else{
@@ -67,18 +75,18 @@ function DashboardUser() {
   }
 
   return (
-   
       <Dadhboard>
       <h2>Hello {name} ! </h2>
-      <h2>Quelle est ton humeur du jour ?</h2>
 
      {/* <SideBarUser/> */}
      {/* <Profile className="profile"/>  */}
 
-         {/* <h3>Tu as {numberOfTasks} tâche(s) à réaliser: </h3> */}
+     {
+       numberOfTasks < 1 ?  <h3>Tu n'as aucune tâche à faire pour le moment </h3> : <h3>Tu as {numberOfTasks} tâche(s) à réaliser: </h3>
+     }
 
        <div className="header-todolist">
-         <h3>Mes tâches :</h3>
+         <h3>TO DO LIST:</h3>
           <div className="add">
             <input type="text" name="newtask" id="newtask"className="newtask"/>
             <button onClick={handleAddTask}>Ajouter</button>
@@ -93,8 +101,6 @@ function DashboardUser() {
                <div className="options">
                <input type="checkbox" name="accomplished" id="checkbox" onClick={handleCheckbox}/>
                <li>{task.content}</li>
-               {/* <button onClick={handleDelete}>Supprimer</button> */}
-               {/* <button>Modifier</button> */}
                </div>
              </div>
            )
@@ -108,16 +114,18 @@ function DashboardUser() {
      <Ressources/> */}
 
     </Dadhboard>
-  
   )
 }
 export default DashboardUser;
 
-
 // --------------- STYLED COMPONENTS ---------------------
-
+ 
 const Dadhboard = styled.div`
-
+h3 {
+  text-align: center;
+  margin-bottom: 2%;
+  /* color: #4f3149; */
+}
 #test-input{
   border:0 !important;
   outline:0 !important;
@@ -140,7 +148,6 @@ flex-direction: column;
 
 .profile {
   margin-top: 25%;
-
 }
 
 .header-todolist{
@@ -174,7 +181,6 @@ flex-direction: column;
       font-size: 1.4em;
       width: 8vw;
       padding: .7%;
-      /* background-color: #7d59bd; */
     }
 
     button{
@@ -226,14 +232,22 @@ flex-direction: column;
     }
     
     li{
-      margin-left: 13%;
       width:100%;
-      font-size: 1.3em;
+      font-size: 22px;
+      opacity: 1;
+      -webkit-transition: opacity 1000ms linear;
+      transition: opacity 1000ms linear;
 
     }
 
-    /* .task:hover{
-      background-color: #4f3149 !important;
+    div{
+      opacity: 1;
+      -webkit-transition: opacity 1000ms linear;
+      transition: opacity 1000ms linear;
+    }
+
+    /* div:hover{
+      background-color: #F2BAE3 !important;
       width: 100%;
     } */
     

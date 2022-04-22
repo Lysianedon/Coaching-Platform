@@ -1,4 +1,4 @@
-import { React, useState, useEffect, createContext } from "react";
+import { React } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //Pages
 import Home from "./views/home/home";
@@ -14,12 +14,9 @@ import DashboardUser from "./views/dashboard/dashboardUser";
 import DashboarSignup from "./views/dashboard/dashboardSignup";
 import DashboardList from "./views/dashboard/dashboardList";
 
-// export const TasksContexts = createContext();
-
 function App() {
   return (
     <div>
-      {/* <TasksContexts.Provider value={tasksContext}> */}
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />

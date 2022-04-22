@@ -16,9 +16,6 @@ app.use(
   })
 );
 
-//--------- SET UP EJS -------------//
-// Set EJS as templating engine
-// app.set("view engine", "ejs");
 const fs = require("fs");
 const path = require("path");
 //-------------- DOTENV ----------------------//
