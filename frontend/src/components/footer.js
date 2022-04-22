@@ -54,8 +54,8 @@ function Footer() {
 export default Footer;
 
 const FooterStyled = styled.div`
-/* GENERAL PARAMETERS  */
-  font-family: 'poppins';
+  /* GENERAL PARAMETERS  */
+  font-family: "poppins";
 
   background-color: #4c2a4e;
   color: white;
@@ -67,23 +67,20 @@ const FooterStyled = styled.div`
     width: 100vw;
     justify-content: space-around;
   }
- 
+
   footer .footer-left {
     float: left;
     text-align: left;
     padding: 2%;
-  
   }
   footer .footer-center {
     text-align: center;
     padding: 2%;
-
   }
   footer .footer-right {
     float: right;
     text-align: right;
     padding: 2%;
- 
   }
   .text-link {
     color: white;

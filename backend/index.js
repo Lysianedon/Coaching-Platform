@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const mongoose = require("mongoose");
-const multer=require('multer');
+const multer = require("multer");
 //------ BODY PARSER AND COOKIE PARSER ------//
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -41,21 +41,17 @@ mongoose
   .then(() => console.log("Connected to MongoDB"));
 
 //--------------- ROUTERS ------------------//
-const contactRouter = require("./routers/contactRouter");
+const contactFormRouter = require("./routers/contactFormRouter");
 const questionnaireRouter = require("./routers/questionnaireRouter");
 const dashboardRouter = require("./routers/dashboardRouter");
 const loginRouter = require("./routers/loginRouter");
 const logoutRouter = require("./routers/logoutRouter");
 
-const contactFormRouter = require("./routers/contactFormRouter");
-
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
-app.use("/contact", contactRouter);
+app.use("/contact", contactFormRouter);
 app.use("/questionnaire", questionnaireRouter);
 app.use("/dashboard", dashboardRouter);
-//------------ Test -------------------//
-app.use("/contact-form", contactFormRouter);
 
 //---------------- ROUTES -----------------//
 app.get("*", (_req, res) => {
