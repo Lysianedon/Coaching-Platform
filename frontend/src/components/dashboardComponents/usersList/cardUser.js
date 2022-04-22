@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
+
 //css
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function CardUser() {
     const [users, setUsers] = useState([]);
 
-    useEffect(() => {
+    useEffect((e) => {
         axios.get("http://localhost:8000/dashboard/admin/users",
         { withCredentials: true },)
         .then(res => {
@@ -15,11 +16,29 @@ function CardUser() {
         })
       }, [])
 
+    const handleRemove = (index) => {
+    const newList = [...users];
+    newList.splice(index, 1);
+    setUsers(newList);
+    
+        axios.delete("http://localhost:8000/dashboard/admin/users",
+        { withCredentials: true },)
+        .then(res => {
+            console.log(res.data);
+            setUsers(users);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+
+
+    }
+
     return(
         <CardUserStyled>
             <div className="cardUser-form">
                 
-                {users && users.map((user) =>
+                {users && users.map((user,index) =>
                         <div key={user._id}>
                             <div className="card">
                                 <p>Numéro Identifiant : <strong>{user._id} </strong> 
@@ -39,9 +58,9 @@ function CardUser() {
                                 
                                 <div>
                                     <a href="/">En savoir plus</a>
-                                    <i class="bi bi-trash"></i>
+                                    <i class="bi bi-trash" onClick={() => handleRemove(index)}></i>
                                 </div>
-                                
+                        
                                 
                             </div>
                         </div>

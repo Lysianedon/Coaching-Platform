@@ -205,23 +205,29 @@ router.delete("/admin/users", auth, isAdmin, async (req, res) => {
 
 // --------------------- HANDLING FILES -------------------------------------
 // ----------------------- DOWNLOAD A FILE ----------------------------------
-router.get("/user/files/download",auth, async (req, res) => {
+
+router.get("/user/files/download", async (req, res) => {
   //Get the user's file by its name and userID
 
   //If admin, permettre de telecharger tous les fichiers en regardant seulement filename / Si user : regarder userID and filename
 
   //Côté front : créer une icone pour chaque fichier uploadé, et telechargement au double clic ou en cliquant sur telecharger
   const filename = req.body.filename;
+  console.log("worked!");
   return res.download(path.join(`/Users/lysianedon/Documents/KONEXIO/Coaching-Platform/backend/public/uploads/${filename}`))
 });
 
 // ----------------------- UPLOAD A FILE ----------------------------------
-router.post('/user/files/upload', upload.single("image"),auth, async (req,res) => {
+router.post('/user/files/upload', upload.single("selectedFile"),auth, async (req,res) => {
 
   //Check size file : si too big, on refuse => creer middleware pour cela ?
-  const {username, filename} = req.body;
+  const {filename} = req.body;
+
+  if (req.file) {
+    console.log(req.file.originalname);
+
+  }
   
-  console.log(req.file.originalname);
   fs.renameSync(
       req.file.path,
       path.join(req.file.destination, req.file.originalname)

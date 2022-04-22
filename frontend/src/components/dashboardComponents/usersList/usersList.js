@@ -8,11 +8,12 @@ import Buttons from "../buttons/buttons";
 
 function UsersList() {
     const [userId, setUserId] = useState("");
+
     return(
         <UsersListStyled>
             {/* <Buttons/> */}
-            
-            <h3 className="tilte-cardUser">Liste d'utilisateurs</h3>
+            <h3> </h3>
+            {/* <h3 className="tilte-cardUser">Liste d'utilisateurs</h3> */}
             {/* userId */}
             
                 <div className="search-bar-form">
@@ -47,7 +48,7 @@ const UsersListStyled = styled.div`
     text-align: center;
 }  
 .search-bar-form{
-    margin: 5% 0% 2% 23%;
+    margin: 0% 0% 2% 23%;
 }
 .search-bar{
     display: flex;
