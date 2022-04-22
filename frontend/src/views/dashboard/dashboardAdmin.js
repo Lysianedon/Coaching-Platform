@@ -16,6 +16,18 @@ function DashboardAdmin() {
 
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
+  
+// AGENDA INFOS - GOOGLE CALENDAR :
+  const [emailUser,setEmailUser] = useState('');
+  const fetchEmailUser = () => {
+
+      axios.get('http://localhost:8000/dashboard/user', {withCredentials : true})
+      .then(res =>{ 
+          let email = (res.data.user.email);
+          email = email.replace('@', '%40');
+          setEmailUser(email);
+      })
+  }
 
   const fetchProfileInfos = () => {
     axios.get('http://localhost:8000/dashboard/user', { withCredentials: true })
@@ -29,23 +41,23 @@ function DashboardAdmin() {
 
  useEffect(() => {
   fetchProfileInfos();
+  fetchEmailUser();
 
  }, [])
   return (
     <>
      <SideBarAdmin/> 
      <Container>
-       <h3>Hello !</h3>
-        <Bonjour/>
-      <BonjourStyle>
-      </BonjourStyle>
-      <AgendaStyle>
-        <ApiCalendar/>
-      </AgendaStyle>
-      <ToDoListUser/>
-      <RessourcesStyle>
-        <Ressources/> 
-      </RessourcesStyle>
+       <h2>Hello {firstname}!</h2>
+       <section className="ToDoListUser">
+        <ToDoListUser />
+       </section>
+
+       <h2 className='title-mesrdv'>Mes Rendez-Vous</h2>
+       <iframe className="calendar" src={`https://calendar.google.com/calendar/embed?src=${emailUser}&ctz=Europe%2FParis`} height={300}></iframe>
+
+       <Ressources/> 
+
      </Container>
 
 
@@ -55,47 +67,37 @@ function DashboardAdmin() {
 export default DashboardAdmin;
 
 const Container = styled.li`
+overflow-x: hidden;
 
-h3{
+h2{
   color: black !important;
   font-size: 3rem;
 }
-width: 72vw;
-padding: 90px;
-position:absolute;
-border-radius: 12px;
-left: 280px;
-font-size: 15px;
-color: white;
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-overflow-x: hidden;
-`;
-const BonjourStyle = styled.div`
-    border-radius:12px;
-    position:inherit;
-    padding:15px;
-    color:white;
-    margin-bottom:330px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color:black;
+
+.title-mesrdv{
+  background-color: #4f3149;
+  width: 40vw;
+  margin: auto;
+  margin-top: 5%;
+  padding-bottom: 1%;
+  color: white !important;
+}
+
+
+.ToDoListUser{
+  margin-top: 2%;
+}
+
+.calendar{
+  width: 40.1vw;
+  margin-left: 30%;
+  height: 50vh;
+}
+
+
+
 `;
 
-const AgendaStyle = styled.div`
-    border-radius:12px;
-    background-color:#4c2a4e;
-    position:inherit;
-    padding:15px;
-    color:white;
-    margin-top:300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
 
 const ToDoStyle = styled.div`
   margin:0%;

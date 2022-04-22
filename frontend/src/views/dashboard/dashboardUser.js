@@ -1,267 +1,134 @@
-//Axios
 import axios from 'axios';
-// components
 import { React, useState, useEffect } from "react";
-// import SideBarUser from "../../components/dashboardComponents/sidebar-user/sidebarUser";
-// import Profile from "../../components/dashboardComponents/profile-user/profile";
-import Agenda from "../../components/dashboardComponents/agenda/agenda";
-// import ToDoList from "../../components/dashboardComponents/todolist/todolist";
-// import Ressources from "../../components/dashboardComponents/ressources/ressources";
-//Styled-components
-import styled from "styled-components";
 
-function DashboardUser() {
-  const [name,setName] = useState('');
-  const[toDoList, setToDoList] = useState([]);
-  const [task, setTask] = useState('');
-  const [numberOfTasks, setNumberOfTasks] = useState(0);
+// components
+import SideBarAdmin from "../../components/dashboardComponents/sidebar-admin/sidebarAdmin";
+import Bonjour from "../../components/dashboardComponents/Bonjour";
+import ApiCalendar from "../../components/dashboardComponents/agenda/agenda";
+import ToDoList from "../../components/dashboardComponents/todolist/todolist";
+import Ressources from "../../components/dashboardComponents/ressources/ressources";
 
-  const [userId, setUserId] = useState('');
+//css
+import styled from 'styled-components';
+import ToDoListUser from '../../components/dashboardComponents/ToDoListUser';
 
-  const fetchData = () => {
-    axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
-    .then(res => {
-      console.log(res.data);
-      setName(res.data.user.firstName);
-      setToDoList(res.data.user.tasks);
-      // setNumberOfTasks(res.data.user.tasks.length)
-    })
+function DashboardAdmin() {
+
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  
+// AGENDA INFOS - GOOGLE CALENDAR :
+  const [emailUser,setEmailUser] = useState('');
+  const fetchEmailUser = () => {
+
+      axios.get('http://localhost:8000/dashboard/user', {withCredentials : true})
+      .then(res =>{ 
+          let email = (res.data.user.email);
+          email = email.replace('@', '%40');
+          setEmailUser(email);
+      })
   }
 
-  useEffect(()=> {
-    fetchData();
-
-  }, [])
-
-  const handleAddTask = (e) =>{
-    const parentDiv = e.target.parentElement;
-    //Getting the content of the input => the new task : 
-    let content = parentDiv.children[0].value;
-    console.log(content);
-    axios.post("http://localhost:8000/dashboard/user/list",{content}, { withCredentials: true});
-    content = {content}
-    setToDoList([...toDoList, content]);
-    setNumberOfTasks(numberOfTasks + 1);
-    
-    //Emptying the field:
-    parentDiv.children[0].value="";
-
+  const fetchProfileInfos = () => {
+    axios.get('http://localhost:8000/dashboard/user', { withCredentials: true })
+    .then(res => 
+      {
+      // console.log(res.data);
+      setLastname(res.data.user.lastName);
+      setFirstname(res.data.user.firstName)
+    });
   }
 
-  const handleCheckbox = (e) => {
-    const checkbox = e.target;
-    const parentDiv = e.target.parentElement;
-    const content = parentDiv.children[1].textContent;
+ useEffect(() => {
+  fetchProfileInfos();
+  fetchEmailUser();
 
-    //If the box is checked, the task will be rod in the front and deleted in the db:
-    if (checkbox.checked) {
-      parentDiv.children[1].style.textDecoration = 'line-through';
-      //Deleting the task :
-      axios.delete("http://localhost:8000/dashboard/user/list", { withCredentials: true, data : {content}});
-      setNumberOfTasks(numberOfTasks - 1);
-
-      setTimeout(() => {
-        parentDiv.style.opacity='0';
-        parentDiv.remove(); 
-      }, 1000);
-    }else{
-      parentDiv.children[1].style.textDecoration = 'none';
-    }
-  }
-  //TodoList Context to export in Provider:
-   const tasksContext = {
-    toDoList : toDoList,
-    setToDoList : setToDoList,
-  }
-
+ }, [])
   return (
-      <Dadhboard>
-      <h2>Hello {name} ! </h2>
+    <>
+     <SideBarAdmin/> 
+     <Container>
+       <h2>Hello {firstname}!</h2>
+       <section className="ToDoListUser">
+        <ToDoListUser />
+       </section>
 
-     {/* <SideBarUser/> */}
-     {/* <Profile className="profile"/>  */}
+       <h2 className='title-mesrdv'>Mes Rendez-Vous</h2>
+       <iframe className="calendar" src={`https://calendar.google.com/calendar/embed?src=${emailUser}&ctz=Europe%2FParis`} height={300}></iframe>
 
-     {
-       numberOfTasks < 1 ?  <h3>Tu n'as aucune tâche à faire pour le moment </h3> : <h3>Tu as {numberOfTasks} tâche(s) à réaliser: </h3>
-     }
+       <Ressources/> 
 
-       <div className="header-todolist">
-         <h3>TO DO LIST:</h3>
-          <div className="add">
-            <input type="text" name="newtask" id="newtask"className="newtask"/>
-            <button onClick={handleAddTask}>Ajouter</button>
-          </div>
-       </div>
-     <section className="checklist">
-       <ul>
-       {
-         toDoList.map(task => {
-           return (
-             <div className="task">
-               <div className="options">
-               <input type="checkbox" name="accomplished" id="checkbox" onClick={handleCheckbox}/>
-               <li>{task.content}</li>
-               </div>
-             </div>
-           )
-         })
-       }
-       </ul>
-     </section> 
+     </Container>
 
-     <Agenda/>
-     {/* <ToDoList/> 
-     <Ressources/> */}
 
-    </Dadhboard>
+    </>
   )
 }
-export default DashboardUser;
+export default DashboardAdmin;
 
-// --------------- STYLED COMPONENTS ---------------------
- 
-const Dadhboard = styled.div`
-h3 {
-  text-align: center;
-  margin-bottom: 2%;
-  /* color: #4f3149; */
-}
-#test-input{
-  border:0 !important;
-  outline:0 !important;
-  border-width:0px !important;
-border:none !important;
-}
-#test-input:focus {text-decoration:underline;}
+const Container = styled.li`
+overflow-x: hidden;
 
 h2{
-  text-align: center;
-  font-size: 2em;
-  margin: 2% auto 3% auto;
+  color: black !important;
+  font-size: 3rem;
 }
 
-/* height: 130vh !important; */
-overflow-y: scroll;
-overflow: scroll;
-display: flex;
-flex-direction: column;
-
-.profile {
-  margin-top: 25%;
-}
-
-.header-todolist{
-    display: flex;
-    flex-direction: column;
-    background-color: #4f3149 ;
-    border-radius: 4px;
-    color: white;
-    font-weight: bold;
-    justify-content: center;
-    align-items: center;
-    font-family: 'helvetica';
-    padding: 1%;
-    width: 40vw;
-    margin: auto;
-    margin-bottom: 1.2%;
-
-    h3{
-      font-size:2.5em;
-      font-weight: bold;
-      margin-bottom: 4%;
-    }
-
-    .newtask{
-      width: 20vw;
-      height: 4vh;
-    }
-
-    button, input{
-      display: block;
-      font-size: 1.4em;
-      width: 8vw;
-      padding: .7%;
-    }
-
-    button{
-      border-radius: 7%;
-      margin-left: 5%;
-      font-weight: bold;
-      /* background-color: #FFC267; */
-      background-color: white;
-      color: #4f3149;
-
-    }
-
-    .add{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2%;
-
-    }
-  }
-
-.checklist{
-  height: 50vh;
+.title-mesrdv{
+  background-color: #4f3149;
   width: 40vw;
   margin: auto;
-  border: 2px solid #4f3149;
-  overflow-y: scroll;
-  border-radius: 4px;
-  background-color: white;
-  /* box-shadow: 0px 0px 5px rgba(66,66,66,.75); */
-  box-shadow: 0px 8px 15px -5px rgba(0,0,0,0.76);
-
-
-  .task{
-    display: flex;
-    justify-content: left;
-    width: 95%;
-    list-style: none;
-    margin: 2% auto;
-    /* border: 1px solid purple; */
-    /* border-bottom: 1px solid purple ; */
-    padding: 2%;
-    background-color: white;
-
-    input[type="checkbox"]{
-      width: 3vw !important;
-      height: 3vh;
-      accent-color:green;
-    }
-    
-    li{
-      width:100%;
-      font-size: 22px;
-      opacity: 1;
-      -webkit-transition: opacity 1000ms linear;
-      transition: opacity 1000ms linear;
-
-    }
-
-    div{
-      opacity: 1;
-      -webkit-transition: opacity 1000ms linear;
-      transition: opacity 1000ms linear;
-    }
-
-    /* div:hover{
-      background-color: #F2BAE3 !important;
-      width: 100%;
-    } */
-    
-    input[type="checkbox"]:nth-child(even){
-      accent-color: black;
-
-    }
-
-    .options{
-      display: flex;
-    }
-
-
-  }
-
+  margin-top: 5%;
+  padding-bottom: 1%;
+  color: white !important;
 }
-`
+
+
+.ToDoListUser{
+  margin-top: 2%;
+}
+
+.calendar{
+  width: 40.1vw;
+  margin-left: 30%;
+  height: 50vh;
+}
+
+
+
+`;
+
+
+const ToDoStyle = styled.div`
+  margin:0%;
+  height: 830px;
+  width: 72vw;
+	padding: 90px;
+  border-radius:12px;
+  background-color:#4c2a4e;
+  margin-top:1600px;
+  padding:15px;
+  padding-bottom:80px;
+  position:inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+ `;
+
+const RessourcesStyle = styled.div`
+  font-size: 16px;
+  height:600px;
+  width:72vw;
+  position:inherit;
+	padding: 90px;
+  border-radius:12px;
+  background-color:#4c2a4e;
+  margin-top:3180px;
+  padding:15px;
+  color:white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+`;

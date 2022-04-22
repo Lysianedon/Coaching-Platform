@@ -18,12 +18,13 @@ function ToDoListUser() {
       console.log(res.data);
       setName(res.data.user.firstName);
       setToDoList(res.data.user.tasks);
-      // setNumberOfTasks(res.data.user.tasks.length)
+      setNumberOfTasks(res.data.user.tasks.length)
     })
-  }
+}
 
-  useEffect(()=> {
+useEffect(()=> {
     fetchData();
+    console.log("todolist::: ",toDoList);
 
   }, [])
 

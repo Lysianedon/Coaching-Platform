@@ -4,3 +4,8 @@
 # misc
 .DS_Store
 /config.env
+
+
+# package.json 
+/package.json
+/package-lock.json

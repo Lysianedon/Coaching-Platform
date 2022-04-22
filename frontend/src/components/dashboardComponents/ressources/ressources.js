@@ -21,7 +21,6 @@ function Ressources() {
 					setIsLoading(false)
 				}
 		)
-
 	}, []);
 
 	//UPLOADING A FILE :
@@ -79,13 +78,13 @@ function Ressources() {
     return (
 
 			<StyledContainer>
-				
 				{/* Upload form */}
 				<div className="uploadfile" >
 					<form  onSubmit={onSubmit} >
+				<h2 className="title-ressources">Mes ressources</h2>
 						<div className="uploadInput" >
 						<div className="label">
-							<h6>File name:</h6>
+							<h6 className="nomdufichier">*Nom du fichier: </h6>
 						</div>
 							<input
 								type="text"
@@ -99,7 +98,7 @@ function Ressources() {
 
 						<div className="uploadInput">
 						<div className="label">
-							<h6>Your file: </h6>
+							<h6 className="yourfile">*Sélectionner un fichier: </h6>
 						</div>
 							<input
 								type="file"
@@ -153,8 +152,81 @@ export default Ressources;
 
 //--------------------- STYLED-COMPONENTS --------------------------
 const StyledContainer = styled.div`
+
+.title-ressources{
+	margin-bottom: 10%;
+	color: #f6f6f6 !important;
+}
+
+/*----- HEADER - UPLOAD FILE ------------- */
+ 	.uploadfile{
+		border: 1px solid black;
+		width: 40.1vw;
+		margin-left: 30%;
+		height: 40vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 5px;
+		background-color: #4f3149;
+	}
+
+	h6{
+		font-size: 1.9rem;
+		align-items: center;
+		justify-content: center;
+		color: white;
+	}
+
+	.nomdufichier{
+		text-align: center;
+	}
+	.yourfile{
+			text-align: center;
+			margin: 10% 10% 8% 0;
+			width: 100%;
+	}
+
+	.inputFileName{
+		width: 20vw;
+		height: 3vh;
+		border-radius: 3px;
+	}
+
+	.choosefile{
+		font-size: 1.2rem;
+	}
+
+	.addbtn{
+		margin-top: 10%;
+		width: 10vw;
+		height: 4vh;
+		margin-bottom: 10%;
+		border-radius: 5px;
+		border:2px solid black;
+		background-color: #f6f6f6;
+		color:  #4f3149;
+		font-weight: bold;
+		font-size: 1.5rem;
+	}
+
+	a{
+		text-decoration: none;
+		color: black;
+		text-align: center;
+		margin-top: 5%;
+	}
+
+	 .allFiles{
+		border: 1px solid black;
+		width: 40.1vw;
+		margin-left: 30%;
+		height: 20vh;
+	 }
+
 	img{
 		width: 50px;
+		height: 55px;
 		max-width: 80px;
 	}
 
@@ -169,7 +241,6 @@ const StyledContainer = styled.div`
 			justify-content: center;
 		}
 	}
-
 `
 const LoaderStyle= styled.div`
 
@@ -194,6 +265,7 @@ const LoaderStyle= styled.div`
 	border-radius: 20%;
 	background: #333;
 }
+
 .loader div:nth-child(1) {
 	transform: rotate(0deg);
 	animation-delay: -1.1s;

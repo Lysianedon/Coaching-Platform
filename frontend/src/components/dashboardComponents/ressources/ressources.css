@@ -1,4 +1,4 @@
-.uploadfile{
+/* .uploadfile{
     border-radius: 12px;
     width:50vw;
     height: 30vh;
@@ -70,7 +70,6 @@
 
 .choosefile{
     border-radius: 4px;
-    border: none;
     outline: none;
     background: white;
     width: 70%;
@@ -86,4 +85,4 @@
     align-items: center;
     display: flex;
     margin-left: 120px;
-}
+} */

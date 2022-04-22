@@ -35,10 +35,7 @@ router.get("/user", auth, async (req, res) => {
     user = await User.findById(req.userId).populate(
       "tasks"
     );
-
-    user = await User.findById(req.userId).populate(
-      "ressources",
-    );
+    
   } catch (error) {
     console.log(error);
     return res.status(400).json({ message: "An error occurred." });
