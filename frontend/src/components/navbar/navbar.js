@@ -14,7 +14,7 @@ import styled from 'styled-components';
 
 function Navbar({item}) {
 
-  const [navbar, setNavbar] = useState(true);
+  const [navbar, setNavbar] = useState(false);
 
   const showNavbar = () => setNavbar(!navbar);
 
