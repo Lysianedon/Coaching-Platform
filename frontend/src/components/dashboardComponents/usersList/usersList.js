@@ -45,6 +45,9 @@ const UsersListStyled = styled.div`
     margin: 8% 0% 2% 15%;
     text-align: center;
 }  
+@media only screen and (min-width: 768px) and (max-width: 960px){
+    margin: 12% 0% 2% 0%;
+}
 @media screen and (max-width: 480px) { 
     margin: 25% 0% 2% 0%;
 }

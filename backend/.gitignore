@@ -1,7 +1,9 @@
-# dependencies
+# node_modules & co
+/config.env
 /node_modules
-
-# misc
+/package-lock.json
+/package.json
+/.pnp
 .DS_Store
 /config.env
 

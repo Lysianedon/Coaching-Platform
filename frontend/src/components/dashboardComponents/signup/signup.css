@@ -7,22 +7,25 @@
     padding: 5px;
     margin-bottom: 5%;
     text-align: center;
-    color:#4c2a4e;
+    color:#040204;
 }
 .btn-create{
     margin: 0% 2% 2% 35%;
-    padding: auto;
+    padding: 1%;
     border-radius: 4px;
     align-items: center;
 
 }
 /*RESPONSIVE */
-@media screen and (max-width: 600px) {
+@media only screen and (min-width: 768px) and (max-width: 960px) {
+
+}
+@media screen and (max-width: 480px) {
     .signup-form{
-        margin-top: 15%;
-        margin-left: 20%;
+        margin: 15% 0% 5% 0%;   
     }
-    #title-create {
-        margin-bottom: 5%;
+    .btn-create{
+        margin: 0% 2% 2% 0%;
     }
-  }
+}
+

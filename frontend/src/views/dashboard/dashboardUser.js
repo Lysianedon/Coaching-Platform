@@ -3,7 +3,6 @@ import { React, useState, useEffect } from "react";
 
 // components
 import SideBarAdmin from "../../components/dashboardComponents/sidebar-admin/sidebarAdmin";
-import Bonjour from "../../components/dashboardComponents/Bonjour";
 import ApiCalendar from "../../components/dashboardComponents/agenda/agenda";
 import ToDoList from "../../components/dashboardComponents/todolist/todolist";
 import Ressources from "../../components/dashboardComponents/ressources/ressources";
@@ -12,11 +11,11 @@ import Ressources from "../../components/dashboardComponents/ressources/ressourc
 import styled from 'styled-components';
 import ToDoListUser from '../../components/dashboardComponents/ToDoListUser';
 
-function DashboardAdmin() {
+function DashboardUser() {
 
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
-  
+
 // AGENDA INFOS - GOOGLE CALENDAR :
   const [emailUser,setEmailUser] = useState('');
   const fetchEmailUser = () => {
@@ -64,7 +63,7 @@ function DashboardAdmin() {
     </>
   )
 }
-export default DashboardAdmin;
+export default DashboardUser;
 
 const Container = styled.li`
 overflow-x: hidden;
