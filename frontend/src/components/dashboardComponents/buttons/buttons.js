@@ -35,7 +35,7 @@ const ButtonsStyled = styled.div`
 @media only screen and (min-width: 768px) and (max-width: 960px)  { 
     width: 60%;
     .btn-create{
-        margin: 0% 0% 3% -30%;
+        margin: 0% 0% 3% -50%;
     }
     .btn-list {
         margin: 0% 0% 3% 55%;

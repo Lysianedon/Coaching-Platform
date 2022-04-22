@@ -51,11 +51,11 @@ function Login() {
          .then(res => {
            console.log(res.data);
            if (res.data.user.isAdmin) {
-             toast.success("You are logged in as an admin");
+             toast.success("Hello Pauline");
              navigate('/dashboard/admin');
 
            }else{
-              toast.success("You are logged in as an user");
+              toast.success("Connexion réussie !");
               navigate('/dashboard/user');
            }
          })
