@@ -7,37 +7,34 @@ import Buttons from "../buttons/buttons";
 
 
 function UsersList() {
-    const [userId, setUserId] = useState("");
 
     return(
         <UsersListStyled>
-            {/* <Buttons/> */}
-            <h3> </h3>
+           
             {/* <h3 className="tilte-cardUser">Liste d'utilisateurs</h3> */}
+            
             {/* userId */}
             
-                <div className="search-bar-form">
-                        <label htmlFor="userId">
-                            *Numéro Identifiant de l'utilisateur: 
-                        </label> <br/>
-                    <div className="search-bar">
-                        <input
-                            id="userId"
-                            type="userId"
-                            placeholder="User ID"
-                            value={userId}
-                            onChange={(e) => setUserId(e.target.value)}
-                        ></input> 
+            {/* <div className="search-bar-form">
+                    <label htmlFor="userId">
+                        *Numéro Identifiant de l'utilisateur: 
+                    </label> <br/>
+                <div className="search-bar">
+                    <input
+                        id="userId"
+                        type="userId"
+                        placeholder="User ID"
+                        value={userId}
+                        onChange={(e) => setUserId(e.target.value)}
+                    ></input> 
 
-                        {/* Search button */}
-                        <button type="search" className="btn-search" id="search" name="Search" value="Search">
-                            Chercher
-                        </button> 
-                    </div>
+                    <button type="search" className="btn-search" id="search" name="Search" value="Search">
+                        Chercher
+                    </button> 
                 </div>
+            </div> */}
                     
-            
-            <CardUser />
+                <CardUser/>
         </UsersListStyled>
     )
 }
@@ -45,9 +42,13 @@ export default UsersList;
 
 const UsersListStyled = styled.div`
 .tilte-cardUser{
+    margin: 8% 0% 2% 15%;
     text-align: center;
 }  
-.search-bar-form{
+@media screen and (max-width: 480px) { 
+    margin: 25% 0% 2% 0%;
+}
+/* .search-bar-form{
     margin: 0% 0% 2% 23%;
 }
 .search-bar{
@@ -66,11 +67,13 @@ label {
     background-color: black;
     color: white;
     float: left;
+    width: 10vw;
     margin-left: 2%;
     border-radius: 4px;
-}
+} */
 /* RESPONSIVE */
-@media screen and (max-width: 480px) {
-}
+/* @media screen and (max-width: 480px) { 
+    display: flex;
+} */
 
 `;
