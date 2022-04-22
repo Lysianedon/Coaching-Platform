@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import Logo from "../../../assets/images/Logo.png";
-import axios from 'axios';
+import Logo from "../../assets/images/Logo-home-removebg-preview.png";
 import { React, useState, useEffect } from "react";
 
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import { SidebarData } from './SidebarData';
+import { NavbarData } from './NavbarData';
 import SubMenu from './subMenu';
 import { IconContext } from 'react-icons/lib';
 // css
@@ -13,23 +12,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import styled from 'styled-components';
 
-function SideBar({item}) {
+function Navbar({item}) {
 
-  const [sidebar, setSidebar] = useState(true);
+  const [navbar, setNavbar] = useState(true);
 
-  const showSidebar = () => setSidebar(!sidebar);
+  const showNavbar = () => setNavbar(!navbar);
 
   useEffect(() => {
 		const changeWidth = () => {
 			if (window.innerWidth < 1000) {
-				setSidebar(false);
+				setNavbar(false);
 			}
-
-      if (window.innerWidth >= 1000) {
-				setSidebar(true);
-			}
-		};
-
+        }
 		window.addEventListener("resize", changeWidth);
 		return () => {
 			window.removeEventListener("resize", changeWidth);
@@ -48,25 +42,25 @@ function SideBar({item}) {
       <IconContext.Provider value={{ color: '#fff' }}>
         <Nav>
           <NavIcon to='#'>
-            <FaIcons.FaBars onClick={showSidebar} />
+            <FaIcons.FaBars onClick={showNavbar} />
           </NavIcon>
         </Nav>
-        <SidebarNav sidebar={sidebar}>
-          <SidebarWrap>
+        <NavBar navbar={navbar}>
+          <NavbarWrap>
             <NavIcon to='#'>
-              <AiIcons.AiOutlineClose onClick={showSidebar} />
+              <AiIcons.AiOutlineClose onClick={showNavbar} />
             </NavIcon>
             <LogoSection className="imageDiv"><LogoImage src={Logo} alt=""/></LogoSection> 
-            {SidebarData.map((item, index) => {
+            {NavbarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;
             })}
-          </SidebarWrap>
-        </SidebarNav>
+          </NavbarWrap>
+        </NavBar>
       </IconContext.Provider>
     </div>
   );
 }
-export default SideBar;
+export default Navbar;
 
 
 const Nav = styled.div`
@@ -75,9 +69,12 @@ const Nav = styled.div`
   height: 80px;
   width:100px;
   display: flex;
+  position:fixed;
   justify-content: flex-start;
   align-items: center;
-  position:relative;
+  @media (min-width: 1000px) { 
+    display:none;
+}
 `;
 
 const NavIcon = styled(Link)`
@@ -90,7 +87,7 @@ const NavIcon = styled(Link)`
   align-items: center;
 `;
 
-const SidebarNav = styled.nav`
+const NavBar = styled.nav`
   background: #4f3149;
   width: 250px;
   height: 100%;
@@ -98,13 +95,13 @@ const SidebarNav = styled.nav`
   justify-content: center;
   position: fixed;
   top: 0;
-  left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+  left: ${({ navbar }) => (navbar ? '0' : '-100%')};
   transition: 350ms;
   z-index: 10;
   overflow:auto;
 `;
 
-const SidebarWrap = styled.div`
+const NavbarWrap = styled.div`
   width: 100%;
 `;
 const LogoSection = styled.div`
@@ -125,13 +122,11 @@ const LogoImage = styled.img`
   width: 50%;
   background-color: white;
   border-radius: 10%;
-  padding-left: 5%;
+  padding-left: 0%;
   @media (max-width: 550px) { 
     width: 50%;
     background-color: white;
     border-radius: 10%;
-    padding-left: 5%;
+    padding-left: 0%;
 }
 `;
-
-  

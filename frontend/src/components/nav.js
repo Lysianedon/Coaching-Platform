@@ -49,6 +49,10 @@ const Navbar = styled.nav`
   display:inline-block;
   vertical-align:top;
   width: 100%;
+  position:fixed;
+  @media (max-width: 1000px) {
+  display:none;
+}
   
   a {
     color: #4c2a4e;
