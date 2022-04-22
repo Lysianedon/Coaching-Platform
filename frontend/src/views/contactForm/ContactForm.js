@@ -132,21 +132,67 @@ export default function ContactForm() {
             Envoyer
           </button>
         </form>
-        <div className="inputGroup">
-          {window.location.hash === "#success" && (
-            <div id="success">
-              <p>Votre message a été envoyé !</p>
-            </div>
-          )}
-          {window.location.hash === "#error" && (
-            <div id="error">
-              <p>
-                Une erreur s'est produite lors de la soumission du formulaire.
-              </p>
-            </div>
-          )}
-        </div>
       </main>
+
+      <footer>
+        <div className="footer-content">
+          <div className="footer-cat">
+            <h5> PRENDRE CONTACT </h5>
+            <p>
+              <a href="/contact" className="footer-link">
+                Formulaire de contact
+              </a>
+            </p>
+            <p>
+              <a href="/questionnaire/starter" className="footer-link">
+                Questionnaire
+              </a>
+            </p>
+          </div>
+
+          <div className="footer-cat">
+            <h5> SUIVEZ-MOI </h5>
+            <div className="social-links">
+              <a
+                href="https://fr-fr.facebook.com/pauline.gane.9"
+                _target="blank"
+              >
+                <i class="bi bi-facebook"></i>
+              </a>
+              <a
+                href="https://instagram.com/pmggroup2022?igshid=YmMyMTA2M2Y="
+                _target="blank"
+              >
+                <i class="bi bi-instagram"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/pauline-gane-28a136aa/"
+                _target="blank"
+              >
+                <i class="bi bi-linkedin"></i>
+              </a>
+            </div>
+          </div>
+
+          <div className="footer-cat">
+            <h5> LIENS UTILES </h5>
+            <p>
+              <a href="/" className="legal-infos">
+                Mentions légales
+              </a>
+            </p>
+            <p>
+              <a href="/" className="legal-infos">
+                CGU / CGV
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div className="copyright">
+          &copy; Créé par Jessica, Anita, Lysiane et Chi
+        </div>
+      </footer>
     </>
   );
 }

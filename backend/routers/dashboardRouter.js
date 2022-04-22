@@ -62,9 +62,9 @@ router.delete("/user/list", auth, async (req, res) => {
   const userId = req.userId;
   const taskToDelete = req.body.content;
   let deletedTask;
-  console.log("taskToDelete:  ",taskToDelete);
+  console.log("taskToDelete:  ", taskToDelete);
   if (!taskToDelete) {
-    return res.status(404).json({error : "No task found"});
+    return res.status(404).json({ error: "No task found" });
   }
 
   try {
@@ -90,7 +90,7 @@ router.post("/user/list", auth, validateTaskJoi, async (req, res) => {
   newTask = {
     userId,
     content,
-    accomplished : false
+    accomplished: false,
   };
 
   try {
@@ -146,32 +146,26 @@ router.get("/admin/users", auth, isAdmin, async (_req, res) => {
 });
 
 // CREATE A NEW USER
-router.post(
-  "/admin/users",
-  auth,
-  isAdmin,
-  validateUserJoi,
-  async (req, res) => {
-    let user;
+router.post("/admin/users", auth, isAdmin, async (req, res) => {
+  let user;
 
-    try {
-      user = await User.create(req.body);
-      user.password = await bcrypt.hash(user.password, 12);
-      const hashedPassword = user.password;
-      console.log(hashedPassword);
-      user.save();
-    } catch (error) {
-      return res.status(400).json({
-        message: "An error happened.",
-        error,
-      });
-    }
-    return res.status(201).json({
-      message: "User successfully created",
-      user,
+  try {
+    user = await User.create(req.body);
+    user.password = await bcrypt.hash(user.password, 12);
+    const hashedPassword = user.password;
+    console.log(hashedPassword);
+    user.save();
+  } catch (error) {
+    return res.status(400).json({
+      message: "An error happened.",
+      error,
     });
   }
-);
+  return res.status(201).json({
+    message: "User successfully created",
+    user,
+  });
+});
 
 // UPDATE A USER
 router.put("/admin/users", auth, isAdmin, async (req, res) => {
@@ -214,26 +208,33 @@ router.get("/user/files/download", async (req, res) => {
   //Côté front : créer une icone pour chaque fichier uploadé, et telechargement au double clic ou en cliquant sur telecharger
   const filename = req.body.filename;
   console.log("worked!");
-  return res.download(path.join(`/Users/lysianedon/Documents/KONEXIO/Coaching-Platform/backend/public/uploads/${filename}`))
+  return res.download(
+    path.join(
+      `/Users/lysianedon/Documents/KONEXIO/Coaching-Platform/backend/public/uploads/${filename}`
+    )
+  );
 });
 
 // ----------------------- UPLOAD A FILE ----------------------------------
-router.post('/user/files/upload', upload.single("selectedFile"),auth, async (req,res) => {
+router.post(
+  "/user/files/upload",
+  upload.single("selectedFile"),
+  auth,
+  async (req, res) => {
+    //Check size file : si too big, on refuse => creer middleware pour cela ?
+    const { filename } = req.body;
 
-  //Check size file : si too big, on refuse => creer middleware pour cela ?
-  const {filename} = req.body;
+    if (req.file) {
+      console.log(req.file.originalname);
+    }
 
-  if (req.file) {
-    console.log(req.file.originalname);
-
-  }
-  
-  fs.renameSync(
+    fs.renameSync(
       req.file.path,
       path.join(req.file.destination, req.file.originalname)
-  )
-  //Creer ressource dans MongoDB : userId, filename(=req.file.originalname), size
-  return res.status(201).json({success : "Image received ! "})
-})
+    );
+    //Creer ressource dans MongoDB : userId, filename(=req.file.originalname), size
+    return res.status(201).json({ success: "Image received ! " });
+  }
+);
 
 module.exports = router;

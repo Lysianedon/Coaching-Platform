@@ -1,6 +1,6 @@
 import { React } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//Pages
+// Pages
 import Home from "./views/home/home";
 import Presentation from "./views/presentation/presentation";
 import Coaching from "./views/coaching/coaching";
@@ -8,11 +8,14 @@ import ContactForm from "./views/contactForm/ContactForm";
 import Login from "./views/Login";
 import QuestionnaireStarter from "./views/QuestionnaireStarter";
 
-// Dashboard
+// DASHBOARD
 import DashboardAdmin from "./views/dashboard/dashboardAdmin";
 import DashboardUser from "./views/dashboard/dashboardUser";
 import DashboarSignup from "./views/dashboard/dashboardSignup";
 import DashboardList from "./views/dashboard/dashboardList";
+
+// CSS
+import "./App.css";
 
 function App() {
   return (
