@@ -1,6 +1,7 @@
 import {useNavigate} from "react-router-dom";
 // components
-import  Nav from '../../components/nav';
+import  Navbar from '../../components/navbar/navbar';
+import Nav from '../../components/nav';
 import  Footer  from '../../components/footer';
 //Images
 import optionun from '../../assets/images/un.png'
@@ -41,7 +42,7 @@ function Home() {
   return (
     <DivWrapper>
       <Nav/>
- 
+      <Navbar/>
         <section className="banner">
           <h1>
           " Je t'aide à <span className="bg-purple bg-purple-1">dépasser tes</span><span className="bg-purple">croyances limitantes </span> afin de devenir l'entrepreneur.se que tu as toujours rêvé d'être. " <span className="paulinegane">Pauline Gane -</span> 

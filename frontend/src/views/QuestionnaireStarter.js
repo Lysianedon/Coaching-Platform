@@ -3,7 +3,7 @@ import React from "react";
 // components
 import Nav from "../components/nav";
 import Footer from "../components/footer";
-import QuestionnaireImage from "../assets/images/questionnaire.jpg";
+import QuestionnaireImage from "../assets/images/deuxieme.png";
 
 // css
 import styled from "styled-components";
@@ -17,19 +17,19 @@ function QuestionnaireStarter() {
           <img
             className="questionnaire-image"
             src={QuestionnaireImage}
-            alt=""
+            alt="questionnaire"
           />
         </div>
 
         <div className="text-questionnaire">
           <h4 id="description-questionnaire">
-            Commençons par faire connaissance : ce questionnaire a pour but de
-            ...
+            Commençons par faire connaissance: ce questionnaire a pour but de
+            comprendre mieux votre objective. Merci !
           </h4>
-          <p>Cela prendra X minutes...</p>
+          <h5><em>Cela prendra 10 minutes...</em> </h5>
 
           <a href="https://www.typeform.com/">
-            <button href="/question" className="btn btn-dark">
+            <button href="/question" className="btn-start btn-dark">
               Commencer
             </button>
           </a>
@@ -43,27 +43,45 @@ function QuestionnaireStarter() {
 export default QuestionnaireStarter;
 
 const QuestionnaireStyled = styled.div`
+font-family: "poppins";
+font-size: 1rem;
   .questionnaire-form {
     border: 1px solid rgb(255, 255, 255);
-    background-color: aliceblue;
+    background-color: #f5eff9;
     border-radius: 10px;
     width: 80vw;
-    height: 70vh;
-    margin: 0% 10% 5% 10%;
+    height: auto;
+    margin: 0% 15% 2% 10%;
     text-align: center;
   }
   .questionnaire-image {
-    width: 50vh;
-    height: auto;
+    width: auto;
+    height: 50vh;
     text-align: center;
     padding: auto;
     margin-top: 2%;
     margin-left: 5vw;
+    border-radius: 10px;
   }
   .text-questionnaire {
     margin-top: 0%;
   }
   #description-questionnaire {
-    margin-top: 5vh;
+    margin: 5% 2% 2% 2%;
   }
+  .btn-start{
+    margin: 5% 0% 5% 0%;
+    width: 10vw;
+    border-radius: 4px;
+  }
+    /* RESPONSIVE */
+    @media screen and (max-width: 480px) {
+      font-size: 0.9rem;
+      .text-questionnaire {
+        font-size: 0.9rem;
+      }
+      .btn-start{
+        width: 30vw;
+      }
+    }
 `;
