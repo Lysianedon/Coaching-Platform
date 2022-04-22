@@ -3,7 +3,6 @@ import { React, useState, useEffect } from "react";
 
 // components
 import SideBarAdmin from "../../components/dashboardComponents/sidebar-admin/sidebarAdmin";
-import Bonjour from "../../components/dashboardComponents/Bonjour";
 import ApiCalendar from "../../components/dashboardComponents/agenda/agenda";
 import ToDoList from "../../components/dashboardComponents/todolist/todolist";
 import Ressources from "../../components/dashboardComponents/ressources/ressources";
@@ -35,21 +34,18 @@ function DashboardAdmin() {
     <>
      <SideBarAdmin/> 
      <Container>
-      <BonjourStyle>
-        <Bonjour/>
-      </BonjourStyle>
-      <AgendaStyle>
-        <ApiCalendar/>
-      </AgendaStyle>
-      <ToDoStyle>
-        <ToDoList/>
-      </ToDoStyle>
-      <RessourcesStyle>
-        <Ressources/> 
-      </RessourcesStyle>
+        <AgendaStyle>
+          <ApiCalendar/>
+        </AgendaStyle>
+
+        <ToDoStyle>
+          <ToDoList/>
+        </ToDoStyle>
+
+        <RessourcesStyle>
+          <Ressources/> 
+        </RessourcesStyle>
      </Container>
-
-
     </>
   )
 }
@@ -68,17 +64,6 @@ display: flex;
 align-items: center;
 justify-content: center;
 overflow-x: hidden;
-`;
-const BonjourStyle = styled.div`
-    border-radius:12px;
-    position:inherit;
-    padding:15px;
-    color:white;
-    margin-bottom:330px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color:black;
 `;
 
 const AgendaStyle = styled.div`
