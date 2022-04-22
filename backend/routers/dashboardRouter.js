@@ -33,14 +33,33 @@ router.get("/user", auth, async (req, res) => {
 
   try {
     user = await User.findById(req.userId).populate(
-      // "ressources",
       "tasks"
+    );
+
+    user = await User.findById(req.userId).populate(
+      "ressources",
     );
   } catch (error) {
     console.log(error);
     return res.status(400).json({ message: "An error occurred." });
   }
   return res.json({ user });
+});
+
+//---------------- USER RESSOURCES ------------------
+router.get("/user/ressources", auth, async (req, res) => {
+  // Find user :
+  let ressources;
+
+  try {
+    ressources = await User.findById(req.userId).populate(
+      "ressources",
+    );
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: "An error occurred." });
+  }
+  return res.json({ ressources });
 });
 
 // GET USER'S TO DO LIST:
@@ -206,13 +225,30 @@ router.delete("/admin/users", auth, isAdmin, async (req, res) => {
 // --------------------- HANDLING FILES -------------------------------------
 // ----------------------- DOWNLOAD A FILE ----------------------------------
 
-router.get("/user/files/download", async (req, res) => {
+router.get("/user/files/download",auth, async (req, res) => {
+  
   //Get the user's file by its name and userID
+  const filename = req.body.filename;
+  let userId = req.userId;
+  let addedRessource;
+  let updatedUser;
+
+  try {
+    addedRessource = await Ressources.create({name: filename, userId});
+    addedRessource = await Ressources.findById(addedRessource._id);
+    updatedUser = await User.findByIdAndUpdate(userId, {
+      $push: {
+        ressources: addedRessource._id,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: "An error occurred." });
+  }
 
   //If admin, permettre de telecharger tous les fichiers en regardant seulement filename / Si user : regarder userID and filename
 
   //Côté front : créer une icone pour chaque fichier uploadé, et telechargement au double clic ou en cliquant sur telecharger
-  const filename = req.body.filename;
   console.log("worked!");
   return res.download(path.join(`/Users/lysianedon/Documents/KONEXIO/Coaching-Platform/backend/public/uploads/${filename}`))
 });
@@ -226,6 +262,23 @@ router.post('/user/files/upload', upload.single("selectedFile"),auth, async (req
   if (req.file) {
     console.log(req.file.originalname);
 
+  }
+
+  let userId = req.userId;
+  let addedRessource;
+  let updatedUser;
+
+  try {
+    addedRessource = await Ressources.create({name: filename,fileName:filename, userId});
+    addedRessource = await Ressources.findById(addedRessource._id);
+    updatedUser = await User.findByIdAndUpdate(userId, {
+      $push: {
+        ressources: addedRessource._id,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: "An error occurred." });
   }
   
   fs.renameSync(

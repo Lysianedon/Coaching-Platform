@@ -220,7 +220,7 @@ font-family: 'poppins';
   }
   img {
     width: 48vw;
-    margin-bottom: 4.2%;
+    margin-bottom: 9.6%;
 
     /* height: 82vh; */
   }

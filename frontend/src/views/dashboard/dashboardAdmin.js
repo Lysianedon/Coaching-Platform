@@ -10,6 +10,7 @@ import Ressources from "../../components/dashboardComponents/ressources/ressourc
 
 //css
 import styled from 'styled-components';
+import ToDoListUser from '../../components/dashboardComponents/ToDoListUser';
 
 function DashboardAdmin() {
 
@@ -17,7 +18,6 @@ function DashboardAdmin() {
   const [lastname, setLastname] = useState('');
 
   const fetchProfileInfos = () => {
-    console.log("before fetch");
     axios.get('http://localhost:8000/dashboard/user', { withCredentials: true })
     .then(res => 
       {
@@ -35,15 +35,14 @@ function DashboardAdmin() {
     <>
      <SideBarAdmin/> 
      <Container>
-      <BonjourStyle>
+       <h3>Hello !</h3>
         <Bonjour/>
+      <BonjourStyle>
       </BonjourStyle>
       <AgendaStyle>
         <ApiCalendar/>
       </AgendaStyle>
-      <ToDoStyle>
-        <ToDoList/>
-      </ToDoStyle>
+      <ToDoListUser/>
       <RessourcesStyle>
         <Ressources/> 
       </RessourcesStyle>
@@ -56,6 +55,11 @@ function DashboardAdmin() {
 export default DashboardAdmin;
 
 const Container = styled.li`
+
+h3{
+  color: black !important;
+  font-size: 3rem;
+}
 width: 72vw;
 padding: 90px;
 position:absolute;

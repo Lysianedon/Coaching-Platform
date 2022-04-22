@@ -3,7 +3,8 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const mongoose = require("mongoose");
-const multer=require('multer');
+const multer = require("multer");
+
 //------ BODY PARSER AND COOKIE PARSER ------//
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -27,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json());
-app.use(express.static(`${__dirname}/uploads`));
+app.use(express.static("public"));
 
 //------------ CONNECT TO MONGODB -------------//
 mongoose

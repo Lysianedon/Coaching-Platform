@@ -42,10 +42,6 @@ function App() {
           <Route exact path="/dashboard/user" element={<DashboardUser/>} />
           <Route exact path="/dashboard/admin/users" element={<DashboarSignup/>} />
           <Route exact path="/dashboard/admin/list" element={<DashboardList/>} />
-<<<<<<< HEAD
-=======
-         
->>>>>>> ae5249f4afd9e6a6361b8eb6989c4a5d601ad34d
         </Routes>
       </BrowserRouter>
     </div>
