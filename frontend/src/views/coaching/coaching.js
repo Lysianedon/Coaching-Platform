@@ -154,7 +154,7 @@ const DivWrapper = styled.div`
         text-align: center;
         color: #4c2a4e;
         font-weight: bold;
-        font-size:2.7em;
+        font-size:2.2em;
     }
 
     /*------ COACHING INDIVIDUEL ------ */
@@ -176,11 +176,11 @@ const DivWrapper = styled.div`
 
         h2{
             font-weight: bold;
-            font-size:2.5em;
+            font-size:2.2em;
         }
 
         li{
-            font-size:1.7em;
+            font-size:1em;
             line-height: 170%;
         }
 
@@ -196,7 +196,7 @@ const DivWrapper = styled.div`
         align-items: center;
 
         p{
-            font-size:3.7em;
+            font-size:3em;
             margin: 0 4%;
         }
 
@@ -211,6 +211,9 @@ const DivWrapper = styled.div`
         background-color: #4c2a4e;
         color: white;
     }
+    .title-collectif{
+        color: white;
+    }
 
     .success-pilars{
         display: flex;
@@ -221,7 +224,7 @@ const DivWrapper = styled.div`
 
         h2{
             font-weight: bold;
-            font-size:2.5em;
+            font-size:2.2em;
             margin-bottom: 3%;
             color: #4c2a4e;
         }
@@ -265,11 +268,83 @@ const DivWrapper = styled.div`
         display: block;
         align-items: center;
         padding: 1.1%;
-        font-size: 1.5em;
+        font-size: 1.2em;
         background-color: #4c2a4e;
         color: white;
         font-weight: bold;
         border-radius: 5px;
     }
+/************* RESPONSIVE *********************** */
+/* Responsive Tablet */
+ @media screen and (min-width: 768px) and (max-width: 960px) {
+    .become{
+        font-size: 1.8em;
+        margin: 0% 5% 0% 5%;
+    }
+    .coaching-individuel,
+    .coaching-collectif{
+        width: 70vw;
+        h2{
+            font-size: 1.8em;
+        }
+    }
+    .or{
+        p{
+            font-size: 1.8em;
+        }
+    }
+    .success-pilars{
+        h2{
+            font-size: 1.8em;
+        }
+    }
+    .vertical-line{
+        height: 20vh;
+    }
+    button{
+        width: 25vw;
+        font-size: 1em;
+    }
+ }
 
+/* Responsive Phone */
+ @media screen and (max-width: 480px) {
+ .become{
+        font-size: 1.5em;
+        margin: 0% 5% 0% 5%;
+    }
+    .coaching-individuel,
+    .coaching-collectif{
+        width: 80vw;
+        h2{
+            font-size: 1.5em;
+        }
+    }
+    .or{
+        p{
+            
+            font-size: 1.5em;
+        }
+    }
+    .success-pilars{
+        h2{
+            font-size: 1.5em;
+        }
+
+        .icons{
+            img{
+                width: 15vw;
+            }
+        }
+    }
+    .vertical-line{
+        height: 15vh;
+    }
+    button{
+        width: 40vw;
+        font-size: 0.8em;
+    }
+    
+    
+ };
 `

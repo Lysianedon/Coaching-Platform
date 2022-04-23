@@ -24,13 +24,14 @@ const ButtonsStyled = styled.div`
         width: 120%;
         height: 7vh;
         border-radius: 4px ;
-        font-size: 1rem;
+        font-size: 1.8rem;
     }
     .btn-create{
-        margin: 0% 0% 3% 25%;
+        justify-content: center;
     }
     .btn-list {
-        margin: 0% 0% 3% 175%;
+        justify-content: center;
+        margin-left: 100% ;
     }
 @media only screen and (min-width: 768px) and (max-width: 960px)  { 
     width: 60%;

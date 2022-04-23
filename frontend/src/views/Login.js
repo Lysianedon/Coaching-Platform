@@ -126,12 +126,10 @@ function Login() {
                   </div>
                   <button class="carousel-control-prev" onClick={fetchPost} >
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    {/* <span class="sr-only">Previous</span> */}
                   </button>
 
                   <button class="carousel-control-next" onClick={fetchPost}>
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    {/* <span class="sr-only">Next</span> */}
                   </button>
                 </div>
               </div>
@@ -146,41 +144,35 @@ export default Login;
 
 const LoginFormStyled = styled.div`
 font-family: 'poppins';
+font-size: 1.8rem;
 
+/* Login form */
 .login-page{
   display: flex;
 }
-
-.login-form{
+.login-form,
+.quotes-block{
     width: 40vw ;
-    float: left;
-    margin: 0% 2% 5% 2%;
-    background-color: white;
+    height: 50vh;
+    max-height: 50vh;
+
     border-radius:5px;
-    display: grid;
-    color: #4c2a4e;
-    overflow: auto;
-    height: 60vh;
-    display: flex;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.forms {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  border: 1px solid red;
-  width: 90%;
-  height: fit-content;
+.login-form{
+    margin: 2% 2% 5% 5%;
+    padding: 5% 0% 5% 0%;
+    background-color: white;
+    color: #4c2a4e;
 }
 
 label {
   display: block;
   font-size: 1em !important;
 }
-
 .submit {
   background-color: #4c2a4e;
   color: white;
@@ -190,7 +182,6 @@ label {
   font-size: 1em !important;
   border-radius: 4px;
 }
-
 input {
   width: 30vw;
   padding: 2%;
@@ -198,20 +189,13 @@ input {
   border: 1px solid #6b0070;
   border-radius: 4px;
 }
-
+/* Quotes */
 .quotes-block{
-  width: 40vw ;
-  height: 60vh;
-  float: right;
-  margin: 0% 5% 5% 2%;
+  margin: 2% 2% 5% 0%;
   padding: 0% 0% 5% 0%;
   background-color: #4c2a4e;
-  border-radius:5px;
   color: white;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .quote-title{
@@ -223,15 +207,27 @@ input {
     
 }
  /* RESPONSIVE */
- @media only screen and (min-width: 768px) {
+   /*  Responsive Laptop */
+@media screen and (min-width: 960px) and (max-width: 1024px) {
+  font-size: 1.7rem;
+}
+
+/* Responsive Tablet */
+ @media only screen and (min-width: 768px) and (max-width: 960px) {
+  font-size: 1.5rem;
   .login-page{
     display: flex;
     align-items: center;
   }
-  .login-form {
-    width: 50vw;
-    height: auto;
-    float: center;
+  .login-form,
+  .quotes-block {
+    width: 70vw;
+    height: 40vh;
+    max-width: 40vh;
+    font-size: 1.5rem;
+  }
+  .login-form{
+    margin: 5% 5% 5% 15%;
   }
   input{
     width: 30vw;
@@ -240,13 +236,12 @@ input {
     margin: 5% 0% 5% 35%;
   }
   .quotes-block {
-    width: 50vw;
-    height: auto;
-    margin: 0% 0% 5% 0%;
-    float: center;
+    margin: 5% 5% 5% 0%;
   }
  }
+  /* Responsive Phone */
  @media screen and (max-width: 480px) {
+  font-size: 1.3rem;
   .login-page{
     display: inline-block;
     align-items: center;
@@ -254,7 +249,7 @@ input {
   .login-form {
     width: 100vw;
     height: auto;
-    margin: 0% 0% 0% 0%;
+    margin: 25% 0% 0% 0%;
     float: center;
   }
   input{
@@ -266,7 +261,7 @@ input {
   .quotes-block {
     width: 100vw;
     height: auto;
-    margin: 0% 0% 5% 0%;
+    margin: 5% 0% 5% 0%;
     float: center;
   }
  }

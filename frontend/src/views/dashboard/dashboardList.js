@@ -3,7 +3,6 @@ import { React, useEffect } from "react";
 // components
 import SideBarAdmin from "../../components/dashboardComponents/sidebar-admin/sidebarAdmin";
 import UsersList from "../../components/dashboardComponents/usersList/usersList";
-import Buttons from "../../components/dashboardComponents/buttons/buttons";
 //css
 import styled from "styled-components";
 
@@ -12,7 +11,6 @@ function DashboardList() {
     <>
       <SideBarAdmin />
       {/* <Container> */}
-      <Buttons/>
       <UsersList />
       {/* </Container> */}
     </>

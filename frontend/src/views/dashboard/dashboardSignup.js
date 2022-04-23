@@ -7,7 +7,7 @@ function DashboardAdmin() {
   return (
     <>
      <SideBarAdmin/>
-     <Buttons/>
+     {/* <Buttons/> */}
      <Signup/>
 
     </>

@@ -86,7 +86,7 @@ export default CardUser;
 
 const CardUserStyled = styled.div`
  font-family: 'poppins';
- font-size: 1rem;
+ font-size: 1.5rem;
 
 .cardUser-form{
     margin: 5% auto auto 22%;
@@ -101,7 +101,7 @@ const CardUserStyled = styled.div`
 }
 .bi {
     float: right;
-    font-size: 1rem;
+    font-size: 1.8rem;
     color: black;
 }
 a {
@@ -109,8 +109,11 @@ a {
 }
 /* RESPONSIVE */
 @media only screen and (min-width: 768px) and (max-width: 960px) {
-    .cardUser-form{
-
+    .card{
+        font-size: 1.3rem;
+    }
+    .bi{
+        font-size: 1.4rem;
     }
 }
 @media screen and (max-width: 480px) {
@@ -120,7 +123,10 @@ a {
     }
     .card{
         width: 80%;
-        font-size: 0.9rem;
+        font-size: 1.3rem;
+    }
+    .bi{
+        font-size: 1.5rem;
     }
 }
 
