@@ -1,8 +1,8 @@
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // components
 import Nav from "../../components/nav";
-import  Navbar from '../../components/navbar/navbar';
-import Footer from "../../components/footer";
+import Navbar from "../../components/navbar/navbar";
+import Footer from "../../components/footer/Footer";
 //Styled-components
 import styled from "styled-components";
 //Photos
@@ -66,7 +66,6 @@ function Presentation() {
 }
 export default Presentation;
 
-
 //< ------------------------------------------------ STYLED COMPONENTS ------------------------------------------------>
 //<-------------------------------------------------------------------------------------------------------------------->
 const sizes = {
@@ -80,8 +79,8 @@ const sizes = {
 };
 
 const device = {
-  mobileS: `(min-width: ${sizes.mobileS})`,
-  mobileM: `(min-width: ${sizes.mobileM})`,
+  mobileS: `(max-width: ${sizes.mobileS})`,
+  mobileM: `(max-width: ${sizes.mobileM})`,
   mobileL: `(min-width: ${sizes.mobileL})`,
   tablet: `(min-width: ${sizes.tablet})`,
   laptop: `(min-width: ${sizes.laptop})`,
@@ -93,7 +92,7 @@ const DivWrapper = styled.div`
 /* GENERAL PARAMETERS  */
 font-family: 'poppins';
 
-@media ${device.laptop} {
+@media ${device.laptopL} {
     
 /*----- BANNER -------- */
 .banner{
@@ -125,38 +124,37 @@ font-family: 'poppins';
     text-align: center;
     font-weight: bold;
 
-    .yellow-block{
+      .yellow-block {
         display: block;
-        background-color: #FFC267 ;
+        background-color: #ffc267;
+      }
+    }
+
+    img {
+      width: 43%;
+      /* height: 70vh; */
     }
   }
-
-  img {
-    width: 43%;
-    /* height: 70vh; */
-    
-  }
-}
-/*--- VERTICAL LINE 1 AND 3 -----*/
-.vertical-line{
+  /*--- VERTICAL LINE 1 AND 3 -----*/
+  .vertical-line {
     margin: 2% auto 5% auto;
     padding-right: 5%;
     height: 40vh;
     width: 4px;
-    border-left: 4px solid #FFC267;
+    border-left: 4px solid #ffc267;
     color: black;
-}
+  }
 
-/*------ FIRST BLOCK OF PRESENTATION ------ */
-.texte-picture{
+  /*------ FIRST BLOCK OF PRESENTATION ------ */
+  .texte-picture {
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 90%;
     margin: auto 3% auto 0;
 
-    img{
-        width: 25%;
+    img {
+      width: 25%;
     }
 
     p{
@@ -166,72 +164,72 @@ font-family: 'poppins';
         text-align: justify;
         margin-right: 0;
 
-        .bigger-yellow{
+      .bigger-yellow {
         font-size: 1.6em;
-        color: #FFC267;
+        color: #ffc267;
         font-weight: bold;
       }
 
-      .capital-letter{
+      .capital-letter {
         font-size: 3em;
       }
     }
-}
-/* --- VERTICAL LINE 2 ----- */
-.vertical-line2{
+  }
+  /* --- VERTICAL LINE 2 ----- */
+  .vertical-line2 {
     margin: 3% auto 3% 20%;
     padding-right: 5%;
     height: 30vh;
     width: 4px;
-    border-left: 4px solid #FFC267;
+    border-left: 4px solid #ffc267;
     color: black;
-}
+  }
 
-/*-------- SECOND BLOCK OF PRESENTATION ----- */
-.picture-text{
+  /*-------- SECOND BLOCK OF PRESENTATION ----- */
+  .picture-text {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 90%;
     margin: auto auto auto 10%;
 
-    p{
-        width: 40%;
-        font-size: 1.5em;
-        line-height: 170%;
-        text-align: justify;
-        margin-right: 10%;
+    p {
+      width: 40%;
+      font-size: 1.5em;
+      line-height: 170%;
+      text-align: justify;
+      margin-right: 10%;
 
-        .bigger-yellow{
+      .bigger-yellow {
         font-size: 1.6em;
-        color: #FFC267;
+        color: #ffc267;
         font-weight: bold;
       }
 
-      .capital-letter{
+      .capital-letter {
         font-size: 3em;
       }
     }
 
-    img{
-        width: 25%;
+    img {
+      width: 25%;
     }
-}
+  }
 
-/*------- CALL TO ACTION -------- */
+  /*------- CALL TO ACTION -------- */
 
-.action-titre-btn{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 60%;
-  margin: 3% auto 10%;
-  padding: 2%;
-  border-radius: 6px;
-  background-color: #4c2a4e;
-  .action-title {
+  .action-titre-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    margin: 3% auto 10%;
+    padding: 2%;
+    border-radius: 6px;
+    background-color: #4c2a4e;
+    .action-title {
       font-size: 5em;
-      color: #FFC267;
+      color: #ffc267;
       margin-bottom: 2%;
       text-align: center;
     }
@@ -250,17 +248,17 @@ font-family: 'poppins';
 
 }
 
-@media ${device.mobileS} {
+@media ${device.mobileM} {
     
     /*----- BANNER -------- */
     .banner{
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 90%;
+      width: 80%;
       margin: 0%;
-      height: 50vh;
-      padding:2px 20px 0 100px;
+      height: 100vh;
+      padding:50px 40px 0 100px;
     
       /* FADE IN EFFECT */
       animation: fadeInAnimation ease 3s;
@@ -313,7 +311,7 @@ font-family: 'poppins';
         border-top:solid 4px #FFC267;
         padding-top:20px;
         padding-left:5px;
-        margin: auto 3% auto 6%;
+        /* margin: auto 3% auto 6%; */
     
         img{
           padding-bottom:20%;
@@ -322,7 +320,7 @@ font-family: 'poppins';
     
         p{
             width: 100%;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             line-height: 170%;
             text-align: left;
             margin-right: 0;
@@ -359,18 +357,18 @@ font-family: 'poppins';
         border-top:solid 4px #FFC267;
         padding-top:20px;
         padding-right:5px;
-        margin: auto 3% auto 6%;
+        /* margin: auto 3% auto 6%; */
         gap:12px;
     
         p{
           width: 100%;
-          font-size: 1.5rem;
+          font-size: 1.2rem;
           line-height: 170%;
           text-align: left;
           margin-right: 0;
     
             .bigger-yellow{
-            font-size: 1.2em;
+            font-size: 1.2rem;
             color: #FFC267;
             font-weight: bold;
           }
@@ -393,7 +391,7 @@ font-family: 'poppins';
       justify-content:center;
       align-items: center;
       width: 100%;
-      margin: 3% auto auto 5% ;
+      /* margin: 3% auto auto 5% ; */
       padding: 2%;
       border-radius: 6px;
       background-color: #4c2a4e;
@@ -419,5 +417,487 @@ font-family: 'poppins';
     
     }
 
+@media ${device.mobileS} {
+    
+    /*----- BANNER -------- */
+    .banner{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      margin: 0%;
+      height: 50vh;
+      padding:50px 40px 0 100px;
+    
+      /* FADE IN EFFECT */
+      animation: fadeInAnimation ease 3s;
+      animation-iteration-count: 1;
+      animation-fill-mode: backwards;
+    
+    @keyframes fadeInAnimation {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+      h2 {
+        color: black;
+        line-height: 180%;
+        font-size: 2rem;
+        text-align: center;
+        font-weight: bold;
+    
+        .yellow-block{
+            display: block;
+            background-color: #FFC267 ;
+        }
+      }
+    
+      img {
+        width: 83%;
+        /* height: 70vh; */
+        
+      }
+    }
+    /*--- VERTICAL LINE 1 AND 3 -----*/
+    .vertical-line{
+        margin: 5% auto 5% 60%;
+        height: 10vh;
+        width: 4px;
+        border-left: 4px dotted #FFC267;
+        color: black;
+        display:none;
+    }
+    
+    /*------ FIRST BLOCK OF PRESENTATION ------ */
+    .texte-picture{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-top:solid 4px #FFC267;
+        padding-top:20px;
+        padding-left:5px;
+        /* margin: auto 3% auto 6%; */
+    
+        img{
+          padding-bottom:20%;
+          width: 40%;
+        }
+    
+        p{
+            width: 100%;
+            font-size: 1.2rem;
+            line-height: 170%;
+            text-align: left;
+            margin-right: 0;
+    
+            .bigger-yellow{
+            font-size: 1.2em;
+            color: #FFC267;
+            font-weight: bold;
+          }
+    
+          .capital-letter{
+            font-size: 2em;
+          }
+        }
+    }
+    /* --- VERTICAL LINE 2 ----- */
+    .vertical-line2{
+        margin: 3% auto 3% 20%;
+        padding-right: 5%;
+        height: 30vh;
+        width: 4px;
+        border-left: 4px solid #FFC267;
+        color: black;
+        display:none;
+        
+    }
+    
+    /*-------- SECOND BLOCK OF PRESENTATION ----- */
+    .picture-text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-top:solid 4px #FFC267;
+        padding-top:20px;
+        padding-right:5px;
+        /* margin: auto 3% auto 6%; */
+        gap:12px;
+    
+        p{
+          width: 100%;
+          font-size: 1.2rem;
+          line-height: 170%;
+          text-align: left;
+          margin-right: 0;
+    
+            .bigger-yellow{
+            font-size: 1.2rem;
+            color: #FFC267;
+            font-weight: bold;
+          }
+    
+          .capital-letter{
+            font-size: 2em;
+          }
+        }
+    
+        img{
+          padding-bottom:20%;
+          width: 40%;
+        }
+    }
+    
+    /*------- CALL TO ACTION -------- */
+    
+    .action-titre-btn{
+      display: flex;
+      justify-content:center;
+      align-items: center;
+      width: 100%;
+      /* margin: 3% auto auto 5% ; */
+      padding: 5%;
+      border-radius: 6px;
+      gap:12px;
+      background-color: #4c2a4e;
+      .action-title {
+          font-size: 2rem;
+          color: #FFC267;
+          margin-bottom: 2%;
+          text-align: center;
+        }
+    
+        button{
+            width: 50%;
+            padding: 1.6%;
+            font-size: 1.2rem;
+            background-color: #FFC267;
+            color: #4c2a4e;
+            font-weight: bold;
+            border-radius: 10px;
+            margin: 8% 0;
+            border:none;
+      }
+    }
+    
+    }
+
+  @media ${device.desktop} {
+    
+/*----- BANNER -------- */
+.banner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0%;
+  height: auto;
+  padding:190px 0 0 0px;
+
+  /* FADE IN EFFECT */
+	animation: fadeInAnimation ease 3s;
+	animation-iteration-count: 1;
+	animation-fill-mode: backwards;
+
+@keyframes fadeInAnimation {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+  h2 {
+    color: black;
+    line-height: 180%;
+    font-size: 4rem;
+    text-align: center;
+    font-weight: bold;
+
+      .yellow-block {
+        display: block;
+        background-color: #ffc267;
+      }
+    }
+
+    img {
+      width: 43%;
+      /* height: 70vh; */
+    }
+  }
+  /*--- VERTICAL LINE 1 AND 3 -----*/
+  .vertical-line {
+    margin: 2% auto 5% auto;
+    padding-right: 5%;
+    height: 40vh;
+    width: 4px;
+    border-left: 4px solid #ffc267;
+    color: black;
+  }
+
+  /*------ FIRST BLOCK OF PRESENTATION ------ */
+  .texte-picture {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    margin: auto 3% auto 0;
+
+    img {
+      width: 25%;
+    }
+
+    p{
+        width: 40%;
+        font-size: 1.5em;
+        line-height: 170%;
+        text-align: justify;
+        margin-right: 0;
+
+      .bigger-yellow {
+        font-size: 1.6em;
+        color: #ffc267;
+        font-weight: bold;
+      }
+
+      .capital-letter {
+        font-size: 3em;
+      }
+    }
+  }
+  /* --- VERTICAL LINE 2 ----- */
+  .vertical-line2 {
+    margin: 3% auto 3% 20%;
+    padding-right: 5%;
+    height: 30vh;
+    width: 4px;
+    border-left: 4px solid #ffc267;
+    color: black;
+  }
+
+  /*-------- SECOND BLOCK OF PRESENTATION ----- */
+  .picture-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto auto auto 10%;
+
+    p {
+      width: 40%;
+      font-size: 1.5em;
+      line-height: 170%;
+      text-align: justify;
+      margin-right: 10%;
+
+      .bigger-yellow {
+        font-size: 1.6em;
+        color: #ffc267;
+        font-weight: bold;
+      }
+
+      .capital-letter {
+        font-size: 3em;
+      }
+    }
+
+    img {
+      width: 25%;
+    }
+  }
+
+  /*------- CALL TO ACTION -------- */
+
+  .action-titre-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    margin: 3% auto 10%;
+    padding: 2%;
+    border-radius: 6px;
+    background-color: #4c2a4e;
+    .action-title {
+      font-size: 5em;
+      color: #ffc267;
+      margin-bottom: 2%;
+      text-align: center;
+    }
+
+    button{
+        width: 50%;
+        padding: 1.4%;
+        font-size: 1.8em;
+        background-color: #FFC267;
+        color: #4c2a4e;
+        font-weight: bold;
+        border-radius: 10px;
+        margin: 4% 0;
+  }
+}
+
+}
+@media ${device.tablet} {
+    
+    /*----- BANNER -------- */
+    .banner{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: 0%;
+      height: auto;
+      padding:190px 0 0 0px;
+    
+      /* FADE IN EFFECT */
+      animation: fadeInAnimation ease 3s;
+      animation-iteration-count: 1;
+      animation-fill-mode: backwards;
+    
+    @keyframes fadeInAnimation {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+      h2 {
+        color: black;
+        line-height: 180%;
+        font-size: 3rem;
+        text-align: center;
+        font-weight: bold;
+    
+          .yellow-block {
+            display: block;
+            background-color: #ffc267;
+          }
+        }
+    
+        img {
+          width: 43%;
+          /* height: 70vh; */
+        }
+      }
+      /*--- VERTICAL LINE 1 AND 3 -----*/
+      .vertical-line {
+        margin: 2% auto 5% auto;
+        padding-right: 5%;
+        height: 10vh;
+        width: 4px;
+        border-left: 4px solid #ffc267;
+        color: black;
+      }
+    
+      /*------ FIRST BLOCK OF PRESENTATION ------ */
+      .texte-picture {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        margin: auto 3% auto 0;
+    
+        img {
+          width: 25%;
+        }
+    
+        p{
+            width: 40%;
+            font-size: 1.2em;
+            line-height: 170%;
+            text-align: justify;
+            margin-right: 0;
+    
+          .bigger-yellow {
+            font-size: 1.2em;
+            color: #ffc267;
+            font-weight: bold;
+          }
+    
+          .capital-letter {
+            font-size: 3em;
+          }
+        }
+      }
+      /* --- VERTICAL LINE 2 ----- */
+      .vertical-line2 {
+        margin: 3% auto 3% 20%;
+        padding-right: 5%;
+        height: 10vh;
+        width: 4px;
+        border-left: 4px solid #ffc267;
+        color: black;
+      }
+    
+      /*-------- SECOND BLOCK OF PRESENTATION ----- */
+      .picture-text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        margin: auto auto auto 10%;
+    
+        p {
+          width: 40%;
+          font-size: 1.2em;
+          line-height: 170%;
+          text-align: justify;
+          margin-right: 10%;
+    
+          .bigger-yellow {
+            font-size: 1.2em;
+            color: #ffc267;
+            font-weight: bold;
+          }
+    
+          .capital-letter {
+            font-size: 3em;
+          }
+        }
+    
+        img {
+          width: 25%;
+        }
+      }
+    
+      /*------- CALL TO ACTION -------- */
+    
+      .action-titre-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        margin: 3% auto 10%;
+        padding: 2%;
+        border-radius: 6px;
+        background-color: #4c2a4e;
+        .action-title {
+          font-size: 2em;
+          color: #ffc267;
+          margin-bottom: 2%;
+          text-align: center;
+        }
+    
+        button{
+            width: 50%;
+            padding: 1.4%;
+            font-size: 1.4em;
+            background-color: #FFC267;
+            color: #4c2a4e;
+            font-weight: bold;
+            border:none;
+            border-radius: 10px;
+            margin: 4% 0;
+      }
+    }
+    
+    }
+    
 
 `

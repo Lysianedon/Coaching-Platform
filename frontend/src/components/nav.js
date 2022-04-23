@@ -86,6 +86,6 @@ border: none;
 text-align:center;
 background-color: #4c2a4e;
 color: white;
-height: 7vh;
+height: 70px;
 width:150px;
   `;
