@@ -120,7 +120,7 @@ function Coaching() {
 
             <div className="vertical-line"></div>
 
-            <button>Je passe à l'action</button>
+            <button className="btn-rdv">Je passe à l'action</button>
 
             <Footer/>
         </DivWrapper>
@@ -144,11 +144,23 @@ const DivWrapper = styled.div`
         justify-content: center;
         align-items: center;
         height: 45vh;
-        background-color: #4c2a4e;
+        /* background-color: #4c2a4e; */
         margin: auto;
         color: #FFC267;
         margin-bottom:5%;
     }
+    /* .banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0%;
+    height: auto;
+    padding:190px 0 0 0px; */
+    /* FADE IN EFFECT */
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: backwards;
 
     .become{
         text-align: center;
@@ -262,7 +274,7 @@ const DivWrapper = styled.div`
         margin: auto 0 3% 50vw;
     }
     
-    button{
+    .btn-rdv{
         width: 18vw;
         margin: 3% auto;
         display: block;

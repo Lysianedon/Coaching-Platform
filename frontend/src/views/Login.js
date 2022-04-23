@@ -259,10 +259,7 @@ input {
     margin: 5% 0% 5% 35%;
   }
   .quotes-block {
-    width: 100vw;
-    height: auto;
-    margin: 5% 0% 5% 0%;
-    float: center;
+    display: none;
   }
  }
 `;
