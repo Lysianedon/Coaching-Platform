@@ -109,7 +109,7 @@ const LogoSection = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  margin-top: 130px;
+  margin-top: 100px;
 
 `;
 
