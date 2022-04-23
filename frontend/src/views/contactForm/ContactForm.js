@@ -64,7 +64,7 @@ export default function ContactForm() {
       <Nav />
       <Navbar />
       <main className="container">
-        <h2>Contactez-moi</h2>
+        <h2 className="title-responsive">Contactez-moi</h2>
         <iframe
           width="560"
           height="315"
