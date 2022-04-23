@@ -70,7 +70,7 @@ overflow-x: hidden;
 
 h2{
   color: black !important;
-  font-size: 3rem;
+  font-size: 5rem;
 }
 
 .title-mesrdv{
@@ -80,6 +80,7 @@ h2{
   margin-top: 5%;
   padding-bottom: 1%;
   color: white !important;
+  border-radius: 5px;
 }
 
 
