@@ -1,9 +1,8 @@
 import React from "react";
 
 // components
-import  Navbar from '../components/navbar/navbar';
-import Nav from '../components/nav';
-import Footer from "../components/footer";
+import Nav from "../components/nav";
+import Navbar from "../components/navbar/navbar";
 import QuestionnaireImage from "../assets/images/deuxieme.png";
 
 // css
@@ -11,42 +10,44 @@ import styled from "styled-components";
 
 function QuestionnaireStarter() {
   return (
-    <QuestionnaireStyled>
-      <Nav/>
-      <Navbar/>
-      <div className="questionnaire-form">
-        <div>
-          <img
-            className="questionnaire-image"
-            src={QuestionnaireImage}
-            alt="questionnaire"
-          />
+    <>
+      <QuestionnaireStyled>
+        <Nav />
+        <Navbar />
+        <div className="questionnaire-form">
+          <div>
+            <img
+              className="questionnaire-image"
+              src={QuestionnaireImage}
+              alt="questionnaire"
+            />
+          </div>
+
+          <div className="text-questionnaire">
+            <h4 id="description-questionnaire">
+              Commençons par faire connaissance: ce questionnaire a pour but de
+              comprendre mieux votre objective. Merci !
+            </h4>
+            <h5>
+              <em>Cela prendra 10 minutes...</em>{" "}
+            </h5>
+
+            <a href="https://7nsna4vba1q.typeform.com/to/CyGdqVKG">
+              <button href="/question" className="btn-start btn-dark">
+                Commencer
+              </button>
+            </a>
+          </div>
         </div>
-
-        <div className="text-questionnaire">
-          <h4 id="description-questionnaire">
-            Commençons par faire connaissance: ce questionnaire a pour but de
-            comprendre mieux votre objective. Merci !
-          </h4>
-          <h5><em>Cela prendra 10 minutes...</em> </h5>
-
-          <a href="https://7nsna4vba1q.typeform.com/to/CyGdqVKG">
-            <button href="/question" className="btn-start btn-dark">
-              Commencer
-            </button>
-          </a>
-        </div>
-      </div>
-
-      <Footer />
-    </QuestionnaireStyled>
+      </QuestionnaireStyled>
+    </>
   );
 }
 export default QuestionnaireStarter;
 
 const QuestionnaireStyled = styled.div`
-font-family: "poppins";
-font-size: 1rem;
+  font-family: "poppins";
+  font-size: 1rem;
   .questionnaire-form {
     border: 1px solid rgb(255, 255, 255);
     background-color: #f5eff9;
@@ -71,19 +72,19 @@ font-size: 1rem;
   #description-questionnaire {
     margin: 5% 2% 2% 2%;
   }
-  .btn-start{
+  .btn-start {
     margin: 5% 0% 5% 0%;
     width: 10vw;
     border-radius: 4px;
   }
-    /* RESPONSIVE */
-    @media screen and (max-width: 480px) {
+  /* RESPONSIVE */
+  @media screen and (max-width: 480px) {
+    font-size: 0.9rem;
+    .text-questionnaire {
       font-size: 0.9rem;
-      .text-questionnaire {
-        font-size: 0.9rem;
-      }
-      .btn-start{
-        width: 30vw;
-      }
     }
+    .btn-start {
+      width: 30vw;
+    }
+  }
 `;

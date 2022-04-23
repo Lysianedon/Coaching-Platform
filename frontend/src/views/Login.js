@@ -7,12 +7,11 @@ import { toast } from "react-toastify";
 // components
 import  Navbar from '../components/navbar/navbar';
 import Nav from '../components/nav';
-import Footer from "../components/footer";
+import Footer from "../components/footer/Footer";
 
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-
 
 function Login() {
   const navigate = useNavigate();
@@ -126,10 +125,12 @@ function Login() {
                   </div>
                   <button class="carousel-control-prev" onClick={fetchPost} >
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    {/* <span class="sr-only">Previous</span> */}
                   </button>
 
                   <button class="carousel-control-next" onClick={fetchPost}>
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    {/* <span class="sr-only">Next</span> */}
                   </button>
                 </div>
               </div>
@@ -145,6 +146,7 @@ export default Login;
 const LoginFormStyled = styled.div`
 font-family: 'poppins';
 font-size: 1.8rem;
+height: 100vh;
 
 /* Login form */
 .login-page{
@@ -242,6 +244,7 @@ input {
   /* Responsive Phone */
  @media screen and (max-width: 480px) {
   font-size: 1.3rem;
+
   .login-page{
     display: inline-block;
     align-items: center;
@@ -249,7 +252,7 @@ input {
   .login-form {
     width: 100vw;
     height: auto;
-    margin: 25% 0% 0% 0%;
+    margin: 0;
     float: center;
   }
   input{
