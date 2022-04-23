@@ -47,7 +47,7 @@ function DashboardAdmin() {
     <>
      <SideBarAdmin/> 
      <Container>
-       <h2>Hello {firstname}!</h2>
+       <h2 className='hello'>Hello <span className="name">{firstname} !</span></h2>
        <section className="ToDoListUser">
         <ToDoListUser />
        </section>
@@ -68,9 +68,19 @@ export default DashboardAdmin;
 const Container = styled.li`
 overflow-x: hidden;
 
-h2{
+.hello{
   color: black !important;
-  font-size: 3rem;
+  font-size: 5.5rem;
+  margin-bottom: 8vh;
+
+  .name{
+    color: #4f3149;
+  }
+}
+
+h2{
+  font-size: 4.5rem;
+  
 }
 
 .title-mesrdv{
@@ -80,6 +90,7 @@ h2{
   margin-top: 5%;
   padding-bottom: 1%;
   color: white !important;
+  border-radius: 5px;
 }
 
 

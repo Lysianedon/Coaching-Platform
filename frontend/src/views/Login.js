@@ -51,23 +51,19 @@ function Login() {
          .then(res => {
            console.log(res.data);
            if (res.data.user.isAdmin) {
-             toast.success("Hello Pauline");
+            toast.success("Ravi de te revoir, Pauline !");
              navigate('/dashboard/admin');
 
            }else{
-              toast.success("Connexion réussie !");
+              toast.success("Ravi de te revoir !");
               navigate('/dashboard/user');
            }
          })
-        //  .catch(error =>{
-        //   console.log(error);
-        //   toast.error("Invalid email or password !");
-        //  })
        } 
     })
     .catch(error => {
       console.log(error);
-      toast.error("Please log in first!");
+      toast.error(" Email et/ou mot de passe incorrect(s)");
     })
   }
 
