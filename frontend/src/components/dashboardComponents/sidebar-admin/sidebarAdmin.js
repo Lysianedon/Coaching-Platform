@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Logo from "../../../assets/images/Logo.png";
+import Logo from "../../../assets/images/Logo-home-removebg-preview.png";
 import axios from 'axios';
 import { React, useState, useEffect } from "react";
 
@@ -73,11 +73,11 @@ const Nav = styled.div`
   background: #4f3149;
   border-radius:0 0 12px;
   height: 80px;
-  width:100px;
+  width:80px;
   display: flex;
+  position:fixed;
   justify-content: flex-start;
   align-items: center;
-  position:relative;
 `;
 
 const NavIcon = styled(Link)`
@@ -112,26 +112,15 @@ const LogoSection = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  margin-top: 170px;
-  @media (max-width: 550px) { 
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 120px;
-    margin-top: 30px;
-}
+  margin-top: 100px;
+
 `;
 
 const LogoImage = styled.img`
-  width: 50%;
+  width: 40%;
   background-color: white;
   border-radius: 10%;
-  padding-left: 5%;
-  @media (max-width: 550px) { 
-    width: 50%;
-    background-color: white;
-    border-radius: 10%;
-    padding-left: 5%;
-}
+  padding:10px;
 `;
 
   

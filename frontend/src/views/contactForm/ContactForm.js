@@ -7,6 +7,9 @@ import axios from "axios";
 import "./contactForm.css";
 import { toast } from "react-toastify";
 //---------------- COMPONENTS --------------//
+import Footer from "../../components/footer/Footer";
+import Nav from "../../components/nav";
+import Navbar from "../../components/navbar/navbar";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -26,43 +29,41 @@ export default function ContactForm() {
       submitted,
     };
 
-    if (name && email && message){
+    if (name && email && message) {
       axios
-      .post("http://localhost:8000/contact", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        data,
-      })
-      .then((res) => {
-        console.log("Response received", res);
-        if (res.status === 200) {
-          console.log("Response succeeded!");
-          setName("");
-          setPhone("");
-          setEmail("");
-          setMessage("");
-          setSubmitted(true);
-        } 
-        toast.success("Your message is sent successfully");
-      })
-      .catch((err) => {
-        console.log(err);
-       
-       });
-    }else{
+        .post("http://localhost:8000/contact", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          data,
+        })
+        .then((res) => {
+          console.log("Response received", res);
+          if (res.status === 200) {
+            console.log("Response succeeded!");
+            setName("");
+            setPhone("");
+            setEmail("");
+            setMessage("");
+            setSubmitted(true);
+          }
+          toast.success("Your message is sent successfully");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
       toast.error("Please fill the form first");
     }
-    
   };
 
   return (
     <>
+      <Nav />
+      <Navbar />
       <main className="container">
-        <h2>Contactez-moi</h2>
-
         <iframe
           width="560"
           height="315"
@@ -74,7 +75,7 @@ export default function ContactForm() {
           autoplay="1"
           loop="1"
         ></iframe>
-
+        <h2>Contactez-moi</h2>
         <form>
           <div className="inputGroup">
             <label htmlFor="name">*Votre nom:</label>
@@ -145,65 +146,7 @@ export default function ContactForm() {
         </form>
       </main>
 
-      <footer>
-        <div className="footer-content">
-          <div className="footer-cat">
-            <h5> PRENDRE CONTACT </h5>
-            <p>
-              <a href="/contact" className="footer-link">
-                Formulaire de contact
-              </a>
-            </p>
-            <p>
-              <a href="/questionnaire/starter" className="footer-link">
-                Questionnaire
-              </a>
-            </p>
-          </div>
-
-          <div className="footer-cat">
-            <h5> SUIVEZ-MOI </h5>
-            <div className="social-links">
-              <a
-                href="https://fr-fr.facebook.com/pauline.gane.9"
-                _target="blank"
-              >
-                <i class="bi bi-facebook"></i>
-              </a>
-              <a
-                href="https://instagram.com/pmggroup2022?igshid=YmMyMTA2M2Y="
-                _target="blank"
-              >
-                <i class="bi bi-instagram"></i>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/pauline-gane-28a136aa/"
-                _target="blank"
-              >
-                <i class="bi bi-linkedin"></i>
-              </a>
-            </div>
-          </div>
-
-          <div className="footer-cat">
-            <h5> LIENS UTILES </h5>
-            <p>
-              <a href="/" className="legal-infos">
-                Mentions légales
-              </a>
-            </p>
-            <p>
-              <a href="/" className="legal-infos">
-                CGU / CGV
-              </a>
-            </p>
-          </div>
-        </div>
-
-        <div className="copyright">
-          &copy; Créé par Jessica, Anita, Lysiane et Chi
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

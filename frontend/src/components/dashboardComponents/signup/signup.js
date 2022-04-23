@@ -6,7 +6,6 @@ import axios from "axios";
 import "./signup.css";
 import styled from "styled-components";
 
-
 function Signup() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -28,7 +27,7 @@ function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const firstNameValue  = document.getElementById("firstName").value;
+    const firstNameValue = document.getElementById("firstName").value;
     const lastNameValue = document.getElementById("lastName").value;
     const emailValue = document.getElementById("email").value;
     const passwordValue = document.getElementById("password").value;
@@ -40,28 +39,46 @@ function Signup() {
     setPassword(passwordValue);
     setTelephone(telephoneValue);
 
-    console.log("Infos:",firstName, lastName, email, password, telephone);
+    console.log("Infos:", firstName, lastName, email, password, telephone);
     console.log("isValidEmail", isValidEmail(email));
     console.log("isValidPhone", isValidPhone(telephone));
-    
+
     if (isValidEmail(email) & isValidPhone(telephone)) {
       if (firstName && lastName && email && password && telephone) {
-        axios.post('http://localhost:8000/dashboard/admin/users',{ firstName, lastName, email, password, telephone} , { withCredentials: true})
-            .then(res =>{
-                console.log(res.data);
-                toast.success("Account is created successfully");
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-        }
-    } else{
-      toast.error("Invalid email or phone")
+        axios
+          .post(
+            "http://localhost:8000/dashboard/admin/users",
+            { firstName, lastName, email, password, telephone },
+            { withCredentials: true }
+          )
+          .then((res) => {
+            console.log(res.data);
+            toast.success("Account is created successfully");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    } else {
+      toast.error("Invalid email or phone");
     }
-  }
+  };
 
   return (
     <SignupStyled className="signup-form">
+      <ButtonsStyled>
+        <a href="/dashboard/admin/users">
+          <button type="button" className="btn-create btn-dark">
+            Créer un utilisateur
+          </button>
+        </a>
+        <a href="/dashboard/admin/list">
+          <button type="button" className="btn-list btn-dark">
+            Voir la liste des utilisateurs
+          </button>
+        </a>
+      </ButtonsStyled>
+
       <div>
         <h2 className="title-create">Créer un utilisateur</h2>
       </div>
@@ -133,7 +150,7 @@ function Signup() {
                 minLength={8}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-              ></input> 
+              ></input>
               <br />
               <small id="passwordHelp" className="small-text text-muted">
                 Le mot de passe doit contenir au moins 8 caractères
@@ -164,13 +181,9 @@ function Signup() {
 
           {/* Button submit */}
           <li class="buttons">
-            <button
-              type="submit"
-              className="btn-create btn-dark"
-            >
+            <button type="submit" className="btn-create btn-dark">
               Créer
             </button>
-          
           </li>
         </ol>
       </form>
@@ -179,13 +192,13 @@ function Signup() {
 }
 export default Signup;
 
+//********* FORM SINGUP *************/
 const SignupStyled = styled.div`
-
+  font-size: 1.8rem;
   ol.forms {
     list-style: none;
     width: 100%;
   }
-
   ol.forms li {
     clear: both;
     float: center;
@@ -193,27 +206,23 @@ const SignupStyled = styled.div`
     position: relative;
     width: 100%;
   }
-
   ol.forms label {
     font-weight: 600;
     font-size: 1rem;
   }
-
-  ol.forms input{
+  ol.forms input {
     background: none repeat scroll 0 0 #ffffff;
     border: 1px solid #6b0070;
     border-radius: 4px;
     padding: 5px;
     width: 43vw;
   }
-
   ol.forms input:hover {
     background: none repeat scroll 0 0 #f4eef5;
     border: 1px solid rgb(116, 128, 150);
     padding: 5px;
     width: 43vw;
   }
-
   ol.forms li.inline label {
     color: #4c2a4e;
     display: inline;
@@ -221,30 +230,106 @@ const SignupStyled = styled.div`
     width: auto;
     margin-bottom: 2%;
   }
-  @media only screen and (min-width: 768px) and (max-width: 960px) {
-    margin: 12% 0% 2% 10%;
-    label{
-      font-size: 1rem;
+  /* Responsive Laptop */
+  @media screen and (min-width: 960px) and (max-width: 1024px) {
+    font-size: 1.7rem;
+    ol.forms label {
+      font-size: 1.7rem;
     }
-    .title-create{
+    .title-create {
+      margin: 1% 0% 1% -20%;
     }
-    ol.forms input {
-      width: 80vw;
-    }
-
   }
-  @media screen and (max-width: 480px) { 
-    margin: 25% 0% 2% 0%;
-    .title-create{
+  /* Responsive Tablet */
+  @media screen and (min-width: 766px) and (max-width: 960px) {
+    font-size: 1.5rem;
+    margin: 10% 0% 2% 20%;
+    ol.forms label {
       font-size: 1.5rem;
     }
-    .title-create{
-      margin: 0% 0% 0% 7%;
-      float: left;
+    .title-create {
+      margin: 1% 0% 1% -20%;
+      font-size: 2.5rem;
     }
-    ol.forms input,
-    .small-text {
+    ol.forms input {
+      width: 60vw;
+      font-size: 1.5rem;
+    }
+  }
+  /* Responsive Phone */
+  @media screen and (max-width: 480px) {
+    font-size: 1.3rem;
+    margin: 25% 0% 2% 0%;
+    .title-create {
+      margin: 0% 0% 1% -40%;
+      font-size: 2.3rem;
+    }
+    ol.forms label {
+      font-size: 1.3rem;
+    }
+    ol.forms input{
       width: 80vw;
+      font-size: 1.3rem;
+      margin: 0% 0% 0% 0%;
+    }
+    .small-text {
+      font-size: 1.3rem;
+      margin: 0% 5% 0% 0%;
+    }
+  }
+`;
+
+//------------- Style of buttons ------------//
+const ButtonsStyled = styled.div`
+  display: flex;
+  margin: -25% 0% 3% -5%;
+  font-size: 1.8rem;
+  .btn-create,
+  .btn-list {
+    width: 120%;
+    height: 7vh;
+    border-radius: 4px;
+    font-size: 1.8rem;
+  }
+  .btn-create {
+    justify-content: center;
+  }
+  .btn-list {
+    justify-content: center;
+    margin-left: 80%;
+  }
+  /* Responsive Laptop */
+  @media screen and (min-width: 960px) and (max-width: 1024px) {
+    font-size: 1.7rem;
+    .btn-create {
+      margin: 0% 0% 0% 20%;
+    }
+    .btn-list {
+      margin: 0% 0% 0% 50%;
+    }
+  }
+  /* Responsive Tablet */
+  @media screen and (min-width: 768px) and (max-width: 960px) {
+    .btn-create,
+    .btn-list {
+      width: 25vw;
+      font-size: 1.5rem;
+    }
+    .btn-create {
+      margin: 10% 0% 1% 25%;
+    }
+    .btn-list {
+      margin: 10% 0% 1% 55%;
+    }
+  }
+  /* Responsive Phone */
+  @media screen and (max-width: 480px) {
+    width: 40%;
+    display: inline-block;
+    .btn-create,
+    .btn-list {
+      margin: 3% 0% 3% 25%;
+      font-size: 1.3rem;
     }
   }
 `;
