@@ -7,6 +7,8 @@ import axios from "axios";
 import "./contactForm.css";
 import { toast } from "react-toastify";
 //---------------- COMPONENTS --------------//
+import Nav from "../../components/nav";
+import  Navbar from '../../components/navbar/navbar';
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -60,6 +62,8 @@ export default function ContactForm() {
 
   return (
     <>
+    <Nav/>
+    <Navbar/>
       <main className="container">
         <h2>Contactez-moi</h2>
 

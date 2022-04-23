@@ -9,7 +9,9 @@ function Nav() {
     return (
       <div>
           <Navbar> 
-            <img src={Logo} alt='' />
+            <LogoSection>
+            <LogoImage src={Logo} alt='' />
+            </LogoSection>
                 <Ul>
 
                     <a href="/" className='text-link'>Home</a>
@@ -30,13 +32,15 @@ function Nav() {
 const Ul = styled.li`
 padding: 30px;
 list-style: none;
-display: inline;
+display: inline-block;
 gap: 12px;
 `;
 
+
 const Navbar = styled.nav`
-  padding: 25px;
+  padding: 10px;
   margin: 0px;
+  margin-top:4px;
   text-align: right;
   display: inline-block;
   vertical-align:top;
@@ -48,9 +52,9 @@ const Navbar = styled.nav`
   
   a {
     color: #4c2a4e;
-    font-size: 1rem;
+    font-size: 1.7rem;
     font-weight: bold;
-    margin-top: 3%;
+
   }
   .text-link {
     color: inherit;
@@ -59,24 +63,29 @@ const Navbar = styled.nav`
     margin-right: 20px;
     height: 40px;
     line-height: 30px; 
+    
   }
 
-  img{
-      width: 10vw;
-      height: auto;
-      float: left;
-  }
+`;
+const LogoSection = styled.div`
+float:left;
+justify-content:space-between;
+padding-left:25px;
+`;
+
+const LogoImage = styled.img`
+  width: 80px;
+ 
+
 `;
 
 const QuestionnaireBtn = styled.button`
 border-radius:5px;
 font-size: 1.1em;
 border: none;
+text-align:center;
 background-color: #4c2a4e;
 color: white;
 height: 7vh;
-@media (max-width: 2500px) {
-  /* width:150px;
-  height:40px; */
-}
+width:150px;
   `;

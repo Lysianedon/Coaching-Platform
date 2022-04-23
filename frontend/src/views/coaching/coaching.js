@@ -2,6 +2,7 @@ import {useNavigate} from "react-router-dom";
 import { React, useState, useEffect } from "react";
 // components
 import Nav from "../../components/nav";
+import  Navbar from '../../components/navbar/navbar';
 import Footer from "../../components/footer";
 //Styled-components
 import styled from "styled-components";
@@ -57,6 +58,7 @@ function Coaching() {
     return(
         <DivWrapper>
             <Nav/>
+            <Navbar/>
             <section className="banner">
                 <h2>Un programme unique et personnalisé pour: </h2>
                 <h2 className='dynamic-quote'>{quote}</h2>

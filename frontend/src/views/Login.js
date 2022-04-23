@@ -5,7 +5,8 @@ import axios from 'axios';
 import { toast } from "react-toastify";
 
 // components
-import Nav from "../components/nav";
+import  Navbar from '../components/navbar/navbar';
+import Nav from '../components/nav';
 import Footer from "../components/footer";
 
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
@@ -73,7 +74,8 @@ function Login() {
 
   return (
     <LoginFormStyled> 
-       {/* <Nav/> */}
+      <Nav/>
+      <Navbar/>
           {/*  LOGIN FORM */}
           <div className="login-page">
           <form className="login-form" action="http://localhost:8000/login" method="POST" onSubmit={handleSubmit}>

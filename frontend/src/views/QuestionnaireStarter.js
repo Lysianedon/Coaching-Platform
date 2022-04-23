@@ -1,7 +1,8 @@
 import React from "react";
 
 // components
-import Nav from "../components/nav";
+import  Navbar from '../components/navbar/navbar';
+import Nav from '../components/nav';
 import Footer from "../components/footer";
 import QuestionnaireImage from "../assets/images/deuxieme.png";
 
@@ -11,7 +12,8 @@ import styled from "styled-components";
 function QuestionnaireStarter() {
   return (
     <QuestionnaireStyled>
-      <Nav />
+      <Nav/>
+      <Navbar/>
       <div className="questionnaire-form">
         <div>
           <img

@@ -1,6 +1,7 @@
 import {useNavigate} from "react-router-dom";
 // components
 import Nav from "../../components/nav";
+import  Navbar from '../../components/navbar/navbar';
 import Footer from "../../components/footer";
 //Styled-components
 import styled from "styled-components";
@@ -24,8 +25,8 @@ function Presentation() {
 
     return(
         <DivWrapper>
-            <Nav/>
-
+          <Nav/>
+          <Navbar/>
           <section className="banner">
             <h2>RENCONTREZ <span className="yellow-block"> VOTRE COACH </span></h2>
             <img src={presentation} alt="pauline" srcset="" />
