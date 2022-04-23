@@ -1,0 +1,18 @@
+/* Initialization */
+*, ::before, ::after{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+  }
+
+  /* Font-size par défaut */
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    font-size: 1.8rem;
+    background:rgb(246,246,246)
+
+  }
+  

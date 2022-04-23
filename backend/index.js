@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json());
-app.use(express.static(`${__dirname}/uploads`));
+app.use(express.static("public"));
 
 //------------ CONNECT TO MONGODB -------------//
 mongoose

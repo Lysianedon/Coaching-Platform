@@ -6,9 +6,10 @@ import * as RiIcons from 'react-icons/ri';
 import * as FiIcons from 'react-icons/fi';
 
 
+
 function handleLogout({item}) {
 
-    axios.get('http://localhost:8000/logout', {withCredentials: true})
+    axios.get('http://localhost:8000/logout', {withCredentials: true},)
 }
 
 export const SidebarData = [

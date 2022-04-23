@@ -1,7 +1,13 @@
-# dependencies
+# node_modules & co
+/config.env
 /node_modules
 /package-lock.json
-/package
-# misc
+/package.json
+/.pnp
 .DS_Store
 /config.env
+
+
+# package.json 
+/package.json
+/package-lock.json

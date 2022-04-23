@@ -29,9 +29,5 @@ function Agenda() {
  }
 export default Agenda;
 
-const StyledFrame = styled.iframe`
 
-    background-color:"black" !important;
-
-`
 

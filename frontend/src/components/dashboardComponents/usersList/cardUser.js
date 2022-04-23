@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 //css
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -27,6 +28,7 @@ function CardUser() {
         { withCredentials: true },)
         .then(res => {
             console.log(res.data);
+            toast.success("Account is deleted successfully");
         })
         .catch((err) => {
             console.log(err);
@@ -67,7 +69,8 @@ function CardUser() {
                                 
                                 <div>
                                     {/* <a href="/">En savoir plus</a> */}
-                                    <i class="bi bi-trash" onClick={() => handleRemove(index)}></i>
+                                    <i class="bi bi-trash" onClick={() => handleRemove(index)}
+                                    ></i>
                                 </div>
                         
                                 
@@ -105,6 +108,11 @@ a {
     color: black;
 }
 /* RESPONSIVE */
+@media only screen and (min-width: 768px) and (max-width: 960px) {
+    .cardUser-form{
+
+    }
+}
 @media screen and (max-width: 480px) {
     .cardUser-form{
         display: inline-block;
