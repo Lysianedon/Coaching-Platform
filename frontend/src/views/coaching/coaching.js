@@ -139,14 +139,14 @@ const DivWrapper = styled.div`
     .banner{
         display: flex;
         flex-direction: column;
-        /* width: 95vw; */
+        width: 95vw;
         text-align: center;
         justify-content: center;
         align-items: center;
         height: 45vh;
-        /* background-color: #4c2a4e; */
+        background-color: #4c2a4e;
         margin: auto;
-        color: #FFC267;
+        color: white;
         margin-bottom:5%;
     }
     /* .banner{
