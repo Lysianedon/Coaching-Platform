@@ -4,7 +4,6 @@
   align-items: center;
 }
 .container{  
-  /* justify-content: space-around; */
   width: 100vw;
   height: auto;
   max-width: 100%
@@ -19,12 +18,13 @@ h2 {
   font-size: 3rem;
   color: #4c2a4e;
   text-align: center;
-  padding-top: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 500
 }
 
 iframe {
   border: 0.2rem solid rgb(116, 128, 150);
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 /* Formulaire */

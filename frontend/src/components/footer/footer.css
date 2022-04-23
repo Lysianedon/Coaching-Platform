@@ -70,10 +70,11 @@ footer{
     }
     .footer-content{
       justify-content: flex-start;
+      margin-bottom: 0;
     }
     .footer-cat {
       width: 100%;
-      margin: 0 0 1rem;
+      margin: 0 0 2rem;
     }
   }
   
