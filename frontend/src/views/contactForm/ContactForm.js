@@ -64,7 +64,6 @@ export default function ContactForm() {
       <Nav />
       <Navbar />
       <main className="container">
-        <h2 className="title-responsive">Contactez-moi</h2>
         <iframe
           width="560"
           height="315"
@@ -76,7 +75,7 @@ export default function ContactForm() {
           autoplay="1"
           loop="1"
         ></iframe>
-
+        <h2>Contactez-moi</h2>
         <form>
           <div className="inputGroup">
             <label htmlFor="name">*Votre nom:</label>
