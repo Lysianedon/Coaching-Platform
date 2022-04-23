@@ -73,11 +73,11 @@ const Nav = styled.div`
   background: #4f3149;
   border-radius:0 0 12px;
   height: 80px;
-  width:100px;
+  width:80px;
   display: flex;
+  position:fixed;
   justify-content: flex-start;
   align-items: center;
-  position:relative;
 `;
 
 const NavIcon = styled(Link)`
