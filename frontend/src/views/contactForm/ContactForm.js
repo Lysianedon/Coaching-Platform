@@ -26,36 +26,34 @@ export default function ContactForm() {
       submitted,
     };
 
-    if (name && email && message){
+    if (name && email && message) {
       axios
-      .post("http://localhost:8000/contact", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        data,
-      })
-      .then((res) => {
-        console.log("Response received", res);
-        if (res.status === 200) {
-          console.log("Response succeeded!");
-          setName("");
-          setPhone("");
-          setEmail("");
-          setMessage("");
-          setSubmitted(true);
-        } 
-        toast.success("Your message is sent successfully");
-      })
-      .catch((err) => {
-        console.log(err);
-       
-       });
-    }else{
+        .post("http://localhost:8000/contact", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          data,
+        })
+        .then((res) => {
+          console.log("Response received", res);
+          if (res.status === 200) {
+            console.log("Response succeeded!");
+            setName("");
+            setPhone("");
+            setEmail("");
+            setMessage("");
+            setSubmitted(true);
+          }
+          toast.success("Your message is sent successfully");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
       toast.error("Please fill the form first");
     }
-    
   };
 
   return (
@@ -148,7 +146,7 @@ export default function ContactForm() {
       <footer>
         <div className="footer-content">
           <div className="footer-cat">
-            <h5> PRENDRE CONTACT </h5>
+            <h3> PRENDRE CONTACT </h3>
             <p>
               <a href="/contact" className="footer-link">
                 Formulaire de contact
@@ -162,31 +160,31 @@ export default function ContactForm() {
           </div>
 
           <div className="footer-cat">
-            <h5> SUIVEZ-MOI </h5>
+            <h3> SUIVEZ-MOI </h3>
             <div className="social-links">
               <a
                 href="https://fr-fr.facebook.com/pauline.gane.9"
                 _target="blank"
               >
-                <i class="bi bi-facebook"></i>
+                <i className="bi bi-facebook"></i>
               </a>
               <a
                 href="https://instagram.com/pmggroup2022?igshid=YmMyMTA2M2Y="
                 _target="blank"
               >
-                <i class="bi bi-instagram"></i>
+                <i className="bi bi-instagram"></i>
               </a>
               <a
                 href="https://www.linkedin.com/in/pauline-gane-28a136aa/"
                 _target="blank"
               >
-                <i class="bi bi-linkedin"></i>
+                <i className="bi bi-linkedin"></i>
               </a>
             </div>
           </div>
 
           <div className="footer-cat">
-            <h5> LIENS UTILES </h5>
+            <h3> LIENS UTILES </h3>
             <p>
               <a href="/" className="legal-infos">
                 Mentions légales
