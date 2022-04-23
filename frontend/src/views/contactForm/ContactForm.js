@@ -7,6 +7,7 @@ import axios from "axios";
 import "./contactForm.css";
 import { toast } from "react-toastify";
 //---------------- COMPONENTS --------------//
+import Footer from "../../components/footer/Footer";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -60,7 +61,6 @@ export default function ContactForm() {
     <>
       <main className="container">
         <h2>Contactez-moi</h2>
-
         <iframe
           width="560"
           height="315"
@@ -143,65 +143,7 @@ export default function ContactForm() {
         </form>
       </main>
 
-      <footer>
-        <div className="footer-content">
-          <div className="footer-cat">
-            <h3> PRENDRE CONTACT </h3>
-            <p>
-              <a href="/contact" className="footer-link">
-                Formulaire de contact
-              </a>
-            </p>
-            <p>
-              <a href="/questionnaire/starter" className="footer-link">
-                Questionnaire
-              </a>
-            </p>
-          </div>
-
-          <div className="footer-cat">
-            <h3> SUIVEZ-MOI </h3>
-            <div className="social-links">
-              <a
-                href="https://fr-fr.facebook.com/pauline.gane.9"
-                _target="blank"
-              >
-                <i className="bi bi-facebook"></i>
-              </a>
-              <a
-                href="https://instagram.com/pmggroup2022?igshid=YmMyMTA2M2Y="
-                _target="blank"
-              >
-                <i className="bi bi-instagram"></i>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/pauline-gane-28a136aa/"
-                _target="blank"
-              >
-                <i className="bi bi-linkedin"></i>
-              </a>
-            </div>
-          </div>
-
-          <div className="footer-cat">
-            <h3> LIENS UTILES </h3>
-            <p>
-              <a href="/" className="legal-infos">
-                Mentions légales
-              </a>
-            </p>
-            <p>
-              <a href="/" className="legal-infos">
-                CGU / CGV
-              </a>
-            </p>
-          </div>
-        </div>
-
-        <div className="copyright">
-          &copy; Créé par Jessica, Anita, Lysiane et Chi
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
