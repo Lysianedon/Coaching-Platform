@@ -81,7 +81,6 @@ useEffect(()=> {
 
   return (
       <TodoStyle>
-      {/* <h2>Hello {name} ! </h2> */}
 
      {
        numberOfTasks < 1 ?  <h3>Tu n'as aucune tâche à faire pour le moment </h3> : <h3>Tu as {numberOfTasks} tâche(s) à réaliser: </h3>
@@ -139,7 +138,6 @@ h2{
   margin: 2% auto 3% auto;
 }
 
-/* height: 130vh !important; */
 overflow-y: scroll;
 overflow: scroll;
 display: flex;
@@ -186,7 +184,6 @@ flex-direction: column;
       border-radius: 7%;
       margin-left: 5%;
       font-weight: bold;
-      /* background-color: #FFC267; */
       background-color: white;
       color: #4f3149;
       background-color: #f5eff9;
@@ -210,9 +207,7 @@ flex-direction: column;
   overflow-y: scroll;
   border-radius: 4px;
   background-color: #f5eff9;
-  /* box-shadow: 0px 0px 5px rgba(66,66,66,.75); */
   box-shadow: 0px 8px 15px -5px rgba(0,0,0,0.76);
-
 
   .task{
     display: flex;
@@ -221,7 +216,6 @@ flex-direction: column;
     list-style: none;
     margin: 2% auto;
     padding: 2%;
-
 
     input[type="checkbox"]{
       width: 3vw !important;
@@ -246,15 +240,11 @@ flex-direction: column;
     
     input[type="checkbox"]:nth-child(even){
       accent-color: black;
-
     }
 
     .options{
       display: flex;
     }
-
-
   }
-
 }
 `

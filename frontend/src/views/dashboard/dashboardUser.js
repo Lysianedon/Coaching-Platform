@@ -56,10 +56,7 @@ function DashboardUser() {
        <iframe className="calendar" src={`https://calendar.google.com/calendar/embed?src=${emailUser}&ctz=Europe%2FParis`} height={300}></iframe>
 
        <Ressources/> 
-
      </Container>
-
-
     </>
   )
 }

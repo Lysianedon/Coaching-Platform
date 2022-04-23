@@ -17,18 +17,12 @@ function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [posts, setPosts] = useState([]);
-
-  const fetchPost = async () => {
-  const response = await fetch(
-      "https://api.chucknorris.io/jokes/random" ,  { withCredentials: true }
-    );
-   const data = await response.json();
-    setPosts(data);
-  };
-
+ 
   useEffect(() => {
-    fetchPost();
+    setTimeout(() => {
+      document.querySelector('.quote').style.opacity= '1';
+    }, 1600);
+
   }, []);
 
   const handleSubmit = (e) => {
@@ -40,16 +34,11 @@ function Login() {
     setEmail(emailValue);
     setPassword(passwordValue);
 
-    console.log("email password:::",email, password);
-
     axios.post('http://localhost:8000/login',{ email, password} , { withCredentials: true})
     .then(res =>{
-       console.log(res.data);
-
        if (res.data.success) {
          axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
          .then(res => {
-           console.log(res.data);
            if (res.data.user.isAdmin) {
             toast.success("Ravi de te revoir, Pauline !");
              navigate('/dashboard/admin');
@@ -99,37 +88,11 @@ function Login() {
                       </div>     
                 </form>
               
-
-              <div class="quotes quotes-block">
-                <h2 className="text-center quote-title">Quotes</h2>
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                  </ol>
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      {posts.value}
-                    </div>
-                    <div class="carousel-item">
-                      {posts.value}
-                    </div>
-                    <div class="carousel-item">
-                      {posts.value}
-                    </div>
-                  </div>
-                  <button class="carousel-control-prev" onClick={fetchPost} >
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    {/* <span class="sr-only">Previous</span> */}
-                  </button>
-
-                  <button class="carousel-control-next" onClick={fetchPost}>
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    {/* <span class="sr-only">Next</span> */}
-                  </button>
-                </div>
+              <div className="quotes quotes-block">
+              <h2 className="text-center quote-title">Quote Of The Day : </h2>
+              <h3 className="quote">Définissez le succès avec vos propres termes, atteignez-les avec vos propres règles, et construisez une vie que vous êtes fiers de vivre. ' <span className="author"> -Anne Sweeney</span></h3>
               </div>
+              
           </div>
                 
         <Footer/>
@@ -159,6 +122,25 @@ height: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .quote-title{
+      margin-bottom: 4.5rem;
+    }
+
+    .quote{
+      width: 80%;
+      font-size: 2.3rem;
+      line-height: 4.5rem;
+      opacity: 0;
+      transition: all 1.5s ease-in-out;
+      text-align: center;
+
+      .author{
+        display: block;
+        text-align: center;
+        margin-top: 2rem;
+      }
+    }
 }
 .login-form{
     margin: 2% 2% 5% 5%;

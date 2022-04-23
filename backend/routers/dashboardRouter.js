@@ -67,31 +67,47 @@ router.get("/user/list", auth, async (req, res) => {
   try {
     usersList = await Task.find({ userId });
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     return res.status(400).json({ message: "An error occurred." });
   }
   return res.json({ usersList });
 });
 
-// DELETE A TASK FROM USER'S TO DO LIST:
+// DELETE A TASK FROM USER'S TO DO LIST: -----------------
 router.delete("/user/list", auth, async (req, res) => {
   const userId = req.userId;
   const taskToDelete = req.body.content;
-  let deletedTask;
-  console.log("taskToDelete:  ", taskToDelete);
+  let deletedTask, user;
+
   if (!taskToDelete) {
     return res.status(404).json({ error: "No task found" });
   }
-
+  //Deleting the task:
   try {
     deletedTask = await Task.findOneAndDelete(
       { content: taskToDelete },
       { userId }
     );
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     return res.status(400).json({ message: "An error occurred." });
   }
+
+  //Deleting the task's ID from user :
+  try {
+    user = await User.findByIdAndUpdate(userId, 
+      {
+        $pull : {
+          tasks : deletedTask._id
+        }
+      }
+      )
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ message: "An error occurred." });
+  }
+
+
   return res.json({ deletedTask });
 });
 
@@ -102,7 +118,7 @@ router.post("/user/list", auth, validateTaskJoi, async (req, res) => {
     updatedUser;
   const userId = req.userId;
   const { content } = req.body;
-  console.log(content);
+
   newTask = {
     userId,
     content,
@@ -169,7 +185,7 @@ router.post("/admin/users", auth, isAdmin, async (req, res) => {
     user = await User.create(req.body);
     user.password = await bcrypt.hash(user.password, 12);
     const hashedPassword = user.password;
-    console.log(hashedPassword);
+
     user.save();
   } catch (error) {
     return res.status(400).json({
@@ -240,7 +256,7 @@ router.get("/user/files/download",auth, async (req, res) => {
   //If admin, permettre de telecharger tous les fichiers en regardant seulement filename / Si user : regarder userID and filename
 
   //Côté front : créer une icone pour chaque fichier uploadé, et telechargement au double clic ou en cliquant sur telecharger
-  console.log("worked!");
+
   return res.download(
     path.join(
       `/Users/lysianedon/Documents/KONEXIO/Coaching-Platform/backend/public/uploads/${filename}`
@@ -256,10 +272,6 @@ router.post(
   async (req, res) => {
     //Check size file : si too big, on refuse => creer middleware pour cela ?
     const { filename } = req.body;
-
-    if (req.file) {
-      console.log(req.file.originalname);
-    }
 
     let userId = req.userId;
     let addedRessource;

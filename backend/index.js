@@ -39,7 +39,6 @@ mongoose
 
 //--------------- ROUTERS ------------------//
 const contactFormRouter = require("./routers/contactFormRouter");
-const questionnaireRouter = require("./routers/questionnaireRouter");
 const dashboardRouter = require("./routers/dashboardRouter");
 const loginRouter = require("./routers/loginRouter");
 const logoutRouter = require("./routers/logoutRouter");
@@ -47,7 +46,6 @@ const logoutRouter = require("./routers/logoutRouter");
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
 app.use("/contact", contactFormRouter);
-app.use("/questionnaire", questionnaireRouter);
 app.use("/dashboard", dashboardRouter);
 
 //---------------- ROUTES -----------------//
