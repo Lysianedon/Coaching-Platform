@@ -55,7 +55,7 @@ function Login() {
              navigate('/dashboard/admin');
 
            }else{
-              toast.success("Ravi de te revoir !");
+              toast.success(`Ravi de te revoir, ${res.data.user.firstName} !`);
               navigate('/dashboard/user');
            }
          })
