@@ -2,6 +2,7 @@ import React from "react";
 
 // components
 import Nav from "../components/nav";
+import Navbar from "../components/navbar/navbar";
 import QuestionnaireImage from "../assets/images/deuxieme.png";
 
 // css
@@ -9,34 +10,37 @@ import styled from "styled-components";
 
 function QuestionnaireStarter() {
   return (
-    <QuestionnaireStyled>
-      <Nav />
-      <div className="questionnaire-form">
-        <div>
-          <img
-            className="questionnaire-image"
-            src={QuestionnaireImage}
-            alt="questionnaire"
-          />
-        </div>
+    <>
+      <QuestionnaireStyled>
+        <Nav />
+        <Navbar />
+        <div className="questionnaire-form">
+          <div>
+            <img
+              className="questionnaire-image"
+              src={QuestionnaireImage}
+              alt="questionnaire"
+            />
+          </div>
 
-        <div className="text-questionnaire">
-          <h4 id="description-questionnaire">
-            Commençons par faire connaissance: ce questionnaire a pour but de
-            comprendre mieux votre objective. Merci !
-          </h4>
-          <h5>
-            <em>Cela prendra 10 minutes...</em>{" "}
-          </h5>
+          <div className="text-questionnaire">
+            <h4 id="description-questionnaire">
+              Commençons par faire connaissance: ce questionnaire a pour but de
+              comprendre mieux votre objective. Merci !
+            </h4>
+            <h5>
+              <em>Cela prendra 10 minutes...</em>{" "}
+            </h5>
 
-          <a href="https://7nsna4vba1q.typeform.com/to/CyGdqVKG">
-            <button href="/question" className="btn-start btn-dark">
-              Commencer
-            </button>
-          </a>
+            <a href="https://7nsna4vba1q.typeform.com/to/CyGdqVKG">
+              <button href="/question" className="btn-start btn-dark">
+                Commencer
+              </button>
+            </a>
+          </div>
         </div>
-      </div>
-    </QuestionnaireStyled>
+      </QuestionnaireStyled>
+    </>
   );
 }
 export default QuestionnaireStarter;

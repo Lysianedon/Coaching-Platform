@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 // components
 import Nav from "../../components/nav";
+import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/Footer";
 //Styled-components
 import styled from "styled-components";
@@ -22,69 +23,73 @@ function Presentation() {
   };
 
   return (
-    <DivWrapper>
-      <Nav />
+    <>
+      <DivWrapper>
+        <Nav />
+        <Navbar />
+        <section className="banner">
+          <h2>
+            RENCONTREZ <span className="yellow-block"> VOTRE COACH </span>
+          </h2>
+          <img src={presentation} alt="pauline" srcset="" />
+          <h2>PAULINE GANE</h2>
+        </section>
 
-      <section className="banner">
-        <h2>
-          RENCONTREZ <span className="yellow-block"> VOTRE COACH </span>
-        </h2>
-        <img src={presentation} alt="pauline" srcset="" />
-        <h2>PAULINE GANE</h2>
-      </section>
+        <div className="vertical-line"></div>
 
-      <div className="vertical-line"></div>
-
-      <section className="texte-picture">
-        <p>
-          {" "}
-          <span className="bigger-yellow">
+        <section className="texte-picture">
+          <p>
             {" "}
-            <span className="capital-letter">L</span>orem ipsum dolor sit amet
-            consectetur, adipisicing elit.
-          </span>{" "}
-          Sequi nesciunt reiciendis dolorem iusto cupiditate. Dolorum excepturi,
-          consectetur magnam earum nulla non blanditiis deleniti nemo veritatis
-          quae sed. Provident at corporis adipisci iusto temporibus molestias
-          reiciendis voluptatum et ipsam optio harum quis libero perspiciatis
-          iste, eveniet pariatur ea natus quos ducimus. Nostrum cum eum tenetur
-          reprehenderit quod facilis repellat distinctio nisi recusandae. Lorem
-          ipsum dolor sit amet consectetur, adipisicing elit. Natus inventore
-          doloremque beatae obcaecati optio in.{" "}
-        </p>
+            <span className="bigger-yellow">
+              {" "}
+              <span className="capital-letter">L</span>orem ipsum dolor sit amet
+              consectetur, adipisicing elit.
+            </span>{" "}
+            Sequi nesciunt reiciendis dolorem iusto cupiditate. Dolorum
+            excepturi, consectetur magnam earum nulla non blanditiis deleniti
+            nemo veritatis quae sed. Provident at corporis adipisci iusto
+            temporibus molestias reiciendis voluptatum et ipsam optio harum quis
+            libero perspiciatis iste, eveniet pariatur ea natus quos ducimus.
+            Nostrum cum eum tenetur reprehenderit quod facilis repellat
+            distinctio nisi recusandae. Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Natus inventore doloremque beatae obcaecati optio
+            in.{" "}
+          </p>
 
-        <img src={orangecoat} alt="pauline" srcset="" />
-      </section>
+          <img src={orangecoat} alt="pauline" srcset="" />
+        </section>
 
-      <div className="vertical-line2"></div>
+        <div className="vertical-line2"></div>
 
-      <section className="picture-text">
-        <img src={orangecoat} alt="pauline" srcset="" />
+        <section className="picture-text">
+          <img src={orangecoat} alt="pauline" srcset="" />
 
-        <p>
-          {" "}
-          Sequi nesciunt reiciendis dolorem iusto cupiditate. Dolorum excepturi,
-          consectetur magnam earum nulla non blanditiis deleniti nemo veritatis
-          quae sed. Provident at corporis adipisci iusto temporibus molestias
-          reiciendis voluptatum et ipsam optio harum quis libero perspiciatis
-          iste, eveniet pariatur ea natus quos ducimus. Nostrum cum eum tenetur
-          reprehenderit quod facilis repellat distinctio nisi recusandae. Lorem
-          ipsum dolor sit amet consectetur, adipisicing elit. Natus inventore
-          doloremque beatae obcaecati optio in.
-          <span className="bigger-yellow">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-          </span>{" "}
-        </p>
-      </section>
+          <p>
+            {" "}
+            Sequi nesciunt reiciendis dolorem iusto cupiditate. Dolorum
+            excepturi, consectetur magnam earum nulla non blanditiis deleniti
+            nemo veritatis quae sed. Provident at corporis adipisci iusto
+            temporibus molestias reiciendis voluptatum et ipsam optio harum quis
+            libero perspiciatis iste, eveniet pariatur ea natus quos ducimus.
+            Nostrum cum eum tenetur reprehenderit quod facilis repellat
+            distinctio nisi recusandae. Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Natus inventore doloremque beatae obcaecati optio
+            in.
+            <span className="bigger-yellow">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            </span>{" "}
+          </p>
+        </section>
 
-      <div className="vertical-line"></div>
+        <div className="vertical-line"></div>
 
-      <section className="action-titre-btn">
-        <h2 className="action-title">Prêt.e à passer à l’action ?</h2>
-        <button onClick={goToContactPage}>Travaillons ensemble</button>
-      </section>
+        <section className="action-titre-btn">
+          <h2 className="action-title">Prêt.e à passer à l’action ?</h2>
+          <button onClick={goToContactPage}>Travaillons ensemble</button>
+        </section>
+      </DivWrapper>
       <Footer />
-    </DivWrapper>
+    </>
   );
 }
 export default Presentation;

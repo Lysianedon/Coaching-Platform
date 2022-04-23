@@ -5,7 +5,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 // components
+import Navbar from "../components/navbar/navbar";
 import Nav from "../components/nav";
+import Footer from "../components/footer/Footer";
 // css (contact, signup, login, modify have same css from formInput.css in assets/css)
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -76,102 +78,118 @@ function Login() {
   };
 
   return (
-    <LoginFormStyled>
-      {/* <Nav/> */}
-      {/*  LOGIN FORM */}
-      <div className="login-page">
-        <form
-          className="login-form"
-          action="http://localhost:8000/login"
-          method="POST"
-          onSubmit={handleSubmit}
-        >
-          <h2>Login</h2>
-          <div>
-            {/* Email */}
-            <div className="email">
-              <label htmlFor="email">Email:</label>
-              <input
-                type="text"
-                id="email"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-            </div>
-
-            {/* Password */}
-            <div className="password">
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-            </div>
-
-            {/* Button Submit */}
+    <>
+      <LoginFormStyled>
+        <Nav />
+        <Navbar />
+        {/*  LOGIN FORM */}
+        <div className="login-page">
+          <form
+            className="login-form"
+            action="http://localhost:8000/login"
+            method="POST"
+            onSubmit={handleSubmit}
+          >
+            <h2>Login</h2>
             <div>
-              <button
-                type="submit"
-                onClick={handleSubmit}
-                className="submit btn-dark"
-              >
-                {" "}
-                Submit{" "}
+              {/* Email */}
+              <div className="email">
+                <label htmlFor="email">Email:</label>
+                <input
+                  type="text"
+                  id="email"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+              </div>
+
+              {/* Password */}
+              <div className="password">
+                <label htmlFor="password">Password:</label>
+                <input
+                  type="password"
+                  id="password"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+              </div>
+
+              {/* Password */}
+              <div className="password">
+                <label htmlFor="password">Password:</label>
+                <input
+                  type="password"
+                  id="password"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+              </div>
+
+              {/* Button Submit */}
+              <div>
+                <button
+                  type="submit"
+                  onClick={handleSubmit}
+                  className="submit btn-dark"
+                >
+                  {" "}
+                  Submit{" "}
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div class="quotes quotes-block">
+            <h2 className="text-center quote-title">Quotes</h2>
+            <div
+              id="carouselExampleIndicators"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="1"
+                ></li>
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="2"
+                ></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">{posts.value}</div>
+                <div class="carousel-item">{posts.value}</div>
+                <div class="carousel-item">{posts.value}</div>
+              </div>
+              <button class="carousel-control-prev" onClick={fetchPost}>
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                {/* <span class="sr-only">Previous</span> */}
+              </button>
+
+              <button class="carousel-control-next" onClick={fetchPost}>
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                {/* <span class="sr-only">Next</span> */}
               </button>
             </div>
           </div>
-        </form>
-
-        <div class="quotes quotes-block">
-          <h2 className="text-center quote-title">Quotes</h2>
-          <div
-            id="carouselExampleIndicators"
-            class="carousel slide"
-            data-ride="carousel"
-          >
-            <ol class="carousel-indicators">
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="0"
-                class="active"
-              ></li>
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="1"
-              ></li>
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="2"
-              ></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">{posts.value}</div>
-              <div class="carousel-item">{posts.value}</div>
-              <div class="carousel-item">{posts.value}</div>
-            </div>
-            <button class="carousel-control-prev" onClick={fetchPost}>
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              {/* <span class="sr-only">Previous</span> */}
-            </button>
-
-            <button class="carousel-control-next" onClick={fetchPost}>
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              {/* <span class="sr-only">Next</span> */}
-            </button>
-          </div>
         </div>
-      </div>
-    </LoginFormStyled>
+      </LoginFormStyled>
+      <Footer />
+    </>
   );
 }
 export default Login;

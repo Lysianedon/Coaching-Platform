@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { React, useState, useEffect } from "react";
 // components
 import Nav from "../../components/nav";
+import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/Footer";
 //Styled-components
 import styled from "styled-components";
@@ -49,126 +50,130 @@ function Coaching() {
   // }, [])
 
   return (
-    <DivWrapper>
-      <Nav />
-      <section className="banner">
-        <h2>Un programme unique et personnalisé pour: </h2>
-        <h2 className="dynamic-quote">{quote}</h2>
-      </section>
-      <h2 className="become">
-        Devient l'entrepreneur.se que tu as toujours rêvé d'être grâce à :{" "}
-      </h2>
+    <>
+      <DivWrapper>
+        <Nav />
+        <Navbar />
+        <section className="banner">
+          <h2>Un programme unique et personnalisé pour: </h2>
+          <h2 className="dynamic-quote">{quote}</h2>
+        </section>
+        <h2 className="become">
+          Devient l'entrepreneur.se que tu as toujours rêvé d'être grâce à :{" "}
+        </h2>
 
-      <section className="coaching-individuel coachings">
-        <h2 className="title-individuel">Un coaching individuel</h2>
-        <hr className="underline" />
+        <section className="coaching-individuel coachings">
+          <h2 className="title-individuel">Un coaching individuel</h2>
+          <hr className="underline" />
 
-        <ul>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-            iste!
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-            iste!
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-            iste!
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-            iste!
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-            iste!
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-            iste!
-          </li>
-        </ul>
-      </section>
+          <ul>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, iste!
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, iste!
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, iste!
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, iste!
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, iste!
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, iste!
+            </li>
+          </ul>
+        </section>
 
-      <section className="or">
-        <hr />
-        <p>OU</p>
-        <hr />
-      </section>
+        <section className="or">
+          <hr />
+          <p>OU</p>
+          <hr />
+        </section>
 
-      <section className="coaching-collectif coachings">
-        <h2 className="title-collectif">Un coaching collectif</h2>
-        <hr className="underline" />
+        <section className="coaching-collectif coachings">
+          <h2 className="title-collectif">Un coaching collectif</h2>
+          <hr className="underline" />
 
-        <ul>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-            iste!
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-            iste!
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-            iste!
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-            iste!
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-            iste!
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-            iste!
-          </li>
-        </ul>
-      </section>
+          <ul>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, iste!
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, iste!
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, iste!
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, iste!
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, iste!
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, iste!
+            </li>
+          </ul>
+        </section>
 
-      <section className="success-pilars">
-        <h2>Les 3 piliers clés de la réussite ?</h2>
+        <section className="success-pilars">
+          <h2>Les 3 piliers clés de la réussite ?</h2>
 
-        <div className="icons">
-          <div className="text-icon text-icon-business">
-            <img
-              src={business}
-              className="icon icon-business"
-              alt=" icon icon-business"
-              srcset=""
-            />
-            <h3>Business</h3>
+          <div className="icons">
+            <div className="text-icon text-icon-business">
+              <img
+                src={business}
+                className="icon icon-business"
+                alt=" icon icon-business"
+                srcset=""
+              />
+              <h3>Business</h3>
+            </div>
+            <div className="text-icon">
+              <img
+                src={tools}
+                className="icon icon-tools"
+                alt=" icon icon-tools"
+                srcset=""
+              />
+              <h3>Tools</h3>
+            </div>
+            <div className="text-icon">
+              <img
+                src={mindset}
+                className="icon icon-mindset"
+                alt=" icon icon-mindset"
+                srcset=""
+              />
+              <h3>Mindset</h3>
+            </div>
           </div>
-          <div className="text-icon">
-            <img
-              src={tools}
-              className="icon icon-tools"
-              alt=" icon icon-tools"
-              srcset=""
-            />
-            <h3>Tools</h3>
-          </div>
-          <div className="text-icon">
-            <img
-              src={mindset}
-              className="icon icon-mindset"
-              alt=" icon icon-mindset"
-              srcset=""
-            />
-            <h3>Mindset</h3>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <div className="vertical-line"></div>
+        <div className="vertical-line"></div>
 
-      <button>Je passe à l'action</button>
+        <button>Je passe à l'action</button>
 
+        <Footer />
+      </DivWrapper>
       <Footer />
-    </DivWrapper>
+    </>
   );
 }
 export default Coaching;
