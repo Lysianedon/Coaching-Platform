@@ -253,9 +253,7 @@ router.get("/user/files/download",auth, async (req, res) => {
     return res.status(400).json({ error: "An error occurred." });
   }
 
-  //If admin, permettre de telecharger tous les fichiers en regardant seulement filename / Si user : regarder userID and filename
-
-  //Côté front : créer une icone pour chaque fichier uploadé, et telechargement au double clic ou en cliquant sur telecharger
+  //If admin, permettre de telecharger tous les fichiers en regardant seulement filename / Si user : regarder userID and filename:
 
   return res.download(
     path.join(
