@@ -10,6 +10,7 @@ import Coaching from "./views/coaching/coaching";
 import ContactForm from "./views/contactForm/ContactForm";
 import Login from "./views/Login";
 import QuestionnaireStarter from "./views/QuestionnaireStarter";
+import Mentionslegales from "./views/Mentionslegales";
 
 // DASHBOARD
 import DashboardAdmin from "./views/dashboard/dashboardAdmin";
@@ -19,6 +20,7 @@ import DashboardList from "./views/dashboard/dashboardList";
 
 // CSS
 import "./App.css";
+import CGU from "./views/CGU";
 
 function App() {
   return (
@@ -48,10 +50,17 @@ function App() {
             path="/dashboard/admin/list"
             element={<DashboardList />}
           />
+          <Route exact 
+          path="/mentionslegales" 
+          element={<Mentionslegales/>}/>
+
+          <Route exact 
+          path="/cgu"
+          element={<CGU/>} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
-      {/* </TasksContexts.Provider> */}
+
     </div>
   );
 }

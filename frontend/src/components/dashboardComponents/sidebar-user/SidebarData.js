@@ -31,12 +31,7 @@ export const SidebarData = [
     path: '/',
     icon: <AiIcons.AiOutlineFolderOpen />
   },
-  {
-    title: 'Gérer mes coachés',
-    path: '/dashboard/admin/list',
-    icon: <FiIcons.FiUsers />
-  }
-  ,
+
   {
     title: 'Se déconnecter',
     path: '/',

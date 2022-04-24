@@ -118,11 +118,24 @@ export default ToDoListUser;
 // --------------- STYLED COMPONENTS ---------------------
  
 const TodoStyle = styled.div`
+
 h3 {
   text-align: center;
   margin-bottom: 2%;
-  font-size: 3rem;
-  /* color: #4f3149; */
+  font-size: 4rem;
+  margin-bottom: 5rem;
+  
+  @media(max-width:780px){
+    font-size: 3.5rem;
+    margin-bottom: 13%;
+  }
+  
+  @media(max-width:440px){
+    font-size: 2.6rem;
+    margin-bottom: 13%;
+    
+  }
+
 }
 #test-input{
   border:0 !important;
@@ -134,8 +147,10 @@ border:none !important;
 
 h2{
   text-align: center;
-  font-size: 2em;
+  font-size: 3rem;
   margin: 2% auto 3% auto;
+  
+
 }
 
 overflow-y: scroll;
@@ -153,7 +168,7 @@ flex-direction: column;
     background-color: #4f3149 ;
     border-radius: 4px;
     color: white;
-    font-weight: bold;
+    /* font-weight: bold; */
     justify-content: center;
     align-items: center;
     font-family: 'helvetica';
@@ -162,31 +177,60 @@ flex-direction: column;
     margin: auto;
     margin-bottom: 1.2%;
 
+    @media(max-width:780px){
+    width: 65vw;
+        font-size: 1.6rem;
+      }
+
     h3{
-      font-size:2.5em;
-      font-weight: bold;
+      font-size:5rem;
+      /* font-weight: bold; */
       margin-bottom: 4%;
+
+      @media(max-width:440px){
+        font-size: 2.5rem;
+      }
     }
 
     .newtask{
-      width: 20vw;
+      width: 26vw;
       height: 4vh;
+
+      @media(max-width:440px){
+        width: 45vw;
+
+      }
+
     }
 
     button, input{
       display: block;
-      font-size: 1.4em;
-      width: 8vw;
-      padding: .7%;
+      font-size: 1.4rem;
+      /* height: 4.7vh; */
+      padding: 1%;
     }
-
+    
     button{
-      border-radius: 7%;
+      width: 9vw;
+      border-radius: 7px;
       margin-left: 5%;
+      font-size: 2.1rem;
       font-weight: bold;
       background-color: white;
       color: #4f3149;
-      background-color: #f5eff9;
+      
+      @media(max-width:1440px){
+        margin-top: 3rem;
+        
+      }
+      
+      @media(max-width:1030px){
+        width: 15.5vw;
+      }
+      @media(max-width:440px){
+        width: 25vw;
+        font-size: 1.6rem;
+      }
 
     }
 
@@ -196,6 +240,10 @@ flex-direction: column;
       align-items: center;
       margin-bottom: 2%;
 
+      @media(max-width:1440px){
+        flex-direction: column;
+   
+      }
     }
   }
 
@@ -206,8 +254,14 @@ flex-direction: column;
   border: 2px solid #4f3149;
   overflow-y: scroll;
   border-radius: 4px;
-  background-color: #f5eff9;
   box-shadow: 0px 8px 15px -5px rgba(0,0,0,0.76);
+  /* background-color: #f9f1ff; */
+  background-color: white;
+  
+  @media(max-width:780px){
+    width: 65vw;
+        font-size: 1.6rem;
+      }
 
   .task{
     display: flex;
@@ -216,6 +270,7 @@ flex-direction: column;
     list-style: none;
     margin: 2% auto;
     padding: 2%;
+
 
     input[type="checkbox"]{
       width: 3vw !important;
@@ -230,6 +285,12 @@ flex-direction: column;
       -webkit-transition: opacity 1000ms linear;
       transition: opacity 1000ms linear;
 
+    @media(max-width:780px){
+        font-size: 2rem;
+      }
+      @media(max-width:340px){
+        font-size: 1.8rem;
+      }
     }
 
     div{
