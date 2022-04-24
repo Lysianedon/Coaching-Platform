@@ -169,8 +169,6 @@ function Coaching() {
         <div className="vertical-line"></div>
 
         <button>Je passe à l'action</button>
-
-        <Footer />
       </DivWrapper>
       <Footer />
     </>
@@ -440,4 +438,4 @@ const DivWrapper = styled.div`
     
     
  };
-`
+`;
