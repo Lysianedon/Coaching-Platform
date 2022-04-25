@@ -36,6 +36,7 @@ function Login() {
 
     axios.post('http://localhost:8000/login',{ email, password} , { withCredentials: true})
     .then(res =>{
+      console.log(res.data);
        if (res.data.success) {
          axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
          .then(res => {

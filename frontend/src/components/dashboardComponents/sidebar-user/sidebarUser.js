@@ -35,14 +35,7 @@ function SideBar({item}) {
 			window.removeEventListener("resize", changeWidth);
 		};
 	}, [window.innerWidth]);
-  // const[names, setNames] = useState({});
-
-  // useEffect(()=> {
-  //   axios.get('http://localhost:8000/dashboard/admin', {withCredentials: true})
-  //   .then(res => {
-  //     setNames({firstname : res.data.user.firstName, lastname : res.data.user.lastName})
-  //   })
-  // }, [])
+  
   return (
     <div>
       <IconContext.Provider value={{ color: '#fff' }}>
