@@ -6,7 +6,6 @@ const cors = require("cors");
 //--------------- AUTH ----------------//
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const auth = require("../middlewares/auth");
 
 //------------- SECRET --------------//
 const secret = process.env.REACT_APP_SECRET;
