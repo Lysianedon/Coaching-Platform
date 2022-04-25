@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 //----------------- CSS -------------------//
 import "./contactForm.css";
+//-----------------TOASTIFY ----------------//
 import { toast } from "react-toastify";
 //---------------- COMPONENTS --------------//
 import Footer from "../../components/footer/Footer";

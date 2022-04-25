@@ -9,13 +9,11 @@ import { toast } from "react-toastify";
 //---------------- COMPONENTS --------------//
 import SideBar from "../../components/dashboardComponents/sidebar-admin/sidebarAdmin";
 
-export default function ContactForm() {
+export default function ContactCoach() {
   const [name, setName] = useState("");
-  // const [phone, setPhone] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Sending");
@@ -25,7 +23,6 @@ export default function ContactForm() {
       message,
       submitted,
     };
-
     if (name && message) {
       axios
         .post("http://localhost:8000/contact-coach", {
@@ -54,11 +51,10 @@ export default function ContactForm() {
       toast.error("Veuillez d'abord remplir le formulaire.");
     }
   };
-
   return (
     <>
       <SideBar />
-      <main className="container">
+      <main className="container-message">
         {/* <h2>Contacte-moi</h2> */}
         <form>
           <div className="inputGroup">
