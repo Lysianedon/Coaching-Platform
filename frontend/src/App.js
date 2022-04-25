@@ -10,7 +10,7 @@ import Coaching from "./views/coaching/coaching";
 import ContactForm from "./views/contactForm/ContactForm";
 import ContactCoach from "./views/contactCoach/contactCoach";
 import Login from "./views/Login";
-import QuestionnaireStarter from "./views/QuestionnaireStarter";
+import Questionnaire from "./views/Questionnaire";
 import Mentionslegales from "./views/Mentionslegales";
 
 // DASHBOARD
@@ -39,11 +39,7 @@ function App() {
             element={<QuestionnaireStarter />}
           /> */}
           <Route exact path="/contact-coach" element={<ContactCoach />} />
-          <Route
-            exact
-            path="/questionnaire/starter"
-            element={<QuestionnaireStarter />}
-          />
+          <Route exact path="/questionnaire" element={<Questionnaire />} />
 
           <Route exact path="/dashboard/admin" element={<DashboardAdmin />} />
           <Route exact path="/dashboard/user" element={<DashboardUser />} />
@@ -57,17 +53,12 @@ function App() {
             path="/dashboard/admin/list"
             element={<DashboardList />}
           />
-          <Route exact 
-          path="/mentionslegales" 
-          element={<Mentionslegales/>}/>
+          <Route exact path="/mentionslegales" element={<Mentionslegales />} />
 
-          <Route exact 
-          path="/cgu"
-          element={<CGU/>} />
+          <Route exact path="/cgu" element={<CGU />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
-
     </div>
   );
 }
