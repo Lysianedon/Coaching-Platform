@@ -7,6 +7,7 @@
   width: 100vw;
   height: auto;
   max-width: 100%;
+  padding-top: 10rem;
 }
 .inputGroup{
   display:flex;

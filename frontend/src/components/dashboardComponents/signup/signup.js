@@ -208,7 +208,7 @@ const SignupStyled = styled.div`
   }
   ol.forms label {
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   ol.forms input {
     background: none repeat scroll 0 0 #ffffff;

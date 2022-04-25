@@ -13,7 +13,7 @@ function Footer() {
               </a>
             </p>
             <p>
-              <a href="/questionnaire/starter" className="footer-link">
+              <a href="/questionnaire" className="footer-link">
                 Questionnaire
               </a>
             </p>
