@@ -10,11 +10,11 @@ router.use(bodyParser.json());
 
 //------------- SET UP NODEMAILER ----------//
 let transporter = nodemailer.createTransport({
-  host: process.env.HOST,
+  host: process.env.REACT_APP_HOST,
   port: 587,
   auth: {
-    user: process.env.USER,
-    pass: process.env.PASS,
+    user: process.env.REACT_APP_USER,
+    pass: process.env.REACT_APP_PASS,
   },
   tls: {
     rejectUnauthorized: false,
@@ -36,7 +36,7 @@ router.post("/", (req, res) => {
   console.log(req.body);
   mailOptions = {
     from: name,
-    to: process.env.USER,
+    to: process.env.REACT_APP_USER,
     subject: "Formulaire de contact",
     html: `<p>Nom: ${name}</p>
                <p>Email: ${email}</p>
