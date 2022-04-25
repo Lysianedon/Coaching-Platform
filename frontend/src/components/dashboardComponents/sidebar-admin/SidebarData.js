@@ -18,18 +18,21 @@ export const SidebarData = [
   {
     title: 'To do list',
     path: '/dashboard/admin#todo',
-    icon: <RiIcons.RiTodoLine />
+    key:1,
+    icon: <RiIcons.RiTodoLine />,
   },
 
   {
     title: 'Agenda',
-    path: '/Agenda',
+    path: '/dashboard/admin#agenda',
+    key:2,
     icon: <FaIcons.FaRegCalendarAlt />,
   },
 
   {
     title: 'Mes ressources',
-    path: '/',
+    path: '/dashboard/admin#ressources',
+    key:3,
     icon: <AiIcons.AiOutlineFolderOpen />
   },
   {
