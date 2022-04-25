@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 const auth = require('../middlewares/auth');
 
 //------------- SECRET --------------//
-const secret = process.env.SECRET;
+const secret = process.env.REACT_APP_SECRET;
 
 //------------ MODEL -----------------//
 const User = require("../models/userModel");

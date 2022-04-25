@@ -31,7 +31,7 @@ app.use(express.static("public"));
 
 //------------ CONNECT TO MONGODB -------------//
 mongoose
-  .connect(process.env.MONGO_URI, {
+  .connect(process.env.REACT_APP_MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

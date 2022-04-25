@@ -4,6 +4,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as RiIcons from 'react-icons/ri';
 import * as FiIcons from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 
 
@@ -16,12 +17,12 @@ export const SidebarData = [
 
   {
     title: 'Agenda',
-    path: '/Agenda',
+    path: '/dashboard/admin#agenda',
     icon: <FaIcons.FaRegCalendarAlt />,
   },
   {
     title: 'To do list',
-    path: '/products',
+    path: '/dashboard/admin#todo',
     icon: <RiIcons.RiTodoLine />
   },
   {
