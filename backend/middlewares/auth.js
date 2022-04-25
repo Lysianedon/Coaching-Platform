@@ -1,7 +1,7 @@
 //---------------------- JWT ----------------//
 const jwt = require("jsonwebtoken");
 //----------------- SECRET ------------------//
-const secret = process.env.SECRET;
+const secret = process.env.REACT_APP_SECRET;
 
 // AUTHENTICATION/AUTHORIZATION - FOR ALL AUTHENTICATED USERS
 

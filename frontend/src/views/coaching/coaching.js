@@ -59,7 +59,7 @@ function Coaching() {
           <h2 className="dynamic-quote">{quote}</h2>
         </section>
         <h2 className="become">
-          Devient l'entrepreneur.se que tu as toujours rêvé d'être grâce à :{" "}
+          Devient l'entrepreneur.se que tu as toujours rêvé <br/> d'être grâce à :{" "}
         </h2>
 
         <section className="coaching-individuel coachings">
@@ -170,7 +170,6 @@ function Coaching() {
 
         <button>Je passe à l'action</button>
 
-        <Footer />
       </DivWrapper>
       <Footer />
     </>
@@ -194,7 +193,7 @@ const DivWrapper = styled.div`
         justify-content: center;
         align-items: center;
         height: 45vh;
-        background-color: #4c2a4e;
+        /* background-color: #4c2a4e; */
         margin: auto;
         color: white;
         margin-bottom:5%;
@@ -403,27 +402,25 @@ const DivWrapper = styled.div`
 /* Responsive Phone */
  @media screen and (max-width: 480px) {
  .become{
-        font-size: 1.5em;
+        font-size: 1.3rem;
         margin: 0% 5% 0% 5%;
     }
     .coaching-individuel,
     .coaching-collectif{
         width: 80vw;
         h2{
-            font-size: 1.5em;
+            font-size: 1.3rem;
         }
     }
     .or{
-        p{
-            
-            font-size: 1.5em;
+        p{ 
+            font-size: 1.3rem;
         }
     }
     .success-pilars{
         h2{
-            font-size: 1.5em;
+            font-size: 1.3rem;
         }
-
         .icons{
             img{
                 width: 15vw;
@@ -437,7 +434,6 @@ const DivWrapper = styled.div`
         width: 40vw;
         font-size: 0.8em;
     }
-    
     
  };
 `
