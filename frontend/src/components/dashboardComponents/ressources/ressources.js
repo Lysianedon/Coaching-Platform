@@ -132,12 +132,12 @@ function Ressources() {
 													alt={`File ${user.fileName}`}
 												/>
 												<div className="card-body">
-													{/* <h5 className="card-title">{user.fileName}</h5> */}
+										
 													<h5 className="card-title">{user.name}</h5>
 												</div>
 											</div>
 											</a>
-											{/* </Link> */}
+									
 										</li>
 									);
 								})}
@@ -153,10 +153,14 @@ export default Ressources;
 //--------------------- STYLED-COMPONENTS --------------------------
 const StyledContainer = styled.div`
 
-
 .title-ressources{
 	margin-bottom: 10%;
 	color: #f6f6f6 !important;
+
+	@media(max-width:440px){
+		font-size: 3rem;
+	}
+
 }
 
 /*----- HEADER - UPLOAD FILE ------------- */
@@ -164,19 +168,34 @@ const StyledContainer = styled.div`
 		border: 1px solid black;
 		width: 40.1vw;
 		margin-left: 30%;
-		height: 40vh;
+		padding: 2rem 0;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		border-radius: 5px;
 		background-color: #4f3149;
+		
+		@media(max-width:780px){
+			width: 65vw;
+			margin-left: 17%;	
+		}
+
+		@media(max-width:380px){
+			padding: 2%;
+		}
 	}
 
 	h6{
-		font-size: 1.9rem;
+		font-size: 3rem;
 		align-items: center;
 		justify-content: center;
 		color: white;
+		@media(max-width:1030px){
+			font-size: 2.5rem;
+		}
+		@media(max-width:440px){
+		font-size: 2rem;
+	}
 	}
 
 	.nomdufichier{
@@ -189,26 +208,52 @@ const StyledContainer = styled.div`
 	}
 
 	.inputFileName{
-		width: 20vw;
-		height: 3vh;
+		width: 24vw;
+		height: 5vh;
 		border-radius: 3px;
+		
+		@media(max-width:780px){
+			width: 38vw;	
+		}
+		@media(max-width:380px){
+			width: 43vw;	
+		}
 	}
 
 	.choosefile{
-		font-size: 1.2rem;
+		font-size: 2rem;
+
+		@media(max-width:1030px){
+			font-size: 1.5rem;
+		}
+		@media(max-width:440px){
+			font-size: 1.2rem;
+		}
+		@media(max-width:380px){
+			width: 80%;	
+		}
 	}
 
 	.addbtn{
 		margin-top: 10%;
 		width: 10vw;
-		height: 4vh;
+		padding: 1.5%;
 		margin-bottom: 10%;
 		border-radius: 5px;
 		border:2px solid black;
 		background-color: #f6f6f6;
 		color:  #4f3149;
-		font-weight: bold;
-		font-size: 1.5rem;
+		font-size: 2rem;
+		@media(max-width:1030px){
+			font-size: 1.5rem;
+			width: 13vw;
+		}
+		@media(max-width:780px){
+			width: 17vw;	
+		}
+		@media(max-width:440px){
+			width: 25vw;
+		}
 	}
 
 	a{
@@ -225,20 +270,32 @@ const StyledContainer = styled.div`
 		margin: 1.5% 0 5% 30%;
 		padding-top: 1%;
 		border-radius: 5px;
-		background-color: #f5eff9;
-		/* overflow-y: scroll; */
+		background-color: #ffffff;
+		overflow-y: scroll;
+		@media(max-width:780px){
+			width: 65vw;
+			margin-left: 17%;
+		}
+
 	 }
 
 	img{
 		width: 50px;
 		height: 55px;
 		max-width: 80px;
+		@media(max-width:440px){
+			height: 35px;
+			max-width: 40px;
+		}
 	}
 
 	ul{
 		display: flex;
 		list-style: none;
 		overflow-x: hidden;
+		@media(max-width:440px){
+			overflow-x: scroll;
+		}
 
 		li{
 			display: flex;

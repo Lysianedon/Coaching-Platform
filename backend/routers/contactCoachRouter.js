@@ -4,10 +4,9 @@ const router = express.Router();
 //-------------- NODEMAILER -------------//
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
-// Body parser
+//Body parser
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
-
 //------------- SET UP NODEMAILER ----------//
 let transporter = nodemailer.createTransport({
   host: process.env.REACT_APP_HOST,
@@ -32,16 +31,15 @@ transporter.verify((error) => {
 
 //----------------- ROUTES ------------------//
 router.post("/", (req, res) => {
-  const { name, email, tel, message } = req.body.data;
+  const { name, subject, message } = req.body.data;
   console.log(req.body);
   mailOptions = {
     from: name,
     to: process.env.REACT_APP_USER,
     subject: "Formulaire de contact",
     html: `<p>Nom: ${name}</p>
-               <p>Email: ${email}</p>
-               <p>Téléphone: ${tel ? tel : "Non renseigné"}</p>
-               <p>Message: ${message}</p>`,
+                 <p>Sujet: ${subject ? subject : "Non renseigné"}</p>
+                 <p>Message: ${message}</p>`,
   };
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {

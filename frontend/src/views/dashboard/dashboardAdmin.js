@@ -68,6 +68,7 @@ export default DashboardAdmin;
 const Container = styled.li`
 overflow-x: hidden;
 
+
 .hello{
   color: black !important;
   font-size: 5.5rem;
@@ -88,11 +89,24 @@ h2{
   width: 40vw;
   margin: auto;
   margin-top: 5%;
-  padding-bottom: 1%;
+  padding: 2rem 1rem;
   color: white !important;
   border-radius: 5px;
-}
+  
+  @media(max-width:1030px){
+    font-size: 3.5rem;
+    
+  }
 
+  @media(max-width:780px){
+    width: 65vw;
+    }
+  
+  @media(max-width:440px){
+    font-size: 2.5rem;
+    width: 65vw;
+    }
+}
 
 .ToDoListUser{
   margin-top: 2%;
@@ -102,10 +116,12 @@ h2{
   width: 40.1vw;
   margin-left: 30%;
   height: 50vh;
+  
+  @media(max-width:780px){
+    margin-left: 17%;
+    width: 65vw;
+  }
 }
-
-
-
 `;
 
 

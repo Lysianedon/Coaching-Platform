@@ -8,8 +8,10 @@ import Home from "./views/home/home";
 import Presentation from "./views/presentation/presentation";
 import Coaching from "./views/coaching/coaching";
 import ContactForm from "./views/contactForm/ContactForm";
+import ContactCoach from "./views/contactCoach/contactCoach";
 import Login from "./views/Login";
 import QuestionnaireStarter from "./views/QuestionnaireStarter";
+import Mentionslegales from "./views/Mentionslegales";
 
 // DASHBOARD
 import DashboardAdmin from "./views/dashboard/dashboardAdmin";
@@ -19,6 +21,7 @@ import DashboardList from "./views/dashboard/dashboardList";
 
 // CSS
 import "./App.css";
+import CGU from "./views/CGU";
 
 function App() {
   return (
@@ -30,6 +33,12 @@ function App() {
           <Route exact path="/coaching" element={<Coaching />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/contact" element={<ContactForm />} />
+          {/* <Route
+            exact
+            path="/questionnaire/starter"
+            element={<QuestionnaireStarter />}
+          /> */}
+          <Route exact path="/contact-coach" element={<ContactCoach />} />
           <Route
             exact
             path="/questionnaire/starter"
@@ -48,10 +57,17 @@ function App() {
             path="/dashboard/admin/list"
             element={<DashboardList />}
           />
+          <Route exact 
+          path="/mentionslegales" 
+          element={<Mentionslegales/>}/>
+
+          <Route exact 
+          path="/cgu"
+          element={<CGU/>} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
-      {/* </TasksContexts.Provider> */}
+
     </div>
   );
 }

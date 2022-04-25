@@ -4,7 +4,6 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as RiIcons from 'react-icons/ri';
 import * as FiIcons from 'react-icons/fi';
-import { Link } from 'react-router-dom';
 
 
 
@@ -17,7 +16,7 @@ export const SidebarData = [
 
   {
     title: 'To do list',
-    path: '/dashboard/admin#todo',
+    path: '/products',
     icon: <RiIcons.RiTodoLine />
   },
 
@@ -32,12 +31,7 @@ export const SidebarData = [
     path: '/',
     icon: <AiIcons.AiOutlineFolderOpen />
   },
-  {
-    title: 'Gérer mes coachés',
-    path: '/dashboard/admin/list',
-    icon: <FiIcons.FiUsers />
-  }
-  ,
+
   {
     title: 'Se déconnecter',
     path: '/',
