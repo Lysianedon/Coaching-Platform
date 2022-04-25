@@ -55,8 +55,10 @@ function Coaching() {
         <Nav />
         <Navbar />
         <section className="banner">
-          <h2>Un programme unique et personnalisé pour: </h2>
-          <h2 className="dynamic-quote">{quote}</h2>
+          <div className="banner-quote">
+            <h3 className="dynamic-quote">Un programme unique et personnalisé pour : </h3>
+            <h3 className="fadeInOut">{quote}</h3>
+            </div>
         </section>
         <h2 className="become">
           Devient l'entrepreneur.se que tu as toujours rêvé d'être grâce à :{" "}
@@ -67,18 +69,6 @@ function Coaching() {
           <hr className="underline" />
 
           <ul>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium, iste!
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium, iste!
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium, iste!
-            </li>
             <li>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Laudantium, iste!
@@ -117,58 +107,14 @@ function Coaching() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Laudantium, iste!
             </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium, iste!
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium, iste!
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium, iste!
-            </li>
+            
           </ul>
         </section>
 
-        <section className="success-pilars">
-          <h2>Les 3 piliers clés de la réussite ?</h2>
-
-          <div className="icons">
-            <div className="text-icon text-icon-business">
-              <img
-                src={business}
-                className="icon icon-business"
-                alt=" icon icon-business"
-                srcset=""
-              />
-              <h3>Business</h3>
-            </div>
-            <div className="text-icon">
-              <img
-                src={tools}
-                className="icon icon-tools"
-                alt=" icon icon-tools"
-                srcset=""
-              />
-              <h3>Tools</h3>
-            </div>
-            <div className="text-icon">
-              <img
-                src={mindset}
-                className="icon icon-mindset"
-                alt=" icon icon-mindset"
-                srcset=""
-              />
-              <h3>Mindset</h3>
-            </div>
-          </div>
-        </section>
 
         <div className="vertical-line"></div>
 
-        <button>Je passe à l'action</button>
+        <button className="btn-rdv">Je passe à l'action</button>
       </DivWrapper>
       <Footer />
     </>
@@ -192,10 +138,40 @@ const DivWrapper = styled.div`
         justify-content: center;
         align-items: center;
         height: 45vh;
-        background-color: #4c2a4e;
+      
         margin: auto;
         color: white;
-        margin-bottom:5%;
+        margin-bottom: 15%;
+
+        .banner-quote{
+          background-color: #4c2a4e;
+          width: 100%;
+          margin: 25% auto auto auto;
+          padding: 3%;
+
+          .dynamic-quote{
+            color: white;
+            height: 7vh;
+            font-size: 3.3rem;
+          }
+          @keyframes fadeInOutAnimation {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+
+          .fadeInOut{
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            animation: fadeInOutAnimation 1s infinite;
+            animation-direction: alternate-reverse;
+            animation-timing-function: ease-in-out;
+          }
+        }
     }
     /* .banner{
     display: flex;
@@ -214,7 +190,7 @@ const DivWrapper = styled.div`
         text-align: center;
         color: #4c2a4e;
         font-weight: bold;
-        font-size:2.2em;
+        font-size:1.8em;
     }
 
     /*------ COACHING INDIVIDUEL ------ */
@@ -236,7 +212,7 @@ const DivWrapper = styled.div`
 
         h2{
             font-weight: bold;
-            font-size:2.2em;
+            font-size: 1.8em;
         }
 
         li{
@@ -257,7 +233,7 @@ const DivWrapper = styled.div`
     align-items: center;
 
     p {
-      font-size: 3.7em;
+      font-size: 3em;
       margin: 0 4%;
     }
 
@@ -268,131 +244,72 @@ const DivWrapper = styled.div`
     }
   }
 
-        p{
-            font-size:3em;
-            margin: 0 4%;
-        }
-
-  .success-pilars {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 5%;
-
-    h2 {
-      font-weight: bold;
-      font-size: 2.5em;
-      margin-bottom: 3%;
-      color: #4c2a4e;
-    }
-
-    .coaching-collectif{
+  .coaching-collectif{
         background-color: #4c2a4e;
         color: white;
-    }
-    .title-collectif{
-        color: white;
-    }
+  }
+  .title-collectif{
+      color: white;
+  }
+  p{
+      font-size:3em;
+      margin: 0 4%;
+  }
 
-      img {
-        width: 5vw;
-      }
-
-      .text-icon-business {
-        margin-left: 10vw;
-      }
-
-      .icon-business {
-        height: 11vh;
-      }
-      .text-icon {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 5%;
-
-        h2{
-            font-weight: bold;
-            font-size:2.2em;
-            margin-bottom: 3%;
-            color: #4c2a4e;
-        }
-
-        .icons{
-            display: flex;
-            justify-content: space-around;
-
-            img{
-                width: 5vw;
-            }
-
-            .text-icon-business{
-                margin-left: 10vw;
-            }
-
-            .icon-business{
-                height: 11vh;
-            }
-            .text-icon{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                margin-right: 10vw;
-            }
-        }
-    }
-    .vertical-line{
-        height: 40vh;
-        border-left: 4px solid #FFC267;
-        padding-right: 5%;
-        height: 30vh;
-        width: 4px;
-        margin: auto 0 3% 50vw;
-    }
+  .vertical-line{
+      height: 20vh;
+      border-left: 4px solid #FFC267;
+      padding-right: 5%;
+      width: 4px;
+      margin: auto 0 3% 50vw;
+  }
     
-    .btn-rdv{
-        width: 18vw;
-        margin: 3% auto;
-        display: block;
-        align-items: center;
-        padding: 1.1%;
-        font-size: 1.2em;
-        background-color: #4c2a4e;
-        color: white;
-        font-weight: bold;
-        border-radius: 5px;
-    }
+  .btn-rdv{
+      width: 18vw;
+      margin: 3% auto;
+      display: block;
+      align-items: center;
+      padding: 1.1%;
+      font-size: 1.8rem;
+      background-color: #4c2a4e;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+  }
 /************* RESPONSIVE *********************** */
 /* Responsive Tablet */
  @media screen and (min-width: 768px) and (max-width: 960px) {
-    .become{
-        font-size: 1.8em;
-        margin: 0% 5% 0% 5%;
+    .banner{
+      height: 30vh;
+      .banner-quote{
+        margin: 25% auto auto auto;
+        padding: 3%;
+        .dynamic-quote,
+        .fadeInOut{
+          font-size: 1.5em;
+        }
+      }
     }
+    .become{
+          font-size: 1.5em;
+          margin: 0% 5% 0% 5%;
+      }
     .coaching-individuel,
     .coaching-collectif{
         width: 70vw;
         h2{
-            font-size: 1.8em;
+            font-size: 1.5em;
         }
     }
     .or{
         p{
-            font-size: 1.8em;
-        }
-    }
-    .success-pilars{
-        h2{
-            font-size: 1.8em;
+            font-size: 1.5em;
         }
     }
     .vertical-line{
         height: 20vh;
     }
-    button{
+    .btn-rdv{
         width: 25vw;
         font-size: 1em;
     }
@@ -400,42 +317,38 @@ const DivWrapper = styled.div`
 
 /* Responsive Phone */
  @media screen and (max-width: 480px) {
- .become{
-        font-size: 1.5em;
+  .banner{
+    height: 30vh;
+    .banner-quote{
+    font-size: 1.3em;
+    margin: 35% auto auto auto;
+    padding: 2%;
+    }
+  }
+  .become{
+        font-size: 1.7rem;
         margin: 0% 5% 0% 5%;
     }
-    .coaching-individuel,
-    .coaching-collectif{
-        width: 80vw;
-        h2{
-            font-size: 1.5em;
-        }
-    }
-    .or{
-        p{
-            
-            font-size: 1.5em;
-        }
-    }
-    .success-pilars{
-        h2{
-            font-size: 1.5em;
-        }
-
-        .icons{
-            img{
-                width: 15vw;
-            }
-        }
-    }
-    .vertical-line{
-        height: 15vh;
-    }
-    button{
-        width: 40vw;
-        font-size: 0.8em;
-    }
-    
-    
- };
+  .coaching-individuel,
+  .coaching-collectif{
+      width: 80vw;
+      h2{
+          font-size: 1.7rem;
+      }
+      li{
+        font-size: 1.3rem;
+      }
+  }
+  .or{
+      p{ 
+          font-size: 1.3rem;
+      }
+  }
+  .vertical-line{
+      height: 15vh;
+  }
+  .btn-rdv{
+      width: 40vw;
+      font-size: 0.8em;
+  }
 `;

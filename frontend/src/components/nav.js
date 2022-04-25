@@ -19,7 +19,7 @@ function Nav() {
                     <a href="/coaching" className='text-link'>Coaching</a>
                     <a href="/login" className='text-link'>Login</a>
                     <a href="/contact" className='text-link'>Contact</a>
-                    <a href="/questionnaire/starter"><QuestionnaireBtn >Questionnaire </QuestionnaireBtn></a>
+                    <a href="/questionnaire"><QuestionnaireBtn >Questionnaire </QuestionnaireBtn></a>
                 </Ul>
       
           </Navbar>
@@ -40,7 +40,7 @@ gap: 12px;
 const Navbar = styled.nav`
   padding: 10px;
   margin: 0px;
-  margin-top:4px;
+  height:120px;
   text-align: right;
   display: inline-block;
   vertical-align:top;
@@ -87,6 +87,6 @@ border: none;
 text-align:center;
 background-color: #4c2a4e;
 color: white;
-height: 70px;
+height: 60px;
 width:150px;
   `;

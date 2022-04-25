@@ -20,10 +20,10 @@ function Questionnaire() {
               mieux comprendre vos attentes. Merci !
             </h4>
             <h5>
-              <em>Cela prendra 10 minutes...</em>{" "}
+              <em>Cela prendra 10 minutes...</em>
             </h5>
 
-            <a href="">
+            <a href="/questionnaire">
               <button className="btn-start btn-dark">Commencer</button>
             </a>
           </div>
@@ -37,6 +37,7 @@ export default Questionnaire;
 const QuestionnaireStyled = styled.div`
   font-family: "poppins";
   font-size: 1rem;
+
   .questionnaire-form {
     border: 1px solid rgb(255, 255, 255);
     background-color: #f5eff9;
@@ -48,6 +49,7 @@ const QuestionnaireStyled = styled.div`
   }
   .text-questionnaire {
     margin-top: 0%;
+    height: 30vh;
   }
   #description-questionnaire {
     margin: 35% 2% 2% 2%;

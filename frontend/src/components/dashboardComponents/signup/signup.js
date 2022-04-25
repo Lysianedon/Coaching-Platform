@@ -208,7 +208,7 @@ const SignupStyled = styled.div`
   }
   ol.forms label {
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   ol.forms input {
     background: none repeat scroll 0 0 #ffffff;
@@ -261,7 +261,7 @@ const SignupStyled = styled.div`
     font-size: 1.3rem;
     margin: 25% 0% 2% 0%;
     .title-create {
-      margin: 0% 0% 1% -40%;
+      margin: 0% 0% 1% -30%;
       font-size: 2.3rem;
     }
     ol.forms label {
@@ -279,7 +279,7 @@ const SignupStyled = styled.div`
   }
 `;
 
-//------------- Style of buttons ------------//
+//------------- Style of BUTTONS ------------//
 const ButtonsStyled = styled.div`
   display: flex;
   margin: -25% 0% 3% -5%;
@@ -316,19 +316,23 @@ const ButtonsStyled = styled.div`
       font-size: 1.5rem;
     }
     .btn-create {
-      margin: 10% 0% 1% 25%;
+      margin: 55% 0% 1% 25%;
     }
     .btn-list {
-      margin: 10% 0% 1% 55%;
+      margin: 55% 0% 1% 55%;
     }
   }
   /* Responsive Phone */
   @media screen and (max-width: 480px) {
     width: 40%;
     display: inline-block;
-    .btn-create,
+    .btn-create
+    {
+      margin: 65% 0% 3% 25%;
+      font-size: 1.3rem;
+    }
     .btn-list {
-      margin: 3% 0% 3% 25%;
+      margin: 5% 0% 3% 25%;
       font-size: 1.3rem;
     }
   }
