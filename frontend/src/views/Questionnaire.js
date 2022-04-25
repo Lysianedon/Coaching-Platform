@@ -23,7 +23,7 @@ function Questionnaire() {
               <em>Cela prendra 10 minutes...</em>
             </h5>
 
-            <a href="/questionnaire">
+            <a href="https://www.typeform.com/">
               <button className="btn-start btn-dark">Commencer</button>
             </a>
           </div>
@@ -59,8 +59,10 @@ const QuestionnaireStyled = styled.div`
     font-size: 1.8rem;
   }
   .btn-start {
-    margin: 5% 0% 5% 0%;
-    width: 10vw;
+    margin: 2rem 0 2rem 0;
+    width: 15rem;
+    height: 3.6rem;
+    font-size: 1.8rem;
     border-radius: 4px;
   }
   /* RESPONSIVE */

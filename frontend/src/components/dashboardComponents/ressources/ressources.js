@@ -264,7 +264,7 @@ const StyledContainer = styled.div`
 	}
 	/*---------- FILE SECTION ----------- */
 	 .allFiles{
-		border: 2px solid black;
+		border: 1px solid black;
 		width: 40.1vw;
 		height: 20vh;
 		margin: 1.5% 0 5% 30%;

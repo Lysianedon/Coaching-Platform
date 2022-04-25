@@ -70,16 +70,14 @@ function Coaching() {
 
           <ul>
             <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium, iste!
+             Garder ta motivation et ton énergie 
             </li>
             <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium, iste!
+            Gagner en clarté sur ton entreprise
+
             </li>
             <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium, iste!
+            Gagner en confiance en toi avec la méthode "JEDI"
             </li>
           </ul>
         </section>
@@ -96,16 +94,13 @@ function Coaching() {
 
           <ul>
             <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium, iste!
+              Oser passer à l'action et "sauter dans l'arène"
             </li>
             <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium, iste!
+              Te sentir alignée avec ton projet
             </li>
             <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium, iste!
+            Prendre des décisions difficiles
             </li>
             
           </ul>
@@ -167,7 +162,7 @@ const DivWrapper = styled.div`
             font-size: 3rem;
             color: white;
             cursor: pointer;
-            animation: fadeInOutAnimation 1s infinite;
+            animation: fadeInOutAnimation 1s ;
             animation-direction: alternate-reverse;
             animation-timing-function: ease-in-out;
           }
