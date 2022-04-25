@@ -19,20 +19,13 @@ function Login() {
   const [password, setPassword] = useState("");
   const [posts, setPosts] = useState([]);
 
-  const fetchPost = async () => {
-    const response = await fetch("https://api.chucknorris.io/jokes/random", {
-      withCredentials: true,
-    });
-    const data = await response.json();
-    setPosts(data);
-  };
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     document.querySelector('.quote').style.opacity= '1';
-  //   }, 1600);
+  useEffect(() => {
+    setTimeout(() => {
+      document.querySelector('.quote').style.opacity= '1';
+    }, 1600);
 
-  // }, []);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -129,47 +122,7 @@ function Login() {
 
         <div class="quotes quotes-block">
           <h2 className="text-center quote-title">Quotes</h2>
-          <div
-            id="carouselExampleIndicators"
-            class="carousel slide"
-            data-ride="carousel"
-          >
-            <ol class="carousel-indicators">
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="0"
-                class="active"
-              ></li>
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="1"
-              ></li>
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="2"
-              ></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">{posts.value}</div>
-              <div class="carousel-item">{posts.value}</div>
-              <div class="carousel-item">{posts.value}</div>
-            </div>
-            <button class="carousel-control-prev" onClick={fetchPost}>
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              {/* <span class="sr-only">Previous</span> */}
-            </button>
-
-            <button class="carousel-control-next" onClick={fetchPost}>
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              {/* <span class="sr-only">Next</span> */}
-            </button>
-          </div>
+          <p className="quote">"Il n'y a qu'une façon d'échouer, c'est d'abandonner avant d'avoir réussi."</p>
         </div>
       </div>
 
@@ -237,8 +190,16 @@ const LoginFormStyled = styled.div`
   }
 
   .quote-title {
-    margin: 0 auto 5% auto;
+    margin: 10% auto 6%;
     color: white;
+  }
+
+  .quote{
+    width:90%;
+    margin: auto;
+    text-align:center;
+    opacity: 0;
+    transition : opacity ease-in;
   }
   .carousel-inner {
     padding: 0% 20% 0% 20%;

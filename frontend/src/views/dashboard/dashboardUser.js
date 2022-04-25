@@ -5,7 +5,6 @@ import { React, useState, useEffect } from "react";
 // import SideBarAdmin from "../../components/dashboardComponents/sidebar-admin/sidebarAdmin";
 import SideBarUser from "../../components/dashboardComponents/sidebar-user/sidebarUser";
 import ApiCalendar from "../../components/dashboardComponents/agenda/agenda";
-import ToDoList from "../../components/dashboardComponents/todolist/todolist";
 import Ressources from "../../components/dashboardComponents/ressources/ressources";
 
 //css
@@ -65,7 +64,7 @@ export default DashboardUser;
 
 const Container = styled.li`
 overflow-x: hidden;
-background-color: #f9f1ff;
+background-color:#F6F6F6;
 
 .hello{
   color: black !important;

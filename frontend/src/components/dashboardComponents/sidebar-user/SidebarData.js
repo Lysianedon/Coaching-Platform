@@ -33,6 +33,12 @@ export const SidebarData = [
   },
 
   {
+    title: 'Contacter ma coach',
+    path: '/contact-coach',
+    icon: <AiIcons.AiOutlineContacts />
+  },
+
+  {
     title: 'Se déconnecter',
     path: '/',
     icon: <RiIcons.RiLogoutBoxRLine

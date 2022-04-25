@@ -21,7 +21,7 @@ function Home() {
     button.style.color = "#4c2a4e";
 
     setTimeout(() => {
-      navigate("/questionaire");
+      navigate("/questionnaire");
     }, 1000);
   };
 
@@ -62,9 +62,8 @@ function Home() {
 
         <div className="promesse-content">
           <p className="texte">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-            temporibus, animi saepe libero accusamus at alias amet cumque eius
-            maxime possimus quidem quos in quo impedit ipsa consequuntur
+          Je t'accompagne grâce à un programme de coaching personnalisé pour atteindre tes objectifs d'entrepreneuse.
+           Développe ton business, apprends à organiser ton temps et tes priorités au quotidien  et ton chiffre d'affaire. 
             doloremque hic aspernatur! Lorem ipsum dolor sit amet consectetur
             adipisicing elit. Laudantium, iste! Lorem ipsum dolor sit amet
             consectetur adipisicing elit. Laudantium, iste!
@@ -103,20 +102,16 @@ function Home() {
 
             <ul>
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laudantium, iste!
+              Un diagnostic de ton entreprise 
               </li>
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laudantium, iste!
+              Des sessions de coaching collectif 
               </li>
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laudantium, iste!
+              10 days meditation journey = create new habits 
               </li>
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laudantium, iste!
+              5 days Soft skills training (CNV, resilience, adaptability)
               </li>
             </ul>
 
@@ -129,20 +124,16 @@ function Home() {
 
             <ul>
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laudantium, iste!
+              Des méditations guidées pour commencer ta journée
               </li>
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laudantium, iste!
+              5 days Soft skills training (CNV, resilience, adaptability)
               </li>
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laudantium, iste!
+              Des sessions de coaching collectif 
               </li>
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laudantium, iste!
+              Diagnostic de ton mindset (which step are you ?) 
               </li>
             </ul>
 
@@ -152,18 +143,18 @@ function Home() {
       </section>
 
       <h2 className="quote">
-        " Lorem, ipsum dolor sit amet consectetur{" "}
-        <span className="yellow">adipisicing.</span> "
+        " Pour ce qui est de l'avenir, il ne s'agit pas de le prévoir mais de le rendre .{" "}
+        <span className="yellow">possible.</span> "
       </h2>
 
       <section className="bloc-accompagnement">
         <h2>Je t'accompagne pour :</h2>
 
         <ul>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+          <li>Un accompagnement individualisé </li>
+          <li>10 days meditation journey = create new habits </li>
+          <li>Diagnostic de ton mindset (which step are you ?) </li>
+          <li>Une ligne directe avec moi 24/7 </li>
         </ul>
         <button onClick={goToQuestionnaire} className='work-together'>Travaillons ensemble</button>
       </section>
@@ -181,27 +172,9 @@ function Home() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
           ></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vjC3pUhvPWY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/xtXFf1II6bg"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-
-          <iframe
-            width="560"
-            height="315"
-            className="lastframe"
-            src="https://www.youtube.com/embed/xtXFf1II6bg"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+<iframe className="lastvideo" width="560" height="315" src="https://www.youtube.com/embed/rNSqsDihafk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </section>
 
@@ -214,18 +187,11 @@ function Home() {
             {" "}
             <span className="bigger-yellow">
               {" "}
-              <span className="capital-letter">L</span>orem ipsum dolor sit amet
-              consectetur, adipisicing elit.
+              <span className="capital-letter">P</span>auline Gane - coach Mindset et développement personnel
             </span>{" "}
-            Sequi nesciunt reiciendis dolorem iusto cupiditate. Dolorum
-            excepturi, consectetur magnam earum nulla non blanditiis deleniti
-            nemo veritatis quae sed. Provident at corporis adipisci iusto
-            temporibus molestias reiciendis voluptatum et ipsam optio harum quis
-            libero perspiciatis iste, eveniet pariatur ea natus quos ducimus.
-            Nostrum cum eum tenetur reprehenderit quod facilis repellat
-            distinctio nisi recusandae. Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Natus inventore doloremque beatae obcaecati optio
-            in.
+            Entrepreneure sociale depuis 2017, j'ai monté une entreprise sur la formation en soft skills et l'engagement des collaborateurs, plusieurs fois lauréates de concours (Talents 2024, Start'in ESS, Les Entrep) et de programmes d'accompagnement (Enactus, Women Act, SKEMA Ventures). Il m'a semblé nécessaire de proposer un format collectif, et me spécialiser sur ce que je connaissais le mieux: l'entrepreneuriat à impact et les femmes entrepreneuses.
+
+
           </p>
         </div>
         <button onClick={goToPresentation}>En savoir plus</button>
@@ -281,7 +247,7 @@ const DivWrapper = styled.div`
     h1 {
       color: black;
       line-height: 200%;
-      font-size: 4.7rem;
+      font-size: 3rem;
       text-align: center;
       margin-top: 25rem;
       width: 50%;
@@ -314,7 +280,7 @@ const DivWrapper = styled.div`
       max-height: 80vh;
       /* width: 126.5vw; */
       height: auto;
-      margin-top: 11.3%;
+      margin-top: 11.1%;
       object-fit:cover;
       display: block;
     }
@@ -329,7 +295,7 @@ const DivWrapper = styled.div`
 
     .promesse-title {
       text-align: center;
-      font-size: 7rem;
+      font-size: 5rem;
       color: white;
       margin-right: 5%;
       margin-bottom: 3%;
@@ -346,7 +312,7 @@ const DivWrapper = styled.div`
       width: 50%;
       max-width: 50%;
       line-height: 200%;
-      font-size: 2.8rem;
+      font-size: 2rem;
       margin: auto;
       color: white;
       text-align: justify;
@@ -371,7 +337,7 @@ const DivWrapper = styled.div`
       color: #ffc267 !important;
     }
     .action-title1 {
-      font-size: 6rem;
+      font-size: 5rem;
       color: #4c2a4e;
       margin-bottom: 10%;
       text-align: center;
@@ -379,7 +345,7 @@ const DivWrapper = styled.div`
     .button-action1 {
       width: 18vw;
       padding: 2%;
-      font-size: 3rem;
+      font-size: 2rem;
       background-color: #4c2a4e;
       color: white;
       font-weight: bold;
@@ -399,12 +365,12 @@ const DivWrapper = styled.div`
     .ou {
       color: #ffc267;
       margin-right: 5%;
-      font-size: 9rem;
+      font-size: 5.5rem;
     }
 
     h2 {
       text-align: center;
-      font-size: 6rem;
+      font-size: 4rem;
       margin-bottom: 3%;
       color: #ffc267;
       font-weight: bold;
@@ -434,7 +400,7 @@ const DivWrapper = styled.div`
         }
 
         li {
-          font-size: 2.5rem;
+          font-size: 2rem;
           width: 85%;
           margin-left: 4% ;
           line-height: 190%;
@@ -466,9 +432,10 @@ const DivWrapper = styled.div`
   }
   /*----------- QUOTE ---------- */
   .quote {
-    font-size: 6rem;
+    font-size: 3.5rem;
     text-align: center;
-    margin-bottom: 9%;
+    width: 92%;
+    margin: 0 auto 9% auto;
 
     .yellow {
       color: #ffc267;
@@ -488,7 +455,7 @@ const DivWrapper = styled.div`
 
     h2 {
       text-align: center;
-      font-size: 5rem;
+      font-size: 4rem;
       margin-bottom: 3%;
       color: #4c2a4e;
       font-weight: bold;
@@ -496,15 +463,15 @@ const DivWrapper = styled.div`
 
     li {
       color: #4c2a4e;
-      font-size: 2.5rem;
+      font-size: 2rem;
       line-height: 250%;
       text-align: justify;
     }
 
     button {
-      width: 38rem;
+      width: 25.3rem;
       padding: 2%;
-      font-size: 3rem;
+      font-size: 2rem;
       background-color: #4c2a4e;
       color: white;
       font-weight: bold;
@@ -524,7 +491,7 @@ const DivWrapper = styled.div`
 
     h2 {
       text-align: center;
-      font-size: 6rem;
+      font-size: 4rem;
       margin-bottom: 3%;
       color: #4c2a4e;
       font-weight: bold;
@@ -532,12 +499,19 @@ const DivWrapper = styled.div`
 
     .videos {
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
-      margin-right: 3%;
+      margin: auto;
+      width:90%;
+      height: auto;
 
       iframe {
         margin-right: 5%;
+      }
+      
+      .lastvideo{
+        
+        margin-right: 0;
       }
 
       .lastframe {
@@ -558,7 +532,7 @@ const DivWrapper = styled.div`
     margin-bottom: 3%;
 
     h2 {
-      font-size: 8rem;
+      font-size: 6rem;
       margin: 0 0 3% 67%;
       color: #ffc267;
       font-weight: bold;
@@ -572,17 +546,18 @@ const DivWrapper = styled.div`
 
       img {
         /* width: 28%; */
-        width: 40%;
+        width: 30%;
+        height: 76%;
         margin-right: 2%;
       }
 
       p {
-        font-size: 2.5rem;
+        font-size: 1.9rem;
         color: white;
         text-align: justify;
         width: 50%;
         line-height: 190%;
-        margin-top: 6rem;
+        // margin-top: 6rem;
 
         .bigger-yellow {
           font-size: 2vw;
@@ -591,15 +566,15 @@ const DivWrapper = styled.div`
         }
 
         .capital-letter {
-          font-size: 11rem;
+          font-size: 9rem;
         }
       }
     }
 
     button {
-      width: 15%;
+      width: 13%;
       padding: 1%;
-      font-size: 1.8vw;
+      font-size: 1.5vw;
       background-color: #ffc267;
       color: #4c2a4e;
       font-weight: bold;
@@ -616,16 +591,16 @@ const DivWrapper = styled.div`
     height: 35vh;
     margin-top: 5%;
     .action-title {
-      font-size: 8rem;
+      font-size: 5.5rem;
       color: #ffc267;
       margin-bottom: 2%;
       text-align: center;
     }
 
     button {
-      width: 15vw;
+      width: 13vw;
       padding: 1%;
-      font-size: 1.8vw;
+      font-size: 1.5vw;
       background-color: #4c2a4e;
       color: white;
       font-weight: bold;

@@ -251,10 +251,9 @@ flex-direction: column;
   height: 50vh;
   width: 40vw;
   margin: auto;
-  border: 2px solid #4f3149;
+  border: 1px solid #4f3149;
   overflow-y: scroll;
   border-radius: 4px;
-  box-shadow: 0px 8px 15px -5px rgba(0,0,0,0.76);
   /* background-color: #f9f1ff; */
   background-color: white;
   
