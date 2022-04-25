@@ -260,8 +260,7 @@ const DivWrapper = styled.div`
   .banner {
     display: flex;
     align-items: center;
-    width: 98vw;
-    max-width: 98vw;
+    width: 97vw;
     margin: 0 auto;
     height: 100vh;
 
@@ -285,6 +284,7 @@ const DivWrapper = styled.div`
       font-size: 4.7rem;
       text-align: center;
       margin-top: 25rem;
+      width: 50%;
     }
     //PURPLE SPANS
     .bg-purple {
@@ -309,11 +309,14 @@ const DivWrapper = styled.div`
       text-align: end;
     }
     img {
-      width: 46vw;
+      width: 50%;
+      max-width: 100%;
+      max-height: 80vh;
+      /* width: 126.5vw; */
       height: auto;
-      margin-top: 9%;
-
-      /* height: 82vh; */
+      margin-top: 11.3%;
+      object-fit:cover;
+      display: block;
     }
   }
   /* ----------- PROMISE --------- */
@@ -336,6 +339,7 @@ const DivWrapper = styled.div`
       display: flex;
       width: 85vw;
       align-items: center;
+      margin: auto;
     }
     /* PROMISE TEXT */
     .texte {
@@ -345,6 +349,12 @@ const DivWrapper = styled.div`
       font-size: 2.8rem;
       margin: auto;
       color: white;
+      text-align: justify;
+      margin-right: 6%;
+    }
+
+    iframe{
+      width: 50%;
     }
   }
 
@@ -561,7 +571,8 @@ const DivWrapper = styled.div`
       margin: auto;
 
       img {
-        width: 28%;
+        /* width: 28%; */
+        width: 40%;
         margin-right: 2%;
       }
 
@@ -571,6 +582,7 @@ const DivWrapper = styled.div`
         text-align: justify;
         width: 50%;
         line-height: 190%;
+        margin-top: 6rem;
 
         .bigger-yellow {
           font-size: 2vw;
