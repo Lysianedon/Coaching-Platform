@@ -4,35 +4,28 @@ import { useState } from "react";
 //--------------- AXIOS -----------------//
 import axios from "axios";
 //----------------- CSS -------------------//
-import "./contactForm.css";
-//-----------------TOASTIFY ----------------//
+import "./contactCoach.css";
 import { toast } from "react-toastify";
 //---------------- COMPONENTS --------------//
-import Footer from "../../components/footer/Footer";
-import Nav from "../../components/nav";
-import Navbar from "../../components/navbar/navbar";
+import SideBar from "../../components/dashboardComponents/sidebar-admin/sidebarAdmin";
 
-export default function ContactForm() {
+export default function ContactCoach() {
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Sending");
     let data = {
       name,
-      phone,
-      email,
+      subject,
       message,
       submitted,
     };
-
-    if (name && email && message) {
+    if (name && message) {
       axios
-        .post("http://localhost:8000/contact", {
+        .post("http://localhost:8000/contact-coach", {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -45,8 +38,7 @@ export default function ContactForm() {
           if (res.status === 200) {
             console.log("Response succeeded!");
             setName("");
-            setPhone("");
-            setEmail("");
+            setSubject("");
             setMessage("");
             setSubmitted(true);
           }
@@ -59,27 +51,14 @@ export default function ContactForm() {
       toast.error("Veuillez d'abord remplir le formulaire.");
     }
   };
-
   return (
     <>
-      <Nav />
-      <Navbar />
-      <main className="container">
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/l1whgIrlLio"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          autoplay="1"
-          loop="1"
-        ></iframe>
-        <h2>Contactez-moi</h2>
+      <SideBar />
+      <main className="container-message">
+        {/* <h2>Contacte-moi</h2> */}
         <form>
           <div className="inputGroup">
-            <label htmlFor="name">*Votre nom:</label>
+            <label htmlFor="name">*Nom:</label>
             <input
               type="text"
               name="name"
@@ -92,35 +71,19 @@ export default function ContactForm() {
             />
           </div>
           <div className="inputGroup">
-            <label htmlFor="email">*Votre email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="inputField"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              required
-            />
-          </div>
-          <div className="inputGroup">
-            <label htmlFor="phone">Votre téléphone:</label>
+            <label htmlFor="subject">Sujet:</label>
             <input
               type="text"
-              id="phone"
-              name="phone"
+              name="subject"
               className="inputField"
-              value={phone}
+              value={subject}
               onChange={(e) => {
-                setEmail(e.target.value);
+                setSubject(e.target.value);
               }}
-              required
             />
           </div>
           <div className="inputGroup">
-            <label htmlFor="message">*Votre message:</label>
+            <label htmlFor="message">*Message:</label>
             <textarea
               id="message"
               name="message"
@@ -146,8 +109,6 @@ export default function ContactForm() {
           </button>
         </form>
       </main>
-
-      <Footer />
     </>
   );
 }

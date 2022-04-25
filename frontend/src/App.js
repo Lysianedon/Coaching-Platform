@@ -8,6 +8,7 @@ import Home from "./views/home/home";
 import Presentation from "./views/presentation/presentation";
 import Coaching from "./views/coaching/coaching";
 import ContactForm from "./views/contactForm/ContactForm";
+import ContactCoach from "./views/contactCoach/contactCoach";
 import Login from "./views/Login";
 import QuestionnaireStarter from "./views/QuestionnaireStarter";
 import Mentionslegales from "./views/Mentionslegales";
@@ -32,6 +33,12 @@ function App() {
           <Route exact path="/coaching" element={<Coaching />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/contact" element={<ContactForm />} />
+          {/* <Route
+            exact
+            path="/questionnaire/starter"
+            element={<QuestionnaireStarter />}
+          /> */}
+          <Route exact path="/contact-coach" element={<ContactCoach />} />
           <Route
             exact
             path="/questionnaire/starter"

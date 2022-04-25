@@ -6,7 +6,7 @@ const cors = require("cors");
 //--------------- AUTH ----------------//
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const auth = require('../middlewares/auth');
+const auth = require("../middlewares/auth");
 
 //------------- SECRET --------------//
 const secret = process.env.REACT_APP_SECRET;
@@ -20,10 +20,10 @@ router.post("/", async (req, res) => {
   //* 1- Check user's email
   let user;
   try {
-     user = await User.findOne({ email });
+    user = await User.findOne({ email });
   } catch (error) {
     console.log(error);
-    return res.json({message: "A problem happened."})
+    return res.json({ message: "A problem happened." });
   }
 
   if (!user) {
@@ -45,8 +45,7 @@ router.post("/", async (req, res) => {
 
   //* 3 - Authentification
   // *! 3.1 - Generate a token with jsonwebtoken
-  const token = jwt.sign({ id: user._id }, secret, { expiresIn: "60m" }); // test 60 min
-
+  const token = jwt.sign({ id: user._id }, secret, { expiresIn: "30d" }); // test 60 min
   // *! 3.2 - Store token in a cookie called "jwt" and send it to client in response with a message of successful login
   return res
     .cookie("jwt", token, { httpOnly: false, secure: false })
