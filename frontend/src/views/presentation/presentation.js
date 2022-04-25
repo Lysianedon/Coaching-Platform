@@ -39,7 +39,8 @@ function Presentation() {
           <div className="vertical-line"></div>
 
             <section className="texte-picture">
-            <p> <span className="bigger-yellow"> <span className="capital-letter">L</span>orem ipsum dolor sit amet consectetur, adipisicing elit.</span>  Sequi nesciunt reiciendis dolorem iusto cupiditate. Dolorum excepturi, consectetur magnam earum nulla non blanditiis deleniti nemo veritatis quae sed. Provident at corporis adipisci iusto temporibus molestias reiciendis voluptatum et ipsam optio harum quis libero perspiciatis iste, eveniet pariatur ea natus quos ducimus. Nostrum cum eum tenetur reprehenderit quod facilis repellat distinctio nisi recusandae. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus inventore doloremque beatae obcaecati optio in. </p>
+            <p> <span className="bigger-yellow"> <span className="capital-letter">E</span>ntrepreneure sociale depuis 2017,</span>  j'ai monté une entreprise sur la formation en soft skills et l'engagement des collaborateurs, plusieurs fois lauréates de concours (Talents 2024, Start'in ESS, Les Entrep) et de programmes d'accompagnement (Enactus, Women Act, SKEMA Ventures.
+</p>
 
                 <img src={orangecoat} alt="pauline" srcset="" />
             </section>
@@ -49,7 +50,7 @@ function Presentation() {
           <section className="picture-text">
                 <img src={orangecoat} alt="pauline" srcset="" />
 
-                <p> Sequi nesciunt reiciendis dolorem iusto cupiditate. Dolorum excepturi, consectetur magnam earum nulla non blanditiis deleniti nemo veritatis quae sed. Provident at corporis adipisci iusto temporibus molestias reiciendis voluptatum et ipsam optio harum quis libero perspiciatis iste, eveniet pariatur ea natus quos ducimus. Nostrum cum eum tenetur reprehenderit quod facilis repellat distinctio nisi recusandae. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus inventore doloremque beatae obcaecati optio in.<span className="bigger-yellow">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</span>   </p>
+                <p> Création de ma première entreprise à 24 ans ,Certifiée coach en développement personnel.... <span className="bigger-yellow">Finaliste de la compétition nationale ENACTUS!</span>  </p>
             </section>
 
           <div className="vertical-line"></div>
@@ -81,10 +82,10 @@ const sizes = {
 const device = {
   mobileS: `(max-width: ${sizes.mobileS})`,
   mobileM: `(max-width: ${sizes.mobileM})`,
-  mobileL: `(min-width: ${sizes.mobileL})`,
+  mobileL: `(max-width: ${sizes.mobileL})`,
   tablet: `(min-width: ${sizes.tablet})`,
   laptop: `(min-width: ${sizes.laptop})`,
-  laptopL: `(min-width: ${sizes.laptopL})`,
+  laptopL: `(max-width: ${sizes.laptopL})`,
   desktop: `(min-width: ${sizes.desktop})`,
 };
 
@@ -427,7 +428,7 @@ font-family: 'poppins';
       width: 80%;
       margin: 0%;
       height: 50vh;
-      padding:50px 40px 0 100px;
+      padding:153px 40px 0 100px;
     
       /* FADE IN EFFECT */
       animation: fadeInAnimation ease 3s;
@@ -445,7 +446,7 @@ font-family: 'poppins';
       h2 {
         color: black;
         line-height: 180%;
-        font-size: 2rem;
+        font-size: 1.5rem;
         text-align: center;
         font-weight: bold;
     
@@ -456,7 +457,176 @@ font-family: 'poppins';
       }
     
       img {
-        width: 83%;
+        width: 100%;
+        /* height: 70vh; */
+        
+      }
+    }
+    /*--- VERTICAL LINE 1 AND 3 -----*/
+    .vertical-line{
+        margin: 5% auto 5% 60%;
+        height: 10vh;
+        width: 4px;
+        border-left: 4px dotted #FFC267;
+        color: black;
+        display:none;
+    }
+    
+    /*------ FIRST BLOCK OF PRESENTATION ------ */
+    .texte-picture{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-top:solid 4px #FFC267;
+        padding-top:20px;
+        padding-left:5px;
+        /* margin: auto 3% auto 6%; */
+    
+        img{
+          padding-bottom:20%;
+          width: 40%;
+        }
+    
+        p{
+            width: 100%;
+            font-size: 1.2rem;
+            line-height: 170%;
+            text-align: left;
+            margin-right: 0;
+    
+            .bigger-yellow{
+            font-size: 1.2em;
+            color: #FFC267;
+            font-weight: bold;
+          }
+    
+          .capital-letter{
+            font-size: 2em;
+          }
+        }
+    }
+    /* --- VERTICAL LINE 2 ----- */
+    .vertical-line2{
+        margin: 3% auto 3% 20%;
+        padding-right: 5%;
+        height: 30vh;
+        width: 4px;
+        border-left: 4px solid #FFC267;
+        color: black;
+        display:none;
+        
+    }
+    
+    /*-------- SECOND BLOCK OF PRESENTATION ----- */
+    .picture-text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-top:solid 4px #FFC267;
+        padding-top:20px;
+        padding-right:5px;
+        /* margin: auto 3% auto 6%; */
+        gap:12px;
+    
+        p{
+          width: 100%;
+          font-size: 1.2rem;
+          line-height: 170%;
+          text-align: left;
+          margin-right: 0;
+    
+            .bigger-yellow{
+            font-size: 1.2rem;
+            color: #FFC267;
+            font-weight: bold;
+          }
+    
+          .capital-letter{
+            font-size: 2em;
+          }
+        }
+    
+        img{
+          padding-bottom:20%;
+          width: 40%;
+        }
+    }
+    
+    /*------- CALL TO ACTION -------- */
+    
+    .action-titre-btn{
+      display: flex;
+      justify-content:center;
+      align-items: center;
+      width: 100%;
+      /* margin: 3% auto auto 5% ; */
+      padding: 5%;
+      border-radius: 6px;
+      gap:12px;
+      background-color: #4c2a4e;
+      .action-title {
+          font-size: 2rem;
+          color: #FFC267;
+          margin-bottom: 2%;
+          text-align: center;
+        }
+    
+        button{
+            width: 50%;
+            padding: 1.6%;
+            font-size: 1.2rem;
+            background-color: #FFC267;
+            color: #4c2a4e;
+            font-weight: bold;
+            border-radius: 10px;
+            margin: 8% 0;
+            border:none;
+      }
+    }
+    
+    }
+    @media ${device.mobileL} {
+    
+    /*----- BANNER -------- */
+    .banner{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      margin: 0%;
+      height: 50vh;
+      padding:153px 40px 0 100px;
+    
+      /* FADE IN EFFECT */
+      animation: fadeInAnimation ease 3s;
+      animation-iteration-count: 1;
+      animation-fill-mode: backwards;
+    
+    @keyframes fadeInAnimation {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+      h2 {
+        color: black;
+        line-height: 180%;
+        font-size: 1.5rem;
+        text-align: center;
+        font-weight: bold;
+    
+        .yellow-block{
+            display: block;
+            background-color: #FFC267 ;
+        }
+      }
+    
+      img {
+        width: 100%;
         /* height: 70vh; */
         
       }
@@ -898,6 +1068,175 @@ font-family: 'poppins';
     }
     
     }
+    @media ${device.mobileL} {
     
+    /*----- BANNER -------- */
+    .banner{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      margin: 0%;
+      height: 50vh;
+      padding:153px 40px 0 100px;
+    
+      /* FADE IN EFFECT */
+      animation: fadeInAnimation ease 3s;
+      animation-iteration-count: 1;
+      animation-fill-mode: backwards;
+    
+    @keyframes fadeInAnimation {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+      h2 {
+        color: black;
+        line-height: 180%;
+        font-size: 1.5rem;
+        text-align: center;
+        font-weight: bold;
+    
+        .yellow-block{
+            display: block;
+            background-color: #FFC267 ;
+        }
+      }
+    
+      img {
+        width: 100%;
+        /* height: 70vh; */
+        
+      }
+    }
+    /*--- VERTICAL LINE 1 AND 3 -----*/
+    .vertical-line{
+        margin: 5% auto 5% 60%;
+        height: 10vh;
+        width: 4px;
+        border-left: 4px dotted #FFC267;
+        color: black;
+        display:none;
+    }
+    
+    /*------ FIRST BLOCK OF PRESENTATION ------ */
+    .texte-picture{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-top:solid 4px #FFC267;
+        padding-top:20px;
+        padding-left:5px;
+        /* margin: auto 3% auto 6%; */
+    
+        img{
+          padding-bottom:20%;
+          width: 40%;
+        }
+    
+        p{
+            width: 100%;
+            font-size: 1.2rem;
+            line-height: 170%;
+            text-align: left;
+            margin-right: 0;
+    
+            .bigger-yellow{
+            font-size: 1.2em;
+            color: #FFC267;
+            font-weight: bold;
+          }
+    
+          .capital-letter{
+            font-size: 2em;
+          }
+        }
+    }
+    /* --- VERTICAL LINE 2 ----- */
+    .vertical-line2{
+        margin: 3% auto 3% 20%;
+        padding-right: 5%;
+        height: 30vh;
+        width: 4px;
+        border-left: 4px solid #FFC267;
+        color: black;
+        display:none;
+        
+    }
+    
+    /*-------- SECOND BLOCK OF PRESENTATION ----- */
+    .picture-text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-top:solid 4px #FFC267;
+        padding-top:20px;
+        padding-right:5px;
+        /* margin: auto 3% auto 6%; */
+        gap:12px;
+    
+        p{
+          width: 100%;
+          font-size: 1.2rem;
+          line-height: 170%;
+          text-align: left;
+          margin-right: 0;
+    
+            .bigger-yellow{
+            font-size: 1.2rem;
+            color: #FFC267;
+            font-weight: bold;
+          }
+    
+          .capital-letter{
+            font-size: 2em;
+          }
+        }
+    
+        img{
+          padding-bottom:20%;
+          width: 40%;
+        }
+    }
+    
+    /*------- CALL TO ACTION -------- */
+    
+    .action-titre-btn{
+      display: flex;
+      justify-content:center;
+      align-items: center;
+      width: 100%;
+      /* margin: 3% auto auto 5% ; */
+      padding: 5%;
+      border-radius: 6px;
+      gap:12px;
+      background-color: #4c2a4e;
+      .action-title {
+          font-size: 2rem;
+          color: #FFC267;
+          margin-bottom: 2%;
+          text-align: center;
+        }
+    
+        button{
+            width: 50%;
+            padding: 1.6%;
+            font-size: 1.2rem;
+            background-color: #FFC267;
+            color: #4c2a4e;
+            font-weight: bold;
+            border-radius: 10px;
+            margin: 8% 0;
+            border:none;
+      }
+    }
+    
+    }
+
 
 `

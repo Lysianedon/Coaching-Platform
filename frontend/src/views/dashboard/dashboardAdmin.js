@@ -49,12 +49,12 @@ function DashboardAdmin() {
      <Container>
        <h2 className='hello'>Hello <span className="name">{firstname} !</span></h2>
        <section className="ToDoListUser">
-        <ToDoListUser />
+        <ToDoListUser id="todo" />
        </section>
-
-       <h2 className='title-mesrdv'>Mes Rendez-Vous</h2>
-       <iframe className="calendar" src={`https://calendar.google.com/calendar/embed?src=${emailUser}&ctz=Europe%2FParis`} height={300}></iframe>
-
+       <section id="agenda">
+       <h2 className='title-mesrdv' >Mes Rendez-Vous</h2>
+       <iframe  className="calendar" id='agenda' src={`https://calendar.google.com/calendar/embed?src=${emailUser}&ctz=Europe%2FParis`} height={300}></iframe>
+      </section>
        <Ressources/> 
 
      </Container>
