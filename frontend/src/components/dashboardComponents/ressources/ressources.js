@@ -132,7 +132,7 @@ function Ressources() {
 													alt={`File ${user.fileName}`}
 												/>
 												<div className="card-body">
-													<h5 className="card-title">{user.fileName}</h5>
+													{/* <h5 className="card-title">{user.fileName}</h5> */}
 													<h5 className="card-title">{user.name}</h5>
 												</div>
 											</div>
@@ -152,6 +152,7 @@ export default Ressources;
 
 //--------------------- STYLED-COMPONENTS --------------------------
 const StyledContainer = styled.div`
+
 
 .title-ressources{
 	margin-bottom: 10%;
@@ -216,12 +217,16 @@ const StyledContainer = styled.div`
 		text-align: center;
 		margin-top: 5%;
 	}
-
+	/*---------- FILE SECTION ----------- */
 	 .allFiles{
-		border: 1px solid black;
+		border: 2px solid black;
 		width: 40.1vw;
-		margin-left: 30%;
 		height: 20vh;
+		margin: 1.5% 0 5% 30%;
+		padding-top: 1%;
+		border-radius: 5px;
+		background-color: #f5eff9;
+		/* overflow-y: scroll; */
 	 }
 
 	img{
@@ -233,6 +238,7 @@ const StyledContainer = styled.div`
 	ul{
 		display: flex;
 		list-style: none;
+		overflow-x: hidden;
 
 		li{
 			display: flex;

@@ -3,6 +3,8 @@ import { React, useState, useEffect } from "react";
 import axios from 'axios';
 //Styled-components
 import styled from "styled-components";
+//Toastify
+import { toast } from "react-toastify";
 
 function ToDoListUser() {
   const [name,setName] = useState('');
@@ -15,7 +17,6 @@ function ToDoListUser() {
   const fetchData = () => {
     axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
     .then(res => {
-      console.log(res.data);
       setName(res.data.user.firstName);
       setToDoList(res.data.user.tasks);
       setNumberOfTasks(res.data.user.tasks.length)
@@ -24,20 +25,34 @@ function ToDoListUser() {
 
 useEffect(()=> {
     fetchData();
-    console.log("todolist::: ",toDoList);
-
   }, [])
 
   const handleAddTask = (e) =>{
-    const parentDiv = e.target.parentElement;
-    //Getting the content of the input => the new task : 
-    let content = parentDiv.children[0].value;
-    console.log(content);
+      //Getting the new task:
+      const parentDiv = e.target.parentElement;
+      let content = parentDiv.children[0].value;
+      //Getting the list of tasks:
+      const listOfTasks = [];
+      const ul = document.querySelector('.ul-list');
+      const listItems = ul.getElementsByTagName('li');
+      // Loop through the NodeList object and adding the task to the listOfTasks array:
+      for (let i = 0; i <= listItems.length - 1; i++) {
+          listOfTasks.push(listItems[i].textContent)
+        }  
+    // Checking all tasks to see if the new task already exists: if so, an error message gets displayed :
+    for (let i = 0; i < listOfTasks.length; i++) {
+       
+        if (listOfTasks[i] === content) {
+            //Emptying the field:
+            parentDiv.children[0].value="";
+            return toast.error('Tâche déjà existante !');
+        } 
+    }
+
     axios.post("http://localhost:8000/dashboard/user/list",{content}, { withCredentials: true});
     content = {content}
     setToDoList([...toDoList, content]);
     setNumberOfTasks(numberOfTasks + 1);
-    
     //Emptying the field:
     parentDiv.children[0].value="";
 
@@ -80,14 +95,14 @@ useEffect(()=> {
           </div>
        </div>
      <section className="checklist">
-       <ul>
+       <ul className="ul-list">
        {
          toDoList.map(task => {
            return (
              <div className="task">
                <div className="options">
                <input type="checkbox" name="accomplished" id="checkbox" onClick={handleCheckbox}/>
-               <li>{task.content}</li>
+               <li className="task-content">{task.content}</li>
                </div>
              </div>
            )
@@ -107,6 +122,7 @@ const TodoStyle = styled.div`
 h3 {
   text-align: center;
   margin-bottom: 2%;
+  font-size: 3rem;
   /* color: #4f3149; */
 }
 #test-input{
@@ -173,6 +189,7 @@ flex-direction: column;
       /* background-color: #FFC267; */
       background-color: white;
       color: #4f3149;
+      background-color: #f5eff9;
 
     }
 
@@ -192,7 +209,7 @@ flex-direction: column;
   border: 2px solid #4f3149;
   overflow-y: scroll;
   border-radius: 4px;
-  background-color: white;
+  background-color: #f5eff9;
   /* box-shadow: 0px 0px 5px rgba(66,66,66,.75); */
   box-shadow: 0px 8px 15px -5px rgba(0,0,0,0.76);
 
@@ -203,10 +220,8 @@ flex-direction: column;
     width: 95%;
     list-style: none;
     margin: 2% auto;
-    /* border: 1px solid purple; */
-    /* border-bottom: 1px solid purple ; */
     padding: 2%;
-    background-color: white;
+
 
     input[type="checkbox"]{
       width: 3vw !important;
@@ -228,11 +243,6 @@ flex-direction: column;
       -webkit-transition: opacity 1000ms linear;
       transition: opacity 1000ms linear;
     }
-
-    /* div:hover{
-      background-color: #F2BAE3 !important;
-      width: 100%;
-    } */
     
     input[type="checkbox"]:nth-child(even){
       accent-color: black;

@@ -51,32 +51,26 @@ function Login() {
       .then((res) => {
         console.log(res.data);
 
-        if (res.data.success) {
-          axios
-            .get("http://localhost:8000/dashboard/user", {
-              withCredentials: true,
-            })
-            .then((res) => {
-              console.log(res.data);
-              if (res.data.user.isAdmin) {
-                toast.success("Hello Pauline");
-                navigate("/dashboard/admin");
-              } else {
-                toast.success("Connexion réussie !");
-                navigate("/dashboard/user");
-              }
-            });
-          //  .catch(error =>{
-          //   console.log(error);
-          //   toast.error("Invalid email or password !");
-          //  })
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Please log in first!");
-      });
-  };
+       if (res.data.success) {
+         axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
+         .then(res => {
+           console.log(res.data);
+           if (res.data.user.isAdmin) {
+            toast.success("Ravi de te revoir, Pauline !");
+             navigate('/dashboard/admin');
+
+           }else{
+              toast.success(`Ravi de te revoir, ${res.data.user.firstName} !`);
+              navigate('/dashboard/user');
+           }
+         })
+       } 
+    })
+    .catch(error => {
+      console.log(error);
+      toast.error(" Email et/ou mot de passe incorrect(s)");
+    })
+  }
 
   return (
     <LoginFormStyled>
@@ -193,9 +187,9 @@ const LoginFormStyled = styled.div`
   }
   .login-form,
   .quotes-block {
-    width: 40vw;
-    height: 50vh;
-    max-height: 50vh;
+    width: 50vw;
+    height: 60vh;
+    max-height: 60vh;
 
     border-radius: 5px;
 
@@ -204,8 +198,8 @@ const LoginFormStyled = styled.div`
     align-items: center;
   }
   .login-form {
-    margin: 2% 2% 5% 5%;
-    padding: 5% 0% 5% 0%;
+    margin: 15% 2% 5% 5%;
+    padding: 10% 0% 5% 0%;
     background-color: white;
     color: #4c2a4e;
   }
@@ -232,7 +226,7 @@ const LoginFormStyled = styled.div`
   }
   /* Quotes */
   .quotes-block {
-    margin: 2% 2% 5% 0%;
+    margin: 15% 2% 5% 0%;
     padding: 0% 0% 5% 0%;
     background-color: #4c2a4e;
     color: white;
