@@ -41,7 +41,7 @@ function App() {
           <Route exact path="/contact-coach" element={<ContactCoach />} />
           <Route
             exact
-            path="/questionnaire/starter"
+            path="/questionnaire"
             element={<QuestionnaireStarter />}
           />
 

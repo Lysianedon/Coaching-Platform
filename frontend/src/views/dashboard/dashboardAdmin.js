@@ -53,9 +53,9 @@ function DashboardAdmin() {
        </section>
        <section id="agenda">
        <h2 className='title-mesrdv' >Mes Rendez-Vous</h2>
-       <iframe  className="calendar" id='agenda' src={`https://calendar.google.com/calendar/embed?src=${emailUser}&ctz=Europe%2FParis`} height={300}></iframe>
+       <iframe  className="calendar" src={`https://calendar.google.com/calendar/embed?src=${emailUser}&ctz=Europe%2FParis`} height={300}></iframe>
       </section>
-       <Ressources/> 
+       <Ressources id="todo"/> 
 
      </Container>
 
