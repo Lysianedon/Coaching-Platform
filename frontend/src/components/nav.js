@@ -46,6 +46,7 @@ const Navbar = styled.nav`
   vertical-align:top;
   width: 100%;
   position:fixed;
+  background-color:rgb(246,246,246);
   @media (max-width: 1000px) {
   display:none;
 }

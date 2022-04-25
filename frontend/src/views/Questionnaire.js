@@ -8,20 +8,20 @@ import QuestionnaireImage from "../assets/images/deuxieme.png";
 // css
 import styled from "styled-components";
 
-function QuestionnaireStarter() {
+function Questionnaire() {
   return (
     <>
       <QuestionnaireStyled>
         <Nav />
         <Navbar />
         <div className="questionnaire-form">
-          <div>
+          {/* <div>
             <img
               className="questionnaire-image"
               src={QuestionnaireImage}
               alt="questionnaire"
             />
-          </div>
+          </div> */}
 
           <div className="text-questionnaire">
             <h4 id="description-questionnaire">
@@ -29,13 +29,11 @@ function QuestionnaireStarter() {
               comprendre mieux votre objective. Merci !
             </h4>
             <h5>
-              <em>Cela prendra 10 minutes...</em>{" "}
+              <em>Cela prendra 10 minutes...</em>
             </h5>
 
-            <a href="https://7nsna4vba1q.typeform.com/to/CyGdqVKG">
-              <button href="/question" className="btn-start btn-dark">
-                Commencer
-              </button>
+            <a href="/questionnaire">
+              <button className="btn-start btn-dark">Commencer</button>
             </a>
           </div>
         </div>
@@ -43,11 +41,12 @@ function QuestionnaireStarter() {
     </>
   );
 }
-export default QuestionnaireStarter;
+export default Questionnaire;
 
 const QuestionnaireStyled = styled.div`
   font-family: "poppins";
   font-size: 1rem;
+
   .questionnaire-form {
     border: 1px solid rgb(255, 255, 255);
     background-color: #f5eff9;
@@ -57,7 +56,7 @@ const QuestionnaireStyled = styled.div`
     margin: 0% 15% 2% 10%;
     text-align: center;
   }
-  .questionnaire-image {
+  /* .questionnaire-image {
     width: auto;
     height: 50vh;
     text-align: center;
@@ -65,12 +64,13 @@ const QuestionnaireStyled = styled.div`
     margin-top: 2%;
     margin-left: 5vw;
     border-radius: 10px;
-  }
+  } */
   .text-questionnaire {
     margin-top: 0%;
+    height: 30vh;
   }
   #description-questionnaire {
-    margin: 5% 2% 2% 2%;
+    margin: 55% 2% 2% 2%;
   }
   .btn-start {
     margin: 5% 0% 5% 0%;

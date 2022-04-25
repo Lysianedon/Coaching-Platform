@@ -27,10 +27,6 @@ function UsersList() {
 export default UsersList;
 
 const UsersListStyled = styled.div`
-  .tilte-cardUser {
-    margin: 0% 0% 2% 15%;
-    text-align: center;
-  }
   /* Responsive Tablet */
   @media screen and (min-width: 768px) and (max-width: 960px) {
     margin: 12% 0% 2% 0%;
@@ -38,28 +34,29 @@ const UsersListStyled = styled.div`
 
   /* Responsive Phone */
   @media screen and (max-width: 480px) {
-    margin: 25% 0% 2% 0%;
+    margin: 0% 0% 2% 0%;
   }
 `;
 
 //------------- Style of buttons ------------//
 const ButtonsStyled = styled.div`
   display: flex;
-  margin: 0% 0% 0% 30%;
-
+  margin: 0% 0% 0% 25%;
   .btn-create,
   .btn-list {
     width: 120%;
     height: 7vh;
     border-radius: 4px;
     font-size: 1.8rem;
+  
   }
   .btn-create {
     justify-content: center;
+    margin: 25% 0% 0% 25%;
   }
   .btn-list {
     justify-content: center;
-    margin-left: 140%;
+    margin: 19% 0% 0% 140%;
   }
   /*  Laptop */
   @media screen and (min-width: 960px) and (max-width: 1024px) {

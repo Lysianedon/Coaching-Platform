@@ -27,9 +27,12 @@ function Login() {
     setPosts(data);
   };
 
-  useEffect(() => {
-    fetchPost();
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     document.querySelector('.quote').style.opacity= '1';
+  //   }, 1600);
+
+  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,8 +43,6 @@ function Login() {
     setEmail(emailValue);
     setPassword(passwordValue);
 
-    console.log("email password:::", email, password);
-
     axios
       .post(
         "http://localhost:8000/login",
@@ -50,27 +51,29 @@ function Login() {
       )
       .then((res) => {
         console.log(res.data);
-
-       if (res.data.success) {
-         axios.get('http://localhost:8000/dashboard/user', {withCredentials: true})
-         .then(res => {
-           console.log(res.data);
-           if (res.data.user.isAdmin) {
-            toast.success("Ravi de te revoir, Pauline !");
-             navigate('/dashboard/admin');
-
-           }else{
-              toast.success(`Ravi de te revoir, ${res.data.user.firstName} !`);
-              navigate('/dashboard/user');
-           }
-         })
-       } 
-    })
-    .catch(error => {
-      console.log(error);
-      toast.error(" Email et/ou mot de passe incorrect(s)");
-    })
-  }
+        if (res.data.success) {
+          axios
+            .get("http://localhost:8000/dashboard/user", {
+              withCredentials: true,
+            })
+            .then((res) => {
+              if (res.data.user.isAdmin) {
+                toast.success("Ravi de te revoir, Pauline !");
+                navigate("/dashboard/admin");
+              } else {
+                toast.success(
+                  `Ravi de te revoir, ${res.data.user.firstName} !`
+                );
+                navigate("/dashboard/user");
+              }
+            });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(" Email et/ou mot de passe incorrect(s)");
+      });
+  };
 
   return (
     <LoginFormStyled>

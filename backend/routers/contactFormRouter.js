@@ -13,11 +13,7 @@ let transporter = nodemailer.createTransport({
   host: process.env.REACT_APP_HOST,
   port: 587,
   auth: {
-<<<<<<< HEAD
-    user: process.env.REACT_APP_USER ,
-=======
     user: process.env.REACT_APP_USER,
->>>>>>> dea3236ea49f7286e74e983feb553d87a8a0ecb5
     pass: process.env.REACT_APP_PASS,
   },
   tls: {

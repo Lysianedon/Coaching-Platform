@@ -49,12 +49,12 @@ function DashboardAdmin() {
      <Container>
        <h2 className='hello'>Hello <span className="name">{firstname} !</span></h2>
        <section className="ToDoListUser">
-        <ToDoListUser />
+        <ToDoListUser id="todo" />
        </section>
-
-       <h2 className='title-mesrdv'>Mes Rendez-Vous</h2>
-       <iframe className="calendar" src={`https://calendar.google.com/calendar/embed?src=${emailUser}&ctz=Europe%2FParis`} height={300}></iframe>
-
+       <section id="agenda">
+       <h2 className='title-mesrdv' >Mes Rendez-Vous</h2>
+       <iframe  className="calendar" id='agenda' src={`https://calendar.google.com/calendar/embed?src=${emailUser}&ctz=Europe%2FParis`} height={300}></iframe>
+      </section>
        <Ressources/> 
 
      </Container>
@@ -67,6 +67,7 @@ export default DashboardAdmin;
 
 const Container = styled.li`
 overflow-x: hidden;
+
 
 .hello{
   color: black !important;
@@ -88,11 +89,24 @@ h2{
   width: 40vw;
   margin: auto;
   margin-top: 5%;
-  padding-bottom: 1%;
+  padding: 2rem 1rem;
   color: white !important;
   border-radius: 5px;
-}
+  
+  @media(max-width:1030px){
+    font-size: 3.5rem;
+    
+  }
 
+  @media(max-width:780px){
+    width: 65vw;
+    }
+  
+  @media(max-width:440px){
+    font-size: 2.5rem;
+    width: 65vw;
+    }
+}
 
 .ToDoListUser{
   margin-top: 2%;
@@ -102,10 +116,12 @@ h2{
   width: 40.1vw;
   margin-left: 30%;
   height: 50vh;
+  
+  @media(max-width:780px){
+    margin-left: 17%;
+    width: 65vw;
+  }
 }
-
-
-
 `;
 
 
