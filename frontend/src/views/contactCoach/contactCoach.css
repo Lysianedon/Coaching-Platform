@@ -1,0 +1,76 @@
+.container,.inputGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .container{  
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%
+  }
+  .inputGroup{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  h2 {
+    font-size: 3rem;
+    color: #4c2a4e;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 500
+  } 
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 56rem;
+    background: #4c2a4e;
+    border: 0.2rem solid rgb(116, 128, 150);
+  }
+  .inputGroup {
+    width: 80%;
+  }
+  .inputField,
+  textarea {
+    width: 100%;
+  }
+  .inputField,
+  textarea {
+    background: none repeat scroll 0 0 #f4eef5;
+    border: 0.2rem solid rgb(116, 128, 150);
+    margin-bottom: 1.5rem;
+    padding-left: 0.5rem;
+  }
+  label {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  .inputField {
+    height: 3.6rem;
+  }
+  .btn-send {
+    width: 12rem;
+    height: 5rem;
+    border: 0.1rem solid #4c2a4e;
+    border-radius: 0.4rem;
+    box-shadow: 0.05rem 0.05rem 0.25rem rgb(116, 128, 150);
+    color: #4c2a4e;
+    cursor: pointer;
+    background: rgb(244, 238, 245);
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /************** MEDIA QUERIES ***************/
+    @media only screen and (max-width: 766px) {
+    form {
+      width: 100%;
+    }
+  }
+  
