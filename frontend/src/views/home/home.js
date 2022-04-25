@@ -8,10 +8,7 @@ import optionun from "../../assets/images/un.png";
 import coachingindividuel from "../../assets/images/individuel.png";
 import coachingcollectif from "../../assets/images/collectif.png";
 import presentation from "../../assets/images/trois.jpeg";
-import instagram from "../../assets/images/instagram.png";
-import youtube from "../../assets/images/youtube.png";
-import facebook from "../../assets/images/facebook.png";
-import linkedin from "../../assets/images/linkedin.png";
+
 //Styled-components
 import styled from "styled-components";
 
@@ -19,13 +16,21 @@ function Home() {
   const navigate = useNavigate();
 
   const goToQuestionnaire = (e) => {
-    const button = document.querySelector(".button-action");
+    const button = document.querySelector(".button-action1");
     button.style.backgroundColor = "#FFC267";
     button.style.color = "#4c2a4e";
 
     setTimeout(() => {
-      navigate("/questionaire/starter");
+      navigate("/questionaire");
     }, 1000);
+  };
+
+  const goToCoaching = () => {
+    navigate("/coaching");
+  };
+
+  const goToPresentation = () => {
+    navigate("/presentation");
   };
 
   const goToContactPage = (e) => {
@@ -45,7 +50,7 @@ function Home() {
         <h1>
           " Je t'aide à{" "}
           <span className="bg-purple bg-purple-1">dépasser tes</span>
-          <span className="bg-purple">croyances limitantes </span> afin de
+          <span className="bg-purple bg-purple-2">croyances limitantes </span> afin de
           devenir l'entrepreneur.se que tu as toujours rêvé d'être. "{" "}
           <span className="paulinegane">Pauline Gane -</span>
         </h1>
@@ -115,7 +120,7 @@ function Home() {
               </li>
             </ul>
 
-            <button>En savoir plus</button>
+            <button onClick={goToCoaching}>En savoir plus</button>
           </div>
           <h2 className="ou">OU</h2>
           <div className="coaching-card coaching-collectif">
@@ -141,7 +146,7 @@ function Home() {
               </li>
             </ul>
 
-            <button>En savoir plus</button>
+            <button  onClick={goToCoaching}>En savoir plus</button>
           </div>
         </div>
       </section>
@@ -160,7 +165,7 @@ function Home() {
           <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
           <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
         </ul>
-        <button>Travaillons ensemble</button>
+        <button onClick={goToQuestionnaire} className='work-together'>Travaillons ensemble</button>
       </section>
 
       <section className="temoignages-block">
@@ -220,26 +225,10 @@ function Home() {
             Nostrum cum eum tenetur reprehenderit quod facilis repellat
             distinctio nisi recusandae. Lorem ipsum dolor sit amet consectetur,
             adipisicing elit. Natus inventore doloremque beatae obcaecati optio
-            in.{" "}
-          </p>
-
-          <p>
-            {" "}
-            Sequi nesciunt reiciendis dolorem iusto cupiditate. Dolorum
-            excepturi, consectetur magnam earum nulla non blanditiis deleniti
-            nemo veritatis quae sed. Provident at corporis adipisci iusto
-            temporibus molestias reiciendis voluptatum et ipsam optio harum quis
-            libero perspiciatis iste, eveniet pariatur ea natus quos ducimus.
-            Nostrum cum eum tenetur reprehenderit quod facilis repellat
-            distinctio nisi recusandae. Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Natus inventore doloremque beatae obcaecati optio
             in.
-            <span className="bigger-yellow">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            </span>{" "}
           </p>
         </div>
-        <button>En savoir plus</button>
+        <button onClick={goToPresentation}>En savoir plus</button>
       </section>
 
       <section className="titre-btn">
@@ -249,15 +238,6 @@ function Home() {
         </button>
       </section>
 
-      <section className="social-medias">
-        <h2>Avançons ensemble</h2>
-        <div className="social-media-icons">
-          <img src={instagram} alt="icon-instagram" srcset="" />
-          <img src={youtube} alt="icon-youtube" srcset="" />
-          <img src={facebook} alt="icon-facebook" srcset="" />
-          <img src={linkedin} alt="icon-linkedin" srcset="" />
-        </div>
-      </section>
       <Footer />
     </DivWrapper>
   );
@@ -283,7 +263,7 @@ const DivWrapper = styled.div`
     width: 98vw;
     max-width: 98vw;
     margin: 0 auto;
-    height: 80vh;
+    height: 100vh;
 
     /* FADE IN EFFECT */
     animation: fadeInAnimation ease 3s;
@@ -301,9 +281,10 @@ const DivWrapper = styled.div`
 
     h1 {
       color: black;
-      line-height: 180%;
-      font-size: 3.2vw;
+      line-height: 200%;
+      font-size: 4.7rem;
       text-align: center;
+      margin-top: 25rem;
     }
     //PURPLE SPANS
     .bg-purple {
@@ -316,14 +297,21 @@ const DivWrapper = styled.div`
     .bg-purple-1 {
       padding: 2%;
     }
+    .bg-purple-2{
+      padding: 2% 0 2% 0;
+      line-height: 220%;
+      
+    }
+
     /* SIGNATURE */
     .paulinegane {
       display: block;
       text-align: end;
     }
     img {
-      width: 48vw;
-      margin-bottom: 9.6%;
+      width: 46vw;
+      height: auto;
+      margin-top: 9%;
 
       /* height: 82vh; */
     }
@@ -338,7 +326,7 @@ const DivWrapper = styled.div`
 
     .promesse-title {
       text-align: center;
-      font-size: 3.5em;
+      font-size: 7rem;
       color: white;
       margin-right: 5%;
       margin-bottom: 3%;
@@ -346,14 +334,15 @@ const DivWrapper = styled.div`
     /* PROMESSE CONTENT (TEXT + VIDEO) */
     .promesse-content {
       display: flex;
-      width: 88vw;
+      width: 85vw;
       align-items: center;
     }
     /* PROMISE TEXT */
     .texte {
       width: 50%;
       max-width: 50%;
-      font-size: 1.8em;
+      line-height: 200%;
+      font-size: 2.8rem;
       margin: auto;
       color: white;
     }
@@ -372,7 +361,7 @@ const DivWrapper = styled.div`
       color: #ffc267 !important;
     }
     .action-title1 {
-      font-size: 4em;
+      font-size: 6rem;
       color: #4c2a4e;
       margin-bottom: 10%;
       text-align: center;
@@ -380,7 +369,7 @@ const DivWrapper = styled.div`
     .button-action1 {
       width: 18vw;
       padding: 2%;
-      font-size: 1.8em;
+      font-size: 3rem;
       background-color: #4c2a4e;
       color: white;
       font-weight: bold;
@@ -400,12 +389,12 @@ const DivWrapper = styled.div`
     .ou {
       color: #ffc267;
       margin-right: 5%;
-      font-size: 5em;
+      font-size: 9rem;
     }
 
     h2 {
       text-align: center;
-      font-size: 3.2vw;
+      font-size: 6rem;
       margin-bottom: 3%;
       color: #ffc267;
       font-weight: bold;
@@ -435,14 +424,15 @@ const DivWrapper = styled.div`
         }
 
         li {
-          font-size: 1.8vw;
+          font-size: 2.5rem;
           width: 85%;
-          line-height: 150%;
+          margin-left: 4% ;
+          line-height: 190%;
           text-align: justify;
         }
 
         button {
-          width: 30%;
+          width: 40%;
           padding: 2%;
           font-size: 1.5vw;
           background-color: #4c2a4e;
@@ -466,7 +456,7 @@ const DivWrapper = styled.div`
   }
   /*----------- QUOTE ---------- */
   .quote {
-    font-size: 4vw;
+    font-size: 6rem;
     text-align: center;
     margin-bottom: 9%;
 
@@ -474,7 +464,6 @@ const DivWrapper = styled.div`
       color: #ffc267;
     }
   }
-
   /* ------- ACCOMPAGNEMENT -------- */
 
   .bloc-accompagnement {
@@ -489,7 +478,7 @@ const DivWrapper = styled.div`
 
     h2 {
       text-align: center;
-      font-size: 3.3em;
+      font-size: 5rem;
       margin-bottom: 3%;
       color: #4c2a4e;
       font-weight: bold;
@@ -497,16 +486,15 @@ const DivWrapper = styled.div`
 
     li {
       color: #4c2a4e;
-      font-size: 1.8em;
-      /* width: 85%; */
-      line-height: 170%;
+      font-size: 2.5rem;
+      line-height: 250%;
       text-align: justify;
     }
 
     button {
-      width: 18vw;
+      width: 38rem;
       padding: 2%;
-      font-size: 1.6vw;
+      font-size: 3rem;
       background-color: #4c2a4e;
       color: white;
       font-weight: bold;
@@ -526,7 +514,7 @@ const DivWrapper = styled.div`
 
     h2 {
       text-align: center;
-      font-size: 3.3vw;
+      font-size: 6rem;
       margin-bottom: 3%;
       color: #4c2a4e;
       font-weight: bold;
@@ -556,11 +544,11 @@ const DivWrapper = styled.div`
     align-items: center;
     background-color: #4c2a4e;
     color: white;
-    padding: 2%;
+    padding: 1%;
     margin-bottom: 3%;
 
     h2 {
-      font-size: 5vw;
+      font-size: 8rem;
       margin: 0 0 3% 67%;
       color: #ffc267;
       font-weight: bold;
@@ -578,13 +566,11 @@ const DivWrapper = styled.div`
       }
 
       p {
-        /* width: 50%; */
-        font-size: 1.5vw;
-        margin: auto;
+        font-size: 2.5rem;
         color: white;
         text-align: justify;
-        width: 33%;
-        line-height: 160%;
+        width: 50%;
+        line-height: 190%;
 
         .bigger-yellow {
           font-size: 2vw;
@@ -593,7 +579,7 @@ const DivWrapper = styled.div`
         }
 
         .capital-letter {
-          font-size: 3em;
+          font-size: 11rem;
         }
       }
     }
@@ -618,14 +604,14 @@ const DivWrapper = styled.div`
     height: 35vh;
     margin-top: 5%;
     .action-title {
-      font-size: 5vw;
+      font-size: 8rem;
       color: #ffc267;
       margin-bottom: 2%;
       text-align: center;
     }
 
     button {
-      width: 15%;
+      width: 15vw;
       padding: 1%;
       font-size: 1.8vw;
       background-color: #4c2a4e;
@@ -636,28 +622,5 @@ const DivWrapper = styled.div`
     }
   }
 
-  /* ----- SOCIAL MEDIAS ---------- */
-
-  .social-medias {
-    margin: 5% auto 3% auto;
-
-    h2 {
-      text-align: center;
-      font-size: 3vw;
-      margin: 0 0 1% 0%;
-      color: #4c2a4e;
-      font-weight: bold;
-    }
-    .social-media-icons {
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    img {
-      width: 3%;
-      margin-right: 1.3%;
-    }
-  }
+  
 `;

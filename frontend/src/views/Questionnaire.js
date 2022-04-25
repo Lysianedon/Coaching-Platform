@@ -8,7 +8,7 @@ import QuestionnaireImage from "../assets/images/deuxieme.png";
 // css
 import styled from "styled-components";
 
-function QuestionnaireStarter() {
+function Questionnaire() {
   return (
     <>
       <QuestionnaireStyled>
@@ -32,10 +32,8 @@ function QuestionnaireStarter() {
               <em>Cela prendra 10 minutes...</em>{" "}
             </h5>
 
-            <a href="https://7nsna4vba1q.typeform.com/to/CyGdqVKG">
-              <button href="/question" className="btn-start btn-dark">
-                Commencer
-              </button>
+            <a href="">
+              <button className="btn-start btn-dark">Commencer</button>
             </a>
           </div>
         </div>
@@ -43,7 +41,7 @@ function QuestionnaireStarter() {
     </>
   );
 }
-export default QuestionnaireStarter;
+export default Questionnaire;
 
 const QuestionnaireStyled = styled.div`
   font-family: "poppins";
