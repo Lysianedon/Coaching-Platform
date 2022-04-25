@@ -3,7 +3,6 @@ import React from "react";
 // components
 import Nav from "../components/nav";
 import Navbar from "../components/navbar/navbar";
-import QuestionnaireImage from "../assets/images/deuxieme.png";
 
 // css
 import styled from "styled-components";
@@ -15,18 +14,10 @@ function Questionnaire() {
         <Nav />
         <Navbar />
         <div className="questionnaire-form">
-          <div>
-            <img
-              className="questionnaire-image"
-              src={QuestionnaireImage}
-              alt="questionnaire"
-            />
-          </div>
-
           <div className="text-questionnaire">
             <h4 id="description-questionnaire">
               Commençons par faire connaissance: ce questionnaire a pour but de
-              comprendre mieux votre objective. Merci !
+              mieux comprendre vos attentes. Merci !
             </h4>
             <h5>
               <em>Cela prendra 10 minutes...</em>{" "}
@@ -55,20 +46,15 @@ const QuestionnaireStyled = styled.div`
     margin: 0% 15% 2% 10%;
     text-align: center;
   }
-  .questionnaire-image {
-    width: auto;
-    height: 50vh;
-    text-align: center;
-    padding: auto;
-    margin-top: 2%;
-    margin-left: 5vw;
-    border-radius: 10px;
-  }
   .text-questionnaire {
     margin-top: 0%;
   }
   #description-questionnaire {
-    margin: 5% 2% 2% 2%;
+    margin: 35% 2% 2% 2%;
+    font-size: 2.2rem;
+  }
+  .text-questionnaire em {
+    font-size: 1.8rem;
   }
   .btn-start {
     margin: 5% 0% 5% 0%;
