@@ -267,7 +267,7 @@ const DivWrapper = styled.div`
     /* FADE IN EFFECT */
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+    animation-fill-mode: backwards;
 
     @keyframes fadeInAnimation {
       0% {
