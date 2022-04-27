@@ -16,7 +16,7 @@ function handleLogout({item}) {
 export const SidebarData = [
 
   {
-    title: 'To do list',
+    title: 'Mes Actions',
     path: '/dashboard/admin#todo',
     key:1,
     icon: <RiIcons.RiTodoLine />,

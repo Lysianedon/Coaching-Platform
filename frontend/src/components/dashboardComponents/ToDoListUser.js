@@ -87,7 +87,7 @@ useEffect(()=> {
      }
 
        <div className="header-todolist">
-         <h3>TO DO LIST:</h3>
+         <h3>Mes Actions :</h3>
           <div className="add">
             <input type="text" name="newtask" id="newtask"className="newtask"/>
             <button onClick={handleAddTask}>Ajouter</button>

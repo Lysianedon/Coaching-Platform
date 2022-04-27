@@ -7,7 +7,7 @@ import axios from "axios";
 import "./contactCoach.css";
 import { toast } from "react-toastify";
 //---------------- COMPONENTS --------------//
-import SideBar from "../../components/dashboardComponents/sidebar-admin/sidebarAdmin";
+import SideBarUser from "../../components/dashboardComponents/sidebar-user/sidebarUser";
 
 export default function ContactCoach() {
   const [name, setName] = useState("");
@@ -53,7 +53,7 @@ export default function ContactCoach() {
   };
   return (
     <>
-      <SideBar />
+      <SideBarUser />
       <main className="container-message">
         {/* <h2>Contacte-moi</h2> */}
         <form>

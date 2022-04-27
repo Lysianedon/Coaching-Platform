@@ -42,17 +42,15 @@ function CardUser() {
                 {users && users.map((user,index) =>
                         <div key={user._id}>
                             <div className="card">
-                                <p>Numéro Identifiant : <strong>{user._id} </strong> 
-                                    <i class="bi bi-person-circle"></i> 
-                                </p>
-
-                                <p>Numéro de téléphone : <strong>{user.telephone} </strong> 
-                                    <i class="bi bi-telephone"></i>
-                                </p>
-
+                                {/* <p>Numéro Identifiant : <strong>{user._id} </strong>  */}
+                                    {/* <i class="bi bi-person-circle"></i>  */}
+                                {/* </p> */}
                                 <p>Nom complet : <strong> <span>{user.firstName}</span> <span>{user.lastName} </span>  </strong>
                                     <i class="bi bi-pencil-fill"></i> 
                                 </p> 
+                                <p>Numéro de téléphone : <strong>{user.telephone} </strong> 
+                                    <i class="bi bi-telephone"></i>
+                                </p>
 
                                 <p> Email : <strong> {user.email} </strong>
                                     <Link

@@ -15,7 +15,7 @@ function handleLogout({item}) {
 export const SidebarData = [
 
   {
-    title: 'To do list',
+    title: 'Mes Actions',
     path: '/products',
     icon: <RiIcons.RiTodoLine />
   },
@@ -31,7 +31,6 @@ export const SidebarData = [
     path: '/',
     icon: <AiIcons.AiOutlineFolderOpen />
   },
-
   {
     title: 'Contacter ma coach',
     path: '/contact-coach',
