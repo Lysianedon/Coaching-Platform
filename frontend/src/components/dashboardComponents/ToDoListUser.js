@@ -83,7 +83,7 @@ useEffect(()=> {
       <TodoStyle>
 
      {
-       numberOfTasks < 1 ?  <h3>Tu n'as aucune tâche à faire pour le moment </h3> : <h3>Tu as {numberOfTasks} tâche(s) à réaliser: </h3>
+       numberOfTasks < 1 ?  <h3>Tu n'as aucune action à réaliser pour le moment </h3> : <h3>Tu as {numberOfTasks} action(s) à réaliser: </h3>
      }
 
        <div className="header-todolist">
