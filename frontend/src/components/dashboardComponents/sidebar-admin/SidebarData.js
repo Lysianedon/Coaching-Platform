@@ -36,6 +36,12 @@ export const SidebarData = [
     icon: <AiIcons.AiOutlineFolderOpen />
   },
   {
+    title: 'Envoyer une ressource',
+    path: '/dashboard/admin/envoyerressource ',
+    key:3,
+    icon: <FiIcons.FiShare2 />
+  },
+  {
     title: 'Gérer mes coachés',
     path: '/dashboard/admin/list',
     icon: <FiIcons.FiUsers />

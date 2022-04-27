@@ -9,6 +9,7 @@ import Presentation from "./views/presentation/presentation";
 import Coaching from "./views/coaching/coaching";
 import ContactForm from "./views/contactForm/ContactForm";
 import ContactCoach from "./views/contactCoach/contactCoach";
+import MaRessource from "./views/MaRessource/Maressource";
 import Login from "./views/Login";
 import Questionnaire from "./views/Questionnaire";
 import Mentionslegales from "./views/Mentionslegales";
@@ -43,6 +44,7 @@ function App() {
 
           <Route exact path="/dashboard/admin" element={<DashboardAdmin />} />
           <Route exact path="/dashboard/user" element={<DashboardUser />} />
+          <Route exact path="/dashboard/admin/envoyerressource" element={<MaRessource />} />
           <Route
             exact
             path="/dashboard/admin/users"
