@@ -3,7 +3,6 @@ import React from "react";
 // components
 import Nav from "../components/nav";
 import Navbar from "../components/navbar/navbar";
-import Footer from "../components/footer/Footer";
 
 // css
 import styled from "styled-components";
@@ -29,7 +28,6 @@ function Questionnaire() {
             </a>
           </div>
         </div>
-        <Footer />
       </QuestionnaireStyled>
     </>
   );
@@ -37,12 +35,15 @@ function Questionnaire() {
 export default Questionnaire;
 
 const QuestionnaireStyled = styled.div`
+  font-family: "poppins";
+  font-size: 1rem;
+
   .questionnaire-form {
     border: 1px solid rgb(255, 255, 255);
     background-color: #f5eff9;
     border-radius: 10px;
     width: 80vw;
-    height: auto;
+    height: 60rem;
     margin: 0% 15% 2% 10%;
     text-align: center;
   }
@@ -53,9 +54,11 @@ const QuestionnaireStyled = styled.div`
   #description-questionnaire {
     margin: 35% 2% 2% 2%;
     font-size: 2.2rem;
+    margin-bottom:4rem;
   }
   .text-questionnaire em {
     font-size: 1.8rem;
+    margin-bottom:2rem;
   }
   .btn-start {
     margin: 2rem 0 2rem 0;
@@ -66,15 +69,12 @@ const QuestionnaireStyled = styled.div`
   }
   /* RESPONSIVE */
   @media screen and (max-width: 480px) {
+    font-size: 0.9rem;
     .text-questionnaire {
-      height: auto;
+      font-size: 0.9rem;
     }
-    #description-questionnaire {
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
-    }
-    .text-questionnaire em {
-      font-size: 1.6rem;
+    .btn-start {
+      width: 30vw;
     }
   }
 `;

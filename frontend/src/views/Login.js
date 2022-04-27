@@ -121,7 +121,7 @@ function Login() {
         </form>
 
         <div class="quotes quotes-block">
-          <h2 className="text-center quote-title">Quotes</h2>
+          <h2 className="text-center quote-title">Citation du jour</h2>
           <p className="quote">"Il n'y a qu'une façon d'échouer, c'est d'abandonner avant d'avoir réussi."</p>
         </div>
       </div>
@@ -195,11 +195,22 @@ const LoginFormStyled = styled.div`
   }
 
   .quote{
-    width:90%;
+    width:60%;
+    line-height:200%;
     margin: auto;
     text-align:center;
     opacity: 0;
-    transition : opacity ease-in;
+    animation:fade-in 7s;
+  }
+  @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+  }
+
+  /* Safari, Chrome and Opera > 12.1 */
+  @-webkit-keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
   }
   .carousel-inner {
     padding: 0% 20% 0% 20%;
