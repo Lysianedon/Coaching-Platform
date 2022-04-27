@@ -143,7 +143,7 @@ function Home() {
       </section>
 
       <h2 className="quote">
-        " Pour ce qui est de l'avenir, il ne s'agit pas de le prévoir mais de le rendre .{" "}
+        " Pour ce qui est de l'avenir, il ne s'agit pas de le prévoir mais de le rendre {" "}
         <span className="yellow">possible.</span> "
       </h2>
 
